@@ -11,7 +11,6 @@ series: men-of-war
 country: ukraine
 years:
   start: 2004
-  end: null
   note: "в январе 2025 года игра получила обновление в Steam с мастерской модов и новым мультиплеером взамен закрытых серверов GameSpy"
 platforms:
   - windows

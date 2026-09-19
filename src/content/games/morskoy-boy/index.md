@@ -19,7 +19,15 @@ specs:
   development: "1971–1974"
 summary: >-
   Самый известный советский игровой автомат: игрок смотрит в перископ и торпедирует проходящие корабли. Стоял в каждом парке и кинотеатре, играть стоило пятнадцать копеек.
-gallery: []
+poster: ./shots/mosam-in-moscow-sea-battle.jpg
+gallery:
+  - kind: image
+    src: ./shots/mosam-in-moscow-sea-battle.jpg
+    caption: "Автомат «Морской бой» в Музее советских игровых автоматов в Москве"
+    author: "Музей советских игровых автоматов"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:MoSAM_in_Moscow_(Sea_Battle).jpg"
 sources:
   - title: "Морской бой (игровой автомат) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Морской_бой_(игровой_автомат)"

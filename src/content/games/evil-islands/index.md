@@ -20,14 +20,7 @@ specs:
   releaseDate: "26 октября 2000"
   modes: [single]
   setting: "фэнтезийный мир «Аллодов»"
-poster: ./shots/cover-01.jpg
 gallery:
-  - kind: image
-    src: ./shots/cover-01.jpg
-    caption: "Проклятые земли: обложка"
-    author: "Nival"
-    license: "Обложка"
-    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%9F%D1%80%D0%BE%D0%BA%D0%BB%D1%8F%D1%82%D1%8B%D0%B5_%D0%B7%D0%B5%D0%BC%D0%BB%D0%B8_%D0%B7%D0%B0%D1%82%D0%B5%D1%80%D1%8F%D0%BD%D0%BD%D1%8B%D0%B5_%D0%B2_%D0%B0%D1%81%D1%82%D1%80%D0%B0%D0%BB%D0%B5.jpg"
   - kind: youtube
     id: "WiAkl7WJSVE"
     title: "Обзор игры: Проклятые земли - затерянные в астрале"

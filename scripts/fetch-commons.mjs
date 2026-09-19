@@ -256,8 +256,9 @@ async function main() {
   }
   const platform = args.platform;
   const era = args.era;
-  if (!platform && !era) {
-    console.error('Укажите, куда класть: --platform dendy или --era nineties (или --search "запрос").');
+  const game = args.game;
+  if (!platform && !era && !game) {
+    console.error('Укажите, куда класть: --platform dendy, --era nineties или --game magistral (или --search "запрос").');
     process.exit(1);
   }
   if (!args.category && !args.files) {
@@ -270,9 +271,21 @@ async function main() {
   }
 
   const limit = Number(args.limit ?? 6);
-  const outDir = platform
-    ? path.join(root, 'src', 'content', 'platforms', platform, 'photos')
-    : path.join(root, 'src', 'content', 'eras', era);
+  /*
+   * Игровому автомату скриншот взять неоткуда: экран у него телевизионный,
+   * а сам автомат — шкаф с рулём или перископом. Лучшая иллюстрация здесь —
+   * фотография самой машины, и она вполне бывает на Викискладе под свободной
+   * лицензией. Кладём такие снимки туда же, куда и кадры из Steam.
+   */
+  const outDir = game
+    ? path.join(root, 'src', 'content', 'games', game, 'shots')
+    : platform
+      ? path.join(root, 'src', 'content', 'platforms', platform, 'photos')
+      : path.join(root, 'src', 'content', 'eras', era);
+  if (game && !existsSync(path.join(root, 'src', 'content', 'games', game))) {
+    console.error(`Нет статьи src/content/games/${game}. Сначала создайте index.md.`);
+    process.exit(1);
+  }
   if (platform && !existsSync(path.join(root, 'src', 'content', 'platforms', platform))) {
     console.error(`Нет статьи src/content/platforms/${platform}. Сначала создайте index.md.`);
     process.exit(1);
@@ -282,7 +295,7 @@ async function main() {
     process.exit(1);
   }
   await mkdir(outDir, { recursive: true });
-  const rel = platform ? './photos/' : `./${era}/`;
+  const rel = game ? './shots/' : platform ? './photos/' : `./${era}/`;
 
   const pages = args.files
     ? await fetchByTitles(splitTitles(String(args.files)))
@@ -386,7 +399,20 @@ async function main() {
     return;
   }
 
-  if (platform) {
+  if (game) {
+    console.log('\nВставьте в frontmatter игры:\n');
+    console.log(`poster: ${rel}${picked[0].file}`);
+    console.log('gallery:');
+    for (const p of picked) {
+      console.log(`  - kind: image`);
+      console.log(`    src: ${rel}${p.file}`);
+      console.log(`    caption: ${JSON.stringify(p.caption)}`);
+      console.log(`    author: ${JSON.stringify(p.author)}`);
+      console.log(`    license: ${JSON.stringify(p.license)}`);
+      if (p.licenseUrl) console.log(`    licenseUrl: ${JSON.stringify(p.licenseUrl)}`);
+      console.log(`    sourceUrl: ${JSON.stringify(p.sourceUrl)}`);
+    }
+  } else if (platform) {
     const p = picked[0];
     console.log('\nВставьте в frontmatter платформы (первый снимок):\n');
     console.log(`photo: ${rel}${p.file}`);

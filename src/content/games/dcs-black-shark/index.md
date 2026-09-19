@@ -2,6 +2,7 @@
 name: "DCS: Black Shark"
 altNames:
   - "Ка-50 Чёрная акула"
+  - "DCS Ка-50: Чёрная акула"
 type: simulation
 class: flight-sim
 developer: eagle-dynamics
@@ -27,7 +28,7 @@ gallery:
     caption: "DCS: Black Shark: обложка"
     author: "Eagle Dynamics"
     license: "Обложка"
-    sourceUrl: "https://en.wikipedia.org/wiki/File:New_DCS_cover.jpg"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:BS-DVD-1C_cover_1-st_page.jpg"
   - kind: youtube
     id: "lqy2-rS6Gak"
     title: "DCS Black Shark Ka-50 Demo"

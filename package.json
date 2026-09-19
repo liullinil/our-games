@@ -18,6 +18,7 @@
     "steam:find": "node scripts/find-steam.mjs",
     "steam:check": "node scripts/check-steam.mjs",
     "wiki:fetch": "node scripts/fetch-wiki.mjs",
+    "wiki:check": "node scripts/check-wiki.mjs",
     "video": "node scripts/fetch-video.mjs",
     "photos:shrink": "node scripts/shrink-photos.mjs",
     "links:check": "node scripts/check-links.mjs",

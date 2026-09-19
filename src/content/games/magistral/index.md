@@ -18,7 +18,15 @@ specs:
   setting: "городская автотрасса"
 summary: >-
   Гоночный игровой автомат с настоящим рулём и педалью газа: нужно обогнать поток машин и первым доехать до финиша. Один из самых популярных советских автоматов, выпускавшийся московским институтом дальней радиосвязи НИИДАР.
-gallery: []
+poster: ./shots/arcademuseum-magistral.jpg
+gallery:
+  - kind: image
+    src: ./shots/arcademuseum-magistral.jpg
+    caption: "Автомат «Магистраль» с рулём и педалью в Музее советских игровых автоматов в Москве"
+    author: "Hanno Böck"
+    license: "CC0"
+    licenseUrl: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Arcademuseum-magistral.jpg"
 sources:
   - title: "Магистраль — Музей советских игровых автоматов"
     url: "https://15kop.ru/magistral-1990"

@@ -1,6 +1,7 @@
 ---
 name: "Gardenscapes"
-altNames: []
+altNames:
+  - "Gardenscapes: New Acres"
 type: puzzle
 class: match-3
 developer: playrix

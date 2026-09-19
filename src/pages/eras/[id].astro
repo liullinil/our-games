@@ -3,7 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import GameCard from '../../components/GameCard.astro';
-import { getGraph, studioShort } from '../../lib/graph';
+import { getGraph, studioNameAt } from '../../lib/graph';
 import { eraUrl, withBase, studioUrl, platformUrl } from '../../lib/paths';
 import { nGames } from '../../lib/labels';
 
@@ -21,11 +21,20 @@ const index = graph.eraList.findIndex((e) => e.id === eraId);
 const prev = graph.eraList[index - 1];
 const next = graph.eraList[index + 1];
 
-// Студии, чья первая игра вышла в эту эпоху, и платформы, появившиеся в ней.
-const studios = graph.studioList.filter((s) => {
-  const first = s.gameIds[0];
-  return first && graph.games.get(first)!.era === eraId;
-});
+/*
+ * Студии, чья первая игра вышла в эту эпоху, и платформы, появившиеся в ней.
+ *
+ * Имя студии берём на год её первой игры, а не нынешнее: в советской эпохе
+ * «Никита» ещё не была Nikita Online, а Lesta Studio — «Лестой Игры».
+ */
+const studios = graph.studioList
+  .map((s) => {
+    const first = s.gameIds[0];
+    if (!first) return null;
+    const game = graph.games.get(first)!;
+    return game.era === eraId ? { node: s, name: studioNameAt(s, game.data.years.start) } : null;
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null);
 const platforms = graph.platformList.filter((p) => {
   const start = p.data.years.start;
   return start >= era.data.from && (era.data.to === null || start < era.data.to);
@@ -109,9 +118,9 @@ const articles = games.filter((g) => g.data.status === 'article').length;
             <ul class="chips">
               {studios.map((s) => (
                 <li>
-                  <a class="chip" href={studioUrl(s.id)}>
-                    {studioShort(s)}
-                    <span class="muted">{s.gameIds.length}</span>
+                  <a class="chip" href={studioUrl(s.node.id)}>
+                    {s.name}
+                    <span class="muted">{s.node.gameIds.length}</span>
                   </a>
                 </li>
               ))}
