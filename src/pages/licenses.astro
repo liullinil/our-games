@@ -1,0 +1,225 @@
+---
+import { photoSource, isGameArt } from '../lib/labels';
+import Base from '../layouts/Base.astro';
+import { getGraph } from '../lib/graph';
+import { gameUrl, platformUrl, eraUrl } from '../lib/paths';
+import { isVideo, videoUrl, PLATFORM_LABEL } from '../lib/video';
+
+const graph = await getGraph();
+
+// Титры собираются автоматически из данных: ничего не нужно поддерживать руками.
+interface Credit {
+  subject: string;
+  href: string;
+  caption: string;
+  author: string;
+  license: string;
+  licenseUrl?: string;
+  sourceUrl?: string;
+  sourceBook?: string;
+  modified: boolean;
+}
+const art: Credit[] = [];
+const photos: Credit[] = [];
+const videos: { subject: string; href: string; title: string; channel?: string; url: string; platform: string }[] = [];
+
+for (const g of graph.gameList) {
+  for (const item of g.data.gallery) {
+    if (item.kind === 'image') {
+      const credit: Credit = {
+        subject: g.data.name,
+        href: gameUrl(g.id),
+        caption: item.caption,
+        author: item.author,
+        license: item.license,
+        licenseUrl: item.licenseUrl,
+        sourceUrl: item.sourceUrl,
+        sourceBook: item.sourceBook,
+        modified: item.modified,
+      };
+      (isGameArt(item.license) ? art : photos).push(credit);
+    } else if (isVideo(item)) {
+      videos.push({
+        subject: g.data.name,
+        href: gameUrl(g.id),
+        title: item.title,
+        channel: item.channel,
+        url: videoUrl(item),
+        platform: PLATFORM_LABEL[item.kind],
+      });
+    }
+  }
+}
+for (const p of graph.platformList) {
+  if (p.data.photo && p.data.photoCredits) {
+    photos.push({
+      subject: p.data.name,
+      href: platformUrl(p.id),
+      caption: p.data.photoCaption ?? p.data.name,
+      author: p.data.photoCredits.author,
+      license: p.data.photoCredits.license,
+      licenseUrl: p.data.photoCredits.licenseUrl,
+      sourceUrl: p.data.photoCredits.sourceUrl,
+      modified: false,
+    });
+  }
+}
+for (const era of graph.eraList) {
+  for (const img of era.data.images) {
+    photos.push({
+      subject: era.data.title,
+      href: eraUrl(era.id),
+      caption: img.caption,
+      author: img.author,
+      license: img.license,
+      licenseUrl: img.licenseUrl,
+      sourceUrl: img.sourceUrl,
+      modified: false,
+    });
+  }
+}
+
+/** Сколько игр дали скриншоты: список по правообладателям короче, чем по кадрам. */
+const holders = new Map<string, { subject: string; href: string; count: number; source?: string }[]>();
+for (const a of art) {
+  const list = holders.get(a.author) ?? [];
+  const found = list.find((x) => x.subject === a.subject);
+  if (found) found.count += 1;
+  else list.push({ subject: a.subject, href: a.href, count: 1, source: a.sourceUrl });
+  holders.set(a.author, list);
+}
+---
+
+<Base
+  title="Источники изображений и видео"
+  description="Правообладатели скриншотов, авторы фотографий и каналы роликов, использованных на сайте."
+>
+  <h1>Источники изображений и видео</h1>
+  <p class="lead">
+    Ниже — откуда на сайте каждое изображение и каждый ролик. Список собирается из данных сайта
+    автоматически.
+  </p>
+
+  <h2>Скриншоты, обложки и промо-арт</h2>
+  <p>
+    Кадры из игр и обложки принадлежат их разработчикам и издателям. Мы приводим их в информационных
+    целях — как иллюстрацию к статье о самой игре, в ограниченном числе и уменьшенном размере, так же,
+    как это делают Википедия, MobyGames и игровая пресса. Если вы правообладатель и против публикации,
+    напишите нам через GitHub, и мы снимем изображение.
+  </p>
+  {
+    holders.size === 0 ? (
+      <p class="muted">Пока ни одного кадра не добавлено.</p>
+    ) : (
+      <ul class="credits">
+        {[...holders.entries()]
+          .sort((a, b) => a[0].localeCompare(b[0], 'ru'))
+          .map(([holder, list]) => (
+            <li>
+              <strong>{holder}</strong>:{' '}
+              {list.map((x, i) => (
+                <>
+                  {i > 0 && ', '}
+                  <a href={x.href}>{x.subject}</a>
+                  {x.count > 1 ? ` (${x.count})` : ''}
+                  {x.source && (
+                    <>
+                      {' — '}
+                      <a href={x.source} rel="noopener external">
+                        {photoSource({ sourceUrl: x.source }).label}
+                      </a>
+                    </>
+                  )}
+                </>
+              ))}
+            </li>
+          ))}
+      </ul>
+    )
+  }
+
+  <h2>Фотографии техники</h2>
+  <p>
+    Снимки приставок, компьютеров и телефонов взяты с Викисклада на условиях свободных лицензий: автор и
+    лицензия у каждого.
+  </p>
+  {
+    photos.length === 0 ? (
+      <p class="muted">Пока ни одной фотографии не добавлено.</p>
+    ) : (
+      <ul class="credits">
+        {photos.map((p) => (
+          <li>
+            <a href={p.href}>{p.subject}</a> — {p.caption}. Фото: {p.author},{' '}
+            {p.licenseUrl ? (
+              <a href={p.licenseUrl} rel="license noopener">
+                {p.license}
+              </a>
+            ) : (
+              p.license
+            )}
+            ,{' '}
+            {photoSource(p).href ? (
+              <a href={photoSource(p).href} rel="noopener external">
+                страница файла
+              </a>
+            ) : (
+              photoSource(p).label
+            )}
+            {p.modified ? ', изменено' : ''}.
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <h2>Видео</h2>
+  {
+    videos.length === 0 ? (
+      <p class="muted">Пока ни одного ролика не добавлено.</p>
+    ) : (
+      <>
+        <p>
+          Ролики не размещены на сайте: они проигрываются с YouTube, Rutube и VK Видео и грузятся только
+          после нажатия. Права на них принадлежат авторам каналов.
+        </p>
+        <ul class="credits">
+          {videos.map((video) => (
+            <li>
+              <a href={video.href}>{video.subject}</a> —{' '}
+              <a href={video.url} rel="noopener external">
+                {video.title}
+              </a>
+              {video.channel ? `, канал «${video.channel}»` : ''}, {video.platform}.
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
+  <h2>Тексты</h2>
+  <p>
+    Статьи написаны специально для этого проекта. Фактические сведения сверены по источникам,
+    перечисленным в конце каждой статьи; текст не копируется, а излагается своими словами.
+  </p>
+</Base>
+
+<style>
+  .lead {
+    max-width: 42rem;
+  }
+
+  p {
+    max-width: 46rem;
+  }
+
+  .credits {
+    padding-left: 1.2rem;
+    font-size: 0.92rem;
+  }
+
+  .credits li {
+    margin-bottom: 0.4rem;
+  }
+</style>

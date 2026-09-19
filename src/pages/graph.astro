@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import RelationsGraph from '../components/RelationsGraph.astro';
+import { getGraph } from '../lib/graph';
+import { nGames, plural } from '../lib/labels';
+
+const graph = await getGraph();
+const games = graph.gameList;
+const first = Math.min(...games.map((g) => g.data.years.start));
+const last = new Date().getFullYear();
+const developers = graph.studioList.filter((s) => s.gameIds.length > 0);
+---
+
+<Base
+  title="Карта связей"
+  description="Отечественные игры во времени: студии по вертикали, годы по горизонтали, а линиями — продолжения, серии, общие движки и издатели."
+  full
+>
+  <div class="graph-head">
+    <h1>Карта связей</h1>
+    <p class="graph-head__stats">
+      {nGames(games.length)} · {first}–{last} · {developers.length}
+      {plural(developers.length, 'студия', 'студии', 'студий')}
+    </p>
+  </div>
+
+  <RelationsGraph graph={graph} games={games} />
+</Base>
+
+<style>
+  .graph-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .graph-head h1 {
+    margin: 0;
+  }
+
+  .graph-head__stats {
+    margin: 0;
+    color: var(--c-muted);
+    font-size: 0.9rem;
+  }
+</style>

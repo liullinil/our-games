@@ -1,0 +1,30 @@
+# Внутри репозитория везде LF. Без этого на Windows с core.autocrlf текстовые
+# файлы постоянно висели бы «изменёнными», хотя содержимое то же.
+* text=auto eol=lf
+
+# Godot и конфиги — строго LF.
+*.gd text eol=lf
+*.tscn text eol=lf
+*.tres text eol=lf
+*.cfg text eol=lf
+*.godot text eol=lf
+
+# Бинарное — не трогать вовсе.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.glb binary
+*.gltf binary
+*.wasm binary
+*.pck binary
+*.zip binary
+*.pdf binary
+*.mp4 binary

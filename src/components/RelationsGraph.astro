@@ -1,0 +1,1131 @@
+---
+/**
+ * Карта связей — она же хронология.
+ *
+ * По горизонтали годы: карточка начинается в год начала выпуска и тянется до
+ * года окончания, поэтому длина карточки — это срок жизни модели. По вертикали
+ * студии, внутри студии — дорожки, чтобы отрезки не налезали друг на друга.
+ * Родословные читаются слева направо.
+ *
+ * Линии рисуются по одному виду родства за раз: вместе пять видов дают больше
+ * шестисот линий на трёх сотнях игр и карта превращается в паутину.
+ */
+import type { Graph, GameNode } from '../lib/graph';
+import { studioShort } from '../lib/graph';
+import { packLanes, edgePath, type LayoutItem } from '../lib/layout';
+import { withBase, desktopPaths, type SitePaths } from '../lib/paths';
+import { yearsLabel } from '../lib/labels';
+import { REL_KINDS, REL_LABEL, relationEdges, neighbourMap, lonelyNodes } from '../lib/relations';
+import { spriteLayout, CELL_W, CELL_H } from '../lib/graph-sprite';
+
+interface Props {
+  graph: Graph;
+  games: GameNode[];
+  /** Высота окна карты; на главной она ниже, чем на своей странице. */
+  height?: string;
+  /** Адреса страниц: настольные по умолчанию, мобильные — под /m/. */
+  paths?: SitePaths;
+}
+
+const { graph, games, height, paths = desktopPaths } = Astro.props;
+const { gameUrl } = paths;
+
+/*
+ * Геометрия карточки.
+ *
+ * Раньше узел был полоской в шестнадцать пикселей с белой надписью прямо по
+ * заливке цвета эпохи — так рисовали схемы в девяностые. Теперь это карточка:
+ * миниатюра, название, годы, узкая цветная кромка эпохи слева. Отступы
+ * одинаковые со всех сторон, между дорожками — воздух.
+ */
+const YEAR_W = 13; // пикселей на год
+const NODE_H = 34; // высота карточки
+const LANE_H = 44; // шаг дорожек: карточка и десять пикселей воздуха
+const GROUP_GAP = 18; // зазор между студиими
+const TOP_H = 40; // место под шкалу лет
+const LABEL_W = 8;
+const PAD = 4;
+const STRIPE_W = 4;
+const THUMB_W = 39;
+const THUMB_H = NODE_H - PAD * 2;
+/** Где внутри карточки начинается текст. */
+const TEXT_X = STRIPE_W + PAD + THUMB_W + 7;
+/*
+ * Ширину надписей оцениваем по числу знаков — измерить шрифт при сборке
+ * нечем. Оценка нарочно с запасом: карточка шире надписи — это воздух,
+ * а надпись шире карточки — обрезанное слово.
+ */
+const NAME_CHAR_W = 6.9; // 11px, полужирный
+const YEARS_CHAR_W = 5.4; // 9px
+const POP_ROW = 18;
+
+const thisYear = new Date().getFullYear();
+const MIN_YEAR = Math.min(...games.map((v) => v.data.years.start)) - 2;
+const MAX_YEAR = thisYear + 2;
+
+/** Лист миниатюр: одна картинка на всю карту, см. lib/graph-sprite.ts. */
+const sprite = spriteLayout(graph);
+const spriteUrl = `${withBase('/graph-sprite.webp')}?v=${__BUILD_ID__}`;
+
+/*
+ * Модификации прячем внутрь карточки базовой игры.
+ *
+ * ГАЗ-51А, ГАЗ-53А, МАЗ-7310 — это не отдельные игры, а варианты, и
+ * отдельными узлами они только загущают карту. На карточке базовой модели
+ * стоит счётчик, а сам список раскрывается наведением или нажатием.
+ */
+const fold = new Map<string, string>();
+for (const v of games) {
+  if (v.data.kind !== 'game' && v.baseGameId && graph.games.has(v.baseGameId)) {
+    fold.set(v.id, v.baseGameId);
+  }
+}
+const shown = games.filter((v) => !fold.has(v.id));
+const visible = new Set(shown.map((v) => v.id));
+
+const modsOf = new Map<string, GameNode[]>();
+for (const [modId, baseId] of fold) {
+  const list = modsOf.get(baseId) ?? [];
+  list.push(graph.games.get(modId)!);
+  modsOf.set(baseId, list);
+}
+for (const list of modsOf.values()) {
+  list.sort((a, b) => a.data.years.start - b.data.years.start);
+}
+
+// Год конца: null — игра живёт до сих пор; не указан — вышла один раз.
+const endYear = (v: GameNode) => (v.data.years.end === null ? thisYear : (v.data.years.end ?? v.data.years.start));
+const yearsOf = (v: GameNode) => yearsLabel(v.data.years);
+/** Минимальная ширина карточки: кромка, миниатюра и самая длинная из двух строк. */
+const cardWidth = (v: GameNode) => {
+  const text = Math.max(v.data.name.length * NAME_CHAR_W, yearsOf(v).length * YEARS_CHAR_W);
+  return Math.ceil(TEXT_X + text + PAD + 6);
+};
+
+const items: LayoutItem[] = shown.map((v) => ({
+  id: v.id,
+  start: v.data.years.start,
+  end: endYear(v),
+  group: v.studioId,
+  labelYears: Math.ceil(cardWidth(v) / YEAR_W),
+}));
+
+/*
+ * Порядок разбора — обход родословных, а не просто годы.
+ *
+ * Дорожку получает тот, кто попросил её первым. Если идти по годам, преемник
+ * почти всегда занимает чужую дорожку, и связь тянется наискось через полкарты.
+ * Если идти по родословной — сразу за предком его преемник, — тот садится
+ * в ту же дорожку, и линия выходит короткой и горизонтальной.
+ */
+const successorsOf = new Map<string, string[]>();
+for (const v of shown) {
+  for (const p of v.predecessors) {
+    const at = fold.get(p) ?? p;
+    if (!visible.has(at) || at === v.id) continue;
+    const list = successorsOf.get(at) ?? [];
+    list.push(v.id);
+    successorsOf.set(at, list);
+  }
+}
+const startYear = (id: string) => graph.games.get(id)?.data.years.start ?? 0;
+const roots = shown
+  .filter((v) => v.predecessors.every((p) => !visible.has(fold.get(p) ?? p)))
+  .map((v) => v.id)
+  .sort((a, b) => startYear(a) - startYear(b));
+
+const sequence: string[] = [];
+const seen = new Set<string>();
+const walk = (id: string) => {
+  if (seen.has(id)) return;
+  seen.add(id);
+  sequence.push(id);
+  for (const next of (successorsOf.get(id) ?? []).sort((a, b) => startYear(a) - startYear(b))) {
+    walk(next);
+  }
+};
+for (const root of roots) walk(root);
+// Машины в кольцевых связях обход не достал — кладём их по годам следом.
+for (const v of [...shown].sort((a, b) => startYear(a.id) - startYear(b.id))) walk(v.id);
+
+const studioOrder = graph.studioList.map((m) => m.id);
+const layout = packLanes(items, { gapYears: 1, groupOrder: studioOrder, sequence });
+
+const groupTops = new Map<string, number>();
+let y = TOP_H;
+for (const g of layout.groups) {
+  groupTops.set(g.group, y);
+  y += g.lanes * LANE_H + GROUP_GAP;
+}
+const HEIGHT = y + 8;
+const WIDTH = LABEL_W + (MAX_YEAR - MIN_YEAR) * YEAR_W + 20;
+const xOf = (year: number) => LABEL_W + (year - MIN_YEAR) * YEAR_W;
+
+interface Placed {
+  id: string;
+  x: number;
+  y: number;
+  w: number;
+  cy: number;
+}
+const placed = new Map<string, Placed>();
+for (const item of layout.items) {
+  const v = graph.games.get(item.id)!;
+  const x = xOf(item.start);
+  const w = Math.max(cardWidth(v), xOf(endYear(v)) - x);
+  const top = groupTops.get(item.group)! + item.lane * LANE_H + (LANE_H - NODE_H) / 2;
+  placed.set(item.id, { id: item.id, x, y: top, w, cy: top + NODE_H / 2 });
+}
+
+const edges = relationEdges(graph, visible, fold);
+const neighbours = neighbourMap(graph, visible, fold);
+/*
+ * Одиночка — это игра, к которой на карте не ведёт ни одна линия. Карточка
+ * с раскрывающимся списком модификаций одиночкой не считается: связь у неё
+ * видна, просто нарисована не линией, а счётчиком.
+ */
+const lonely = lonelyNodes(neighbours).filter((id) => !modsOf.has(id));
+if (lonely.length > 0) {
+  // Не роняем сборку: одиночки — это пробел в данных, а не поломка кода.
+  console.warn(`Карта связей: без единой связи остались ${lonely.length} игр — ${lonely.join(', ')}`);
+}
+
+const drawn = edges
+  .map((e) => {
+    const a = placed.get(e.from);
+    const b = placed.get(e.to);
+    if (!a || !b) return null;
+    return { ...e, d: edgePath(a.x + a.w, a.cy, b.x, b.cy) };
+  })
+  .filter((e): e is NonNullable<typeof e> => e !== null);
+
+/** Соседи в разметке: скрипт рисует по ним линии при наведении. */
+const neighbourJson = JSON.stringify(
+  Object.fromEntries(
+    Object.entries(neighbours).map(([id, kinds]) => [
+      id,
+      Object.fromEntries(Object.entries(kinds).filter(([, list]) => list.length > 0)),
+    ]),
+  ),
+);
+
+const decades: number[] = [];
+for (let d = Math.ceil(MIN_YEAR / 10) * 10; d <= MAX_YEAR; d += 10) decades.push(d);
+
+const bands = layout.groups.map((g) => ({
+  id: g.group,
+  top: groupTops.get(g.group)!,
+  height: g.lanes * LANE_H,
+  label: studioShort(graph.studios.get(g.group)!),
+}));
+
+/**
+ * Левая кромка карточки цвета эпохи.
+ *
+ * Скруглена теми же радиусами, что и сама карточка: обычный прямоугольник
+ * торчал бы углами из-под её округлых углов.
+ */
+function stripePath(x: number, y0: number, h: number, w = STRIPE_W, r = 5): string {
+  return [
+    `M ${x + r} ${y0}`,
+    `H ${x + w}`,
+    `V ${y0 + h}`,
+    `H ${x + r}`,
+    `A ${r} ${r} 0 0 1 ${x} ${y0 + h - r}`,
+    `V ${y0 + r}`,
+    `A ${r} ${r} 0 0 1 ${x + r} ${y0}`,
+    'Z',
+  ].join(' ');
+}
+
+/** Знак для карточки без фотографии: первые буквы и цифры названия. */
+const mark = (name: string) => name.replace(/[^\dA-Za-zА-Яа-я]/g, '').slice(0, 3);
+---
+
+<div
+  class="rgraph"
+  data-rgraph
+  data-rel="predecessor"
+  data-cards={withBase('/graph-cards.json')}
+  data-game-base={paths.prefix ? paths.gameBase : undefined}
+  style={height ? `--rgraph-height:${height}` : undefined}
+>
+  <div class="rgraph__toolbar">
+    <div class="rgraph__kinds scroll-x" role="group" aria-label="Вид связей">
+      {
+        REL_KINDS.map((kind) => (
+          <button
+            class="chip"
+            type="button"
+            data-rel-kind={kind}
+            aria-pressed={kind === 'predecessor' ? 'true' : 'false'}
+          >
+            {REL_LABEL[kind]}
+          </button>
+        ))
+      }
+    </div>
+    <div class="rgraph__tools">
+      {/* Фильтр один, и состояние у него видно сразу: нажатый — залит акцентом и с галочкой. */}
+      <button
+        class="chip rgraph__hide"
+        type="button"
+        data-hide-read
+        aria-pressed="false"
+        title="Убрать с карты игры, статьи о которых уже прочитаны"
+      >
+        Скрыть прочитанные<span class="rgraph__hidecount" data-hide-count></span>
+      </button>
+      <div class="rgraph__zoom">
+        <button class="chip" type="button" data-rzoom="out" aria-label="Уменьшить">−</button>
+        <button class="chip" type="button" data-rzoom="reset">Сброс</button>
+        <button class="chip" type="button" data-rzoom="in" aria-label="Увеличить">+</button>
+        <button class="chip" type="button" data-rfull aria-pressed="false">На весь экран</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rgraph__frame">
+    <div class="rgraph__rail" data-rgraph-rail aria-label="Студии">
+      {
+        bands.map((b) => (
+          <button
+            class="rgraph__railitem"
+            type="button"
+            data-band={b.id}
+            data-top={b.top}
+            data-height={b.height}
+          >
+            {b.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="rgraph__viewport" data-rgraph-viewport>
+      <svg
+        class="rgraph__svg"
+        width={WIDTH}
+        height={HEIGHT}
+        viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+        role="img"
+        aria-label="Карта связей между играми"
+      >
+        <defs>
+          <marker
+            id="arrow"
+            viewBox="0 0 8 8"
+            refX="7"
+            refY="4"
+            markerWidth="6"
+            markerHeight="6"
+            orient="auto"
+          >
+            <path d="M0 0 L8 4 L0 8 z" fill="currentColor"></path>
+          </marker>
+        </defs>
+
+        {/* Полосы студий через одну чуть темнее: глаз не теряет строку. */}
+        <g class="rgraph__bands">
+          {
+            bands.map((b, i) =>
+              i % 2 === 1 ? (
+                <rect
+                  x={0}
+                  y={b.top - GROUP_GAP / 2}
+                  width={WIDTH}
+                  height={b.height + GROUP_GAP}
+                  class="rgraph__band"
+                />
+              ) : null,
+            )
+          }
+        </g>
+
+        <g class="rgraph__grid">
+          {
+            decades.map((d) => (
+              <>
+                <line x1={xOf(d)} y1={TOP_H - 10} x2={xOf(d)} y2={HEIGHT} class="rgraph__gridline" />
+                <text x={xOf(d)} y={TOP_H - 16} class="rgraph__year" text-anchor="middle">
+                  {d}
+                </text>
+              </>
+            ))
+          }
+        </g>
+
+        <g class="rgraph__groups">
+          {
+            bands.map((b) => (
+              <line
+                x1={0}
+                y1={b.top - GROUP_GAP / 2}
+                x2={WIDTH}
+                y2={b.top - GROUP_GAP / 2}
+                class="rgraph__groupline"
+              />
+            ))
+          }
+        </g>
+
+        {
+          REL_KINDS.map((kind) => (
+            <g
+              class="rgraph__layer"
+              data-layer={kind}
+              {...(kind === 'predecessor' ? {} : { hidden: true })}
+            >
+              {drawn
+                .filter((e) => e.kind === kind)
+                .map((e) => (
+                  <path
+                    d={e.d}
+                    class={`rgraph__edge rgraph__edge--${kind}`}
+                    data-from={e.from}
+                    data-to={e.to}
+                    marker-end={kind === 'predecessor' ? 'url(#arrow)' : undefined}
+                  />
+                ))}
+            </g>
+          ))
+        }
+
+        <g class="rgraph__nodes">
+          {
+            [...placed.values()].map((p) => {
+              const v = graph.games.get(p.id)!;
+              const era = graph.eras.get(v.era)!;
+              const mods = modsOf.get(p.id) ?? [];
+              const cell = sprite.cells.get(p.id);
+              const thumbX = p.x + STRIPE_W + PAD;
+              const thumbY = p.y + PAD;
+              return (
+                <a
+                  href={gameUrl(v.id)}
+                  draggable={false}
+                  class="rgraph__node"
+                  data-node={p.id}
+                  data-game-id={v.id}
+                  data-has-article={v.data.status === 'article' ? '1' : '0'}
+                  data-studio={v.studioId}
+                  data-era={v.era}
+                  data-type={v.data.type}
+                >
+                  <rect x={p.x} y={p.y} width={p.w} height={NODE_H} rx="5" class="rgraph__cardbg" />
+                  <path d={stripePath(p.x, p.y, NODE_H)} fill={era.data.accent} class="rgraph__stripe" />
+                  {cell ? (
+                    /*
+                     * Миниатюра — окно в общий лист: viewBox вырезает свою
+                     * клетку. Адрес листа лежит в data-href, а в href его
+                     * переносит скрипт, когда карта попадает в окно: на главной
+                     * она внизу, и качать лист раньше времени незачем.
+                     */
+                    <svg
+                      x={thumbX}
+                      y={thumbY}
+                      width={THUMB_W}
+                      height={THUMB_H}
+                      viewBox={`${cell.x} ${cell.y} ${CELL_W} ${CELL_H}`}
+                      preserveAspectRatio="xMidYMid slice"
+                      class="rgraph__thumb"
+                    >
+                      <rect x={cell.x} y={cell.y} width={CELL_W} height={CELL_H} class="rgraph__thumbbg" />
+                      <image data-href={spriteUrl} x="0" y="0" width={sprite.width} height={sprite.height} />
+                    </svg>
+                  ) : (
+                    <g class="rgraph__nothumb">
+                      <rect x={thumbX} y={thumbY} width={THUMB_W} height={THUMB_H} rx="3" class="rgraph__thumbbg" />
+                      <text x={thumbX + THUMB_W / 2} y={thumbY + THUMB_H / 2 + 3.5} text-anchor="middle">
+                        {mark(v.data.name)}
+                      </text>
+                    </g>
+                  )}
+                  <text x={p.x + TEXT_X} y={p.y + 14} class="rgraph__name">
+                    {v.data.name}
+                  </text>
+                  <text x={p.x + TEXT_X} y={p.y + 26} class="rgraph__years">
+                    {yearsOf(v)}
+                  </text>
+                  {/* Отметка «прочитано» — кружок на миниатюре, чтобы не спорить с текстом. */}
+                  <g class="rgraph__read" transform={`translate(${thumbX + THUMB_W - 6} ${thumbY + THUMB_H - 6})`}>
+                    <circle r="6" />
+                    <text y="3" text-anchor="middle">✓</text>
+                  </g>
+                  {mods.length > 0 && (
+                    <g class="rgraph__modmark" data-mods={p.id}>
+                      <rect x={p.x + p.w + 3} y={p.cy - 8} width={24} height={16} rx="8" />
+                      <text x={p.x + p.w + 15} y={p.cy + 3.5} text-anchor="middle">
+                        +{mods.length}
+                      </text>
+                    </g>
+                  )}
+                  <title>
+                    {v.data.name} · {yearsOf(v)}
+                  </title>
+                </a>
+              );
+            })
+          }
+        </g>
+
+        {/* Списки модификаций лежат последними, чтобы раскрываться поверх карты. */}
+        <g class="rgraph__pops">
+          {
+            [...modsOf.entries()].map(([baseId, mods]) => {
+              const p = placed.get(baseId);
+              if (!p) return null;
+              const w = Math.max(...mods.map((m) => m.data.name.length * 6.3 + yearsOf(m).length * 5.2)) + 24;
+              const top = p.y + NODE_H + 4;
+              return (
+                <g class="rgraph__pop" data-pop={baseId} {...{ hidden: true }}>
+                  <rect
+                    x={p.x + p.w + 3}
+                    y={top}
+                    width={w}
+                    height={mods.length * POP_ROW + 10}
+                    rx="6"
+                    class="rgraph__popbg"
+                  />
+                  {mods.map((m, i) => (
+                    <a
+                      href={gameUrl(m.id)}
+                      class="rgraph__popitem"
+                      data-game-id={m.id}
+                      data-has-article={m.data.status === 'article' ? '1' : '0'}
+                    >
+                      <text x={p.x + p.w + 12} y={top + 17 + i * POP_ROW}>
+                        {m.data.name} <tspan class="rgraph__popyears">{yearsOf(m)}</tspan>
+                      </text>
+                    </a>
+                  ))}
+                </g>
+              );
+            })
+          }
+        </g>
+      </svg>
+
+      {/*
+        Обёртка нужна только телефону: там карточка разворачивается на весь
+        экран, и прокручиваться должна начинка, а не сама карточка — иначе
+        крестик уезжает вверх вместе с текстом. На большом экране обёртка
+        объявлена как display: contents и на разметку не влияет.
+      */}
+      <aside class="rgraph__card" data-rgraph-card hidden>
+        <button class="rgraph__cardclose" type="button" data-card-close aria-label="Закрыть">×</button>
+        <div class="rgraph__cardscroll">
+          <div class="rgraph__cardmedia" data-card-media></div>
+          <a class="rgraph__cardname" data-card-link href="#"></a>
+          <p class="rgraph__cardmeta" data-card-meta></p>
+          <p class="rgraph__cardsummary" data-card-summary></p>
+          <ul class="rgraph__cardhas" data-card-has></ul>
+          <a class="rgraph__cardgo" data-card-go href="#">Открыть статью →</a>
+          <div class="rgraph__cardrels" data-card-rels></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script type="application/json" data-rgraph-neighbours is:inline set:html={neighbourJson}
+  ></script>
+</div>
+
+<style>
+  .rgraph {
+    --rail-w: 5.25rem;
+    margin-bottom: 1rem;
+    /* Переход по ссылке вида /graph/#gaz-51 подводит к карте целиком,
+       вместе с переключателем видов, а не прячет его под шапку. */
+    scroll-margin-top: calc(var(--header-height) + 0.5rem);
+  }
+
+  .rgraph__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+  }
+
+  .rgraph__kinds {
+    display: flex;
+    gap: 0.35rem;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .rgraph__kinds .chip {
+    white-space: nowrap;
+  }
+
+  .rgraph__tools {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: none;
+  }
+
+  .rgraph__zoom {
+    display: inline-flex;
+    gap: 0.25rem;
+    flex: none;
+  }
+
+  /* Нажатый фильтр не спутать с ненажатым: заливка акцентом и галочка перед словом. */
+  .rgraph__hide[aria-pressed='true']::before {
+    content: '✓';
+    font-weight: 700;
+  }
+
+  .rgraph__hidecount:not(:empty) {
+    padding: 0 0.45em;
+    border-radius: 999px;
+    background: color-mix(in oklab, currentColor 18%, transparent);
+    font-size: 0.8em;
+    font-weight: 600;
+  }
+
+  /*
+   * «На весь экран» — своим свойством, а не Fullscreen API: тот на iOS не
+   * работает для обычных элементов, а карта нужна на телефоне не меньше.
+   */
+  .rgraph.is-full {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    margin: 0;
+    padding: 0.5rem;
+    background: var(--c-bg);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rgraph.is-full .rgraph__frame {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+  }
+
+  .rgraph__frame {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+    border: var(--rule);
+    border-radius: var(--radius);
+    background: var(--c-surface);
+    overflow: hidden;
+    height: var(--rgraph-height, min(78dvh, 46rem));
+  }
+
+  .rgraph__rail {
+    position: relative;
+    overflow: hidden;
+    border-right: var(--rule);
+    background: var(--c-surface-2);
+  }
+
+  .rgraph__railitem {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0 0.45rem;
+    font: inherit;
+    font-series: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: left;
+    color: var(--c-muted);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .rgraph__railitem:hover,
+  .rgraph__railitem.is-near {
+    color: var(--c-accent);
+  }
+
+  .rgraph__viewport {
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+    /* Узлы — ссылки, и браузер норовит «утащить» их, стоит начать перетаскивание
+       с узла. Тогда карта не двигается вовсе. */
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .rgraph__viewport a {
+    -webkit-user-drag: none;
+  }
+
+  .rgraph__viewport.is-grabbing {
+    cursor: grabbing;
+  }
+
+  .rgraph__svg {
+    display: block;
+    transform-origin: 0 0;
+    font-series: var(--font-body);
+    /* Общее правило svg { max-width: 100% } ломает панорамирование: картинка
+       сжимается под окно, и двигать становится нечего. */
+    max-width: none;
+  }
+
+  .rgraph__band {
+    fill: var(--c-surface-2);
+    opacity: 0.55;
+  }
+
+  .rgraph__year {
+    font-size: 10px;
+    font-weight: 600;
+    fill: var(--c-muted);
+  }
+
+  .rgraph__gridline {
+    stroke: var(--c-border);
+    opacity: 0.55;
+  }
+
+  .rgraph__groupline {
+    stroke: var(--c-border);
+  }
+
+  .rgraph__edge {
+    fill: none;
+    stroke: var(--c-muted);
+    stroke-width: 1.3;
+    color: var(--c-muted);
+    opacity: 0.6;
+  }
+
+  .rgraph__edge--basedOn {
+    stroke-dasharray: 5 3;
+  }
+
+  .rgraph__edge--engine {
+    stroke-dasharray: 6 4;
+  }
+
+  .rgraph__edge--publisher {
+    stroke-dasharray: 1 5;
+    stroke-linecap: round;
+  }
+
+  .rgraph__layer[hidden],
+  .rgraph__edge.is-hidden,
+  .rgraph__pop.is-hidden {
+    display: none;
+  }
+
+  /* ── Карточка игры ─────────────────────────────────────────────── */
+
+  .rgraph__node {
+    cursor: pointer;
+  }
+
+  .rgraph__cardbg {
+    fill: var(--c-surface);
+    stroke: var(--c-border);
+    stroke-width: 1;
+  }
+
+  .rgraph__thumbbg {
+    fill: var(--c-surface-2);
+  }
+
+  .rgraph__thumb image {
+    filter: var(--photo-filter);
+  }
+
+  .rgraph__nothumb text {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    fill: var(--c-muted);
+  }
+
+  .rgraph__name {
+    font-size: 11px;
+    font-weight: 600;
+    fill: var(--c-text);
+  }
+
+  .rgraph__years {
+    font-size: 9px;
+    fill: var(--c-muted);
+  }
+
+  .rgraph__node:hover .rgraph__cardbg,
+  .rgraph__node.is-focus .rgraph__cardbg {
+    stroke: var(--c-accent);
+    stroke-width: 1.6;
+  }
+
+  .rgraph__node[data-has-article='0'] .rgraph__name {
+    fill: var(--c-muted);
+  }
+
+  /* Прочитанные бледнеют и получают галочку; фильтр убирает их совсем. */
+  .rgraph__read {
+    display: none;
+  }
+
+  .rgraph__read circle {
+    fill: var(--c-read);
+    stroke: var(--c-surface);
+    stroke-width: 1.5;
+  }
+
+  .rgraph__read text {
+    font-size: 8px;
+    font-weight: 700;
+    fill: var(--c-surface);
+  }
+
+  .rgraph__node.is-read .rgraph__read {
+    display: block;
+  }
+
+  .rgraph__node.is-read .rgraph__cardbg {
+    fill: var(--c-surface-2);
+  }
+
+  .rgraph__node.is-read .rgraph__name {
+    fill: var(--c-read);
+  }
+
+  .rgraph__node.is-read .rgraph__thumb image {
+    opacity: 0.55;
+  }
+
+  .rgraph.is-hide-read .rgraph__node.is-read {
+    display: none;
+  }
+
+  .rgraph__modmark rect {
+    fill: var(--c-surface-2);
+    stroke: var(--c-border);
+  }
+
+  .rgraph__modmark text {
+    font-size: 9.5px;
+    font-weight: 600;
+    fill: var(--c-muted);
+  }
+
+  .rgraph__modmark:hover rect {
+    stroke: var(--c-accent);
+  }
+
+  .rgraph__pop[hidden] {
+    display: none;
+  }
+
+  .rgraph__popbg {
+    fill: var(--c-surface);
+    stroke: var(--c-border);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+  }
+
+  .rgraph__popitem text {
+    font-size: 10.5px;
+    fill: var(--c-text);
+  }
+
+  .rgraph__popitem:hover text {
+    fill: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .rgraph__popyears {
+    fill: var(--c-muted);
+  }
+
+  /* Подсветка игры: всё, что к ней не относится, гаснет. */
+  .rgraph.is-highlight .rgraph__node:not(.is-near):not(.is-focus) {
+    opacity: 0.18;
+  }
+
+  .rgraph.is-highlight .rgraph__layer .rgraph__edge {
+    opacity: 0.08;
+  }
+
+  /* Цепочка выбранной игры: рисуется теми же рёбрами, что и вся карта,
+     поэтому линия идёт от звена к звену, а не лучами из середины. */
+  .rgraph.is-highlight .rgraph__layer .rgraph__edge.is-chain {
+    stroke: var(--c-accent);
+    color: var(--c-accent);
+    stroke-width: 2.4;
+    opacity: 1;
+  }
+
+  /* ── Карточка предпросмотра ──────────────────────────────────────── */
+
+  .rgraph__card {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    width: min(19rem, calc(100% - 1.5rem));
+    max-height: calc(100% - 1.5rem);
+    overflow: auto;
+    padding: 0.75rem 0.85rem 0.9rem;
+    background: var(--c-surface);
+    border: var(--rule);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    z-index: 2;
+    cursor: pointer;
+    /* Холст запрещает жесты браузера, чтобы вести панораму самому; карточке
+       прокрутку надо вернуть. */
+    touch-action: pan-y;
+  }
+
+  .rgraph__card[hidden] {
+    display: none;
+  }
+
+  /* На большом экране прокручивается сама карточка — обёртка не нужна. */
+  .rgraph__cardscroll {
+    display: contents;
+  }
+
+  .rgraph__cardclose {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    font: inherit;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0;
+    background: var(--c-surface);
+    border: var(--rule);
+    border-radius: 999px;
+    color: var(--c-muted);
+    cursor: pointer;
+  }
+
+  .rgraph__cardclose:hover {
+    color: var(--c-accent);
+    border-color: var(--c-accent);
+  }
+
+  .rgraph__cardmedia :global(img) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-2);
+    filter: var(--photo-filter);
+  }
+
+  .rgraph__cardname {
+    display: block;
+    margin-top: 0.5rem;
+    font-series: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1.05rem;
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  .rgraph__cardname:hover {
+    color: var(--c-link);
+    text-decoration: underline;
+  }
+
+  .rgraph__cardmeta,
+  .rgraph__cardsummary {
+    margin: 0.2rem 0 0;
+    font-size: 0.82rem;
+    color: var(--c-muted);
+  }
+
+  .rgraph__cardsummary {
+    margin-top: 0.4rem;
+    color: var(--c-text);
+    font-size: 0.85rem;
+  }
+
+  .rgraph__cardhas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rgraph__cardhas :global(li) {
+    padding: 0.1rem 0.45rem;
+    border: var(--rule);
+    border-radius: 999px;
+    font-size: 0.74rem;
+    color: var(--c-muted);
+  }
+
+  .rgraph__cardhas :global(li.is-on) {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+  }
+
+  /* Вся карточка ведёт в статью, но нажимать наугад никто не обязан:
+     кнопка говорит об этом прямо. */
+  .rgraph__cardgo {
+    display: block;
+    margin-top: 0.7rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: var(--radius-sm);
+    background: var(--c-accent);
+    color: var(--c-on-accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .rgraph__cardgo:hover {
+    filter: brightness(1.1);
+  }
+
+  .rgraph__cardrels {
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    /* Соседи уводят по карте, а не на страницу: обычный курсор об этом
+       напоминает. */
+    cursor: default;
+  }
+
+  .rgraph__cardrels :global(b) {
+    display: block;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--c-muted);
+    font-weight: 600;
+  }
+
+  .rgraph__cardrels :global(a) {
+    display: inline-block;
+    margin: 0.15rem 0.3rem 0 0;
+  }
+
+  @media (max-width: 640px) {
+    .rgraph {
+      --rail-w: 3.8rem;
+    }
+
+    .rgraph__frame {
+      height: var(--rgraph-height, 70dvh);
+    }
+
+    .rgraph__tools {
+      flex: 1 1 100%;
+      justify-content: space-between;
+    }
+
+    /*
+     * На телефоне карточка занимает экран целиком.
+     *
+     * Листом в две трети высоты она была мелкой: попасть пальцем в нужную
+     * строку соседей трудно, нижний край перекрывали вкладки, а под текстом
+     * всё время просвечивала карта, и было непонятно, куда нажимать.
+     */
+    .rgraph__card {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      max-height: none;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      /* Прокручивается начинка, а не карточка: крестик остаётся на месте. */
+      overflow: hidden;
+      /* Выше нижних вкладок (35) и панели приложения (30). */
+      z-index: 70;
+      /* Переход в статью — по кнопке: на весь экран случайное касание текста
+         не должно уводить со страницы. */
+      cursor: default;
+    }
+
+    .rgraph__cardscroll {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: auto;
+      overscroll-behavior: contain;
+      padding: 3.5rem 1rem calc(0.9rem + env(safe-area-inset-bottom));
+    }
+
+    .rgraph__cardclose {
+      top: calc(0.7rem + env(safe-area-inset-top));
+      right: 0.7rem;
+      width: 2.6rem;
+      height: 2.6rem;
+      font-size: 1.6rem;
+      z-index: 2;
+    }
+
+    /* На телефоне фотография не должна съедать весь экран. */
+    .rgraph__cardmedia :global(img) {
+      max-height: 34vh;
+    }
+
+    .rgraph__cardname {
+      font-size: 1.35rem;
+    }
+
+    .rgraph__cardsummary {
+      font-size: 0.95rem;
+    }
+
+    /* Соседей вперёд, кнопку — последней и прилипшей к низу: сколько бы
+       родни ни было у игры, «Открыть статью» всегда под пальцем. */
+    .rgraph__cardrels {
+      order: 1;
+    }
+
+    .rgraph__cardgo {
+      order: 2;
+      position: sticky;
+      bottom: 0;
+      margin-top: 1rem;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+    }
+
+    .rgraph__cardhas :global(li) {
+      font-size: 0.82rem;
+      padding: 0.2rem 0.6rem;
+    }
+
+    .rgraph__cardrels :global(a) {
+      /* Строка соседа — цель для пальца, а не для курсора. */
+      padding: 0.35rem 0.6rem;
+      margin: 0.25rem 0.3rem 0 0;
+      border: var(--rule);
+      border-radius: 999px;
+    }
+  }
+</style>
+
+<script>
+  import '../scripts/rgraph';
+</script>

@@ -1,0 +1,120 @@
+/*
+ * Значения по умолчанию для всех токенов оформления. Это же — современная тема.
+ * Файлы public/themes/<эпоха>.css переопределяют их под html[data-era="..."],
+ * поэтому порядок подключения не важен: у селектора с атрибутом выше приоритет.
+ */
+
+:root {
+  /* Шрифты */
+  --font-display: 'Golos Text', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', 'Consolas', monospace;
+  --weight-display: 600;
+  --case-display: none;
+  --tracking-display: -0.01em;
+  --tracking-body: 0;
+
+  /* Цвета */
+  --c-bg: #fafafa;
+  --c-surface: #ffffff;
+  --c-surface-2: #f2f4f6;
+  --c-text: #1b1f24;
+  --c-muted: #5d666f;
+  --c-accent: #0b6e4f;
+  --c-accent-2: #f2a900;
+  --c-on-accent: #ffffff;
+  --c-link: #0b6e4f;
+  --c-border: #dde1e6;
+  --c-read: #7a8a95;
+  /* Полоса прокрутки выводится из приглушённого цвета: так её незачем
+     задавать в каждой из восьми тем эпох — она следует за ними сама. */
+  --c-scroll-thumb: color-mix(in oklab, var(--c-muted) 42%, transparent);
+  --c-scroll-thumb-hover: color-mix(in oklab, var(--c-muted) 70%, transparent);
+
+  /* Формы */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --rule: 1px solid var(--c-border);
+  --rule-strong: 2px solid var(--c-border);
+  --shadow: 0 1px 2px rgba(16, 24, 32, 0.06), 0 6px 18px rgba(16, 24, 32, 0.06);
+  --shadow-sm: 0 1px 2px rgba(16, 24, 32, 0.08);
+
+  /* Фактуры эпох: по умолчанию их нет */
+  --texture-bg: none;
+  --ornament-rule: none;
+  --ornament-corner: none;
+  --header-texture: none;
+
+  /* Обработка фотографий: у ранних эпох добавляется сепия */
+  --photo-filter: none;
+
+  /* Размеры интерфейса */
+  --content-width: 68rem;
+  --article-width: 44rem;
+  --gap: 1rem;
+  --tabbar-height: 3.5rem;
+  --header-height: 3.25rem;
+}
+
+/*
+ * Тёмная схема.
+ *
+ * Значения задаёт тема эпохи набором --d-*, здесь только переключение. Так
+ * тёмный вариант нельзя рассинхронизировать со светлым: список токенов один
+ * на весь сайт, а каждая эпоха подставляет в него свои цвета.
+ *
+ * Значения ниже — запасные, на случай страницы без темы эпохи.
+ */
+:root {
+  --d-bg: #121417;
+  --d-surface: #181b1f;
+  --d-surface-2: #1f242a;
+  --d-text: #e8ecef;
+  --d-muted: #9aa5ae;
+  --d-accent: #35b98a;
+  --d-accent-2: #f2a900;
+  --d-on-accent: #06120d;
+  --d-link: #46c79a;
+  --d-border: #2a3038;
+  --d-read: #6c7b87;
+}
+
+/*
+ * Селекторы намеренно тяжелее, чем html[data-era="..."] в файлах тем:
+ * иначе тема эпохи перебивала бы переключение порядком подключения.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --c-bg: var(--d-bg);
+    --c-surface: var(--d-surface);
+    --c-surface-2: var(--d-surface-2);
+    --c-text: var(--d-text);
+    --c-muted: var(--d-muted);
+    --c-accent: var(--d-accent);
+    --c-accent-2: var(--d-accent-2);
+    --c-on-accent: var(--d-on-accent);
+    --c-link: var(--d-link);
+    --c-border: var(--d-border);
+    --c-read: var(--d-read);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 6px 18px rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --c-bg: var(--d-bg);
+  --c-surface: var(--d-surface);
+  --c-surface-2: var(--d-surface-2);
+  --c-text: var(--d-text);
+  --c-muted: var(--d-muted);
+  --c-accent: var(--d-accent);
+  --c-accent-2: var(--d-accent-2);
+  --c-on-accent: var(--d-on-accent);
+  --c-link: var(--d-link);
+  --c-border: var(--d-border);
+  --c-read: var(--d-read);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 6px 18px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}

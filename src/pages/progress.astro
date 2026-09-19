@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Прогресс чтения"
+  description="Что уже прочитано и как перенести отметки на другое устройство."
+>
+  <h1>Прогресс чтения</h1>
+  <p class="lead">
+    Отметки о прочитанных статьях хранятся в этом браузере и никуда не
+    отправляются. Чтобы перенести их на другое устройство, скопируйте текст
+    ниже и вставьте его там на этой же странице.
+  </p>
+
+  <p class="counter card" data-progress-summary>Прочитано: —</p>
+
+  <h2>Перенос между устройствами</h2>
+  <label class="visually-hidden" for="progress-json">Данные прогресса</label>
+  <textarea id="progress-json" data-progress-text rows="10" spellcheck="false"></textarea>
+
+  <div class="actions">
+    <button class="chip" type="button" data-progress-copy>Скопировать</button>
+    <button class="chip" type="button" data-progress-download>Скачать файлом</button>
+    <button class="chip" type="button" data-progress-import>Вставить и объединить</button>
+    <button class="chip" type="button" data-progress-reset>Сбросить всё</button>
+  </div>
+  <p class="status" data-progress-status role="status"></p>
+</Base>
+
+<style>
+  .lead {
+    max-width: 42rem;
+  }
+
+  .counter {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    font-size: 1.05rem;
+  }
+
+  textarea {
+    width: 100%;
+    font-series: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 0.6rem;
+    border: var(--rule);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface);
+    color: var(--c-text);
+    resize: vertical;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.6rem 0;
+  }
+
+  .status {
+    min-height: 1.4em;
+    font-size: 0.9rem;
+    color: var(--c-accent);
+  }
+</style>
+
+<script>
+  import '../scripts/progress-page';
+</script>

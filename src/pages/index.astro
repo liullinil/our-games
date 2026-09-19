@@ -1,0 +1,401 @@
+---
+import { getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import GameCard from '../components/GameCard.astro';
+import RelationsGraph from '../components/RelationsGraph.astro';
+import { getGraph, studioNameAt } from '../lib/graph';
+import { withBase, catalogUrl, eraUrl, gameUrl } from '../lib/paths';
+import { TYPE_LABEL, TYPE_ORDER, CLASS_LABEL, yearsLabel, plural, nGames, SITE_NAME } from '../lib/labels';
+
+const graph = await getGraph();
+
+const typeCounts = new Map<string, number>();
+for (const g of graph.gameList) typeCounts.set(g.data.type, (typeCounts.get(g.data.type) ?? 0) + 1);
+/** Разделы берём из данных: новый жанр появляется на главной сам. */
+const sectionTypes = TYPE_ORDER.filter((type) => typeCounts.has(type));
+
+const articles = graph.gameList.filter((g) => g.data.status === 'article');
+const latest = [...articles].reverse().slice(0, 6);
+const eraCounts = new Map<string, number>();
+for (const g of graph.gameList) eraCounts.set(g.era, (eraCounts.get(g.era) ?? 0) + 1);
+
+/*
+ * Блок «Продолжить чтение» живёт в браузере: что читатель не дочитал, знает
+ * только его localStorage. Но пустая рамка до загрузки скрипта выглядела бы
+ * дырой, поэтому в разметке уже лежит настоящая статья — самая свежая, —
+ * а скрипт подменяет её на недочитанную или случайную непрочитанную.
+ */
+const featured = latest[0] ?? articles[0];
+const featuredStudio = featured ? graph.studios.get(featured.studioId) : undefined;
+const featuredFirst = featured?.data.gallery.find((p) => p.kind === 'image');
+const featuredSource =
+  featured?.data.poster ?? (featuredFirst && featuredFirst.kind === 'image' ? featuredFirst.src : undefined);
+const featuredImage = featuredSource
+  ? await getImage({ src: featuredSource, width: 640, height: 400, fit: 'cover', format: 'webp' })
+  : null;
+const featuredMeta = featured
+  ? [
+      featuredStudio ? studioNameAt(featuredStudio, featured.data.years.start) : '',
+      yearsLabel(featured.data.years),
+      CLASS_LABEL[featured.data.class] ?? '',
+    ]
+      .filter(Boolean)
+      .join(' · ')
+  : '';
+
+const n = (count: number, one: string, few: string, many: string) => `${count} ${plural(count, one, few, many)}`;
+const developers = graph.studioList.filter((s) => s.gameIds.length > 0);
+---
+
+<Base
+  title={SITE_NAME}
+  description="Энциклопедия компьютерных игр СССР, России, Украины, Беларуси и соседних стран: от «Тетриса» и «Ну, погоди!» до Atomic Heart. Игры, студии, движки, платформы и эпохи."
+  full
+>
+  <section class="hero">
+    <h1>Энциклопедия отечественных компьютерных игр</h1>
+    <p class="hero__lead">
+      От «Тетриса» на «Электронике-60» и «Ну, погоди!» до Atomic Heart и INDIKA: игры, сделанные в СССР,
+      России и соседних странах, студии, которые их создали, движки, платформы и эпохи.
+    </p>
+    <p class="hero__stats">
+      {nGames(graph.gameList.length)} · {n(articles.length, 'статья', 'статьи', 'статей')} · {
+        n(developers.length, 'студия', 'студии', 'студий')
+      } · {n(graph.platformList.length, 'платформа', 'платформы', 'платформ')} · {
+        n(graph.engineList.length, 'движок', 'движка', 'движков')
+      }
+    </p>
+  </section>
+
+  <div class="home-narrow">
+    {
+      featured && (
+        <section
+          class="continue card"
+          data-continue
+          data-continue-cards={withBase('/graph-cards.json')}
+          data-continue-id={featured.id}
+          aria-labelledby="continue-label"
+        >
+          <a class="continue__media" data-continue-link href={gameUrl(featured.id)} tabindex="-1" aria-hidden="true">
+            <img
+              data-continue-img
+              src={featuredImage?.src}
+              width="640"
+              height="400"
+              alt=""
+              loading="eager"
+              decoding="async"
+              hidden={!featuredImage}
+            />
+            <span class="continue__bar" data-continue-bar hidden><span></span></span>
+          </a>
+          <div class="continue__body">
+            <span class="continue__label" id="continue-label" data-continue-label>Что почитать</span>
+            <a class="continue__title" data-continue-link href={gameUrl(featured.id)}>
+              <span data-continue-title>{featured.data.name}</span>
+            </a>
+            <span class="continue__meta muted" data-continue-meta>{featuredMeta}</span>
+            <p class="continue__summary" data-continue-summary>{featured.data.summary}</p>
+            <p class="continue__note muted" data-continue-note>Самая свежая статья</p>
+            <div class="continue__actions">
+              <a class="button" data-continue-link href={gameUrl(featured.id)}>Читать</a>
+              <button class="button button--ghost" type="button" data-continue-done>Прочтено</button>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <div class="section-title">
+      <h2>Эпохи</h2>
+      <a href={withBase('/eras/')}>Все эпохи →</a>
+    </div>
+    <ul class="eras">
+      {
+        graph.eraList.map((era) => (
+          <li class="era-card" style={`--era-accent:${era.data.accent}`}>
+            <a href={eraUrl(era.id)}>
+              <span class="era-card__title">{era.data.shortTitle}</span>
+              <span class="era-card__range">{era.data.range}</span>
+              <span class="era-card__count muted">{nGames(eraCounts.get(era.id) ?? 0)}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2>Разделы</h2>
+    <ul class="grid-cards sections">
+      {
+        sectionTypes.map((type) => (
+          <li class="card section-card">
+            <a href={catalogUrl(type)}>
+              <span class="section-card__title">{TYPE_LABEL[type]}</span>
+              <span class="muted">{nGames(typeCounts.get(type) ?? 0)}</span>
+            </a>
+          </li>
+        ))
+      }
+      <li class="card section-card">
+        <a href={withBase('/studios/')}>
+          <span class="section-card__title">Студии</span>
+          <span class="muted">{n(graph.studioList.length, 'студия', 'студии', 'студий')} · разработчики и издатели</span>
+        </a>
+      </li>
+      <li class="card section-card">
+        <a href={withBase('/platforms/')}>
+          <span class="section-card__title">Платформы</span>
+          <span class="muted">{n(graph.platformList.length, 'платформа', 'платформы', 'платформ')} · от «Электроники-60» до PlayStation 5</span>
+        </a>
+      </li>
+      <li class="card section-card">
+        <a href={withBase('/engines/')}>
+          <span class="section-card__title">Движки</span>
+          <span class="muted">{n(graph.engineList.length, 'движок', 'движка', 'движков')} · один движок часто живёт дольше игры</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section-title">
+    <h2>Карта связей</h2>
+    <a href={withBase('/graph/')}>Открыть отдельно →</a>
+  </div>
+  <RelationsGraph graph={graph} games={graph.gameList} height="min(74dvh, 46rem)" />
+
+  <div class="home-narrow">
+    {
+      latest.length > 0 && (
+        <>
+          <div class="section-title">
+            <h2>Последние статьи</h2>
+            <a href={catalogUrl()}>Весь каталог →</a>
+          </div>
+          <ul class="grid-cards">
+            {latest.map((g) => (
+              <GameCard game={g} graph={graph} />
+            ))}
+          </ul>
+        </>
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .hero {
+    padding: 1.5rem 0 0.25rem;
+  }
+
+  .hero h1 {
+    margin-bottom: 0.3em;
+  }
+
+  .hero__lead {
+    max-width: 46rem;
+    font-size: 1.05rem;
+  }
+
+  .hero__stats {
+    color: var(--c-muted);
+    font-size: 0.92rem;
+  }
+
+  .hero,
+  .home-narrow,
+  .section-title {
+    max-width: var(--content-width);
+    margin-inline: auto;
+  }
+
+  .continue {
+    display: grid;
+    grid-template-columns: minmax(0, 17rem) minmax(0, 1fr);
+    gap: 1.25rem;
+    padding: 1rem;
+    margin: 1rem 0 2.25rem;
+  }
+
+  .continue__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--c-surface-2);
+  }
+
+  .continue__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: var(--photo-filter);
+  }
+
+  .continue__bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .continue__bar > span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--c-accent);
+    transition: width 0.3s;
+  }
+
+  .continue__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+
+  .continue__label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--c-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .continue__title {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: var(--c-text);
+    text-decoration: none;
+    text-wrap: balance;
+  }
+
+  .continue__title:hover {
+    color: var(--c-link);
+    text-decoration: underline;
+  }
+
+  .continue__meta {
+    font-size: 0.85rem;
+  }
+
+  .continue__summary {
+    margin: 0.35rem 0 0;
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .continue__note {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .continue__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.6rem;
+  }
+
+  .continue.is-empty .continue__media,
+  .continue.is-empty [data-continue-done] {
+    display: none;
+  }
+
+  .continue.is-empty {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 640px) {
+    .continue {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+
+    .continue__media {
+      aspect-ratio: auto;
+      height: 12rem;
+    }
+  }
+
+  .eras {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0 0 2.25rem;
+    list-style: none;
+  }
+
+  .era-card a {
+    display: grid;
+    gap: 0.15rem;
+    height: 100%;
+    padding: 0.75rem 0.9rem 0.8rem;
+    border: var(--rule);
+    border-top: 4px solid var(--era-accent);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface);
+    box-shadow: var(--shadow-sm);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .era-card a:hover {
+    border-color: var(--era-accent);
+  }
+
+  .era-card__title {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .era-card__range {
+    font-size: 0.85rem;
+    color: var(--c-text);
+  }
+
+  .era-card__count {
+    font-size: 0.8rem;
+  }
+
+  .sections {
+    margin-bottom: 2.25rem;
+  }
+
+  .sections .section-card a {
+    display: grid;
+    gap: 0.2rem;
+    height: 100%;
+    padding: 0.9rem 1rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .sections .section-card:hover {
+    border-color: var(--c-accent);
+  }
+
+  .section-card__title {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1.05rem;
+  }
+
+  .sections .muted {
+    font-size: 0.86rem;
+  }
+</style>

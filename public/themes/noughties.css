@@ -1,0 +1,72 @@
+/* Нулевые (2000–2009): глянец, серебристый металл, оранжевый акцент игровых журналов. */
+@import url("../fonts/fonts.css");
+
+html[data-era="noughties"] {
+  --font-display: "Exo 2", "Ubuntu", system-ui, sans-serif;
+  --font-body: "Ubuntu", system-ui, sans-serif;
+  --weight-display: 800;
+  --case-display: uppercase;
+  --tracking-display: 0.01em;
+
+  --c-bg: #e9ecf0;
+  --c-surface: #f8f9fb;
+  --c-surface-2: #d9dee5;
+  --c-text: #171d26;
+  --c-muted: #5a6473;
+  --c-accent: #f26b1d;
+  --c-accent-2: #2b4c7e;
+  --c-on-accent: #ffffff;
+  --c-link: #c4511a;
+  --c-border: #b9c1cc;
+  --c-read: #7f8a97;
+
+  --radius: 6px;
+  --radius-sm: 4px;
+  --rule: 1px solid var(--c-border);
+  --rule-strong: 3px solid var(--c-accent);
+  --shadow: 0 1px 2px rgba(23, 29, 38, 0.15), 0 8px 20px rgba(23, 29, 38, 0.1);
+  --shadow-sm: 0 1px 2px rgba(23, 29, 38, 0.18);
+
+  --photo-filter: contrast(1.06) saturate(1.1);
+  /* Шлифованный металл: тонкие вертикальные штрихи. */
+  --texture-bg: repeating-linear-gradient(90deg, rgba(23, 29, 38, 0.025) 0 1px, transparent 1px 3px);
+  --header-texture: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(217, 222, 229, 0.7));
+
+  /* Тёмный вариант: сталь и оранжевый, как в меню шутеров тех лет. */
+  --d-bg: #10141a;
+  --d-surface: #191f27;
+  --d-surface-2: #222a34;
+  --d-text: #e6e9ee;
+  --d-muted: #97a3b3;
+  --d-accent: #ff7a1a;
+  --d-accent-2: #6aa7ff;
+  --d-on-accent: #16100a;
+  --d-link: #ff9a4d;
+  --d-border: #303a47;
+  --d-read: #6c7885;
+}
+
+/* Скошенная плашка заголовка: глянцевый градиент и оранжевая кромка. */
+html[data-era="noughties"] main h2 {
+  display: inline-block;
+  padding: 0.25em 0.9em 0.25em 0.7em;
+  background: linear-gradient(180deg, var(--c-surface), var(--c-surface-2));
+  border-left: 4px solid var(--c-accent);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 0.7em) 100%, 0 100%);
+  font-style: italic;
+}
+
+html[data-era="noughties"] h1 {
+  font-style: italic;
+}
+
+html[data-era="noughties"] .card {
+  background: linear-gradient(180deg, var(--c-surface), color-mix(in oklab, var(--c-surface) 85%, var(--c-surface-2)));
+}
+
+html[data-era="noughties"] .chip[aria-pressed="true"],
+html[data-era="noughties"] .chip.is-active,
+html[data-era="noughties"] .button {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--c-accent) 80%, white), var(--c-accent));
+  border-color: var(--c-accent);
+}

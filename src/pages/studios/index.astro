@@ -1,0 +1,107 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getGraph, studioShort } from '../../lib/graph';
+import { studioUrl } from '../../lib/paths';
+import { COUNTRY_SHORT, STUDIO_KIND_LABEL, nGames, plural } from '../../lib/labels';
+
+const graph = await getGraph();
+const developers = graph.studioList.filter((s) => s.gameIds.length > 0);
+const publishers = graph.studioList.filter((s) => s.gameIds.length === 0);
+---
+
+<Base
+  title="Студии"
+  description="Студии и издатели компьютерных игр СССР, России, Украины, Беларуси и соседних стран: названия по годам, города, игры."
+>
+  <h1>Студии</h1>
+  <p class="lead">
+    Названия менялись вместе с владельцами и странами: «Никита» становится Nikita Online, Maddox Games
+    уходит под крыло «1С», Wargaming переезжает из Минска на Кипр. В карточке каждой студии видна вся
+    цепочка переименований и все её игры.
+  </p>
+
+  <ul class="studios">
+    {
+      developers.map((s) => (
+        <li class="card studio">
+          <a href={studioUrl(s.id)}>
+            <span class="studio__name">{studioShort(s)}</span>
+            {s.data.names.length > 1 && (
+              <span class="studio__chain muted">{s.data.names.map((n) => n.short).join(' → ')}</span>
+            )}
+            <span class="muted">
+              {s.data.city} · {COUNTRY_SHORT[s.data.country]} · с {s.data.founded}
+              {s.data.closed ? ` по ${s.data.closed}` : ''}
+            </span>
+            <span class="muted">
+              {nGames(s.gameIds.length)}
+              {s.publishedIds.length > 0 ? `, издано ${s.publishedIds.length}` : ''}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  {
+    publishers.length > 0 && (
+      <>
+        <h2>Издатели</h2>
+        <p class="muted">
+          Компании, которые сами игр не делали, но издавали чужие: без них половина игр девяностых и нулевых
+          не дошла бы до прилавка.
+        </p>
+        <ul class="studios">
+          {publishers.map((s) => (
+            <li class="card studio">
+              <a href={studioUrl(s.id)}>
+                <span class="studio__name">{studioShort(s)}</span>
+                <span class="muted">
+                  {s.data.city} · {COUNTRY_SHORT[s.data.country]} · с {s.data.founded}
+                  {s.data.closed ? ` по ${s.data.closed}` : ''} · {STUDIO_KIND_LABEL[s.data.kind]}
+                </span>
+                <span class="muted">
+                  издано {s.publishedIds.length} {plural(s.publishedIds.length, 'игра', 'игры', 'игр')}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+</Base>
+
+<style>
+  .lead {
+    max-width: 42rem;
+  }
+
+  .studios {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    list-style: none;
+  }
+
+  .studio a {
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.9rem 1rem;
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+
+  .studio__name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1.1rem;
+  }
+
+  .studio__chain {
+    font-size: 0.8rem;
+  }
+</style>

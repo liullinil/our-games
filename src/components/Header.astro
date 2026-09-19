@@ -1,0 +1,127 @@
+---
+import { withBase } from '../lib/paths';
+import QuickSwitch from './QuickSwitch.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+const path = Astro.url.pathname;
+const isActive = (prefix: string) => path.startsWith(withBase(prefix));
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href={withBase('/')}>
+      {/* Знак сайта — крестовина геймпада: узнаётся с любой приставки. */}
+      <span class="site-header__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z" /></svg>
+      </span>
+      <span class="site-header__name">Игро<span class="site-header__hard">строй</span></span>
+    </a>
+
+    <nav class="site-header__nav" aria-label="Основные разделы">
+      <a href={withBase('/catalog/')} aria-current={isActive('/catalog') ? 'page' : undefined}>Каталог</a>
+      <a
+        class="site-header__main"
+        href={withBase('/graph/')}
+        aria-current={isActive('/graph') ? 'page' : undefined}>Карта связей</a
+      >
+      <a href={withBase('/studios/')} aria-current={isActive('/studios') ? 'page' : undefined}>Студии</a>
+      <a href={withBase('/platforms/')} aria-current={isActive('/platforms') ? 'page' : undefined}>Платформы</a>
+      <a href={withBase('/eras/')} aria-current={isActive('/eras') ? 'page' : undefined}>Эпохи</a>
+    </nav>
+
+    <QuickSwitch />
+    <ThemeToggle />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--c-surface);
+    border-bottom: var(--rule);
+    background-image: var(--header-texture);
+  }
+
+  .site-header__inner {
+    width: min(100% - 2rem, var(--content-width));
+    margin-inline: auto;
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .site-header__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--c-text);
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    text-transform: var(--case-display);
+    letter-spacing: var(--tracking-display);
+    flex: none;
+  }
+
+  .site-header__mark {
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: var(--radius-sm);
+    background: var(--c-accent);
+    color: var(--c-on-accent);
+  }
+
+  .site-header__mark svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: currentColor;
+  }
+
+  .site-header__name {
+    font-size: 1.05rem;
+  }
+
+  .site-header__hard {
+    color: var(--c-accent);
+  }
+
+  .site-header__nav {
+    display: none;
+    gap: 1rem;
+    margin-left: 0.5rem;
+  }
+
+  .site-header__nav a {
+    color: var(--c-text);
+    text-decoration: none;
+    padding: 0.35rem 0;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+
+  .site-header__nav a:hover,
+  .site-header__nav a[aria-current='page'] {
+    border-bottom-color: var(--c-accent);
+  }
+
+  .site-header__main {
+    font-weight: 600;
+  }
+
+  @media (min-width: 900px) {
+    .site-header__nav {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .site-header__name {
+      display: none;
+    }
+  }
+</style>

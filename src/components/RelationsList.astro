@@ -1,0 +1,219 @@
+---
+/**
+ * Связи игры: предшественники, продолжения, прообразы, дополнения, а также
+ * игры на том же движке и у того же издателя. Без JS — обычные списки ссылок.
+ */
+import type { Graph, GameNode } from '../lib/graph';
+import { studioShort } from '../lib/graph';
+import { gameUrl, engineUrl, seriesUrl, studioUrl, withBase } from '../lib/paths';
+import { yearsLabel } from '../lib/labels';
+
+interface Props {
+  game: GameNode;
+  graph: Graph;
+}
+
+const { game: g, graph } = Astro.props;
+
+const link = (id: string) => {
+  const x = graph.games.get(id)!;
+  return {
+    id,
+    name: x.data.name,
+    years: yearsLabel(x.data.years),
+    href: gameUrl(id),
+    article: x.data.status === 'article',
+  };
+};
+
+const groups = [
+  { title: 'Предшественники', items: g.predecessors.map(link) },
+  { title: 'Продолжения', items: g.successors.map(link) },
+  { title: 'Сделана на основе', items: g.basedOnGames.map(link) },
+  { title: 'На её основе сделаны', items: g.basedOnBy.map(link) },
+  { title: 'Дополнения и переиздания', items: [...g.expansions, ...g.variants].map(link) },
+  { title: 'Базовая игра', items: g.variantOf.map(link) },
+].filter((gr) => gr.items.length > 0);
+
+// Другие игры на том же движке — с указанием, какой именно движок общий.
+const sameEngine = g.engineIds
+  .map((eid) => {
+    const engine = graph.engines.get(eid)!;
+    const others = engine.gameIds.filter((id) => id !== g.id);
+    return others.length > 0 ? { engine, others: others.map(link) } : null;
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null);
+
+const samePublisher = g.publisherIds
+  .map((pid) => {
+    const publisher = graph.studios.get(pid)!;
+    const others = publisher.publishedIds.filter((id) => id !== g.id);
+    return others.length > 0 ? { publisher, others: others.slice(0, 12).map(link), total: others.length } : null;
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null);
+
+const series = g.seriesId ? graph.series.get(g.seriesId) : null;
+const seriesPeers = series ? series.gameIds.filter((id) => id !== g.id).map(link) : [];
+---
+
+<section class="relations" data-pagefind-ignore>
+  <h2>Связи</h2>
+
+  {
+    g.basedOnExternal.length > 0 && (
+      <div class="relations__group">
+        <h3>Прообразы и источники вдохновения</h3>
+        <ul class="relations__items">
+          {g.basedOnExternal.map((p) => (
+            <li class="relations__external">
+              {p.url ? (
+                <a href={p.url} rel="noopener external">
+                  {p.name}
+                </a>
+              ) : (
+                <span>{p.name}</span>
+              )}
+              <span class="muted">{[p.maker, p.country, p.year].filter(Boolean).join(', ')}</span>
+              {p.note && <span class="muted relations__note">{p.note}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    groups.map((gr) => (
+      <div class="relations__group">
+        <h3>{gr.title}</h3>
+        <ul class="relations__items">
+          {gr.items.map((item) => (
+            <li>
+              <a class="chip" href={item.href} data-game-id={item.id} data-has-article={item.article ? '1' : '0'}>
+                {item.name}
+                <span class="muted">{item.years}</span>
+                <span class="badge-read">✓</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+
+  {
+    seriesPeers.length > 0 && series && (
+      <div class="relations__group">
+        <h3>
+          Серия <a href={seriesUrl(series.id)}>{series.data.name}</a>
+        </h3>
+        <ul class="relations__items">
+          {seriesPeers.map((item) => (
+            <li>
+              <a class="chip" href={item.href} data-game-id={item.id} data-has-article={item.article ? '1' : '0'}>
+                {item.name}
+                <span class="muted">{item.years}</span>
+                <span class="badge-read">✓</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    sameEngine.map(({ engine, others }) => (
+      <div class="relations__group">
+        <h3>
+          Другие игры на движке <a href={engineUrl(engine.id)}>{engine.data.name}</a>
+        </h3>
+        <ul class="relations__items">
+          {others.map((item) => (
+            <li>
+              <a class="chip" href={item.href} data-game-id={item.id} data-has-article={item.article ? '1' : '0'}>
+                {item.name}
+                <span class="muted">{item.years}</span>
+                <span class="badge-read">✓</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+
+  {
+    samePublisher.map(({ publisher, others, total }) => (
+      <div class="relations__group">
+        <h3>
+          Тот же издатель — <a href={studioUrl(publisher.id)}>{studioShort(publisher)}</a>
+          {total > others.length ? <span class="muted"> (показаны {others.length} из {total})</span> : null}
+        </h3>
+        <ul class="relations__items">
+          {others.map((item) => (
+            <li>
+              <a class="chip" href={item.href} data-game-id={item.id} data-has-article={item.article ? '1' : '0'}>
+                {item.name}
+                <span class="muted">{item.years}</span>
+                <span class="badge-read">✓</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+
+  <p class="relations__map">
+    <a href={`${withBase('/graph/')}#${g.id}`}>Показать на карте связей →</a>
+  </p>
+</section>
+
+<style>
+  .relations__group {
+    margin-bottom: 1rem;
+  }
+
+  .relations__group h3 {
+    margin: 0 0 0.4rem;
+    font-size: 0.92rem;
+    color: var(--c-muted);
+    font-weight: 500;
+    text-transform: none;
+  }
+
+  .relations__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .relations__items .chip {
+    gap: 0.35rem;
+  }
+
+  .relations__external {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0.3em 0.7em;
+    border: 1px dashed var(--c-border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+
+  .relations__note {
+    flex-basis: 100%;
+    font-size: 0.8rem;
+  }
+
+  .relations__map {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+  }
+</style>

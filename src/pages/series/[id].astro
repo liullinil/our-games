@@ -1,0 +1,72 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import GameCard from '../../components/GameCard.astro';
+import SidebarTree from '../../components/SidebarTree.astro';
+import { getGraph, studioShort } from '../../lib/graph';
+import { studioUrl, catalogUrl } from '../../lib/paths';
+import { TYPE_LABEL, nGames, yearsLabel } from '../../lib/labels';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const graph = await getGraph();
+  return graph.seriesList.map((s) => ({ params: { id: s.id }, props: { seriesId: s.id } }));
+};
+
+const { seriesId } = Astro.props as { seriesId: string };
+const graph = await getGraph();
+const series = graph.series.get(seriesId)!;
+const studio = series.studioId ? graph.studios.get(series.studioId) : null;
+const games = series.gameIds.map((id) => graph.games.get(id)!);
+
+const span = games.length
+  ? {
+      start: Math.min(...games.map((g) => g.data.years.start)),
+      end: games.some((g) => g.data.years.end === null)
+        ? null
+        : Math.max(...games.map((g) => g.data.years.end ?? g.data.years.start)),
+    }
+  : null;
+const era = games[0]?.era ?? 'site';
+---
+
+<Base title={series.data.name} description={series.data.summary} sidebar era={era}>
+  <SidebarTree slot="sidebar" graph={graph} type={series.data.type} />
+
+  <nav class="crumbs-mini">
+    <a href={catalogUrl()}>Каталог</a> ›
+    <a href={catalogUrl(series.data.type)}>{TYPE_LABEL[series.data.type]}</a> ›
+    {studio && (
+      <>
+        <a href={studioUrl(studio.id)}>{studioShort(studio)}</a> ›
+      </>
+    )}
+    <span>{series.data.name}</span>
+  </nav>
+
+  <div class="section-title">
+    <h1>{series.data.name}</h1>
+    <span class="muted" data-progress data-progress-scope="#series-games"></span>
+  </div>
+  <p class="lead">{series.data.summary}</p>
+  <p class="muted">
+    {studio ? `${studioShort(studio)} · ` : ''}{nGames(games.length)}
+    {span ? ` · ${yearsLabel(span)}` : ''}
+  </p>
+
+  <ul class="grid-cards" id="series-games">
+    {games.map((g) => <GameCard game={g} graph={graph} />)}
+  </ul>
+</Base>
+
+<style>
+  .crumbs-mini {
+    margin: 0.75rem 0 0.25rem;
+    font-size: 0.88rem;
+    color: var(--c-muted);
+  }
+
+  .lead {
+    max-width: 40rem;
+    font-size: 1.05rem;
+  }
+</style>

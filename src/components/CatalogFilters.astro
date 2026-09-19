@@ -1,0 +1,148 @@
+---
+/**
+ * Фильтры каталога. Состояние пишется в адрес страницы,
+ * поэтому отфильтрованный вид можно переслать ссылкой.
+ */
+import type { Graph, GameNode } from '../lib/graph';
+import { studioShort } from '../lib/graph';
+import { COUNTRY_SHORT } from '../lib/labels';
+
+interface Props {
+  graph: Graph;
+  games: GameNode[];
+}
+
+const { graph, games } = Astro.props;
+
+const studioIds = [...new Set(games.map((g) => g.studioId))];
+const eraIds = graph.eraList.map((e) => e.id).filter((id) => games.some((g) => g.era === id));
+const countries = [...new Set(games.map((g) => g.data.country))];
+const platformIds = graph.platformList
+  .map((p) => p.id)
+  .filter((id) => games.some((g) => g.platformIds.includes(id)));
+---
+
+<form class="filters" data-filters>
+  <div class="filters__row scroll-x">
+    <span class="filters__label">Студия</span>
+    {
+      studioIds.map((id) => (
+        <button class="chip" type="button" data-filter="studio" data-value={id} aria-pressed="false">
+          {studioShort(graph.studios.get(id)!)}
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="filters__row scroll-x">
+    <span class="filters__label">Эпоха</span>
+    {
+      eraIds.map((id) => (
+        <button
+          class="chip"
+          type="button"
+          data-filter="era"
+          data-value={id}
+          aria-pressed="false"
+          style={`--era-accent:${graph.eras.get(id)!.data.accent}`}
+        >
+          {graph.eras.get(id)!.data.shortTitle}
+        </button>
+      ))
+    }
+  </div>
+
+  {
+    platformIds.length > 1 && (
+      <div class="filters__row scroll-x">
+        <span class="filters__label">Платформа</span>
+        {platformIds.map((id) => (
+          <button class="chip" type="button" data-filter="platform" data-value={id} aria-pressed="false">
+            {graph.platforms.get(id)!.data.altNames[0] ?? graph.platforms.get(id)!.data.name}
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    countries.length > 1 && (
+      <div class="filters__row scroll-x">
+        <span class="filters__label">Страна</span>
+        {countries.map((c) => (
+          <button class="chip" type="button" data-filter="country" data-value={c} aria-pressed="false">
+            {COUNTRY_SHORT[c] ?? c}
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  <div class="filters__row">
+    <button class="chip" type="button" data-filter="article" data-value="1" aria-pressed="false">
+      Только подробные
+    </button>
+    <label class="chip filters__check">
+      <input type="checkbox" data-hide-read />
+      Скрыть прочитанные
+    </label>
+    <button class="filters__reset" type="button" data-filters-reset hidden>Сбросить</button>
+  </div>
+</form>
+
+<style>
+  .filters {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0 0 1.5rem;
+    padding: 0.75rem;
+    border: var(--rule);
+    border-radius: var(--radius);
+    background: var(--c-surface);
+  }
+
+  .filters__row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .filters__row.scroll-x {
+    flex-wrap: nowrap;
+    padding-bottom: 0.2rem;
+  }
+
+  @media (min-width: 48rem) {
+    .filters__row.scroll-x {
+      flex-wrap: wrap;
+      overflow-x: visible;
+    }
+  }
+
+  .filters__label {
+    flex: none;
+    width: 5rem;
+    font-size: 0.78rem;
+    color: var(--c-muted);
+  }
+
+  .filters__check {
+    gap: 0.4rem;
+    cursor: pointer;
+  }
+
+  .filters__reset {
+    font: inherit;
+    font-size: 0.82rem;
+    background: none;
+    border: 0;
+    color: var(--c-link);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  import '../scripts/filters';
+</script>

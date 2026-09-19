@@ -1,0 +1,78 @@
+/* Советская эпоха (до 1991): бежевый пластик БК-0010, люминофор терминала, машинный шрифт. */
+@import url("../fonts/fonts.css");
+
+html[data-era="soviet"] {
+  --font-display: "Tektur", "PT Sans", system-ui, sans-serif;
+  --font-body: "PT Sans", system-ui, sans-serif;
+  --font-mono: "PT Mono", ui-monospace, monospace;
+  --weight-display: 700;
+  --case-display: uppercase;
+  --tracking-display: 0.04em;
+
+  --c-bg: #e6dfcc;
+  --c-surface: #f3eee0;
+  --c-surface-2: #dbd3bd;
+  --c-text: #1f1d18;
+  --c-muted: #5f5a4c;
+  --c-accent: #2f7d3f;
+  --c-accent-2: #b2322e;
+  --c-on-accent: #f6f9e8;
+  --c-link: #1f6a33;
+  --c-border: #a89f86;
+  --c-read: #857e6c;
+
+  --radius: 3px;
+  --radius-sm: 2px;
+  --rule: 1px solid var(--c-border);
+  --rule-strong: 3px double var(--c-border);
+  --shadow: 0 2px 0 #c9bfa5;
+  --shadow-sm: 0 1px 0 #c9bfa5;
+
+  --photo-filter: saturate(0.9) contrast(1.05);
+  /* Строки развёртки: едва заметные горизонтальные полосы, как на ЭЛТ. */
+  --texture-bg: repeating-linear-gradient(180deg, rgba(31, 29, 24, 0.035) 0 1px, transparent 1px 4px);
+  --header-texture: linear-gradient(90deg, rgba(47, 125, 63, 0.08), transparent 40%);
+
+  /* Тёмный вариант: зелёный люминофор на чёрном стекле. */
+  --d-bg: #0a110c;
+  --d-surface: #0f1a12;
+  --d-surface-2: #16241a;
+  --d-text: #bdf0c4;
+  --d-muted: #7fb58a;
+  --d-accent: #4be07a;
+  --d-accent-2: #f2b134;
+  --d-on-accent: #06120a;
+  --d-link: #7cf0a0;
+  --d-border: #245231;
+  --d-read: #5e8a68;
+}
+
+/* Заголовки как строки терминала: приглашение перед словом. */
+html[data-era="soviet"] main h2::before {
+  content: "> ";
+  font-family: var(--font-mono);
+  color: var(--c-accent);
+}
+
+html[data-era="soviet"] h1 {
+  border-bottom: 3px double var(--c-border);
+  padding-bottom: 0.25em;
+}
+
+html[data-era="soviet"] .card {
+  border: 1px solid var(--c-border);
+  box-shadow: 2px 2px 0 var(--c-border);
+}
+
+html[data-era="soviet"] .chip {
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+html[data-era="soviet"] th,
+html[data-era="soviet"] .specs__row dt {
+  font-family: var(--font-mono);
+  text-transform: none;
+  letter-spacing: 0;
+}

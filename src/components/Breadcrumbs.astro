@@ -1,0 +1,215 @@
+---
+/**
+ * Крошки с выпадающим списком соседей: из любой ступени можно сразу
+ * перепрыгнуть к другой студии, серии или игре того же уровня.
+ */
+import type { Graph } from '../lib/graph';
+import { studioShort } from '../lib/graph';
+import { catalogUrl, studioUrl, seriesUrl, gameUrl, withBase } from '../lib/paths';
+import { TYPE_LABEL, TYPE_ORDER } from '../lib/labels';
+
+interface Crumb {
+  label: string;
+  href: string;
+  /** Соседи того же уровня для выпадающего списка. */
+  siblings?: { label: string; href: string; current?: boolean }[];
+}
+
+interface Props {
+  graph: Graph;
+  gameId?: string;
+  /** Готовые крошки, если страница не про игру. */
+  items?: Crumb[];
+}
+
+const { graph, gameId, items } = Astro.props;
+
+let crumbs: Crumb[] = items ?? [];
+
+if (gameId) {
+  const g = graph.games.get(gameId)!;
+  const type = g.data.type;
+
+  const typeSiblings = TYPE_ORDER.filter((t) => graph.gameList.some((x) => x.data.type === t)).map((t) => ({
+    label: TYPE_LABEL[t]!,
+    href: catalogUrl(t),
+    current: t === type,
+  }));
+
+  const studio = graph.studios.get(g.studioId)!;
+  const studioSiblings = graph.studioList
+    .filter((s) => s.gameIds.some((id) => graph.games.get(id)!.data.type === type))
+    .map((s) => ({ label: studioShort(s), href: studioUrl(s.id), current: s.id === studio.id }));
+
+  crumbs = [
+    { label: 'Каталог', href: catalogUrl() },
+    { label: TYPE_LABEL[type]!, href: catalogUrl(type), siblings: typeSiblings },
+    { label: studioShort(studio), href: studioUrl(studio.id), siblings: studioSiblings },
+  ];
+
+  if (g.seriesId) {
+    const series = graph.series.get(g.seriesId)!;
+    const seriesSiblings = studio.seriesIds.map((sid) => {
+      const s = graph.series.get(sid)!;
+      return { label: s.data.name, href: seriesUrl(sid), current: sid === series.id };
+    });
+    crumbs.push({ label: series.data.name, href: seriesUrl(series.id), siblings: seriesSiblings });
+  }
+
+  const peers = (g.seriesId ? graph.series.get(g.seriesId)!.gameIds : studio.gameIds)
+    .filter((id) => graph.games.get(id)!.data.type === type || g.seriesId)
+    .map((id) => ({
+      label: graph.games.get(id)!.data.name,
+      href: gameUrl(id),
+      current: id === g.id,
+    }));
+  crumbs.push({ label: g.data.name, href: gameUrl(g.id), siblings: peers });
+}
+---
+
+<nav class="crumbs" aria-label="Путь по каталогу">
+  <ol>
+    <li><a href={withBase('/')}>Главная</a></li>
+    {
+      crumbs.map((crumb, i) => (
+        <li>
+          {crumb.siblings && crumb.siblings.length > 1 ? (
+            <details class="crumbs__menu" data-crumb-menu>
+              <summary>
+                <span>{crumb.label}</span>
+                <svg viewBox="0 0 12 12" aria-hidden="true">
+                  <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" />
+                </svg>
+              </summary>
+              <ul>
+                {crumb.siblings.map((s) => (
+                  <li>
+                    <a href={s.href} aria-current={s.current ? 'page' : undefined}>
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ) : i === crumbs.length - 1 ? (
+            <span aria-current="page">{crumb.label}</span>
+          ) : (
+            <a href={crumb.href}>{crumb.label}</a>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .crumbs {
+    margin: 0.75rem 0 0.5rem;
+    font-size: 0.88rem;
+  }
+
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.15rem 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .crumbs li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .crumbs li + li::before {
+    content: '›';
+    color: var(--c-muted);
+  }
+
+  .crumbs a,
+  .crumbs summary {
+    color: var(--c-muted);
+    text-decoration: none;
+  }
+
+  .crumbs a:hover,
+  .crumbs summary:hover {
+    color: var(--c-link);
+    text-decoration: underline;
+  }
+
+  .crumbs [aria-current='page'] {
+    color: var(--c-text);
+  }
+
+  .crumbs__menu {
+    position: relative;
+  }
+
+  .crumbs__menu summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    cursor: pointer;
+    list-style: none;
+    padding: 0.1rem 0.25rem;
+    border-radius: 4px;
+  }
+
+  .crumbs__menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .crumbs__menu summary svg {
+    width: 0.7rem;
+    height: 0.7rem;
+    flex: none;
+  }
+
+  .crumbs__menu[open] summary {
+    background: var(--c-surface-2);
+    color: var(--c-text);
+  }
+
+  .crumbs__menu ul {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    left: 0;
+    z-index: 25;
+    min-width: 11rem;
+    max-height: 60vh;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0.25rem;
+    list-style: none;
+    background: var(--c-surface);
+    border: var(--rule);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+  }
+
+  .crumbs__menu ul li {
+    display: block;
+  }
+
+  .crumbs__menu ul li::before {
+    content: none;
+  }
+
+  .crumbs__menu ul a {
+    display: block;
+    padding: 0.35rem 0.5rem;
+    border-radius: 4px;
+    color: var(--c-text);
+    white-space: nowrap;
+  }
+
+  .crumbs__menu ul a:hover,
+  .crumbs__menu ul a[aria-current='page'] {
+    background: var(--c-surface-2);
+    text-decoration: none;
+  }
+</style>

@@ -1,0 +1,34 @@
+title: Десятые
+shortTitle: 2010-е
+from: 2010
+to: 2020
+range: 2010–2019
+description: >-
+  Индустрия переехала в онлайн и на телефоны: World of Tanks и War Thunder
+  собрали десятки миллионов игроков, Cut the Rope и Shadow Fight стали хитами
+  App Store, «Танки Онлайн» жили прямо в браузере. Steam открыл дорогу
+  независимым командам — Beholder, Pathologic 2, Punch Club, Escape from Tarkov;
+  Metro 2033 и Metro: Last Light вышли на приставках наравне с западными
+  блокбастерами.
+accent: '#3f51b5'
+band: '#e3e7f3'
+fonts:
+  - file: montserrat-800-cyrillic.woff2
+    family: Montserrat
+    weight: '800'
+  - file: roboto-400-cyrillic.woff2
+    family: Roboto
+    weight: '400'
+  - file: roboto-700-cyrillic.woff2
+    family: Roboto
+    weight: '700'
+styleNote: >-
+  Плоский дизайн десятых: чистые плашки без градиентов, ровные цвета, тени
+  как в Material Design, геометрический гротеск в заголовках. Тёмный вариант
+  выдержан в сине-стальной гамме клиента Steam.
+motifs:
+  - Смартфон с Cut the Rope
+  - PlayStation 4 и Xbox One
+  - PlayStation Vita и Nintendo Switch
+  - Шлем Oculus Rift и Steam Controller
+  - Ноутбук со Steam и стримом на Twitch

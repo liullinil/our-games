@@ -1,0 +1,63 @@
+title: Девяностые
+shortTitle: 90-е
+from: 1991
+to: 2000
+range: 1991–1999
+description: >-
+  В страну хлынули Dendy и пиратские диски, а первые студии — Gamos, «Никита»,
+  «Дока», K-D Lab — начали делать игры на продажу: «Color Lines», «Братья
+  Пилоты», «ГЭГ», «Петька и Василий Иванович». К концу десятилетия появились
+  издатели «Бука», «1С» и «Акелла», а «Вангеры», «Аллоды» и «Дальнобойщики»
+  показали, что здесь умеют делать большие игры для всего мира.
+accent: '#d0202a'
+band: '#d9d9d9'
+fonts:
+  - file: press-start-2p-400-cyrillic.woff2
+    family: Press Start 2P
+    weight: '400'
+  - file: pt-sans-400-cyrillic.woff2
+    family: PT Sans
+    weight: '400'
+  - file: pt-sans-700-cyrillic.woff2
+    family: PT Sans
+    weight: '700'
+styleNote: >-
+  Серый пластик Dendy с красными кнопками и бирюзовый рабочий стол Windows 95:
+  пиксельный шрифт восьмибитных приставок в заголовках, синие плашки как
+  у окон, объёмные рамки и никаких скруглений.
+motifs:
+  - Приставка Dendy и картридж «9999 в 1»
+  - Клон ZX Spectrum «Пентагон» и телевизор «Рубин»
+  - Дискета 3,5 дюйма и коробка Windows 95
+  - Пиратский диск с «Русской версией»
+  - Монитор с электронно-лучевой трубкой
+images:
+  - src: ./nineties/dendy-junior-with-cart-and-joypads.jpg
+    caption: "Приставка Dendy Junior (клон Famicom/NES) с картриджем «9999 в 1» и двумя джойстиками — главная игровая приставка постсоветских квартир."
+    author: "Nzeemin"
+    license: "CC BY-SA 3.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Dendy_Junior_with_cart_and_joypads.jpg"
+  - src: ./nineties/ibm-aptiva-486-carregando-o-windows-95.jpg
+    caption: "Персональный компьютер с монитором на электронно-лучевой трубке загружает Windows 95 (1995) — новый стандарт домашнего ПК середины 90-х."
+    author: "Al Lemos"
+    license: "CC BY-SA 3.0"
+    licenseUrl: "http://creativecommons.org/licenses/by-sa/3.0/"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:IBM_Aptiva_486_carregando_o_Windows_95.jpg"
+  - src: ./nineties/festival-du-jeu-vid-o-2010-09-11-sega-mega-drive.jpg
+    caption: "Sega Mega Drive II (1993) с приставкой Mega-CD II — более дорогая альтернатива Dendy для тех, кто хотел игры с CD-дисков."
+    author: "Jesmar"
+    license: "CC BY-SA 3.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Festival_du_Jeu_Vid%C3%A9o_-_2010-09-11_-_Sega_Mega_Drive_II_-_Mega-CD_II.jpg"
+  - src: ./nineties/цветной-телевизор-рубин-61тц403д.jpg
+    caption: "Цветной телевизор «Рубин» — через такой экран целое поколение проходило Dendy и первые видеомагнитофоны."
+    author: "Andshel"
+    license: "CC BY-SA 3.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%A6%D0%B2%D0%B5%D1%82%D0%BD%D0%BE%D0%B9_%D1%82%D0%B5%D0%BB%D0%B5%D0%B2%D0%B8%D0%B7%D0%BE%D1%80_%D0%A0%D1%83%D0%B1%D0%B8%D0%BD_61%D0%A2%D0%A6403%D0%94.JPG"
+  - src: ./nineties/floppy-disk-2009-g1.jpg
+    caption: "Дискеты трёх поколений — 8, 5,25 и 3,5 дюйма: на таких носителях расходились программы и первые игры для ПК."
+    author: "George Chernilevsky"
+    license: "PD"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Floppy_disk_2009_G1.jpg"

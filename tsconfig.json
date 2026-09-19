@@ -1,0 +1,6 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "// exclude": "public/viewer — результат экспорта Godot: минифицированный wasm-загрузчик на четверть мегабайта в одну строку. Проверять его нечего, а astro check тонул в его предупреждениях, пряча настоящие.",
+  "exclude": ["dist", "public/viewer", "tmp"]
+}

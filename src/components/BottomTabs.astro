@@ -1,0 +1,153 @@
+---
+/** Нижняя панель вкладок: основной способ навигации на телефоне. */
+import { withBase } from '../lib/paths';
+
+const path = Astro.url.pathname;
+const active = (prefix: string) => path.startsWith(withBase(prefix));
+const moreActive =
+  active('/platforms') || active('/engines') || active('/eras') || active('/progress') ||
+  active('/about') || active('/licenses') || active('/studios');
+---
+
+<nav class="tabbar" aria-label="Разделы сайта">
+  <a class="tabbar__item" href={withBase('/catalog/')} aria-current={active('/catalog') ? 'page' : undefined}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"
+      ><path d="M3 5h8v6H3zM13 5h8v6h-8zM3 13h8v6H3zM13 13h8v6h-8z" /></svg
+    >
+    <span>Каталог</span>
+  </a>
+  <a class="tabbar__item" href={withBase('/graph/')} aria-current={active('/graph') ? 'page' : undefined}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"
+      ><path
+        d="M3 4h6v4H3zM11 10h6v4h-6zM3 16h6v4H3zM9 6h2v6H9zM9 12h2v6H9z"
+      /></svg
+    >
+    <span>Связи</span>
+  </a>
+  <a class="tabbar__item" href={withBase('/search/')} aria-current={active('/search') ? 'page' : undefined}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"
+      ><path
+        d="M10 3a7 7 0 1 0 4.2 12.6l4.1 4.1 1.4-1.4-4.1-4.1A7 7 0 0 0 10 3zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"
+      /></svg
+    >
+    <span>Поиск</span>
+  </a>
+  <button class="tabbar__item" type="button" data-more-button aria-expanded="false" aria-controls="more-sheet" aria-current={moreActive ? 'page' : undefined}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"
+      ><circle cx="5" cy="12" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="19" cy="12" r="2" /></svg
+    >
+    <span>Ещё</span>
+  </button>
+</nav>
+
+<dialog class="more" id="more-sheet" data-more-sheet aria-label="Дополнительные разделы">
+  <div class="more__inner">
+    <div class="more__grid">
+      <a href={withBase('/studios/')}>Студии</a>
+      <a href={withBase('/platforms/')}>Платформы</a>
+      <a href={withBase('/engines/')}>Движки</a>
+      <a href={withBase('/eras/')}>Эпохи</a>
+      <a href={withBase('/progress/')}>Прогресс чтения</a>
+      <a href={withBase('/about/')}>О проекте</a>
+      <a href={withBase('/licenses/')}>Источники медиа</a>
+    </div>
+    <button class="more__close" type="button" data-more-close>Закрыть</button>
+  </div>
+</dialog>
+
+<style>
+  .tabbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 35;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--c-surface);
+    border-top: var(--rule);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  @media (min-width: 768px) {
+    .tabbar {
+      display: none;
+    }
+  }
+
+  .tabbar__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    min-height: var(--tabbar-height);
+    padding: 0.3rem 0.2rem;
+    font: inherit;
+    font-size: 0.7rem;
+    color: var(--c-muted);
+    background: none;
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .tabbar__item svg {
+    width: 1.35rem;
+    height: 1.35rem;
+    fill: currentColor;
+  }
+
+  .tabbar__item[aria-current='page'] {
+    color: var(--c-accent);
+  }
+
+  .more {
+    border: 0;
+    padding: 0;
+    margin: auto auto 0;
+    width: 100%;
+    max-width: 100%;
+    background: transparent;
+  }
+
+  .more::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .more__inner {
+    background: var(--c-surface);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    border-top: var(--rule);
+    padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+  }
+
+  .more__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .more__grid a {
+    display: block;
+    padding: 0.7rem 0.8rem;
+    border: var(--rule);
+    border-radius: var(--radius-sm);
+    color: var(--c-text);
+    text-decoration: none;
+    background: var(--c-surface-2);
+  }
+
+  .more__close {
+    width: 100%;
+    margin-top: 0.75rem;
+    padding: 0.7rem;
+    font: inherit;
+    background: var(--c-accent);
+    color: var(--c-on-accent);
+    border: 0;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+</style>

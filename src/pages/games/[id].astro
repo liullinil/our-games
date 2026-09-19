@@ -1,0 +1,274 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SpecsTable from '../../components/SpecsTable.astro';
+import RelationsList from '../../components/RelationsList.astro';
+import MiniMap from '../../components/MiniMap.astro';
+import NeighborsStrip from '../../components/NeighborsStrip.astro';
+import Gallery from '../../components/Gallery.astro';
+import SidebarTree from '../../components/SidebarTree.astro';
+import { getGraph, studioNameAt } from '../../lib/graph';
+import { bookCitation, CLASS_LABEL, COUNTRY_SHORT, TYPE_LABEL, yearsLabel } from '../../lib/labels';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const graph = await getGraph();
+  return graph.gameList.map((g) => ({ params: { id: g.id }, props: { gameId: g.id } }));
+};
+
+const { gameId } = Astro.props as { gameId: string };
+const graph = await getGraph();
+const g = graph.games.get(gameId)!;
+const { Content } = await render(g.entry);
+
+const studio = graph.studios.get(g.studioId)!;
+const studioName = studioNameAt(studio, g.data.years.start);
+const era = graph.eras.get(g.era)!;
+const hasArticle = g.data.status === 'article';
+const platforms = g.platformIds.map((id) => graph.platforms.get(id)!).filter(Boolean);
+const platformFilter = platforms.map((p) => `Платформа:${p.data.name}`).join(', ');
+const og = g.data.poster ? await getImage({ src: g.data.poster, width: 1200, format: 'jpeg' }) : null;
+---
+
+<Base title={g.data.name} description={g.data.summary} era={g.era} sidebar mainClass="game" image={og?.src}>
+  <SidebarTree slot="sidebar" graph={graph} type={g.data.type} currentId={g.id} />
+
+  <Breadcrumbs graph={graph} gameId={g.id} />
+
+  <article data-pagefind-body data-article-id={g.id} data-article-title={g.data.name}>
+    <header class="game__head">
+      <h1 data-pagefind-meta="title">{g.data.name}</h1>
+      <p class="game__summary">{g.data.summary}</p>
+      <p class="game__facts">
+        <span>{studioName}</span>
+        <span>{yearsLabel(g.data.years)}</span>
+        <span>{CLASS_LABEL[g.data.class]}</span>
+        <span>{platforms.map((p) => p.data.altNames[0] ?? p.data.name).join(', ')}</span>
+        <span class="game__era" style={`--era-accent:${era.data.accent}`}>
+          {era.data.shortTitle}
+        </span>
+      </p>
+      {g.data.altNames.length > 0 && <p class="muted game__alt">Также: {g.data.altNames.join(', ')}</p>}
+
+      {/* Скрытые метки для поиска: фильтры на странице /search/ */}
+      <span
+        class="visually-hidden"
+        data-pagefind-filter={`Жанр:${TYPE_LABEL[g.data.type]}, Студия:${studioName}, Эпоха:${era.data.shortTitle}, Страна:${COUNTRY_SHORT[g.data.country]}, ${platformFilter}`}
+      />
+      {
+        g.data.poster && (
+          <span class="visually-hidden" data-pagefind-meta="image[src]">
+            <Image src={g.data.poster} alt="" width={480} height={270} />
+          </span>
+        )
+      }
+    </header>
+
+    {
+      g.data.poster && (
+        <figure class="game__poster">
+          <Image
+            src={g.data.poster}
+            alt={g.data.name}
+            widths={[480, 960, 1440]}
+            sizes="(max-width: 900px) 100vw, 700px"
+            loading="eager"
+          />
+        </figure>
+      )
+    }
+
+    <SpecsTable game={g} graph={graph} />
+
+    <div class="game__text">
+      <Content />
+    </div>
+
+    <Gallery game={g} />
+    <MiniMap game={g} graph={graph} />
+    <RelationsList game={g} graph={graph} />
+
+    {
+      g.data.sources.length > 0 && (
+        <section class="game__sources">
+          <h2>Источники</h2>
+          <ol>
+            {g.data.sources.map((s) => {
+              const book = bookCitation(s);
+              if (book) {
+                return (
+                  <li class="is-book">
+                    {book}
+                    {s.url && (
+                      <>
+                        {' '}
+                        <a href={s.url} rel="noopener external">
+                          в сети
+                        </a>
+                      </>
+                    )}
+                  </li>
+                );
+              }
+              return (
+                <li>
+                  {s.url ? (
+                    <a href={s.url} rel="noopener external">
+                      {s.title}
+                    </a>
+                  ) : (
+                    s.title
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      )
+    }
+
+    {
+      hasArticle && (
+        <div class="game__readbar" data-pagefind-ignore>
+          <button class="game__readbtn" type="button" data-read-toggle={g.id} aria-pressed="false">
+            <span class="game__readmark" aria-hidden="true">✓</span>
+            <span data-read-label>Отметить прочитанным</span>
+          </button>
+        </div>
+      )
+    }
+
+    {hasArticle && <div data-read-sentinel={g.id} aria-hidden="true" />}
+  </article>
+
+  <NeighborsStrip game={g} graph={graph} />
+</Base>
+
+<style>
+  .game {
+    max-width: var(--article-width);
+  }
+
+  .game__head h1 {
+    margin-bottom: 0.3rem;
+  }
+
+  .game__summary {
+    font-size: 1.08rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .game__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.6rem;
+    margin: 0 0 0.3rem;
+    font-size: 0.85rem;
+    color: var(--c-muted);
+  }
+
+  .game__facts > span {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .game__facts > span + span::before {
+    content: '·';
+    margin-right: 0.6rem;
+  }
+
+  .game__era {
+    gap: 0.35rem;
+    font-weight: 600;
+  }
+
+  .game__era::after {
+    content: '';
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 50%;
+    background: var(--era-accent);
+  }
+
+  .game__alt {
+    margin: 0 0 1rem;
+    font-size: 0.88rem;
+  }
+
+  .game__poster {
+    margin: 0 0 1.5rem;
+  }
+
+  .game__poster :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    filter: var(--photo-filter);
+  }
+
+  .game__text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .game__text :global(table) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .game__sources ol {
+    padding-left: 1.2rem;
+    font-size: 0.92rem;
+  }
+
+  .game__sources li + li {
+    margin-top: 0.35rem;
+  }
+
+  .game__sources li.is-book {
+    line-height: 1.5;
+  }
+
+  .game__readbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2rem 0 0;
+    padding: 0.9rem 1rem;
+    border: var(--rule);
+    border-radius: var(--radius);
+    background: var(--c-surface);
+  }
+
+  .game__readbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font: inherit;
+    font-size: 0.95rem;
+    padding: 0.55rem 1rem;
+    border: var(--rule);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-2);
+    color: var(--c-text);
+    cursor: pointer;
+  }
+
+  .game__readbtn[aria-pressed='true'] {
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+    color: var(--c-on-accent);
+  }
+
+  .game__readmark {
+    opacity: 0.35;
+  }
+
+  .game__readbtn[aria-pressed='true'] .game__readmark {
+    opacity: 1;
+  }
+</style>

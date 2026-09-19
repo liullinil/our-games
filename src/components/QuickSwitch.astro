@@ -1,0 +1,132 @@
+---
+/**
+ * Быстрый переход к машине: подсказки появляются при вводе, данные берутся
+ * из маленького индекса /index.json. Без JS поле работает как ссылка на поиск.
+ */
+import { withBase } from '../lib/paths';
+---
+
+<form
+  class="quick"
+  role="search"
+  action={withBase('/search/')}
+  method="get"
+  data-quick
+  data-index={withBase('/index.json')}
+>
+  <label class="visually-hidden" for="quick-input">Поиск игры</label>
+  <input
+    id="quick-input"
+    class="quick__input"
+    type="search"
+    name="q"
+    placeholder="Поиск: Вангеры, Ил-2, Мор…"
+    autocomplete="off"
+    role="combobox"
+    aria-expanded="false"
+    aria-controls="quick-list"
+    aria-autocomplete="list"
+  />
+  <kbd class="quick__hint" aria-hidden="true">/</kbd>
+  <ul class="quick__list" id="quick-list" role="listbox" hidden></ul>
+</form>
+
+<style>
+  .quick {
+    position: relative;
+    margin-left: auto;
+    flex: 1 1 8rem;
+    max-width: 22rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .quick__input {
+    width: 100%;
+    padding: 0.4rem 2rem 0.4rem 0.7rem;
+    font: inherit;
+    font-size: 0.92rem;
+    color: var(--c-text);
+    background: var(--c-surface-2);
+    border: var(--rule);
+    border-radius: var(--radius-sm);
+    min-height: 2.25rem;
+  }
+
+  .quick__input::placeholder {
+    color: var(--c-muted);
+  }
+
+  .quick__hint {
+    position: absolute;
+    right: 0.5rem;
+    font-size: 0.72rem;
+    color: var(--c-muted);
+    border: var(--rule);
+    border-radius: 4px;
+    padding: 0 0.3rem;
+    pointer-events: none;
+  }
+
+  .quick__input:focus + .quick__hint {
+    display: none;
+  }
+
+  .quick__list {
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    left: 0;
+    right: 0;
+    z-index: 40;
+    margin: 0;
+    padding: 0.25rem;
+    list-style: none;
+    background: var(--c-surface);
+    border: var(--rule);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    max-height: min(60vh, 26rem);
+    overflow-y: auto;
+  }
+
+  .quick__list:empty {
+    display: none;
+  }
+
+  .quick__list :global(li) {
+    margin: 0;
+  }
+
+  .quick__list :global(a) {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: var(--radius-sm);
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  .quick__list :global(li[aria-selected='true'] a),
+  .quick__list :global(a:hover) {
+    background: var(--c-surface-2);
+  }
+
+  .quick__list :global(.quick__years) {
+    margin-left: auto;
+    color: var(--c-muted);
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .quick__list :global(.quick__studio) {
+    color: var(--c-muted);
+    font-size: 0.82rem;
+  }
+
+  @media (max-width: 560px) {
+    .quick__hint {
+      display: none;
+    }
+  }
+</style>

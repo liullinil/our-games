@@ -1,0 +1,65 @@
+title: Советская эпоха
+shortTitle: До 1991
+from: 1970
+to: 1991
+range: до 1991
+description: >-
+  Игры рождались в НИИ и вузах на машинах, которых не было в магазинах: «Тетрис»
+  написан на «Электронике-60» в Вычислительном центре Академии наук, первые
+  домашние программы расходились на кассетах для БК-0010 и клонов ZX Spectrum,
+  а миллионы детей играли в «Ну, погоди!» на карманной «Электронике» и в
+  «Морской бой» в парках. Индустрии ещё нет — есть авторы-одиночки и кооперативы.
+accent: '#2f7d3f'
+band: '#dcd7c4'
+fonts:
+  - file: tektur-700-cyrillic.woff2
+    family: Tektur
+    weight: '700'
+  - file: pt-sans-400-cyrillic.woff2
+    family: PT Sans
+    weight: '400'
+  - file: pt-mono-400-cyrillic.woff2
+    family: PT Mono
+    weight: '400'
+styleNote: >-
+  Оформление в духе советской вычислительной техники: бежевый пластик БК-0010,
+  зелёное свечение люминофора на тёмном экране, машинный шрифт и строчки-полосы
+  развёртки. Заголовки набраны рубленым техно-гротеском, как надписи на
+  корпусах «Электроники».
+motifs:
+  - Электроника-60 и «Тетрис» 1984 года
+  - БК-0010 и кассетный магнитофон
+  - Клоны ZX Spectrum, спаянные дома
+  - «Ну, погоди!» на Электронике ИМ-02
+  - Автомат «Морской бой» в парке
+images:
+  - src: ./soviet/mosam-in-st-petersburg-sea-battle-left.jpg
+    caption: "Автомат «Морской бой» (выпускался с 1974 года) в музее советских игровых автоматов — главный аттракцион дворовых парков и кинотеатров."
+    author: "Museum of Soviet Arcade Machines"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:MoSAM_in_St.Petersburg_(sea_battle_left).jpg"
+  - src: ./soviet/bk0010-01-sideview.jpg
+    caption: "Бытовой компьютер БК-0010 (1985) — самая массовая советская домашняя ЭВМ, на которой играли и учились программировать."
+    author: "Viacheslav Slavinsky"
+    license: "CC BY-SA 3.0"
+    licenseUrl: "http://creativecommons.org/licenses/by-sa/3.0/"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bk0010-01-sideview.jpg"
+  - src: ./soviet/armscii-02-first-armenian-computer-electronika-6.jpg
+    caption: "Терминал ЭВМ «Электроника-60» (1978) — именно на такой машине в 1984 году написан «Тетрис»."
+    author: "Vahram Mekhitarian"
+    license: "CC BY-SA 3.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:ArmSCII_02,_First_Armenian_Computer_-_Electronika_60.jpg"
+  - src: ./soviet/электроника-им-02.jpg
+    caption: "Карманная игра «Электроника ИМ-02» «Ну, погоди!» (1984) — самая узнаваемая советская игрушка, копия японской Game & Watch."
+    author: "Andrey Butko"
+    license: "CC BY-SA 3.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD%D0%B8%D0%BA%D0%B0_%D0%98%D0%9C_02.jpg"
+  - src: ./soviet/byte-cropped.jpg
+    caption: "Самодельный клон ZX Spectrum «Byte», собранный в кооперативе на закате СССР — фирменных компьютеров в продаже не было, их паяли по журнальным схемам."
+    author: "SOVIETQUEER117g"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:BYTE_(cropped).jpg"

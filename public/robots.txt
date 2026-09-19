@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://liullinil.github.io/our-games/sitemap-index.xml

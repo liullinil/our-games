@@ -1,0 +1,64 @@
+/* Двадцатые (с 2020): широкий гротеск, крупные скругления, градиенты и стекло. */
+@import url("../fonts/fonts.css");
+
+html[data-era="twenties"] {
+  --font-display: "Unbounded", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --weight-display: 700;
+  --case-display: none;
+  --tracking-display: -0.02em;
+
+  --c-bg: #f7f6fb;
+  --c-surface: #ffffff;
+  --c-surface-2: #ece9f6;
+  --c-text: #14121c;
+  --c-muted: #625e73;
+  --c-accent: #7c3aed;
+  --c-accent-2: #06b6d4;
+  --c-on-accent: #ffffff;
+  --c-link: #6d28d9;
+  --c-border: #dcd8ea;
+  --c-read: #8f8aa3;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --rule: 1px solid var(--c-border);
+  --rule-strong: 2px solid var(--c-accent);
+  --shadow: 0 2px 6px rgba(20, 18, 28, 0.06), 0 18px 40px rgba(124, 58, 237, 0.12);
+  --shadow-sm: 0 1px 3px rgba(20, 18, 28, 0.08);
+
+  --photo-filter: none;
+  /* Мягкие цветные пятна, как на витринах игровых магазинов. */
+  --texture-bg: radial-gradient(60rem 30rem at 10% -10%, rgba(124, 58, 237, 0.12), transparent 60%),
+    radial-gradient(50rem 30rem at 100% 0%, rgba(6, 182, 212, 0.1), transparent 60%);
+
+  /* Тёмный вариант: почти чёрный с неоновыми акцентами. */
+  --d-bg: #0a0a10;
+  --d-surface: #14141d;
+  --d-surface-2: #1d1d2a;
+  --d-text: #ececf4;
+  --d-muted: #9a97ad;
+  --d-accent: #a78bfa;
+  --d-accent-2: #22d3ee;
+  --d-on-accent: #120b22;
+  --d-link: #c4b5fd;
+  --d-border: #2a2a3a;
+  --d-read: #6f6b85;
+}
+
+html[data-era="twenties"] h1 {
+  background: linear-gradient(90deg, var(--c-accent), var(--c-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+html[data-era="twenties"] .card {
+  background: color-mix(in oklab, var(--c-surface) 82%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+html[data-era="twenties"] .chip {
+  border-radius: 999px;
+}

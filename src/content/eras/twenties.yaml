@@ -1,0 +1,33 @@
+title: Двадцатые
+shortTitle: 2020-е
+from: 2020
+to: null
+range: с 2020
+description: >-
+  Atomic Heart вышел на PlayStation 5 и попал в мировые чарты, «Смута» стала
+  первой большой игрой на государственные деньги, а INDIKA, Loop Hero, Black
+  Book, Potion Craft и Selfloss показали, что независимые команды из Перми,
+  Алма-Аты и Еревана говорят с миром на одном языке. Студии переезжают,
+  меняют юрисдикции и движки: почти всё новое сделано на Unreal Engine 5 и Unity.
+accent: '#7c3aed'
+band: '#ece6fb'
+fonts:
+  - file: unbounded-700-cyrillic.woff2
+    family: Unbounded
+    weight: '700'
+  - file: inter-400-cyrillic.woff2
+    family: Inter
+    weight: '400'
+  - file: inter-600-cyrillic.woff2
+    family: Inter
+    weight: '600'
+styleNote: >-
+  Современная вёрстка: широкий заголовочный гротеск, много воздуха, крупные
+  скругления, мягкие цветные градиенты и стеклянные поверхности; тёмная тема
+  по умолчанию, как у большинства игровых магазинов.
+motifs:
+  - PlayStation 5 и Xbox Series X
+  - Steam Deck и Nintendo Switch OLED
+  - Шлем Meta Quest 2
+  - Видеокарта GeForce RTX и трассировка лучей
+  - VK Play и релокация студий

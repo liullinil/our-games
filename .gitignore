@@ -1,0 +1,25 @@
+# сборка
+dist/
+.astro/
+
+# зависимости
+node_modules/
+
+# логи
+npm-debug.log*
+
+# переменные окружения (там лежит VK_TOKEN)
+.env
+.env.*
+!.env.example
+
+# временные файлы конвейера моделей и медиа
+tmp/
+
+
+# системное
+.DS_Store
+.idea/
+tmp-*.log
+tmp-*.log
+tmp-*.txt

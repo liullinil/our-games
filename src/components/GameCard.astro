@@ -1,0 +1,167 @@
+---
+import { Image } from 'astro:assets';
+import type { Graph, GameNode } from '../lib/graph';
+import { studioNameAt } from '../lib/graph';
+import { gameUrl } from '../lib/paths';
+import { CLASS_LABEL, yearsLabel } from '../lib/labels';
+
+interface Props {
+  game: GameNode;
+  graph: Graph;
+  /** Компактный вид — для плотных списков внутри статьи. */
+  compact?: boolean;
+}
+
+const { game, graph, compact = false } = Astro.props;
+const g = game;
+const studio = graph.studios.get(g.studioId);
+const studioName = studio ? studioNameAt(studio, g.data.years.start) : '';
+const era = graph.eras.get(g.era);
+const hasArticle = g.data.status === 'article';
+const platforms = g.platformIds
+  .map((id) => graph.platforms.get(id))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+const platformLine = platforms
+  .slice(0, 3)
+  .map((p) => p.data.altNames[0] ?? p.data.name)
+  .join(', ') + (platforms.length > 3 ? ` +${platforms.length - 3}` : '');
+---
+
+<li
+  class:list={['game-card', 'hideable', { 'game-card--compact': compact }]}
+  data-game-id={g.id}
+  data-has-article={hasArticle ? '1' : '0'}
+  data-type={g.data.type}
+  data-studio={g.studioId}
+  data-era={g.era}
+  data-country={g.data.country}
+  data-platforms={g.platformIds.join(' ')}
+>
+  <a class="game-card__link" href={gameUrl(g.id)}>
+    <div class="game-card__media">
+      {
+        g.data.poster ? (
+          <Image
+            src={g.data.poster}
+            alt=""
+            widths={[180, 360]}
+            sizes="(max-width: 700px) 45vw, 220px"
+            loading="lazy"
+          />
+        ) : (
+          <span class="game-card__noimage" aria-hidden="true">
+            {g.data.name.replace(/[^\dA-Za-zА-Яа-я]/g, '').slice(0, 3)}
+          </span>
+        )
+      }
+    </div>
+    <div class="game-card__body">
+      <span class="game-card__name">{g.data.name}</span>
+      <span class="game-card__meta">
+        {studioName} · {yearsLabel(g.data.years)}
+      </span>
+      <span class="game-card__meta muted">
+        {CLASS_LABEL[g.data.class]}
+        {platformLine ? ` · ${platformLine}` : ''}
+      </span>
+      {!hasArticle && <span class="game-card__draft">коротко</span>}
+    </div>
+    <span class="badge-read" title="Прочитано">✓</span>
+  </a>
+  {era && <span class="game-card__era" style={`--era-accent:${era.data.accent}`} />}
+</li>
+
+<style>
+  .game-card {
+    position: relative;
+    list-style: none;
+    background: var(--c-surface);
+    border: var(--rule);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  .game-card__link {
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem;
+    color: inherit;
+    text-decoration: none;
+    min-height: 4.5rem;
+  }
+
+  .game-card__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-2);
+  }
+
+  .game-card__media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: var(--photo-filter);
+  }
+
+  .game-card__noimage {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--c-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .game-card__body {
+    display: grid;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+
+  .game-card__name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
+  .game-card__meta {
+    font-size: 0.82rem;
+    color: var(--c-muted);
+  }
+
+  .game-card__draft {
+    font-size: 0.72rem;
+    color: var(--c-muted);
+    border: 1px dashed var(--c-border);
+    border-radius: 999px;
+    padding: 0 0.4rem;
+    justify-self: start;
+    margin-top: 0.15rem;
+  }
+
+  .game-card__era {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--era-accent);
+  }
+
+  .game-card--compact .game-card__link {
+    grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+    min-height: 3.25rem;
+  }
+
+  /* Пиксельный шрифт девяностых широкий: название карточки мельче. */
+  :global(html[data-era='nineties']) .game-card__name {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+</style>

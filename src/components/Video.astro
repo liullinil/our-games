@@ -1,0 +1,168 @@
+---
+/**
+ * Ролик с YouTube, Rutube или VK Видео.
+ *
+ * Проигрыватель не грузится, пока читатель не нажмёт: до этого на странице
+ * лежит превью и кнопка. Иначе три площадки притащили бы в статью три чужих
+ * скрипта и по мегабайту на каждый ролик.
+ *
+ * У YouTube для этого есть готовый lite-youtube: он сам берёт превью и
+ * подменяет себя проигрывателем. Для Rutube и VK такого нет, поэтому превью
+ * и подмену делаем сами — адрес картинки взят из выдачи площадки при поиске.
+ */
+import 'lite-youtube-embed/src/lite-yt-embed.css';
+import { PLATFORM_LABEL, videoUrl, videoEmbedUrl, type VideoItem } from '../lib/video';
+
+interface Props {
+  video: VideoItem;
+}
+
+const { video } = Astro.props;
+const href = videoUrl(video);
+const platform = PLATFORM_LABEL[video.kind];
+const poster = video.kind === 'youtube' ? undefined : video.poster;
+---
+
+<figure class="video">
+  {
+    video.kind === 'youtube' ? (
+      <lite-youtube videoid={video.id} playlabel={`Смотреть: ${video.title}`} params="rel=0">
+        <a class="lty-playbtn" href={href} title={`Смотреть: ${video.title}`}>
+          <span class="lyt-visually-hidden">Смотреть: {video.title}</span>
+        </a>
+      </lite-youtube>
+    ) : (
+      <div class="video__frame" data-video data-src={videoEmbedUrl(video)} data-title={video.title}>
+        {poster ? (
+          <img class="video__poster" src={poster} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+        ) : null}
+        <button class="video__play" type="button" data-video-open>
+          <span class="video__triangle" aria-hidden="true" />
+          <span class="lyt-visually-hidden">Смотреть: {video.title}</span>
+        </button>
+        <span class="video__badge">{platform}</span>
+      </div>
+    )
+  }
+  <figcaption>
+    <a href={href} rel="noopener external">{video.title}</a>
+    <span class="muted">{video.channel ? ` · ${video.channel}` : ''}{` · ${platform}`}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .video {
+    margin: 0;
+  }
+
+  .video figcaption {
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+  }
+
+  .video figcaption a {
+    color: inherit;
+  }
+
+  .video :global(lite-youtube) {
+    border-radius: var(--radius-sm);
+    max-width: 100%;
+  }
+
+  .video__frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    /* Превью грузится лениво, и до него рамка не должна быть дырой. */
+    background: #1c1c20;
+  }
+
+  .video__poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video__play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .video__triangle {
+    width: 68px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(20, 20, 22, 0.75);
+    position: relative;
+    transition: background 0.15s;
+  }
+
+  .video__play:hover .video__triangle,
+  .video__play:focus-visible .video__triangle {
+    background: var(--c-accent);
+  }
+
+  /* Треугольник рисуем рамкой: одна фигура на CSS дешевле любого файла. */
+  .video__triangle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-42%, -50%);
+    border-style: solid;
+    border-width: 10px 0 10px 17px;
+    border-color: transparent transparent transparent #fff;
+  }
+
+  .video__badge {
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: var(--radius-sm);
+    background: rgba(20, 20, 22, 0.7);
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+  }
+
+  .video__frame :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
+<script>
+  import 'lite-youtube-embed';
+
+  /*
+   * Подмена одна на страницу: роликов в статье бывает несколько, а слушателей
+   * на каждый вешать незачем.
+   */
+  document.addEventListener('click', (event) => {
+    const button = (event.target as HTMLElement)?.closest?.('[data-video-open]');
+    if (!button) return;
+    const frame = button.closest('[data-video]') as HTMLElement | null;
+    const src = frame?.dataset.src;
+    if (!frame || !src) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.title = frame.dataset.title ?? 'Видео';
+    iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.loading = 'lazy';
+    frame.replaceChildren(iframe);
+  });
+</script>

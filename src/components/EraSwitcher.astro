@@ -1,0 +1,44 @@
+---
+/** Предпросмотр темы другой эпохи. Выбор запоминается в браузере. */
+import { getGraph } from '../lib/graph';
+
+const graph = await getGraph();
+---
+
+<form class="era-switch" data-era-switch>
+  <label for="era-select">Оформление эпохи</label>
+  <select id="era-select" name="era" data-era-select>
+    <option value="">как у страницы</option>
+    {
+      graph.eraList.map((era) => (
+        <option value={era.id}>
+          {era.data.shortTitle} ({era.data.range})
+        </option>
+      ))
+    }
+  </select>
+</form>
+
+<style>
+  .era-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--c-muted);
+  }
+
+  .era-switch select {
+    font: inherit;
+    padding: 0.3rem 0.5rem;
+    color: var(--c-text);
+    background: var(--c-surface-2);
+    border: var(--rule);
+    border-radius: var(--radius-sm);
+  }
+</style>
+
+<script>
+  import '../scripts/era-switch';
+</script>

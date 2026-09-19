@@ -1,0 +1,140 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getGraph, studioShort } from '../../lib/graph';
+import { engineUrl, gameUrl } from '../../lib/paths';
+import { ENGINE_ORIGIN_LABEL } from '../../lib/labels';
+
+const graph = await getGraph();
+const own = graph.engineList.filter((e) => e.data.origin === 'inhouse');
+const foreign = graph.engineList.filter((e) => e.data.origin !== 'inhouse');
+
+const block = (list: typeof graph.engineList) =>
+  list.map((e) => {
+    const dev = e.data.developer ? graph.studios.get(e.data.developer.id) : null;
+    return { e, dev };
+  });
+---
+
+<Base
+  title="Движки"
+  description="Игровые движки отечественных студий и лицензированные технологии: X-Ray, 4A Engine, Dagor, TheEngine, Unity, Unreal Engine — и игры, сделанные на них."
+>
+  <h1>Движки</h1>
+  <p class="lead">
+    Движок обычно живёт дольше игры и переходит от проекта к проекту: на X-Ray сделана вся трилогия
+    S.T.A.L.K.E.R., TheEngine связывает «Космических рейнджеров 2» с King’s Bounty, а Dagor Engine —
+    «Ил-2 Штурмовик: Крылатые хищники» с War Thunder. По странице движка видно, какие игры роднит общая
+    технология.
+  </p>
+
+  <h2>Собственные движки студий</h2>
+  <ul class="engines">
+    {
+      block(own).map(({ e, dev }) => (
+        <li class="card engine">
+          <a href={engineUrl(e.id)}>
+            <span class="engine__name">{e.data.name}</span>
+            <span class="muted">
+              {dev ? studioShort(dev) : e.data.maker ?? ''}
+              {e.data.years.start ? ` · с ${e.data.years.start}` : ''}
+              {e.data.years.end ? ` по ${e.data.years.end}` : ''}
+            </span>
+            <span class="muted engine__summary">{e.data.summary}</span>
+          </a>
+          <ul class="engine__games">
+            {e.gameIds.map((id) => {
+              const g = graph.games.get(id)!;
+              return (
+                <li>
+                  <a class="chip" href={gameUrl(id)} data-game-id={id} data-has-article={g.data.status === 'article' ? '1' : '0'}>
+                    {g.data.name}
+                    <span class="badge-read">✓</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>Лицензированные и открытые движки</h2>
+  <p class="muted">
+    Технологии, сделанные не здесь, но на которых стоит заметная часть отечественных игр.
+  </p>
+  <ul class="engines">
+    {
+      block(foreign).map(({ e, dev }) => (
+        <li class="card engine">
+          <a href={engineUrl(e.id)}>
+            <span class="engine__name">{e.data.name}</span>
+            <span class="muted">
+              {dev ? studioShort(dev) : e.data.maker ?? ''} · {ENGINE_ORIGIN_LABEL[e.data.origin]}
+              {e.data.years.start ? ` · с ${e.data.years.start}` : ''}
+            </span>
+            <span class="muted engine__summary">{e.data.summary}</span>
+          </a>
+          <ul class="engine__games">
+            {e.gameIds.map((id) => {
+              const g = graph.games.get(id)!;
+              return (
+                <li>
+                  <a class="chip" href={gameUrl(id)} data-game-id={id} data-has-article={g.data.status === 'article' ? '1' : '0'}>
+                    {g.data.name}
+                    <span class="badge-read">✓</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
+
+<style>
+  .lead {
+    max-width: 44rem;
+  }
+
+  .engines {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    list-style: none;
+  }
+
+  .engine {
+    padding: 0.9rem 1rem;
+  }
+
+  .engine > a {
+    display: grid;
+    gap: 0.1rem;
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.88rem;
+  }
+
+  .engine__name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1.05rem;
+  }
+
+  .engine__summary {
+    max-width: 50rem;
+  }
+
+  .engine__games {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    list-style: none;
+    padding: 0;
+    margin: 0.6rem 0 0;
+  }
+</style>

@@ -1,0 +1,174 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import GameCard from '../../components/GameCard.astro';
+import { getGraph, studioShort } from '../../lib/graph';
+import { studioUrl, withBase } from '../../lib/paths';
+import { ENGINE_ORIGIN_LABEL, nGames } from '../../lib/labels';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const graph = await getGraph();
+  return graph.engineList.map((e) => ({ params: { id: e.id }, props: { engineId: e.id } }));
+};
+
+const { engineId } = Astro.props as { engineId: string };
+const graph = await getGraph();
+const engine = graph.engines.get(engineId)!;
+const { Content } = await render(engine.entry);
+const dev = engine.data.developer ? graph.studios.get(engine.data.developer.id) : null;
+const games = engine.gameIds.map((id) => graph.games.get(id)!);
+const era = games[0]?.era ?? 'site';
+---
+
+<Base title={`Движок ${engine.data.name}`} description={engine.data.summary} era={era}>
+  <nav class="crumbs-mini">
+    <a href={withBase('/engines/')}>Движки</a> › <span>{engine.data.name}</span>
+  </nav>
+
+  <article data-pagefind-body>
+    <h1 data-pagefind-meta="title">{engine.data.name}</h1>
+    <p class="lead">{engine.data.summary}</p>
+
+    <dl class="engine-specs card">
+      <div>
+        <dt>Происхождение</dt>
+        <dd>{ENGINE_ORIGIN_LABEL[engine.data.origin]}</dd>
+      </div>
+      {
+        (dev || engine.data.maker) && (
+          <div>
+            <dt>Разработчик</dt>
+            <dd>{dev ? <a href={studioUrl(dev.id)}>{studioShort(dev)}</a> : engine.data.maker}</dd>
+          </div>
+        )
+      }
+      {
+        engine.data.tech && (
+          <div>
+            <dt>Технологии</dt>
+            <dd>{engine.data.tech}</dd>
+          </div>
+        )
+      }
+      {
+        (engine.data.years.start || engine.data.years.end) && (
+          <div>
+            <dt>Годы</dt>
+            <dd>
+              {engine.data.years.start ?? '?'}
+              {engine.data.years.end ? `–${engine.data.years.end}` : ' — н. в.'}
+            </dd>
+          </div>
+        )
+      }
+      {
+        engine.data.basedOn && (
+          <div>
+            <dt>На основе</dt>
+            <dd>{engine.data.basedOn}</dd>
+          </div>
+        )
+      }
+      {
+        engine.data.altNames.length > 0 && (
+          <div>
+            <dt>Другие названия</dt>
+            <dd>{engine.data.altNames.join(', ')}</dd>
+          </div>
+        )
+      }
+      {
+        engine.data.website && (
+          <div>
+            <dt>Сайт</dt>
+            <dd>
+              <a href={engine.data.website} rel="noopener external">
+                {engine.data.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+              </a>
+            </dd>
+          </div>
+        )
+      }
+    </dl>
+
+    <Content />
+  </article>
+
+  <section data-pagefind-ignore>
+    <div class="section-title">
+      <h2>Игры на этом движке</h2>
+      <span class="muted" data-progress data-progress-scope="#engine-games"></span>
+    </div>
+    <p class="muted">{nGames(games.length)}</p>
+    <ul class="grid-cards" id="engine-games">
+      {games.map((g) => <GameCard game={g} graph={graph} />)}
+    </ul>
+  </section>
+
+  {
+    engine.data.sources.length > 0 && (
+      <section data-pagefind-ignore>
+        <h2>Источники</h2>
+        <ol class="sources">
+          {engine.data.sources.map((s) => (
+            <li>
+              {s.url ? (
+                <a href={s.url} rel="noopener external">
+                  {s.title}
+                </a>
+              ) : (
+                s.title
+              )}
+            </li>
+          ))}
+        </ol>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .crumbs-mini {
+    margin: 0.75rem 0 0.25rem;
+    font-size: 0.88rem;
+    color: var(--c-muted);
+  }
+
+  .lead {
+    max-width: 40rem;
+    font-size: 1.05rem;
+  }
+
+  .engine-specs {
+    padding: 0.75rem 1rem;
+    margin: 1.25rem 0;
+    display: grid;
+  }
+
+  .engine-specs > div {
+    display: grid;
+    grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+    gap: 0.5rem 1rem;
+    padding: 0.35rem 0;
+    border-top: var(--rule);
+  }
+
+  .engine-specs > div:first-child {
+    border-top: 0;
+  }
+
+  .engine-specs dt {
+    color: var(--c-muted);
+    font-size: 0.88rem;
+  }
+
+  .engine-specs dd {
+    margin: 0;
+  }
+
+  .sources {
+    padding-left: 1.2rem;
+    font-size: 0.92rem;
+  }
+</style>

@@ -1,0 +1,195 @@
+---
+/**
+ * Полоса быстрых переходов: предшественник слева, продолжение справа
+ * (на десктопе работают клавиши ← и →), между ними — чипы родственных игр.
+ */
+import type { Graph, GameNode } from '../lib/graph';
+import { sharingEngines, sharingPublishers, sharingPlatforms } from '../lib/graph';
+import { gameUrl } from '../lib/paths';
+import { yearsLabel } from '../lib/labels';
+
+interface Props {
+  game: GameNode;
+  graph: Graph;
+}
+
+const { game: g, graph } = Astro.props;
+
+const prevId = g.predecessors[0] ?? g.basedOnGames[0] ?? g.variantOf[0] ?? null;
+const nextId = g.successors[0] ?? g.basedOnBy[0] ?? g.expansions[0] ?? null;
+const prev = prevId ? graph.games.get(prevId) : null;
+const next = nextId ? graph.games.get(nextId) : null;
+
+const pick = (ids: string[], limit: number) =>
+  ids
+    .slice(0, limit)
+    .map((id) => graph.games.get(id)!)
+    .filter(Boolean);
+
+const skip = new Set([g.id, prevId, nextId].filter(Boolean) as string[]);
+const byEngine = pick(sharingEngines(graph, g.id).filter((id) => !skip.has(id)), 3);
+const byPublisher = pick(sharingPublishers(graph, g.id).filter((id) => !skip.has(id)), 3);
+const byPlatform = pick(sharingPlatforms(graph, g.id).filter((id) => !skip.has(id)), 3);
+const sameStudio = pick(
+  (graph.studios.get(g.studioId)?.gameIds ?? []).filter((id) => !skip.has(id)),
+  3,
+);
+const sameEra = pick(
+  graph.gameList
+    .filter((x) => x.era === g.era && x.id !== g.id && x.studioId !== g.studioId)
+    .map((x) => x.id),
+  3,
+);
+
+const chip = (x: GameNode) => ({
+  href: gameUrl(x.id),
+  id: x.id,
+  name: x.data.name,
+  article: x.data.status === 'article' ? '1' : '0',
+});
+const rows = [
+  { label: 'Та же студия:', items: sameStudio.map(chip) },
+  { label: 'Тот же движок:', items: byEngine.map(chip) },
+  { label: 'Тот же издатель:', items: byPublisher.map(chip) },
+  { label: 'Та же платформа:', items: byPlatform.map(chip) },
+  { label: 'Та же эпоха:', items: sameEra.map(chip) },
+].filter((r) => r.items.length > 0);
+---
+
+<nav class="neighbors" data-neighbors aria-label="Соседние игры" data-pagefind-ignore>
+  <div class="neighbors__row">
+    {
+      prev ? (
+        <a class="neighbors__side" href={gameUrl(prev.id)} data-neighbor="prev" rel="prev">
+          <span class="neighbors__arrow" aria-hidden="true">←</span>
+          <span>
+            <span class="neighbors__label">Предшественник</span>
+            <span class="neighbors__name">{prev.data.name}</span>
+            <span class="muted">{yearsLabel(prev.data.years)}</span>
+          </span>
+        </a>
+      ) : (
+        <span class="neighbors__side neighbors__side--empty" />
+      )
+    }
+    {
+      next ? (
+        <a class="neighbors__side neighbors__side--next" href={gameUrl(next.id)} data-neighbor="next" rel="next">
+          <span>
+            <span class="neighbors__label">Продолжение</span>
+            <span class="neighbors__name">{next.data.name}</span>
+            <span class="muted">{yearsLabel(next.data.years)}</span>
+          </span>
+          <span class="neighbors__arrow" aria-hidden="true">→</span>
+        </a>
+      ) : (
+        <span class="neighbors__side neighbors__side--empty" />
+      )
+    }
+  </div>
+
+  {
+    rows.length > 0 && (
+      <div class="neighbors__chips scroll-x">
+        {rows.map((row) => (
+          <>
+            <span class="neighbors__chipsLabel">{row.label}</span>
+            {row.items.map((x) => (
+              <a class="chip" href={x.href} data-game-id={x.id} data-has-article={x.article}>
+                {x.name}
+                <span class="badge-read">✓</span>
+              </a>
+            ))}
+          </>
+        ))}
+      </div>
+    )
+  }
+</nav>
+
+<style>
+  .neighbors {
+    margin: 2rem 0 1rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .neighbors__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .neighbors__side {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.8rem;
+    border: var(--rule);
+    border-radius: var(--radius);
+    background: var(--c-surface);
+    color: inherit;
+    text-decoration: none;
+    min-height: 3.5rem;
+  }
+
+  .neighbors__side--next {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .neighbors__side--empty {
+    border-style: dashed;
+    opacity: 0.35;
+  }
+
+  .neighbors__side span {
+    display: block;
+  }
+
+  .neighbors__arrow {
+    font-size: 1.2rem;
+    color: var(--c-accent);
+    flex: none;
+  }
+
+  .neighbors__label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--c-muted);
+  }
+
+  .neighbors__name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+  }
+
+  .neighbors__chips {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding-bottom: 0.25rem;
+    white-space: nowrap;
+  }
+
+  .neighbors__chipsLabel {
+    font-size: 0.8rem;
+    color: var(--c-muted);
+    flex: none;
+    margin-left: 0.4rem;
+  }
+
+  .neighbors__chipsLabel:first-child {
+    margin-left: 0;
+  }
+
+  @media (max-width: 560px) {
+    .neighbors__row {
+      grid-template-columns: 1fr;
+    }
+    .neighbors__side--empty {
+      display: none;
+    }
+  }
+</style>

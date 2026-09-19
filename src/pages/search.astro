@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import PagefindConfig from 'astro-pagefind/components/PagefindConfig.astro';
+
+// Индекс Pagefind знает адреса без подпути сайта, поэтому base-url
+// подставляется отдельно — иначе ссылки в выдаче ведут мимо /our-games/.
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<Base
+  title="Поиск"
+  description="Поиск по статьям энциклопедии: игры, студии, движки, платформы."
+>
+  <h1>Поиск</h1>
+  <p class="lead">
+    Ищет по текстам статей с учётом русской морфологии: «рейнджеров» найдут
+    «Космических рейнджеров». Быстрый переход к игре по названию есть и в строке наверху.
+  </p>
+
+  <PagefindConfig lang="ru" base-url={base} />
+  <pagefind-searchbox>
+    <pagefind-input placeholder="Например: Чернобыль, квест, Пажитнов"></pagefind-input>
+    <pagefind-filter-pane></pagefind-filter-pane>
+    <pagefind-summary></pagefind-summary>
+    <pagefind-results></pagefind-results>
+  </pagefind-searchbox>
+</Base>
+
+<style>
+  .lead {
+    max-width: 40rem;
+  }
+
+  pagefind-searchbox {
+    display: block;
+    margin-top: 1rem;
+    --pf-color-primary: var(--c-accent);
+    --pf-color-text: var(--c-text);
+    --pf-color-muted: var(--c-muted);
+    --pf-color-background: var(--c-surface);
+    --pf-color-border: var(--c-border);
+    --pf-radius: var(--radius-sm);
+    --pf-font: var(--font-body);
+  }
+</style>

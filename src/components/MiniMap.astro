@@ -1,0 +1,372 @@
+---
+/**
+ * Место игры на карте связей — тем же способом, что и сама карта: по
+ * горизонтали годы, каждая карточка тянется от начала выпуска до конца.
+ * Строки — виды родства, игра страницы выделена.
+ *
+ * Раскрывается на месте, без перехода на другую страницу; соседи — ссылки,
+ * так что от игры к игре можно идти прямо отсюда.
+ */
+import type { Graph, GameNode } from '../lib/graph';
+import { packLanes, edgePath, type LayoutItem } from '../lib/layout';
+import { gameUrl, withBase } from '../lib/paths';
+import { yearsLabel } from '../lib/labels';
+import { REL_KINDS, REL_LABEL, neighboursOf, type RelKind } from '../lib/relations';
+
+interface Props {
+  game: GameNode;
+  graph: Graph;
+}
+
+const { game: v, graph } = Astro.props;
+
+const YEAR_W = 8;
+const LANE_H = 22;
+const NODE_H = 15;
+const ROW_GAP = 10;
+const TOP_H = 20;
+const CHAR_W = 5.8;
+const PER_KIND = 12;
+
+const thisYear = new Date().getFullYear();
+const near = neighboursOf(graph, v.id);
+
+/**
+ * Соседей у иной игры четыре десятка — все в мини-карту не влезут.
+ * Оставляем ближайших по годам: именно они и есть окружение игры.
+ */
+const pick = (ids: string[]) =>
+  [...ids]
+    .sort(
+      (a, b) =>
+        Math.abs(graph.games.get(a)!.data.years.start - v.data.years.start) -
+        Math.abs(graph.games.get(b)!.data.years.start - v.data.years.start),
+    )
+    .slice(0, PER_KIND);
+
+const rows = REL_KINDS.map((kind) => ({
+  kind,
+  label: REL_LABEL[kind],
+  total: near[kind].length,
+  ids: pick(near[kind]),
+})).filter((r) => r.ids.length > 0);
+
+const endYear = (x: GameNode) => (x.data.years.end === null ? thisYear : (x.data.years.end ?? x.data.years.start));
+const labelWidth = (name: string) => Math.max(34, name.length * CHAR_W + 10);
+
+const items: LayoutItem[] = [];
+for (const row of rows) {
+  for (const id of row.ids) {
+    const x = graph.games.get(id)!;
+    items.push({
+      id: `${row.kind}:${id}`,
+      start: x.data.years.start,
+      end: endYear(x),
+      group: row.kind,
+      labelYears: Math.ceil(labelWidth(x.data.name) / YEAR_W),
+    });
+  }
+}
+items.push({
+  id: `self:${v.id}`,
+  start: v.data.years.start,
+  end: endYear(v),
+  group: '__self',
+  labelYears: Math.ceil(labelWidth(v.data.name) / YEAR_W),
+});
+
+const layout = packLanes(items, {
+  gapYears: 1,
+  groupOrder: ['__self', ...rows.map((r) => r.kind)],
+});
+
+const MIN_YEAR = Math.min(...items.map((i) => i.start)) - 1;
+const MAX_YEAR = Math.max(...items.map((i) => Math.max(i.end, i.start + (i.labelYears ?? 0)))) + 1;
+
+const groupTops = new Map<string, number>();
+let y = TOP_H;
+for (const g of layout.groups) {
+  groupTops.set(g.group, y);
+  y += g.lanes * LANE_H + ROW_GAP;
+}
+const HEIGHT = y;
+const LABEL_W = 92;
+const WIDTH = LABEL_W + (MAX_YEAR - MIN_YEAR) * YEAR_W + 12;
+const xOf = (year: number) => LABEL_W + (year - MIN_YEAR) * YEAR_W;
+
+interface Placed {
+  key: string;
+  id: string;
+  x: number;
+  y: number;
+  w: number;
+  cy: number;
+  kind: string;
+}
+const placed: Placed[] = layout.items.map((item) => {
+  const id = item.id.slice(item.id.indexOf(':') + 1);
+  const node = graph.games.get(id)!;
+  const x = xOf(item.start);
+  return {
+    key: item.id,
+    id,
+    x,
+    y: groupTops.get(item.group)! + item.lane * LANE_H + (LANE_H - NODE_H) / 2,
+    w: Math.max(labelWidth(node.data.name), xOf(endYear(node)) - x),
+    cy: groupTops.get(item.group)! + item.lane * LANE_H + LANE_H / 2,
+    kind: item.group,
+  };
+});
+
+const self = placed.find((p) => p.key === `self:${v.id}`)!;
+const edges = placed
+  .filter((p) => p.key !== self.key)
+  .map((p) => {
+    const [l, r] = p.x <= self.x ? [p, self] : [self, p];
+    return { kind: p.kind, d: edgePath(l.x + l.w, l.cy, r.x, r.cy) };
+  });
+
+const decades: number[] = [];
+for (let d = Math.ceil(MIN_YEAR / 10) * 10; d <= MAX_YEAR; d += 10) decades.push(d);
+
+const rowLabel = (kind: string) =>
+  kind === '__self' ? v.data.name : (REL_LABEL[kind as RelKind] ?? kind);
+---
+
+{
+  rows.length > 0 && (
+    <section class="minimap" data-minimap data-pagefind-ignore>
+      <div class="minimap__head">
+        <h2>Место на карте связей</h2>
+        <a class="minimap__full" href={`${withBase('/graph/')}#${v.id}`}>
+          Вся карта →
+        </a>
+      </div>
+
+      <div class="minimap__frame" data-minimap-frame>
+        <div class="minimap__scroll">
+          <svg
+            class="minimap__svg"
+            width={WIDTH}
+            height={HEIGHT}
+            viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+            role="img"
+            aria-label={`Связи игры ${v.data.name}`}
+          >
+            <g class="minimap__grid">
+              {decades.map((d) => (
+                <>
+                  <line x1={xOf(d)} y1={14} x2={xOf(d)} y2={HEIGHT} class="minimap__gridline" />
+                  <text x={xOf(d)} y={10} class="minimap__year" text-anchor="middle">
+                    {d}
+                  </text>
+                </>
+              ))}
+            </g>
+
+            <g class="minimap__rows">
+              {layout.groups.map((g) => (
+                <text x={0} y={groupTops.get(g.group)! + 11} class="minimap__rowname">
+                  {rowLabel(g.group)}
+                </text>
+              ))}
+            </g>
+
+            <g class="minimap__edges">
+              {edges.map((e) => (
+                <path d={e.d} class={`minimap__edge minimap__edge--${e.kind}`} />
+              ))}
+            </g>
+
+            <g class="minimap__nodes">
+              {placed.map((p) => {
+                const node = graph.games.get(p.id)!;
+                const era = graph.eras.get(node.era)!;
+                if (p.key === self.key) {
+                  return (
+                    <g class="minimap__node minimap__node--self">
+                      <rect x={p.x} y={p.y} width={p.w} height={NODE_H} rx="3" fill={era.data.accent} />
+                      <text x={p.x + 5} y={p.y + 11}>
+                        {node.data.name}
+                      </text>
+                    </g>
+                  );
+                }
+                return (
+                  <a
+                    class="minimap__node"
+                    href={gameUrl(p.id)}
+                    data-game-id={p.id}
+                    data-has-article={node.data.status === 'article' ? '1' : '0'}
+                  >
+                    <rect x={p.x} y={p.y} width={p.w} height={NODE_H} rx="3" fill={era.data.accent} />
+                    <text x={p.x + 5} y={p.y + 11}>
+                      {node.data.name}
+                    </text>
+                    <title>
+                      {node.data.name} · {yearsLabel(node.data.years)}
+                    </title>
+                  </a>
+                );
+              })}
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="minimap__foot">
+        <button class="chip" type="button" data-minimap-toggle aria-expanded="false">
+          Развернуть
+        </button>
+        {rows
+          .filter((r) => r.total > r.ids.length)
+          .map((r) => (
+            <span class="muted minimap__more">
+              {r.label.toLowerCase()}: показаны {r.ids.length} из {r.total}
+            </span>
+          ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .minimap {
+    margin: 2rem 0 1.5rem;
+  }
+
+  .minimap__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .minimap__head h2 {
+    margin: 0;
+  }
+
+  .minimap__full {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .minimap__frame {
+    margin-top: 0.6rem;
+    border: var(--rule);
+    border-radius: var(--radius);
+    background: var(--c-surface);
+    /* Свёрнутая карта показывает верхние строки и обрезает остальное. */
+    max-height: 11rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .minimap.is-open .minimap__frame {
+    max-height: none;
+  }
+
+  .minimap__frame::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2.5rem;
+    background: linear-gradient(transparent, var(--c-surface));
+    pointer-events: none;
+  }
+
+  .minimap.is-open .minimap__frame::after {
+    display: none;
+  }
+
+  .minimap__scroll {
+    overflow-x: auto;
+    padding: 0.4rem 0.5rem 0.6rem;
+  }
+
+  .minimap__svg {
+    display: block;
+    max-width: none;
+    font-series: var(--font-body);
+  }
+
+  .minimap__year {
+    font-size: 8.5px;
+    fill: var(--c-muted);
+  }
+
+  .minimap__gridline {
+    stroke: var(--c-border);
+    opacity: 0.4;
+  }
+
+  .minimap__rowname {
+    font-size: 9px;
+    font-weight: 700;
+    fill: var(--c-muted);
+    font-series: var(--font-display);
+  }
+
+  .minimap__edge {
+    fill: none;
+    stroke: var(--c-border);
+    stroke-width: 1.2;
+  }
+
+  .minimap__edge--basedOn {
+    stroke-dasharray: 4 3;
+  }
+
+  .minimap__edge--engine {
+    stroke-dasharray: 5 4;
+  }
+
+  .minimap__edge--publisher {
+    stroke-dasharray: 1 4;
+    stroke-linecap: round;
+  }
+
+  .minimap__node text {
+    font-size: 9.5px;
+    fill: #fff;
+    paint-order: stroke;
+    stroke: rgba(0, 0, 0, 0.4);
+    stroke-width: 2px;
+  }
+
+  .minimap__node[data-has-article='0'] rect {
+    opacity: 0.5;
+  }
+
+  .minimap__node:hover rect {
+    stroke: var(--c-text);
+    stroke-width: 2;
+  }
+
+  .minimap__node--self rect {
+    stroke: var(--c-text);
+    stroke-width: 2;
+  }
+
+  .minimap__foot {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+  }
+</style>
+
+<script>
+  for (const map of document.querySelectorAll<HTMLElement>('[data-minimap]')) {
+    const button = map.querySelector<HTMLButtonElement>('[data-minimap-toggle]');
+    button?.addEventListener('click', () => {
+      const open = map.classList.toggle('is-open');
+      button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      button.textContent = open ? 'Свернуть' : 'Развернуть';
+    });
+  }
+</script>

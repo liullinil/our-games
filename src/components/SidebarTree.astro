@@ -1,0 +1,202 @@
+---
+/**
+ * Дерево каталога: студия → серия → игра. Ветка текущей игры раскрыта
+ * при сборке, поэтому работает и без JS.
+ */
+import type { Graph } from '../lib/graph';
+import { studioShort, treeByType } from '../lib/graph';
+import { studioUrl, gameUrl, catalogUrl } from '../lib/paths';
+import { TYPE_LABEL } from '../lib/labels';
+
+interface Props {
+  graph: Graph;
+  type: string;
+  currentId?: string;
+  /** Заголовок над деревом. */
+  heading?: string;
+}
+
+const { graph, type, currentId, heading } = Astro.props;
+const studios = treeByType(graph, type);
+
+const current = currentId ? graph.games.get(currentId) : null;
+const openStudio = current?.studioId;
+const openSeries = current?.seriesId;
+
+const item = (id: string) => {
+  const x = graph.games.get(id)!;
+  return { id, name: x.data.name, article: x.data.status === 'article' };
+};
+---
+
+<nav class="tree" aria-label={`Каталог: ${TYPE_LABEL[type] ?? type}`}>
+  <div class="tree__head">
+    <a href={catalogUrl(type)}>{TYPE_LABEL[type] ?? type}</a>
+    <span class="muted tree__count" data-progress data-progress-scope=".tree"></span>
+  </div>
+  {heading && <p class="tree__heading muted">{heading}</p>}
+
+  <ul class="tree__studios">
+    {
+      studios.map((studio) => (
+        <li>
+          <details open={studio.studio.id === openStudio}>
+            <summary>
+              <span>{studioShort(studio.studio)}</span>
+              <span class="muted tree__num">{studio.total}</span>
+            </summary>
+            <ul>
+              {studio.series.map((s) => (
+                <li>
+                  <details open={s.series.id === openSeries}>
+                    <summary>
+                      <span>{s.series.data.name}</span>
+                      <span class="muted tree__num">{s.gameIds.length}</span>
+                    </summary>
+                    <ul>
+                      {s.gameIds.map((id) => {
+                        const it = item(id);
+                        return (
+                          <li class="hideable" data-game-id={it.id} data-has-article={it.article ? '1' : '0'}>
+                            <a class="tree-link" href={gameUrl(it.id)} aria-current={it.id === currentId ? 'page' : undefined}>
+                              {it.name}
+                            </a>
+                            <span class="badge-read">✓</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </details>
+                </li>
+              ))}
+              {studio.gameIds.map((id) => {
+                const it = item(id);
+                return (
+                  <li class="hideable" data-game-id={it.id} data-has-article={it.article ? '1' : '0'}>
+                    <a class="tree-link" href={gameUrl(it.id)} aria-current={it.id === currentId ? 'page' : undefined}>
+                      {it.name}
+                    </a>
+                    <span class="badge-read">✓</span>
+                  </li>
+                );
+              })}
+              <li class="tree__more">
+                <a href={studioUrl(studio.studio.id)}>О студии →</a>
+              </li>
+            </ul>
+          </details>
+        </li>
+      ))
+    }
+  </ul>
+
+  <label class="tree__filter">
+    <input type="checkbox" data-hide-read />
+    скрыть прочитанные
+  </label>
+</nav>
+
+<style>
+  .tree__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: var(--rule);
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+  }
+
+  .tree__head a {
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  .tree__count {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.75rem;
+  }
+
+  .tree__heading {
+    margin: 0 0 0.5rem;
+    font-size: 0.82rem;
+  }
+
+  .tree ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tree ul ul {
+    padding-left: 0.75rem;
+    border-left: var(--rule);
+    margin-left: 0.25rem;
+  }
+
+  .tree summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    padding: 0.25rem 0.2rem;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .tree summary:hover {
+    background: var(--c-surface-2);
+  }
+
+  .tree__num {
+    font-size: 0.72rem;
+  }
+
+  .tree li {
+    display: block;
+  }
+
+  .tree li[data-game-id] {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .tree-link {
+    display: block;
+    padding: 0.2rem 0.2rem;
+    color: var(--c-text);
+    text-decoration: none;
+    border-radius: 4px;
+    flex: 1;
+  }
+
+  .tree-link:hover {
+    background: var(--c-surface-2);
+  }
+
+  .tree-link[aria-current='page'] {
+    color: var(--c-accent);
+    font-weight: 600;
+  }
+
+  .tree__more {
+    padding: 0.3rem 0.2rem;
+    font-size: 0.82rem;
+  }
+
+  .tree__filter {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: var(--rule);
+    font-size: 0.82rem;
+    color: var(--c-muted);
+    cursor: pointer;
+  }
+</style>

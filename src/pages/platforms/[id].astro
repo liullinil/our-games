@@ -1,0 +1,159 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import GameCard from '../../components/GameCard.astro';
+import { getGraph, eraForYear } from '../../lib/graph';
+import { withBase } from '../../lib/paths';
+import { COUNTRY_LABEL, PLATFORM_KIND_LABEL, nGames } from '../../lib/labels';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const graph = await getGraph();
+  return graph.platformList.map((p) => ({ params: { id: p.id }, props: { platformId: p.id } }));
+};
+
+const { platformId } = Astro.props as { platformId: string };
+const graph = await getGraph();
+const platform = graph.platforms.get(platformId)!;
+const { Content } = await render(platform.entry);
+const games = platform.gameIds.map((id) => graph.games.get(id)!);
+// Тема страницы — эпоха появления платформы: Dendy читается в девяностых.
+const era = eraForYear(platform.data.years.start, graph.eraList);
+const credits = platform.data.photoCredits;
+---
+
+<Base title={platform.data.name} description={platform.data.summary} era={era}>
+  <nav class="crumbs-mini">
+    <a href={withBase('/platforms/')}>Платформы</a> › <span>{platform.data.name}</span>
+  </nav>
+
+  <article data-pagefind-body class="platform">
+    <header class="platform__head">
+      <div>
+        <h1 data-pagefind-meta="title">{platform.data.name}</h1>
+        <p class="lead">{platform.data.summary}</p>
+        <p class="muted">
+          {PLATFORM_KIND_LABEL[platform.data.kind]}
+          {platform.data.maker ? ` · ${platform.data.maker}` : ''} · {COUNTRY_LABEL[platform.data.country]} ·{' '}
+          {platform.data.years.start}
+          {platform.data.years.end ? `–${platform.data.years.end}` : ' — н. в.'}
+        </p>
+        {platform.data.altNames.length > 0 && <p class="muted">Также: {platform.data.altNames.join(', ')}</p>}
+      </div>
+      {
+        platform.data.photo && (
+          <figure class="platform__photo">
+            <Image src={platform.data.photo} alt={platform.data.photoCaption ?? platform.data.name} widths={[360, 720]} sizes="(max-width: 700px) 100vw, 360px" loading="eager" />
+            <figcaption class="muted">
+              {platform.data.photoCaption ?? platform.data.name}
+              {credits && (
+                <>
+                  {'. Фото: '}
+                  {credits.author}
+                  {', '}
+                  {credits.licenseUrl ? (
+                    <a href={credits.licenseUrl} rel="license noopener">
+                      {credits.license}
+                    </a>
+                  ) : (
+                    credits.license
+                  )}
+                  {', '}
+                  <a href={credits.sourceUrl} rel="noopener external">
+                    Викисклад
+                  </a>
+                </>
+              )}
+            </figcaption>
+          </figure>
+        )
+      }
+    </header>
+
+    <div class="platform__text">
+      <Content />
+    </div>
+  </article>
+
+  <section data-pagefind-ignore>
+    <div class="section-title">
+      <h2>Игры на этой платформе</h2>
+      <span class="muted" data-progress data-progress-scope="#platform-games"></span>
+    </div>
+    <p class="muted">{nGames(games.length)}</p>
+    <ul class="grid-cards" id="platform-games">
+      {games.map((g) => <GameCard game={g} graph={graph} />)}
+    </ul>
+  </section>
+
+  {
+    platform.data.sources.length > 0 && (
+      <section data-pagefind-ignore>
+        <h2>Источники</h2>
+        <ol class="sources">
+          {platform.data.sources.map((s) => (
+            <li>
+              {s.url ? (
+                <a href={s.url} rel="noopener external">
+                  {s.title}
+                </a>
+              ) : (
+                s.title
+              )}
+            </li>
+          ))}
+        </ol>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .crumbs-mini {
+    margin: 0.75rem 0 0.25rem;
+    font-size: 0.88rem;
+    color: var(--c-muted);
+  }
+
+  .platform__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 760px) {
+    .platform__head {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .lead {
+    max-width: 40rem;
+    font-size: 1.05rem;
+  }
+
+  .platform__photo {
+    margin: 0.8rem 0 0;
+    font-size: 0.8rem;
+  }
+
+  .platform__photo :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    filter: var(--photo-filter);
+  }
+
+  .platform__text {
+    max-width: var(--article-width);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .sources {
+    padding-left: 1.2rem;
+    font-size: 0.92rem;
+  }
+</style>

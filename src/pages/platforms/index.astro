@@ -1,0 +1,127 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import { getGraph } from '../../lib/graph';
+import { platformUrl } from '../../lib/paths';
+import { PLATFORM_KIND_LABEL, PLATFORM_KIND_ORDER, COUNTRY_SHORT, nGames } from '../../lib/labels';
+
+const graph = await getGraph();
+const groups = PLATFORM_KIND_ORDER.map((kind) => ({
+  kind,
+  items: graph.platformList.filter((p) => p.data.kind === kind),
+})).filter((g) => g.items.length > 0);
+---
+
+<Base
+  title="Платформы"
+  description="На чём выходили отечественные игры: от «Электроники-60» и БК-0010 до Dendy, ZX Spectrum, PC, PlayStation и смартфонов."
+>
+  <h1>Платформы</h1>
+  <p class="lead">
+    Советские игры писали для машин, которых не было в магазинах, девяностые прошли под знаком Dendy и
+    клонов ZX Spectrum, нулевые — под знаком PC и jewel-боксов, а десятые увели индустрию на телефоны и
+    приставки. У каждой платформы своя страница: что это было, кто делал и какие игры на ней выходили.
+  </p>
+
+  {
+    groups.map((group) => (
+      <section>
+        <h2>{PLATFORM_KIND_LABEL[group.kind]}</h2>
+        <ul class="platforms">
+          {group.items.map((p) => (
+            <li class="card platform">
+              <a href={platformUrl(p.id)}>
+                <span class="platform__media">
+                  {p.data.photo ? (
+                    <Image src={p.data.photo} alt="" widths={[240, 480]} sizes="240px" loading="lazy" />
+                  ) : (
+                    <span class="platform__noimage" aria-hidden="true">
+                      {p.data.name.replace(/[^\dA-Za-zА-Яа-я]/g, '').slice(0, 3)}
+                    </span>
+                  )}
+                </span>
+                <span class="platform__body">
+                  <span class="platform__name">{p.data.name}</span>
+                  <span class="muted">
+                    {[p.data.maker, COUNTRY_SHORT[p.data.country]].filter(Boolean).join(' · ')} ·{' '}
+                    {p.data.years.start}
+                    {p.data.years.end ? `–${p.data.years.end}` : ' — н. в.'}
+                  </span>
+                  <span class="muted platform__summary">{p.data.summary}</span>
+                  <span class="muted">{nGames(p.gameIds.length)}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>
+
+<style>
+  .lead {
+    max-width: 44rem;
+  }
+
+  .platforms {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    list-style: none;
+  }
+
+  .platform a {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 0.9rem;
+    padding: 0.75rem;
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.85rem;
+    height: 100%;
+  }
+
+  .platform__media {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-2);
+  }
+
+  .platform__media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: var(--photo-filter);
+  }
+
+  .platform__noimage {
+    font-family: var(--font-display);
+    color: var(--c-muted);
+  }
+
+  .platform__body {
+    display: grid;
+    gap: 0.15rem;
+    align-content: start;
+  }
+
+  .platform__name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1.05rem;
+  }
+
+  .platform__summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

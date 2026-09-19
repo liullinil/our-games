@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getGraph } from '../../lib/graph';
+import { catalogUrl, withBase } from '../../lib/paths';
+import { TYPE_LABEL, TYPE_ORDER, nGames } from '../../lib/labels';
+
+const graph = await getGraph();
+const present = new Set(graph.gameList.map((g) => g.data.type));
+const types = TYPE_ORDER.filter((t) => present.has(t));
+const counts = new Map<string, { total: number; articles: number }>();
+for (const g of graph.gameList) {
+  const c = counts.get(g.data.type) ?? { total: 0, articles: 0 };
+  c.total += 1;
+  if (g.data.status === 'article') c.articles += 1;
+  counts.set(g.data.type, c);
+}
+---
+
+<Base
+  title="Каталог"
+  description="Все игры энциклопедии по жанрам: стратегии, ролевые, шутеры, квесты, симуляторы, гонки, онлайн-игры и головоломки."
+>
+  <h1>Каталог</h1>
+  <p class="lead">
+    Игры сгруппированы по жанру, студии и серии. Внутри каждого раздела видно, какие игры уже описаны
+    подробно, а какие пока ждут статьи.
+  </p>
+
+  <ul class="grid-cards">
+    {
+      types.map((type) => {
+        const c = counts.get(type) ?? { total: 0, articles: 0 };
+        return (
+          <li class="card catalog-card">
+            <a href={catalogUrl(type)}>
+              <span class="catalog-card__title">{TYPE_LABEL[type]}</span>
+              <span class="muted">{`${nGames(c.total)}${c.articles > 0 ? `, подробно ${c.articles}` : ''}`}</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <h2>Другие способы смотреть</h2>
+  <ul class="links">
+    <li><a href={withBase('/graph/')}>Карта связей: студии по вертикали, годы по горизонтали</a></li>
+    <li><a href={withBase('/studios/')}>Студии и издатели</a></li>
+    <li><a href={withBase('/platforms/')}>Платформы</a></li>
+    <li><a href={withBase('/engines/')}>Движки</a></li>
+    <li><a href={withBase('/eras/')}>Эпохи</a></li>
+  </ul>
+</Base>
+
+<style>
+  .lead {
+    max-width: 40rem;
+  }
+
+  .catalog-card a {
+    display: grid;
+    gap: 0.2rem;
+    padding: 1rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .catalog-card__title {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1.1rem;
+  }
+
+  .links {
+    padding-left: 1.1rem;
+  }
+</style>

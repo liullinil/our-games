@@ -1,0 +1,202 @@
+---
+import type { Graph, GameNode } from '../lib/graph';
+import { studioNameAt } from '../lib/graph';
+import { engineUrl, studioUrl, eraUrl, platformUrl, seriesUrl } from '../lib/paths';
+import {
+  CLASS_LABEL,
+  COUNTRY_LABEL,
+  MODE_LABEL,
+  TYPE_LABEL_ONE,
+  formatCount,
+  yearsLabel,
+} from '../lib/labels';
+
+interface Props {
+  game: GameNode;
+  graph: Graph;
+}
+
+const { game: g, graph } = Astro.props;
+const s = g.data.specs;
+const studio = graph.studios.get(g.studioId)!;
+const era = graph.eras.get(g.era)!;
+const publishers = g.publisherIds.map((id) => graph.studios.get(id)!).filter(Boolean);
+const platforms = g.platformIds.map((id) => graph.platforms.get(id)!).filter(Boolean);
+const engines = g.engineIds.map((id) => graph.engines.get(id)!).filter(Boolean);
+const series = g.seriesId ? graph.series.get(g.seriesId) : null;
+
+const KIND_LABEL: Record<string, string> = {
+  expansion: 'Дополнение',
+  remake: 'Переиздание',
+};
+
+const rows: { label: string; value: string | null; href?: string }[] = [
+  { label: 'Разработчик', value: studioNameAt(studio, g.data.years.start), href: studioUrl(studio.id) },
+  { label: 'Год выхода', value: s.releaseDate ?? yearsLabel(g.data.years) },
+  { label: 'Эпоха', value: `${era.data.shortTitle} (${era.data.range})`, href: eraUrl(era.id) },
+  { label: 'Страна', value: COUNTRY_LABEL[g.data.country] ?? null },
+  { label: 'Жанр', value: `${TYPE_LABEL_ONE[g.data.type]}: ${(CLASS_LABEL[g.data.class] ?? '').toLowerCase()}` },
+  { label: 'Режимы', value: s.modes.length ? s.modes.map((m) => MODE_LABEL[m]).join(', ') : null },
+  { label: 'Вид', value: s.perspective ?? null },
+  { label: 'Сеттинг', value: s.setting ?? null },
+  { label: 'Разработка', value: s.development ?? null },
+  {
+    label: 'Продано',
+    value: s.sales ? `${formatCount(s.sales)} копий` : (s.salesNote ?? null),
+  },
+  { label: 'Metacritic', value: s.metacritic ? `${s.metacritic} из 100` : null },
+];
+---
+
+<div class="specs card">
+  <h2 class="specs__title">Карточка игры</h2>
+  <dl class="specs__list">
+    {
+      g.data.kind !== 'game' && g.baseGameId && (
+        <div class="specs__row">
+          <dt>{KIND_LABEL[g.data.kind]}</dt>
+          <dd>
+            к игре <a href={`../${g.baseGameId}/`}>{graph.games.get(g.baseGameId)?.data.name}</a>
+          </dd>
+        </div>
+      )
+    }
+    {
+      rows
+        .filter((r) => r.value)
+        .map((r) => (
+          <div class="specs__row">
+            <dt>{r.label}</dt>
+            <dd>{r.href ? <a href={r.href}>{r.value}</a> : r.value}</dd>
+          </div>
+        ))
+    }
+    {
+      publishers.length > 0 && (
+        <div class="specs__row">
+          <dt>{publishers.length > 1 ? 'Издатели' : 'Издатель'}</dt>
+          <dd>
+            {publishers.map((p, i) => (
+              <>
+                {i > 0 && ', '}
+                <a href={studioUrl(p.id)}>{studioNameAt(p, g.data.years.start)}</a>
+              </>
+            ))}
+          </dd>
+        </div>
+      )
+    }
+    {
+      series && (
+        <div class="specs__row">
+          <dt>Серия</dt>
+          <dd>
+            <a href={seriesUrl(series.id)}>{series.data.name}</a>
+          </dd>
+        </div>
+      )
+    }
+    <div class="specs__row">
+      <dt>{platforms.length > 1 ? 'Платформы' : 'Платформа'}</dt>
+      <dd>
+        {
+          platforms.map((p, i) => (
+            <>
+              {i > 0 && ', '}
+              <a href={platformUrl(p.id)}>{p.data.name}</a>
+            </>
+          ))
+        }
+      </dd>
+    </div>
+    {
+      engines.length > 0 && (
+        <div class="specs__row">
+          <dt>{engines.length > 1 ? 'Движки' : 'Движок'}</dt>
+          <dd>
+            {engines.map((e, i) => (
+              <>
+                {i > 0 && ', '}
+                <a href={engineUrl(e.id)}>{e.data.name}</a>
+              </>
+            ))}
+          </dd>
+        </div>
+      )
+    }
+    {
+      g.data.years.note && (
+        <div class="specs__row">
+          <dt>Примечание</dt>
+          <dd class="muted">{g.data.years.note}</dd>
+        </div>
+      )
+    }
+    {
+      (g.data.website || g.data.steamAppId) && (
+        <div class="specs__row">
+          <dt>Ссылки</dt>
+          <dd>
+            {g.data.website && (
+              <a href={g.data.website} rel="noopener external">
+                сайт игры
+              </a>
+            )}
+            {g.data.website && g.data.steamAppId && ', '}
+            {g.data.steamAppId && (
+              <a href={`https://store.steampowered.com/app/${g.data.steamAppId}/`} rel="noopener external">
+                Steam
+              </a>
+            )}
+          </dd>
+        </div>
+      )
+    }
+  </dl>
+</div>
+
+<style>
+  .specs {
+    padding: 0.9rem 1.1rem 1.1rem;
+    margin: 1.5rem 0;
+  }
+
+  .specs__title {
+    margin: 0 0 0.6rem;
+    font-size: 1.05rem;
+  }
+
+  .specs__list {
+    margin: 0;
+    display: grid;
+    gap: 0;
+  }
+
+  .specs__row {
+    display: grid;
+    grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+    gap: 0.5rem 1rem;
+    padding: 0.4rem 0;
+    border-top: var(--rule);
+  }
+
+  .specs__row:first-child {
+    border-top: 0;
+  }
+
+  .specs__row dt {
+    color: var(--c-muted);
+    font-size: 0.88rem;
+  }
+
+  .specs__row dd {
+    margin: 0;
+  }
+
+  @media (max-width: 460px) {
+    .specs__row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>

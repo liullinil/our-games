@@ -1,0 +1,134 @@
+/* Общие элементы: карточка, чип, кнопка, отметка «прочитано».
+   Ими пользуются обе версии сайта и все компоненты. */
+
+.card {
+  background: var(--c-surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.3em 0.7em;
+  border: var(--rule);
+  border-radius: 999px;
+  background: var(--c-surface);
+  color: var(--c-text);
+  font-size: 0.85rem;
+  line-height: 1.3;
+  text-decoration: none;
+  cursor: pointer;
+}
+.chip:hover {
+  border-color: var(--c-accent);
+}
+.chip[aria-pressed='true'],
+.chip.is-active {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: var(--c-on-accent);
+}
+
+.muted {
+  color: var(--c-muted);
+}
+
+/* Кнопки-действия: заливка акцентом для главного, рамка — для второстепенного. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  padding: 0.55em 1.1em;
+  border: 1px solid var(--c-accent);
+  border-radius: var(--radius-sm);
+  background: var(--c-accent);
+  color: var(--c-on-accent);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button:hover {
+  filter: brightness(1.08);
+}
+.button--ghost {
+  background: transparent;
+  border-color: var(--c-border);
+  color: var(--c-text);
+}
+.button--ghost:hover {
+  filter: none;
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  list-style: none;
+}
+
+.scroll-x {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95rem;
+}
+th,
+td {
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border-bottom: var(--rule);
+  vertical-align: top;
+}
+th {
+  font-series: var(--font-display);
+  font-weight: var(--weight-display);
+  color: var(--c-muted);
+  font-size: 0.85rem;
+  text-transform: var(--case-display);
+}
+
+/* ── Отметка «прочитано» ──────────────────────────────────────────── */
+
+.badge-read {
+  display: none;
+  flex: none;
+  color: var(--c-read);
+  font-size: 0.85em;
+}
+.is-read > .badge-read,
+.is-read .badge-read {
+  display: inline-flex;
+}
+.is-read .game-card__name,
+.is-read > .tree-link {
+  color: var(--c-read);
+}
+
+/* «Скрыть прочитанные» — состояние ставится на <html> */
+html.hide-read .is-read.hideable {
+  display: none !important;
+}

@@ -1,0 +1,138 @@
+---
+import '../styles/base.css';
+import { withBase } from '../lib/paths';
+import { SITE_NAME } from '../lib/labels';
+import { getGraph } from '../lib/graph';
+import Header from '../components/Header.astro';
+import BottomTabs from '../components/BottomTabs.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Эпоха задаёт тему страницы. По умолчанию нейтральная тема сайта. */
+  era?: string;
+  /** Показывать боковое дерево каталога (на десктопе). */
+  sidebar?: boolean;
+  /** Класс для <main>. */
+  mainClass?: string;
+  /** Во всю ширину окна: для карты связей, которой тесно в колонке статьи. */
+  full?: boolean;
+  /** Картинка для предпросмотра ссылки. */
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  era = 'site',
+  sidebar = false,
+  mainClass = '',
+  full = false,
+  image,
+} = Astro.props;
+
+// Граф строится здесь: значит, проверка связей выполняется на каждой странице.
+const graph = await getGraph();
+const eraNode = graph.eras.get(era);
+const fonts = eraNode?.data.fonts ?? [];
+
+const fullTitle = title === SITE_NAME ? title : `${title} — ${SITE_NAME}`;
+const desc =
+  description ??
+  'Энциклопедия компьютерных игр СССР, России и соседних стран: игры, студии, движки, платформы и эпохи.';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = image ? new URL(image, Astro.site).href : undefined;
+---
+
+<!doctype html>
+<html lang="ru" data-era={era}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical.href} />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <meta name="theme-color" content={eraNode?.data.accent ?? '#7c3aed'} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:url" content={canonical.href} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+
+    {
+      fonts.map((f) => (
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          href={withBase(`/fonts/${f.file}`)}
+          crossorigin="anonymous"
+        />
+      ))
+    }
+
+    {/* Тема эпохи: отдельный файл, чтобы страница грузила только свою. */}
+    <link
+      rel="stylesheet"
+      href={withBase(`/themes/${era}.css?v=${__BUILD_ID__}`)}
+      data-era-css
+      data-era-base={withBase('/themes/')}
+      data-era-build={__BUILD_ID__}
+      data-era-own={era}
+    />
+
+    {/* Предпросмотр другой эпохи применяется до первой отрисовки, без мигания. */}
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem('igrostroy:theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+        // Выключенное оформление по эпохе перебивает и предпросмотр эпохи.
+        const off = localStorage.getItem('igrostroy:eraDesign') === 'off';
+        const era = off ? 'site' : localStorage.getItem('igrostroy:eraPreview');
+        if (era) {
+          const link = document.querySelector('link[data-era-css]');
+          document.documentElement.dataset.era = era;
+          if (link) {
+            link.href = link.dataset.eraBase + era + '.css?v=' + link.dataset.eraBuild;
+          }
+        }
+        if (localStorage.getItem('igrostroy:hideRead') === '1') {
+          document.documentElement.classList.add('hide-read');
+        }
+      } catch (e) {
+        /* приватный режим — просто показываем тему страницы */
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">К содержанию</a>
+    <Header />
+
+    <div class:list={['page', { 'page--full': full }]}>
+      <div class={sidebar ? 'layout' : ''}>
+        {
+          sidebar && (
+            <aside class="sidebar">
+              <slot name="sidebar" />
+            </aside>
+          )
+        }
+        <main id="main" class={mainClass}>
+          <slot />
+        </main>
+      </div>
+    </div>
+
+    <Footer />
+    <BottomTabs />
+
+    <script>
+      import '../scripts/read-state';
+      import '../scripts/nav';
+    </script>
+  </body>
+</html>

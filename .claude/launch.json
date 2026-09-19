@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "igrostroy",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 4321,
+      "url": "http://localhost:4321"
+    },
+    {
+      "name": "igrostroy-как-на-сайте",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "serve:pages"],
+      "port": 4330,
+      "url": "http://localhost:4330"
+    }
+  ]
+}

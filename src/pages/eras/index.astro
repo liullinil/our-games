@@ -1,0 +1,127 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import { getGraph } from '../../lib/graph';
+import { eraUrl } from '../../lib/paths';
+import { nGames } from '../../lib/labels';
+
+const graph = await getGraph();
+const counts = new Map<string, number>();
+for (const g of graph.gameList) counts.set(g.era, (counts.get(g.era) ?? 0) + 1);
+---
+
+<Base
+  title="Эпохи"
+  description="Пять эпох отечественных игр: от «Тетриса» и «Электроники» до Unreal Engine 5. Оформление страниц меняется вместе с эпохой."
+>
+  <h1>Эпохи</h1>
+  <p class="lead">
+    Игра относится к эпохе по году выхода. Страница каждой игры оформлена в стиле своего времени:
+    шрифты, цвета и рамки отсылают к экранам, коробкам и журналам тех лет, а на странице эпохи собраны
+    её узнаваемые образы — приставки, компьютеры и телефоны, на которых в это играли.
+  </p>
+
+  <ul class="eras">
+    {
+      graph.eraList.map((era) => {
+        const cover = era.data.images[0];
+        return (
+          <li class="card era" style={`--era-accent:${era.data.accent};--era-band:${era.data.band}`}>
+            <a href={eraUrl(era.id)}>
+              <span class="era__band" aria-hidden="true" />
+              {cover && (
+                <span class="era__cover" aria-hidden="true">
+                  <Image src={cover.src} alt="" widths={[320, 640]} sizes="240px" loading="lazy" />
+                </span>
+              )}
+              <span class="era__body">
+                <span class="era__title">{era.data.title}</span>
+                <span class="muted era__range">{era.data.range}</span>
+                <span class="era__desc">{era.data.description}</span>
+                <span class="muted era__count">{nGames(counts.get(era.id) ?? 0)}</span>
+              </span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Base>
+
+<style>
+  .lead {
+    max-width: 44rem;
+  }
+
+  .eras {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .era a {
+    display: flex;
+    gap: 0;
+    color: inherit;
+    text-decoration: none;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
+  .era__band {
+    flex: none;
+    width: 0.5rem;
+    background: var(--era-accent);
+  }
+
+  .era__cover {
+    flex: none;
+    width: 15rem;
+    background: var(--era-band);
+  }
+
+  .era__cover :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .era__body {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.9rem 1rem;
+    align-content: start;
+  }
+
+  .era__title {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1.15rem;
+  }
+
+  .era__range {
+    font-size: 0.85rem;
+  }
+
+  .era__desc {
+    font-size: 0.92rem;
+    max-width: 44rem;
+  }
+
+  .era__count {
+    font-size: 0.82rem;
+  }
+
+  @media (max-width: 640px) {
+    .era a {
+      flex-wrap: wrap;
+    }
+
+    .era__cover {
+      width: calc(100% - 0.5rem);
+      height: 10rem;
+    }
+  }
+</style>

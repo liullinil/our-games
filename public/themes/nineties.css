@@ -1,0 +1,97 @@
+/* Девяностые (1991–1999): серый пластик Dendy, красные кнопки, окна Windows 95. */
+@import url("../fonts/fonts.css");
+
+html[data-era="nineties"] {
+  --font-display: "Press Start 2P", "PT Sans", monospace;
+  --font-body: "PT Sans", Tahoma, system-ui, sans-serif;
+  --weight-display: 400;
+  --case-display: none;
+  --tracking-display: 0;
+
+  --c-bg: #c9c9c9;
+  --c-surface: #efefef;
+  --c-surface-2: #dcdcdc;
+  --c-text: #111111;
+  --c-muted: #4d4d4d;
+  --c-accent: #d0202a;
+  --c-accent-2: #000080;
+  --c-on-accent: #ffffff;
+  --c-link: #0000a0;
+  --c-border: #808080;
+  --c-read: #6b6b6b;
+
+  --radius: 0;
+  --radius-sm: 0;
+  --rule: 2px solid #808080;
+  --rule-strong: 3px solid #000080;
+  /* Объёмная рамка Windows 95: светлый верх-лево, тёмный низ-право. */
+  --shadow: inset -1px -1px #000000, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  --shadow-sm: inset -1px -1px #808080, inset 1px 1px #ffffff;
+
+  --photo-filter: saturate(1.1) contrast(1.05);
+  --texture-bg: none;
+
+  /* Тёмный вариант: бирюзовый рабочий стол Windows 95. */
+  --d-bg: #0f5a5a;
+  --d-surface: #0b4444;
+  --d-surface-2: #0e5252;
+  --d-text: #f2f6f2;
+  --d-muted: #b5d6d6;
+  --d-accent: #ff4d5a;
+  --d-accent-2: #ffd54f;
+  --d-on-accent: #1a0d0d;
+  --d-link: #9fe3ff;
+  --d-border: #7fc5c5;
+  --d-read: #86b3b3;
+}
+
+/* Пиксельный шрифт широкий: заголовки набираем мельче обычного. */
+html[data-era="nineties"] h1 {
+  font-size: clamp(1.1rem, 0.9rem + 1.2vw, 1.6rem);
+  line-height: 1.5;
+}
+
+html[data-era="nineties"] h2 {
+  font-size: clamp(0.85rem, 0.75rem + 0.5vw, 1rem);
+  line-height: 1.5;
+}
+
+html[data-era="nineties"] h3 {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Заголовок раздела как строка заголовка окна: синяя плашка, белый текст. */
+html[data-era="nineties"] main h2 {
+  background: linear-gradient(90deg, var(--c-accent-2), #1084d0);
+  color: #ffffff;
+  padding: 0.45em 0.6em;
+}
+
+html[data-era="nineties"] .card {
+  box-shadow: var(--shadow);
+  border: 0;
+  background: var(--c-surface);
+}
+
+html[data-era="nineties"] .chip {
+  border-radius: 0;
+  border: 1px solid #808080;
+  box-shadow: inset -1px -1px #000000, inset 1px 1px #ffffff;
+}
+
+html[data-era="nineties"] .chip[aria-pressed="true"],
+html[data-era="nineties"] .chip.is-active {
+  box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff;
+}
+
+html[data-era="nineties"] .button {
+  border-radius: 0;
+  box-shadow: inset -1px -1px #000000, inset 1px 1px #ffffff;
+}
+
+/* Красная кнопка Dendy вместо знака сайта. */
+html[data-era="nineties"] .site-header__mark {
+  border-radius: 50%;
+  box-shadow: inset -2px -2px rgba(0, 0, 0, 0.35), inset 2px 2px rgba(255, 255, 255, 0.35);
+}

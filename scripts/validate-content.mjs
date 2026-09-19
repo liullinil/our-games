@@ -1,0 +1,239 @@
+#!/usr/bin/env node
+/**
+ * Проверка контента перед публикацией.
+ *
+ * Ссылки между коллекциями проверяет сам сайт при сборке (src/lib/graph.ts).
+ * Здесь — то, что сборка пропустит: несогласованные годы, статьи без
+ * источников, фотографии без автора, забытые файлы моделей.
+ *
+ *   npm run content:validate
+ */
+import { readFile, readdir, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { parse as parseYaml } from 'yaml';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const problems = [];
+const warnings = [];
+
+/**
+ * Разбор frontmatter без внешних зависимостей: нам хватает верхнего уровня.
+ *
+ * Возвращает null, если открывающей или закрывающей черты нет. Раньше в этом
+ * случае возвращалась пустая строка — и файл с незакрытым frontmatter молча
+ * считался файлом без него: `isbn: 978-5-699-50821-1---` прошёл проверку,
+ * а сборка на нём упала.
+ */
+function frontmatter(text) {
+  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  return match ? match[1] : null;
+}
+
+/** Есть ли frontmatter вообще и разбирается ли он. Обе беды — ошибка. */
+function checkFrontmatter(label, text) {
+  const fm = frontmatter(text);
+  if (fm === null) {
+    problems.push(`${label}: frontmatter не закрыт чертой «---» или отсутствует`);
+    return null;
+  }
+  return checkYamlSyntax(label, fm) ? fm : null;
+}
+
+/*
+ * Синтаксис YAML проверяем настоящим разборщиком.
+ *
+ * Разбор выше построчный и на синтаксис не смотрит вовсе, поэтому мимо него
+ * спокойно проходит `summary: текст с двоеточием: вот так` — YAML считает это
+ * вложенным отображением. Сборка и `relations:check` после такого валятся
+ * стеком вызовов, а `content:validate` рапортует «в порядке». Ловим здесь
+ * и называем файл.
+ */
+function checkYamlSyntax(label, fm) {
+  try {
+    parseYaml(fm);
+    return true;
+  } catch (e) {
+    const where = e.linePos && e.linePos[0] ? ` (строка ${e.linePos[0].line})` : '';
+    const first = String(e.message).split(String.fromCharCode(10))[0];
+    problems.push(`${label}: frontmatter не разбирается как YAML${where} — ${first}`);
+    return false;
+  }
+}
+
+const field = (fm, name) => {
+  const m = fm.match(new RegExp(`^${name}:\\s*(.*)$`, 'm'));
+  return m ? m[1].trim() : null;
+};
+
+/*
+ * Значения перечислений читаем прямо из схемы.
+ *
+ * Схема — единственный источник правды, а дублировать её список здесь значит
+ * однажды разойтись с ней. Проверка нужна потому, что этот валидатор смотрит
+ * на поля построчно и о перечислениях не знает: «class: tyagach» вместо
+ * «ballastny-tyagach» он пропустил, отрапортовал «Контент в порядке», а сборка
+ * упала с ошибкой схемы на том же файле.
+ */
+async function enumFromConfig(name) {
+  const src = await readFile(path.join(root, 'src', 'content.config.ts'), 'utf8');
+  const m = src.match(new RegExp(`export const ${name} = \\[([\\s\\S]*?)\\]`));
+  if (!m) return null;
+  return new Set([...m[1].matchAll(/'([^']+)'/g)].map((x) => x[1]));
+}
+
+async function checkGames() {
+  const base = path.join(root, 'src', 'content', 'games');
+  const dirs = await readdir(base, { withFileTypes: true });
+  const eras = await loadEras();
+  const classes = await enumFromConfig('GAME_CLASSES');
+  const types = await enumFromConfig('GAME_TYPES');
+  const countries = await enumFromConfig('COUNTRIES');
+
+  for (const dir of dirs.filter((d) => d.isDirectory())) {
+    const id = dir.name;
+    const file = path.join(base, id, 'index.md');
+    if (!existsSync(file)) {
+      problems.push(`games/${id}: нет index.md`);
+      continue;
+    }
+    const text = await readFile(file, 'utf8');
+    const fm = checkFrontmatter(`games/${id}`, text) ?? '';
+    // Имя переменной не `field`: так называется функция чтения поля выше,
+    // и цикл бы её затенил.
+    for (const [key, allowed] of [
+      ['class', classes],
+      ['type', types],
+      ['country', countries],
+    ]) {
+      const value = field(fm, key);
+      if (allowed && value && !allowed.has(value)) {
+        problems.push(`games/${id}: ${key}: ${value} — нет такого значения в схеме`);
+      }
+    }
+    const body = text.slice(text.indexOf('---', 3) + 3).trim();
+
+    /*
+     * Поле `status` не имеет права отсутствовать.
+     *
+     * В схеме у него есть значение по умолчанию, поэтому запись без него
+     * молча считается карточкой реестра. Иначе статьи лежали бы:
+     * статьи написаны, а `npm run coverage` показывал их незаполненными, и
+     * поиск по `status: card` их не находил — искать было нечего. Лучше
+     * потребовать поле явно, чем разбираться потом, почему числа не сходятся.
+     */
+    if (!field(fm, 'status')) {
+      problems.push(`games/${id}: нет поля status — допишите article или card`);
+    }
+    const status = field(fm, 'status') ?? 'card';
+    const startMatch = fm.match(/^\s{2}start:\s*(\d{4})/m);
+    const start = startMatch ? Number(startMatch[1]) : null;
+
+    if (!field(fm, 'summary') && !fm.includes('summary: >-')) {
+      problems.push(`games/${id}: нет краткого описания (summary)`);
+    }
+
+    if (status === 'article') {
+      if (body.length < 800) {
+        warnings.push(`games/${id}: статья короткая (${body.length} знаков)`);
+      }
+      if (!fm.includes('sources:')) {
+        problems.push(`games/${id}: статья без источников`);
+      }
+    }
+
+    // Эпоха задаётся вручную только осознанно: сверяем с годом начала выпуска.
+    const era = field(fm, 'era');
+    if (era && start) {
+      const computed = eraFor(start, eras);
+      if (computed !== era) {
+        warnings.push(
+          `games/${id}: эпоха задана как «${era}», хотя по году ${start} это «${computed}»`,
+        );
+      }
+    }
+
+    // У каждого изображения должны быть автор, лицензия, подпись и источник.
+    const images = fm.split('- kind: image').slice(1);
+    for (const [i, chunk] of images.entries()) {
+      const block = chunk.split('- kind:')[0];
+      for (const need of ['author:', 'license:', 'caption:']) {
+        if (!block.includes(need)) {
+          problems.push(`games/${id}: у фотографии ${i + 1} нет поля ${need.slice(0, -1)}`);
+        }
+      }
+      /*
+       * Источник обязателен, но бывает двух видов.
+       *
+       * У снимка с Викисклада есть страница файла, у архивного кадра из книги
+       * её нет: есть издание, где он обнародован, и архив-хранитель. Требовать
+       * sourceUrl в обоих случаях значило бы выдумывать несуществующий адрес.
+       */
+      if (!block.includes('sourceUrl:') && !block.includes('sourceBook:')) {
+        problems.push(`games/${id}: у фотографии ${i + 1} нет ни sourceUrl, ни sourceBook`);
+      }
+    }
+  }
+}
+
+async function loadEras() {
+  const base = path.join(root, 'src', 'content', 'eras');
+  const files = await readdir(base);
+  const eras = [];
+  for (const f of files.filter((x) => x.endsWith('.yaml'))) {
+    const text = await readFile(path.join(base, f), 'utf8');
+    const from = Number(text.match(/^from:\s*(-?\d+)/m)?.[1]);
+    eras.push({ id: f.replace(/\.yaml$/, ''), from });
+  }
+  return eras.sort((a, b) => a.from - b.from);
+}
+
+function eraFor(year, eras) {
+  let current = eras[0]?.id ?? 'modern';
+  for (const era of eras) if (year >= era.from) current = era.id;
+  return current;
+}
+
+/**
+ * Остальные коллекции: проверяем только целость frontmatter.
+ *
+ * Схему за нас проверит сборка, а вот незакрытую черту или сломанный YAML
+ * лучше поймать здесь — падение сборки на таком файле выглядит куда
+ * загадочнее, чем строка «frontmatter не закрыт».
+ */
+async function checkOtherCollections() {
+  for (const name of ['studios', 'engines', 'platforms']) {
+    const base = path.join(root, 'src/content', name);
+    let entries;
+    try {
+      entries = await readdir(base, { withFileTypes: true });
+    } catch {
+      continue;
+    }
+    for (const entry of entries) {
+      const file = entry.isDirectory()
+        ? path.join(base, entry.name, 'index.md')
+        : path.join(base, entry.name);
+      if (!existsSync(file) || !/\.(md|mdx)$/.test(file)) continue;
+      checkFrontmatter(`${name}/${entry.name.replace(/\.mdx?$/, '')}`, await readFile(file, 'utf8'));
+    }
+  }
+}
+
+await checkGames();
+await checkOtherCollections();
+
+if (warnings.length) {
+  console.log(`Замечания (${warnings.length}):`);
+  for (const w of warnings) console.log(`  · ${w}`);
+  console.log('');
+}
+
+if (problems.length) {
+  console.error(`Ошибки (${problems.length}):`);
+  for (const p of problems) console.error(`  · ${p}`);
+  process.exit(1);
+}
+
+console.log('Контент в порядке.');
