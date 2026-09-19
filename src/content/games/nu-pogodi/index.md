@@ -16,7 +16,14 @@ specs:
   modes: [single]
 summary: >-
   Карманная игра, где волк ловит яйца, скатывающиеся с четырёх насестов. Копия японской Nintendo EG-26 Egg с героями советского мультфильма, ставшая символом детства восьмидесятых.
-gallery: []
+poster: ./shots/cover-01.jpg
+gallery:
+  - kind: image
+    src: ./shots/cover-01.jpg
+    caption: "Ну, погоди!: обложка"
+    author: "Электроника"
+    license: "Обложка"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Korobka-1.JPG"
 sources:
   - title: "Ну, погоди! (электронная игра) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Ну,_погоди!_(электронная_игра)"

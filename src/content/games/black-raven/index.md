@@ -19,8 +19,6 @@ platforms:
 specs:
   releaseDate: "1997"
   modes: [single]
-summary: >-
-  Стратегия в реальном времени для ZX Spectrum, сделанная в Новокузнецке по образцу Warcraft II. Главная гордость постсоветской спектрумовской сцены: 128 килобайт памяти хватило на полноценную RTS.
 gallery:
   - kind: youtube
     id: "PdlHkovYfZw"
@@ -32,6 +30,8 @@ gallery:
     title: "Чёрный ворон | \"Black Raven\" ZX Spectrum"
     channel: "Coulthard's Channel"
     checkedAt: "2026-09-19"
+summary: >-
+  Стратегия в реальном времени для ZX Spectrum, сделанная в Новокузнецке по образцу Warcraft II. Главная гордость постсоветской спектрумовской сцены: 128 килобайт памяти хватило на полноценную RTS.
 sources:
   - title: "Медноногов, Вячеслав Сергеевич — Википедия"
     url: "https://ru.wikipedia.org/wiki/Медноногов,_Вячеслав_Сергеевич"

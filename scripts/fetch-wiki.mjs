@@ -120,15 +120,40 @@ async function pageImages(lang, title) {
 }
 
 /** Мусорные файлы: логотипы, значки, флаги, иконки википроектов. */
-const JUNK = /logo|icon|flag|wiki|symbol|commons|ambox|question|crystal|nuvola|emblem|button|star|arrow|edit|padlock|disambig|stub|portal|\.svg$|\.gif$/i;
+const JUNK = /логотип|logo|icon|flag|wiki|symbol|commons|ambox|question|crystal|nuvola|emblem|button|star|arrow|edit|padlock|disambig|stub|portal|\.svg$|\.gif$/i;
 
+/**
+ * Портреты людей на странице игры — не иллюстрация к ней.
+ *
+ * В статье о «Тетрисе» рядом с кадрами лежат фотографии Хэнка и Майи Роджерс,
+ * и по размеру они даже крупнее. Для статьи об игре они не годятся: у нас
+ * иллюстрируется игра, а не её история в лицах.
+ */
+const PEOPLE = /face|portrait|crop|headshot|\b(rogers|pajitnov|пажитнов)\b|speaking|interview|gdc|conference|award/i;
+
+/**
+ * Что это за изображение и стоит ли его брать.
+ *
+ * Возвращает основание («Скриншот» или «Обложка») либо null, если по описанию
+ * и имени файла непонятно, имеет ли картинка отношение к игре. Брать наугад
+ * нельзя: на странице попадаются фотографии разработчиков, коробки настольных
+ * игр и посторонние схемы.
+ */
 function classify(file) {
   const meta = file.imageinfo[0].extmetadata ?? {};
   const strip = (v) => String(v ?? '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
   const desc = `${strip(meta.ImageDescription?.value)} ${file.title}`.toLowerCase();
-  const cover = /cover|box|обложк|коробк|постер|poster|logo|title screen|титул/.test(desc);
-  const shot = /screenshot|скриншот|снимок экрана|gameplay|игровой процесс|кадр/.test(desc);
-  return shot ? 'Скриншот' : cover ? 'Обложка' : 'Скриншот';
+  if (PEOPLE.test(desc)) return null;
+  const cover = /cover|box|обложк|коробк|постер|poster|title screen|титул|заставк|splash/.test(desc);
+  const shot = /screenshot|скриншот|снимок экрана|gameplay|игровой процесс|кадр|уровень|level/.test(desc);
+  if (shot) return 'Скриншот';
+  if (cover) return 'Обложка';
+  /*
+   * Ни одной приметы. Такой файл берём, только если он единственный на
+   * странице и его имя повторяет название статьи: в статьях о старых играх
+   * часто лежит один-единственный кадр без всякого описания.
+   */
+  return null;
 }
 
 function split(text) {
@@ -157,10 +182,31 @@ function patchFrontmatter(fm, { poster, shots }) {
     )
     .join('');
   const posterLine = poster ? `poster: ./shots/${poster}\n` : '';
-  if (/^gallery:\s*\[\]\s*$/m.test(out)) {
-    out = out.replace(/^gallery:\s*\[\]\s*$/m, `${posterLine}gallery:\n${blocks}`.replace(/\n$/, ''));
+  /*
+   * Ищем строку `gallery:` целиком — не важно, `gallery: []` это или голое
+   * `gallery:` перед уже существующими роликами. Раньше эти два случая
+   * разбирались отдельными регулярками, а третий (что угодно ещё на той же
+   * строке — например, случайно оставшийся пробел) утекал в else-ветку,
+   * которая вставляла ВТОРОЙ ключ `gallery` перед `summary:` вместо того,
+   * чтобы дописать картинки в уже существующий список. YAML с двумя `gallery`
+   * не разбирается, и сборка падает на каждом таком файле.
+   * Теперь заменяем саму строку `gallery: ...` на `gallery:` плюс новые
+   * блоки-изображения первым пунктом; всё, что шло ПОСЛЕ этой строки
+   * (например, уже существующие ролики), остаётся нетронутым.
+   */
+  const galleryKeyRe = /^gallery:[^\n]*\r?\n/m;
+  if (galleryKeyRe.test(out)) {
+    out = out.replace(galleryKeyRe, `${posterLine}gallery:\n${blocks}`);
   } else {
     out = out.replace(/^summary:/m, `${posterLine}gallery:\n${blocks}summary:`);
+  }
+  // Страховка: если после патча ключ всё равно задублирован — лучше упасть
+  // с понятной ошибкой, чем молча записать битый YAML.
+  const galleryCount = (out.match(/^gallery:/gm) || []).length;
+  if (galleryCount > 1) {
+    throw new Error(
+      `patchFrontmatter: после вставки получилось ${galleryCount} ключей gallery — запись отменена`,
+    );
   }
   return out;
 }
@@ -173,15 +219,24 @@ async function fetchFor(gameId, lang, title, developer, gameName = title) {
     if ((info.width ?? 0) < 240) return false;
     return true;
   });
+  /*
+   * Берём только то, что опознано как кадр или обложка. Исключение —
+   * единственный файл на странице: в статьях о старых играх часто лежит один
+   * кадр вовсе без описания, и отбрасывать его значило бы остаться ни с чем.
+   */
+  const named = files.map((f) => ({ f, kind: classify(f) }));
+  const usable = named.filter((x) => x.kind) ;
+  const chosen = usable.length > 0 ? usable : named.length === 1 ? [{ f: named[0].f, kind: 'Скриншот' }] : [];
   // Сначала скриншоты, потом обложки; внутри — крупнее раньше.
-  files.sort((a, b) => {
-    const ka = classify(a) === 'Скриншот' ? 0 : 1;
-    const kb = classify(b) === 'Скриншот' ? 0 : 1;
-    return ka - kb || (b.imageinfo[0].width ?? 0) - (a.imageinfo[0].width ?? 0);
-  });
-  const picked = files.slice(0, LIMIT);
-  console.log(`  ${lang}: ${title} — файлов ${files.length}, берём ${picked.length}`);
-  for (const f of picked) console.log(`    · ${f.title} (${classify(f)}, ${f.imageinfo[0].width}×${f.imageinfo[0].height})`);
+  chosen.sort(
+    (a, b) =>
+      (a.kind === 'Скриншот' ? 0 : 1) - (b.kind === 'Скриншот' ? 0 : 1) ||
+      (b.f.imageinfo[0].width ?? 0) - (a.f.imageinfo[0].width ?? 0),
+  );
+  const picked = chosen.slice(0, LIMIT).map((x) => x.f);
+  const kindOf = new Map(chosen.map((x) => [x.f.title, x.kind]));
+  console.log(`  ${lang}: ${title} — файлов ${files.length}, годится ${chosen.length}, берём ${picked.length}`);
+  for (const f of picked) console.log(`    · ${f.title} (${kindOf.get(f.title)}, ${f.imageinfo[0].width}×${f.imageinfo[0].height})`);
   if (DRY || picked.length === 0) return null;
 
   const dir = path.join(GAMES, gameId, 'shots');
@@ -194,7 +249,7 @@ async function fetchFor(gameId, lang, title, developer, gameName = title) {
     const res = await fetch(src, { headers: { 'User-Agent': UA } });
     if (!res.ok) continue;
     const buf = Buffer.from(await res.arrayBuffer());
-    const license = classify(f);
+    const license = kindOf.get(f.title) ?? 'Скриншот';
     const ext = 'jpg';
     const file = `${license === 'Обложка' ? 'cover' : 'wiki'}-${String(i + 1).padStart(2, '0')}.${ext}`;
     const out = await sharp(buf, { failOn: 'none' }).resize({ width: 1600, withoutEnlargement: true }).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
@@ -246,7 +301,11 @@ async function apply(game, result) {
 
 async function main() {
   if (flag('auto')) {
-    const ids = (await readdir(GAMES, { withFileTypes: true })).filter((d) => d.isDirectory()).map((d) => d.name);
+    // Можно ограничить прогон списком игр: --auto gag chasm tetris.
+    const only = args.filter((a) => !a.startsWith('--') && a !== opt('limit', '') && a !== opt('lang', ''));
+    const ids = only.length
+      ? only
+      : (await readdir(GAMES, { withFileTypes: true })).filter((d) => d.isDirectory()).map((d) => d.name);
     for (const id of ids) {
       const game = await readGame(id);
       if (!game || game.hasImages) continue;

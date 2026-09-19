@@ -22,9 +22,20 @@ specs:
   perspective: "вид из кабины самолёта"
   setting: "современный воздушный бой над Крымом и Кавказом"
   metacritic: 76
-summary: >-
-  Симулятор современных истребителей: Су-27, Су-33, МиГ-29, F-15 и A-10 над Крымом и Кавказом. Прямой предок DCS World.
+poster: ./shots/wiki-01.jpg
 gallery:
+  - kind: image
+    src: ./shots/wiki-01.jpg
+    caption: "Lock On: Modern Air Combat: кадр из игры"
+    author: "Eagle Dynamics"
+    license: "Скриншот"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82_%D0%B8%D0%B7_%C2%ABLock_On_%D0%A1%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F_%D0%B1%D0%BE%D0%B5%D0%B2%D0%B0%D1%8F_%D0%B0%D0%B2%D0%B8%D0%B0%D1%86%D0%B8%D1%8F%C2%BB.png"
+  - kind: image
+    src: ./shots/cover-02.jpg
+    caption: "Lock On: Modern Air Combat: обложка"
+    author: "Eagle Dynamics"
+    license: "Обложка"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Lock_on.jpg"
   - kind: youtube
     id: "otb0z1eW5H8"
     title: "Lock On Modern Air Combat Обзор"
@@ -36,6 +47,8 @@ gallery:
     channel: "Puzzle Pursuers"
     poster: "https://pic.rtbcdn.ru/video/2025-05-31/97/47/9747c59c6946331f5895e157a639795e.jpg"
     checkedAt: "2026-09-19"
+summary: >-
+  Симулятор современных истребителей: Су-27, Су-33, МиГ-29, F-15 и A-10 над Крымом и Кавказом. Прямой предок DCS World.
 sources:
   - title: "Lock On: Modern Air Combat — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Lock_On:_Modern_Air_Combat"

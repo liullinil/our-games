@@ -21,7 +21,14 @@ specs:
   modes: [single]
 summary: >-
   Продолжение «Тетриса» от самого Пажитнова: фигуры падают по стенкам колодца и ложатся на его дно. Одна из первых советских игр, изданных на Западе официально.
+poster: ./shots/cover-01.jpg
 gallery:
+  - kind: image
+    src: ./shots/cover-01.jpg
+    caption: "Welltris: обложка"
+    author: "Дока"
+    license: "Обложка"
+    sourceUrl: "https://en.wikipedia.org/wiki/File:Welltris_box.jpg"
   - kind: youtube
     id: "Ks3JP5YstKY"
     title: "Welltris gameplay (PC Game, 1989)"

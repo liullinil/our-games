@@ -19,7 +19,14 @@ specs:
   modes: [single]
 summary: >-
   Лягушка-демократ прыгает по исчезающим кувшинкам и собирает льготы, уворачиваясь от бюрократов. Аркада Никиты Скрипкина, ставшая первой массовой игрой позднего СССР на IBM PC.
-gallery: []
+poster: ./shots/cover-01.jpg
+gallery:
+  - kind: image
+    src: ./shots/cover-01.jpg
+    caption: "Перестройка: обложка"
+    author: "Nikita Online"
+    license: "Обложка"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Toppler_For_Winodws_-_Splash.png"
 sources:
   - title: "Perestroika (video game) — Wikipedia (англ.)"
     url: "https://en.wikipedia.org/wiki/Perestroika_(video_game)"

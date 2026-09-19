@@ -20,9 +20,20 @@ specs:
   perspective: "от первого лица"
   setting: "Атомный ледокол «Северный ветер», Арктика, 1981 год"
   metacritic: 69
-summary: >-
-  Хоррор на вмёрзшем в лёд атомном ледоколе «Северный ветер»: герой греется у любого источника тепла и переживает смерти членов экипажа. Одна из первых игр с физикой воды на PhysX.
+poster: ./shots/wiki-01.jpg
 gallery:
+  - kind: image
+    src: ./shots/wiki-01.jpg
+    caption: "Cryostasis: кадр из игры"
+    author: "Action Forms"
+    license: "Скриншот"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:AtmosFear_(screenshot).jpg"
+  - kind: image
+    src: ./shots/cover-02.jpg
+    caption: "Cryostasis: обложка"
+    author: "Action Forms"
+    license: "Обложка"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Anabioz.jpg"
   - kind: youtube
     id: "tYr05vOUu5o"
     title: "Обзор Игромания Анабиоз Сон разума"
@@ -33,6 +44,8 @@ gallery:
     title: "Анабиоз: Сон разума (Cryostasis: Sleep of Reason) | Игрореликт"
     channel: "Либрариум"
     checkedAt: "2026-09-19"
+summary: >-
+  Хоррор на вмёрзшем в лёд атомном ледоколе «Северный ветер»: герой греется у любого источника тепла и переживает смерти членов экипажа. Одна из первых игр с физикой воды на PhysX.
 sources:
   - title: "Cryostasis: Sleep of Reason — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Cryostasis:_Sleep_of_Reason"

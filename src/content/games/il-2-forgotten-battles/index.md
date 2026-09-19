@@ -21,9 +21,14 @@ specs:
   perspective: "вид из кабины самолёта"
   setting: "Восточный фронт Второй мировой войны, финский и венгерский театры"
   metacritic: 86
-summary: >-
-  Расширенное продолжение «Ил-2»: Финляндия, Венгрия, десятки новых самолётов и динамическая кампания. Основа, на которой выросли «Асы в небе» и «1946».
+poster: ./shots/cover-01.jpg
 gallery:
+  - kind: image
+    src: ./shots/cover-01.jpg
+    caption: "Ил-2 Штурмовик: Забытые сражения: обложка"
+    author: "Maddox Games"
+    license: "Обложка"
+    sourceUrl: "https://en.wikipedia.org/wiki/File:IL-2_Sturmovik_-_Forgotten_Battles_Coverart.png"
   - kind: youtube
     id: "kG1ITOonNow"
     title: "Программа NewView в игре Ил-2 Штурмовик Забытые Сражения"
@@ -35,6 +40,8 @@ gallery:
     channel: "Костя и Алгоритм"
     poster: "https://pic.rtbcdn.ru/video/2026-09-18/33/f1/33f17ae82cc7d0b433244e6b85723a3d.jpg"
     checkedAt: "2026-09-19"
+summary: >-
+  Расширенное продолжение «Ил-2»: Финляндия, Венгрия, десятки новых самолётов и динамическая кампания. Основа, на которой выросли «Асы в небе» и «1946».
 sources:
   - title: "IL-2 Sturmovik: Forgotten Battles — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/IL-2_Sturmovik:_Forgotten_Battles"
