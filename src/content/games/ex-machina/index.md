@@ -13,6 +13,8 @@ years:
   start: 2005
 platforms:
   - windows
+engines:
+  - m3d
 specs:
   releaseDate: "8 декабря 2005"
   modes: [single]

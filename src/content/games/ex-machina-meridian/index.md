@@ -16,6 +16,8 @@ years:
   start: 2006
 platforms:
   - windows
+engines:
+  - m3d
 specs:
   releaseDate: "18 декабря 2006"
   modes: [single, multiplayer]
