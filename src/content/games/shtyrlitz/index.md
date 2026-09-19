@@ -10,6 +10,7 @@ publishers:
 country: russia
 years:
   start: 2000
+  note: "источники расходятся: GameGuru даёт 1 апреля 2000 года, Old-Games.RU — 1999-й; сама студия числит за «Штырлицем» три выпуска между 1998 и 2001 годами, так что речь, возможно, о разных частях"
 platforms:
   - windows
   - android
