@@ -4,7 +4,8 @@ altNames: []
 type: rpg
 class: crpg
 developer: owlcat
-publishers: []
+publishers:
+  - deep-silver
 series: pathfinder
 country: russia
 years:

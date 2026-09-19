@@ -8,6 +8,7 @@ class: open-world
 developer: deep-shadows
 publishers:
   - russobit-m
+  - atari
 series: xenus
 country: ukraine
 years:

@@ -22,7 +22,45 @@ specs:
   setting: "постапокалиптическая Северная Америка"
 summary: >-
   Самостоятельное дополнение с новой картой, машинами и сюжетом о загадочном сигнале «Меридиан 113».
+steamAppId: 286810
+poster: ./shots/poster.jpg
 gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Hard Truck Apocalypse: Rise Of Clans / Ex Machina: Meridian 113: обложка в Steam"
+    author: "Targem Games, ESDigital Games"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/286810/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Hard Truck Apocalypse: Rise Of Clans / Ex Machina: Meridian 113: кадр из игры"
+    author: "Targem Games, ESDigital Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/286810/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Hard Truck Apocalypse: Rise Of Clans / Ex Machina: Meridian 113: кадр из игры"
+    author: "Targem Games, ESDigital Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/286810/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Hard Truck Apocalypse: Rise Of Clans / Ex Machina: Meridian 113: кадр из игры"
+    author: "Targem Games, ESDigital Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/286810/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Hard Truck Apocalypse: Rise Of Clans / Ex Machina: Meridian 113: кадр из игры"
+    author: "Targem Games, ESDigital Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/286810/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Hard Truck Apocalypse: Rise Of Clans / Ex Machina: Meridian 113: кадр из игры"
+    author: "Targem Games, ESDigital Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/286810/"
   - kind: youtube
     id: "89_vXflZ50w"
     title: "Редкостный Обзор 38. Ex Machina Меридиан 113 (2006) Работа на дядю Сэма. (весь сюжет)."

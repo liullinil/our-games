@@ -7,6 +7,7 @@ class: rts
 developer: kd-lab
 publishers:
   - 1c
+  - codemasters
 series: perimeter
 country: russia
 years:

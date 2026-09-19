@@ -4,7 +4,8 @@ altNames: []
 type: shooter
 class: fps
 developer: timelock
-publishers: []
+publishers:
+  - devolver
 country: russia
 years:
   start: 2022

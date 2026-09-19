@@ -8,6 +8,7 @@ class: quest
 developer: frogwares
 publishers:
   - novy-disk
+  - ubisoft
 series: sherlock-holmes
 country: ukraine
 years:

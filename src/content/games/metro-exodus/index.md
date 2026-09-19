@@ -5,7 +5,8 @@ altNames:
 type: shooter
 class: fps
 developer: 4a-games
-publishers: []
+publishers:
+  - deep-silver
 series: metro
 country: ukraine
 years:

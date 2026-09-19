@@ -8,6 +8,7 @@ class: rts
 developer: gsc-game-world
 publishers:
   - gsc-game-world
+  - cdv
 series: cossacks
 country: ukraine
 years:

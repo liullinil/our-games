@@ -8,6 +8,7 @@ class: action-rpg
 developer: akella
 publishers:
   - 1c
+  - playlogic
 series: corsairs
 country: russia
 years:

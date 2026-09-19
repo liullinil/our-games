@@ -27,6 +27,16 @@ const WRITE = args.includes('--write');
 const only = args.filter((a) => !a.startsWith('--'));
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/*
+ * Точные тёзки, которые оказались другими играми.
+ *
+ * В Steam есть карточка «GAG» — но это не «ГЭГ: Отвязное приключение»
+ * 1997 года, а «Чёрный ворон» и «Космические рейнджеры» там тоже нашлись
+ * под своими именами и тоже чужие. Сравнение названий такое не ловит по
+ * определению: имена-то совпадают. Поэтому они перечислены руками.
+ */
+const IMPOSTORS = new Set(['gag', 'black-raven', 'space-rangers']);
+
 async function search(term) {
   const url = `https://store.steampowered.com/api/storesearch/?term=${encodeURIComponent(term)}&cc=us&l=english`;
   const res = await fetch(url, { headers: { 'User-Agent': UA } });
@@ -70,7 +80,10 @@ for (const id of ids) {
     if (hit) break;
   }
 
-  if (hit) {
+  if (hit && IMPOSTORS.has(id)) {
+    console.log(`× ${id.padEnd(24)} ${String(hit.id).padEnd(9)} ${hit.name} — тёзка, не наша игра`);
+    missed += 1;
+  } else if (hit) {
     found += 1;
     console.log(`✓ ${id.padEnd(24)} ${String(hit.id).padEnd(9)} ${hit.name}`);
     if (WRITE) {

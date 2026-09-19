@@ -7,6 +7,8 @@ class: action-rpg
 developer: skyfallen
 publishers:
   - 1c
+  - atari
+  - deep-silver
 country: russia
 years:
   start: 2005

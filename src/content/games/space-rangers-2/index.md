@@ -8,6 +8,7 @@ class: space-rpg
 developer: elemental-games
 publishers:
   - 1c
+  - excalibur
 series: space-rangers
 country: russia
 years:

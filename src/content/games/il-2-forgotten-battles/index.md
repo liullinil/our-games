@@ -7,6 +7,7 @@ class: flight-sim
 developer: maddox-games
 publishers:
   - 1c
+  - ubisoft
 series: il-2
 country: russia
 years:

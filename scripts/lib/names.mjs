@@ -9,8 +9,18 @@
 const SUFFIX =
   /(hd|gold|deluxe|redux|remaster(ed)?|definitive|complete|enhanced|edition|collection|anthology|переиздание|перезагрузка|awarapart)/g;
 
+/*
+ * Римские цифры в номере части. «Parkan II» и «Parkan 2» — одна игра, как
+ * «Корсары III» и «Корсары 3»; пишут и так и так, а иногда по-разному в
+ * названии и в магазине. Заменяем только заглавные и только отдельным
+ * словом, чтобы не трогать буквы внутри слов.
+ */
+const ROMAN = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8, IX: 9, X: 10, XI: 11, XII: 12 };
+const romanize = (s) =>
+  String(s).replace(/\b(X(?:II|I)?|I[VX]|VI{0,3}|I{1,3})\b/g, (m) => String(ROMAN[m] ?? m));
+
 export const norm = (s) =>
-  String(s)
+  romanize(s)
     .toLowerCase()
     .replace(/ё/g, 'е')
     .replace(/&/g, 'and')
@@ -18,7 +28,19 @@ export const norm = (s) =>
     .replace(SUFFIX, '');
 
 /** Числа в названии: по ним продолжение отличается от оригинала. */
-const digits = (s) => (String(s).match(/\d+/g) ?? []).filter((d) => d.length <= 2).join(',');
+const digits = (s) => (romanize(s).match(/\d+/g) ?? []).filter((d) => d.length <= 2).join(',');
+
+/*
+ * В Steam карточка часто подписана сразу двумя названиями — западным и
+ * нашим: «Hard Truck Apocalypse / Ex Machina», «Hard Truck Apocalypse: Rise
+ * Of Clans / Ex Machina: Meridian 113». Это не два разных имени игры, а одно
+ * составное, поэтому половинки пробуем отдельно.
+ */
+const variants = (s) => {
+  const whole = String(s).trim();
+  const parts = whole.split(/\s+\/\s+/).map((p) => p.trim()).filter((p) => p.length > 2);
+  return parts.length > 1 ? [whole, ...parts] : [whole];
+};
 
 /**
  * Совпадают ли названия.
@@ -33,13 +55,15 @@ const digits = (s) => (String(s).match(/\d+/g) ?? []).filter((d) => d.length <= 
  * которой сокращение LRC. Поэтому там требуется точное совпадение.
  */
 export function namesMatch(ours, theirs, { strict = false } = {}) {
-  const b = norm(theirs);
-  if (b.length < 3) return false;
-  return ours.map(norm).some((a) => {
-    if (a.length < 3) return false;
-    if (a === b) return digits(ours.find((x) => norm(x) === a) ?? '') === digits(theirs);
-    if (strict) return false;
-    return a.includes(b) || b.includes(a);
+  return variants(theirs).some((variant) => {
+    const b = norm(variant);
+    if (b.length < 3) return false;
+    return ours.map(norm).some((a, i) => {
+      if (a.length < 3) return false;
+      if (a === b) return digits(ours[i]) === digits(variant);
+      if (strict) return false;
+      return a.includes(b) || b.includes(a);
+    });
   });
 }
 

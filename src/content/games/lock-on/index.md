@@ -8,6 +8,7 @@ class: flight-sim
 developer: eagle-dynamics
 publishers:
   - 1c
+  - ubisoft
 series: dcs
 country: russia
 years:

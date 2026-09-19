@@ -9,6 +9,7 @@ developer: nival
 publishers:
   - 1c
   - buka
+  - ubisoft
 country: russia
 years:
   start: 2006

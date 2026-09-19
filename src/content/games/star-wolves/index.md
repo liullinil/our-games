@@ -7,6 +7,7 @@ class: space-rpg
 developer: x-bow
 publishers:
   - 1c
+  - excalibur
 country: russia
 years:
   start: 2004

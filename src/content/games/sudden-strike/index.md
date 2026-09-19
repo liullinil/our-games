@@ -8,6 +8,7 @@ class: rts
 developer: fireglow
 publishers:
   - russobit-m
+  - cdv
 series: sudden-strike
 country: russia
 years:

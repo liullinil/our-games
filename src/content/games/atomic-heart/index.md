@@ -4,7 +4,8 @@ altNames: []
 type: shooter
 class: fps
 developer: mundfish
-publishers: []
+publishers:
+  - focus
 country: russia
 years:
   start: 2023

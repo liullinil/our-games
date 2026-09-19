@@ -7,6 +7,7 @@ class: fps
 developer: 4a-games
 publishers:
   - buka
+  - deep-silver
 series: metro
 country: ukraine
 years:

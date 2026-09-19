@@ -21,7 +21,45 @@ specs:
   setting: "открытый космос, сотни звёздных систем и планет"
 summary: >-
   Возвращение Parkan: пять сотен планет в свободном полёте, высадки, торговля и битвы флотов на собственном движке «Никиты».
+steamAppId: 289400
+poster: ./shots/poster.jpg
 gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Parkan 2: обложка в Steam"
+    author: "Nikita, Fulqrum Publishing"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/289400/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Parkan 2: кадр из игры"
+    author: "Nikita, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289400/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Parkan 2: кадр из игры"
+    author: "Nikita, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289400/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Parkan 2: кадр из игры"
+    author: "Nikita, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289400/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Parkan 2: кадр из игры"
+    author: "Nikita, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289400/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Parkan 2: кадр из игры"
+    author: "Nikita, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289400/"
   - kind: youtube
     id: "Fu8sPeUtGg0"
     title: "Обзор игры \"Parkan 2\""

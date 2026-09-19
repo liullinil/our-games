@@ -7,6 +7,7 @@ class: tactics
 developer: best-way
 publishers:
   - 1c
+  - codemasters
 series: men-of-war
 country: ukraine
 years:

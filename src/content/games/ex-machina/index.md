@@ -20,7 +20,45 @@ specs:
   metacritic: 45
 summary: >-
   Постапокалиптические гонки с торговлей и стрельбой: грузовик, пустоши и города-крепости. Идеи Ex Machina через десять лет выросли в Crossout.
+steamAppId: 285500
+poster: ./shots/poster.jpg
 gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Hard Truck Apocalypse / Ex Machina: обложка в Steam"
+    author: "Targem Games, ESDigital Games"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/285500/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Hard Truck Apocalypse / Ex Machina: кадр из игры"
+    author: "Targem Games, ESDigital Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/285500/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Hard Truck Apocalypse / Ex Machina: кадр из игры"
+    author: "Targem Games, ESDigital Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/285500/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Hard Truck Apocalypse / Ex Machina: кадр из игры"
+    author: "Targem Games, ESDigital Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/285500/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Hard Truck Apocalypse / Ex Machina: кадр из игры"
+    author: "Targem Games, ESDigital Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/285500/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Hard Truck Apocalypse / Ex Machina: кадр из игры"
+    author: "Targem Games, ESDigital Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/285500/"
   - kind: youtube
     id: "_mZBcnEGOcA"
     title: "Редкостный Обзор 36. Ex Machina (2005) Дальнобойщик мститель. (весь сюжет)."

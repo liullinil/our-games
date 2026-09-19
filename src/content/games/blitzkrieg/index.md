@@ -7,6 +7,7 @@ class: rts
 developer: nival
 publishers:
   - 1c
+  - cdv
 series: blitzkrieg
 country: russia
 years:

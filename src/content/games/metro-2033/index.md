@@ -7,6 +7,7 @@ class: fps
 developer: 4a-games
 publishers:
   - akella
+  - thq
 series: metro
 country: ukraine
 years:
