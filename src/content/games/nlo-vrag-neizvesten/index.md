@@ -22,7 +22,12 @@ specs:
   development: "1995"
 summary: >-
   Неавторизованный демейк тактической стратегии X-COM: UFO Defense для ZX Spectrum: отряд бойцов отражает вторжение пришельцев, но, в отличие от оригинала, бои идут в реальном времени. Первая крупная работа Вячеслава Медноногова (Copper Feet), позже сделавшего «Чёрного ворона».
-gallery: []
+gallery:
+  - kind: youtube
+    id: "9up4nIrknuw"
+    title: "НЛО. Враг Неизвестен. Обзор"
+    channel: "JaggedGaming"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Медноногов, Вячеслав Сергеевич — Википедия"
     url: "https://ru.wikipedia.org/wiki/Медноногов,_Вячеслав_Сергеевич"

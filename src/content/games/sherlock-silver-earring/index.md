@@ -30,6 +30,16 @@ gallery:
     author: "Frogwares"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%A8%D0%A5%D0%97%D0%A1%D0%A1.jpg"
+  - kind: youtube
+    id: "Relc9wBr0kE"
+    title: "ПАСХАЛКИ и СЕКРЕТЫ в Шерлок Холмс: Загадка Серебряной Сережки"
+    channel: "VANDELEY"
+    checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "06QjNLPYsq0"
+    title: "Прохождение Шерлок Холмс: Загадка Серебряной Серёжки Часть 1 (PC) (Без комментариев)"
+    channel: "ALEX GAME TV"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Sherlock Holmes: Secret of the Silver Earring — Википедия"
     url: "https://ru.wikipedia.org/wiki/Sherlock_Holmes:_Secret_of_the_Silver_Earring"

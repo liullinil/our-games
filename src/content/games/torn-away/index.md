@@ -66,6 +66,17 @@ gallery:
     author: "perelesoq, Hawthorn Games"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/1568970/"
+  - kind: youtube
+    id: "seX7vH5NQXw"
+    title: "Грустная история, но с глубоким смыслом - Torn Away"
+    channel: "DimerDS"
+    checkedAt: "2026-09-19"
+  - kind: rutube
+    id: "64eab0d11bcdf1e089e58590a48f2fff"
+    title: "Обзор игры Torn Away"
+    channel: "Homo Ludens Games"
+    poster: "https://pic.rtbcdn.ru/video/a2/16/a216491cd43086369bbdf791bb9228db.jpg"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Torn Away — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Torn_Away"

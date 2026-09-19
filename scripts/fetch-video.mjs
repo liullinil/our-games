@@ -235,8 +235,23 @@ const TOPIC_ANY =
   'игр|game|геймплей|gameplay|обзор|review|прохожден|walkthrough|longplay|летсплей|let.?s ?play|' +
   'стрим|ретро|retro|истори|history|разбор|playthrough|трейлер|trailer|мнение|ревью|прошёл|прошел|играем|играю|ostalgia|ностальги';
 
+/*
+ * Слова, которые бывают только у ролика про игру.
+ *
+ * «Обзор» и «история» сюда не годятся: ими подписывают что угодно, от
+ * браузера до фильма. А наши игры сплошь называются обычными словами —
+ * «Сафари», «Снайпер», «Клад», «Вдали», — и поиск на такое имя приносит
+ * обзор браузера Safari, китайский боевик, разбор айсберга GTA и обзор
+ * скутера Vector. Для них нужна примета, которую в отзыве о скутере не
+ * напишут.
+ */
+const GAME_TOPIC =
+  'игр[ауеои]|игры|в игру|game ?play|геймплей|прохожден|walkthrough|longplay|летсплей|let.?s ?play|' +
+  'playthrough|играем|играю|прошёл|прошел|speedrun|спидран|истори[яию]\\s+серии|ретроспектив';
+
 const topicRegex = (type) => new RegExp(`${TOPIC[type] || TOPIC_ANY}|${TOPIC_ANY}`, 'i');
 const strictTopicRegex = () => new RegExp(TOPIC_ANY, 'i');
+const gameTopicRegex = () => new RegExp(GAME_TOPIC, 'i');
 
 /**
  * Насколько имени можно верить одному.
@@ -255,6 +270,14 @@ function formStrength({ form, latin }) {
   const letters = form.match(/[a-zа-я]+/gi) ?? [];
   const digits = form.match(/\d+/g) ?? [];
   if (letters.length <= 1 && digits.length === 0) return 'bare';
+  /*
+   * Название из обычных слов без единой цифры: «Тайны океана», «Космический
+   * мост», «Морской бой». Раньше такое считалось надёжным — в автомобильной
+   * энциклопедии имя почти всегда шло с индексом, и два слова подряд уже ни
+   * с чем не путались. У игр наоборот: это обиходные словосочетания, и
+   * встречаются они где угодно.
+   */
+  if (!latin && digits.length === 0) return 'plain';
   if (latin) return 'weak';
   if (letters.length === 0 || letters.every((l) => l.length <= 2)) return 'weak';
   // «ГАЗ-А»: одна буква в хвосте попадётся и в обычной фразе «залил газ, а потом».
@@ -498,8 +521,8 @@ function judge(video, ctx) {
   if (hit.strength === 'weak' && !ctx.topic.test(video.title)) {
     return { ok: false, why: 'короткое имя без слова про игру' };
   }
-  if (hit.strength === 'bare' && !ctx.strictTopic.test(video.title)) {
-    return { ok: false, why: 'имя одним словом без слова про род техники' };
+  if ((hit.strength === 'bare' || hit.strength === 'plain') && !ctx.gameTopic.test(video.title)) {
+    return { ok: false, why: 'имя из обычных слов без приметы игры' };
   }
 
   let score = 0;
@@ -646,9 +669,14 @@ function insertIntoGallery(text, blocks) {
   const rest = text.slice(whole.length);
   const insert = blocks.join('');
 
-  // Пустая галерея записана как inline-список: дописывать в неё пункты нельзя,
-  // сначала превращаем её в обычный ключ.
-  if (/^gallery:s*[]s*$/m.test(body)) body = body.replace(/^gallery:s*[]s*$/m, 'gallery:');
+  /*
+   * Пустая галерея записана как inline-список: дописывать в неё пункты
+   * нельзя, сначала превращаем её в обычный ключ. Иначе после «gallery: []»
+   * повиснут элементы списка, YAML перестанет разбираться, и статья молча
+   * потеряет summary и status — сборка при этом не падает.
+   */
+  const EMPTY_GALLERY = /^gallery:[ \t]*\[[ \t]*\][ \t]*$/m;
+  if (EMPTY_GALLERY.test(body)) body = body.replace(EMPTY_GALLERY, 'gallery:');
 
   if (!/^gallery:/m.test(body)) {
     return head + body.replace(/^status:/m, `gallery:\n${insert}status:`) + tail + rest;
@@ -800,6 +828,7 @@ function buildCtx(game, slug) {
     forms,
     topic: topicRegex(game.type),
     strictTopic: strictTopicRegex(game.type),
+    gameTopic: gameTopicRegex(),
   };
 }
 

@@ -24,6 +24,16 @@ gallery:
     author: "Электроника"
     license: "Обложка"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Korobka-1.JPG"
+  - kind: youtube
+    id: "CbR4_t1scBY"
+    title: "Электроника Игра на Экране - Ну Погоди ИМ 02"
+    channel: "deleter2007"
+    checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "ooy6o4NilVc"
+    title: "Эволюция серии игр Ну, погоди! [1984-2020]"
+    channel: "Eryx Channel"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Ну, погоди! (электронная игра) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Ну,_погоди!_(электронная_игра)"

@@ -56,6 +56,16 @@ gallery:
     author: "Nekki Limited"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/248970/"
+  - kind: youtube
+    id: "LW9b4o59638"
+    title: "ИСТОРИЯ VECTOR, КОТОРУЮ ВЫ НЕ ЗНАЛИ | ЛЕГЕНДАРНЫЕ ИГРЫ ДЕТСТВА"
+    channel: "Dragon Docx"
+    checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "CXb2py_jydU"
+    title: "Vector – ЧТО СТАЛО С ИГРОЙ"
+    channel: "tupizm"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Vector (video game) — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Vector_(video_game)"

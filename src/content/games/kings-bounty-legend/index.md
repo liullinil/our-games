@@ -62,6 +62,16 @@ gallery:
     author: "Katauri Interactive, Fulqrum Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/25900/"
+  - kind: youtube
+    id: "H_WfVBRuoCg"
+    title: "Обзор King`s Bounty: Легенда о Рыцаре"
+    channel: "Страна Игр"
+    checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "rZerOuQWd7I"
+    title: "Обзор игры: King's bounty \"Легенда о рыцаре\" (2008)."
+    channel: "Сан саныч"
+    checkedAt: "2026-09-19"
 sources:
   - title: "King's Bounty: The Legend — Wikipedia"
     url: "https://en.wikipedia.org/wiki/King%27s_Bounty:_The_Legend"

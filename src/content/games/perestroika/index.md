@@ -27,6 +27,16 @@ gallery:
     author: "Nikita Online"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Toppler_For_Winodws_-_Splash.png"
+  - kind: youtube
+    id: "hZE2n0r9kGk"
+    title: "Nikita: от «Перестройки» и U95 до Parkan и «Дом-3»"
+    channel: "StopGame"
+    checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "YQ-w7QC-n3s"
+    title: "DOS, игра Перестройка (1990)"
+    channel: "Советский геймер"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Perestroika (video game) — Wikipedia (англ.)"
     url: "https://en.wikipedia.org/wiki/Perestroika_(video_game)"

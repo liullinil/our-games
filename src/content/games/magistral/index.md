@@ -27,6 +27,11 @@ gallery:
     license: "CC0"
     licenseUrl: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Arcademuseum-magistral.jpg"
+  - kind: youtube
+    id: "xC-qUtdbeWk"
+    title: "Советский игровой автомат: МАГИСТРАЛЬ"
+    channel: "Советские игровые автоматы: www.sovietslots.tumblr.com"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Магистраль — Музей советских игровых автоматов"
     url: "https://15kop.ru/magistral-1990"

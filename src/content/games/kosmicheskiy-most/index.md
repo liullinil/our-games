@@ -21,7 +21,12 @@ specs:
   modes: [single]
 summary: >-
   Карманная электронная игра серии «Электроника»: космонавты перебираются через потоки лавы по раскладному мосту. Копия японской Nintendo Game & Watch «Fire», которую с 1989 года выпускал зеленоградский завод «Ангстрем».
-gallery: []
+gallery:
+  - kind: youtube
+    id: "MKdgIIHGDRE"
+    title: "Электроника \"Ну погоди!\" и \"Космический мост\" Space bridge Игра на экране."
+    channel: "PokuPashka: обзоры интересных товаров"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Электроника ИМ-09 Космический мост — Skopil"
     url: "https://skopil.ru/information/raznovidnosti-mikroprotsessornykh-igr-elektronika/igra-elektronika-im-09-kosmicheskij-most"

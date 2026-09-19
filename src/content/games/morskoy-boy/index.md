@@ -28,6 +28,16 @@ gallery:
     license: "CC BY-SA 4.0"
     licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:MoSAM_in_Moscow_(Sea_Battle).jpg"
+  - kind: youtube
+    id: "TMNdqO7um8I"
+    title: "Как двигались кораблики и торпеды. Залезли внутрь советского автомата \"Морской бой\"."
+    channel: "AmperkaRu"
+    checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "ZihcRZTkYyY"
+    title: "У кого украли «Морской бой» и как он устроен"
+    channel: "MoscowWalks"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Морской бой (игровой автомат) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Морской_бой_(игровой_автомат)"

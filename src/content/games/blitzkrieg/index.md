@@ -62,6 +62,16 @@ gallery:
     author: "Nival"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/313480/"
+  - kind: youtube
+    id: "IUaKUiFeVvw"
+    title: "Блицкриг – забытая российская стратегия из нулевых (feat. Борис Юлин) | Краткий обзор о главном"
+    channel: "NicoTulchans"
+    checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "yyFgwczFwy4"
+    title: "Эволюция серии игр Блицкриг 2003-2017 | Evolution of Blitzkrieg 2003-2017"
+    channel: "ShermanBy"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Blitzkrieg (video game) — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Blitzkrieg_(video_game)"

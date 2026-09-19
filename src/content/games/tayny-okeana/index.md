@@ -22,7 +22,18 @@ specs:
   modes: [single]
 summary: >-
   Карманная электронная игра серии «Электроника»: водолаз спускается за сокровищами на дно океана, уворачиваясь от осьминога. Копия японской Nintendo Game & Watch «Octopus», выпускавшаяся вслед за куда более известной «Ну, погоди!».
-gallery: []
+gallery:
+  - kind: youtube
+    id: "TMihoewv-XA"
+    title: "Игра советская Электроника ИМ Тайны океана ссср"
+    channel: "Евгения См"
+    checkedAt: "2026-09-19"
+  - kind: rutube
+    id: "7b7b94a4e4b4f2e7ff4c30afc05e3b33"
+    title: "Электроника - Тайны океана"
+    channel: "retrogames"
+    poster: "https://pic.rtbcdn.ru/video/2025-11-20/1e/7d/1e7d1e03563c86384becf2c94e96c7cf.jpg"
+    checkedAt: "2026-09-19"
 sources:
   - title: "В СССР делали игры! 5 примеров советских компьютерных игр — iXBT Live"
     url: "https://www.ixbt.com/live/games/v-sssr-delali-igry-5-primerov-sovetskih-kompyuternyh-igr.html"

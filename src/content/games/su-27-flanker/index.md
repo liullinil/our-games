@@ -29,6 +29,16 @@ gallery:
     author: "Eagle Dynamics"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%A1%D1%83-27_%D0%A4%D0%BB%D0%B0%D0%BD%D0%BA%D0%B5%D1%80_(%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0_%D0%B4%D0%B8%D1%81%D0%BA%D0%B0).jpg"
+  - kind: youtube
+    id: "K48_fVGedeA"
+    title: "Su27 flanker (1995) airfield strike"
+    channel: "Hornet1a"
+    checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "rcPpSSTEzGI"
+    title: "SU-27 Flanker gameplay (PC Game, 1995)"
+    channel: "Squakenet"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Su-27 Flanker (video game) — Wikipedia (англ.)"
     url: "https://en.wikipedia.org/wiki/Su-27_Flanker_(video_game)"

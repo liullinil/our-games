@@ -32,6 +32,16 @@ gallery:
     author: "Fireglow"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0_%D0%B8%D0%B3%D1%80%D1%8B_%D0%9F%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_3.jpg"
+  - kind: youtube
+    id: "WQvnYiBuMwY"
+    title: "Противостояние 3 | Sudden Strike | краткий обзор ретро классики RTS"
+    channel: "UncleFox"
+    checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "eXp2gjFSI_Y"
+    title: "Старенькая Sudden Strike (Противостояние 3) теперь в Full HD"
+    channel: "ShermanBy"
+    checkedAt: "2026-09-19"
 sources:
   - title: "Sudden Strike (video game) — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Sudden_Strike_(video_game)"
