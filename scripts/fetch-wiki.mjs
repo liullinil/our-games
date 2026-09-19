@@ -17,6 +17,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import { titleRank, fieldList } from './lib/names.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const GAMES = path.join(root, 'src', 'content', 'games');
@@ -70,7 +71,7 @@ const GAME_CATEGORY = /компьютерные игры|видеоигр|video 
  * и без проверки они попадали в статью. Поэтому смотрим категории каждого
  * кандидата и берём первого, у которого они говорят о видеоигре.
  */
-async function findTitle(lang, name) {
+async function findTitle(lang, name, altNames = []) {
   const data = await api(lang, {
     action: 'query',
     list: 'search',
@@ -81,12 +82,19 @@ async function findTitle(lang, name) {
   const hits = (data.query?.search ?? []).map((h) => h.title);
   if (hits.length === 0) return null;
   const cats = await categories(lang, hits.slice(0, 6));
-  for (const title of hits) {
-    if (!GAME_CATEGORY.test(cats.get(title) ?? '')) continue;
-    if (!sameNumbers(name, title)) continue;
-    return title;
-  }
-  return null;
+  const ours = [name, ...altNames];
+  /*
+   * Категорий мало: «Чёрная книга» — такая же компьютерная игра, как наш
+   * «Чёрный ворон», и без сверки названий её кадры приезжали к нему. А ещё
+   * выдача любит ставить сиквел выше оригинала, поэтому ровное совпадение
+   * названия обходит просто похожее.
+   */
+  const ranked = hits
+    .filter((title) => GAME_CATEGORY.test(cats.get(title) ?? '') && sameNumbers(name, title))
+    .map((title) => ({ title, rank: titleRank(ours, title) }))
+    .filter((c) => c.rank > 0)
+    .sort((a, b) => b.rank - a.rank);
+  return ranked[0]?.title ?? null;
 }
 
 /**
@@ -277,6 +285,7 @@ async function readGame(id) {
     id,
     file,
     name: unquote(field(fm, 'name')),
+    altNames: fieldList(fm, 'altNames'),
     developer: field(fm, 'developer'),
     hasImages: /- kind: image/.test(fm),
   };
@@ -312,7 +321,7 @@ async function main() {
       console.log(`${id}: ${game.name}`);
       let result = null;
       for (const lang of ['ru', 'en']) {
-        const title = await findTitle(lang, game.name);
+        const title = await findTitle(lang, game.name, game.altNames ?? []);
         if (!title) continue;
         result = await fetchFor(id, lang, title, await studioName(game.developer), game.name);
         if (result) break;

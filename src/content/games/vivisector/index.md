@@ -22,7 +22,14 @@ specs:
   setting: "остров Сорео, 1987 год, восстание звероподобных гибридов"
 summary: >-
   Шутер об острове доктора Моро с зверолюдьми, сделанный на новом движке AtmosFear: дневная и ночная стороны острова и ролевые элементы.
+poster: ./shots/cover-01.jpg
 gallery:
+  - kind: image
+    src: ./shots/cover-01.jpg
+    caption: "Vivisector: Beast Within: обложка"
+    author: "Action Forms"
+    license: "Обложка"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Vivisector_boxart.jpg"
   - kind: youtube
     id: "uYfI7saXZaQ"
     title: "Обзор-1 Vivisector 'Beast Within' (2005)Вивисектор-Зверь внутри"

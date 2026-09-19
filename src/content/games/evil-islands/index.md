@@ -20,7 +20,32 @@ specs:
   releaseDate: "26 октября 2000"
   modes: [single]
   setting: "фэнтезийный мир «Аллодов»"
+poster: ./shots/wiki-01.jpg
 gallery:
+  - kind: image
+    src: ./shots/wiki-01.jpg
+    caption: "Проклятые земли: кадр из игры"
+    author: "Nival"
+    license: "Скриншот"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Menyu3.jpg"
+  - kind: image
+    src: ./shots/wiki-02.jpg
+    caption: "Проклятые земли: кадр из игры"
+    author: "Nival"
+    license: "Скриншот"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Konstruktorp.jpg"
+  - kind: image
+    src: ./shots/wiki-03.jpg
+    caption: "Проклятые земли: кадр из игры"
+    author: "Nival"
+    license: "Скриншот"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Harakteristiki.jpg"
+  - kind: image
+    src: ./shots/cover-04.jpg
+    caption: "Проклятые земли: обложка"
+    author: "Nival"
+    license: "Обложка"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Evil_Islands_1C_cover.jpg"
   - kind: youtube
     id: "WiAkl7WJSVE"
     title: "Обзор игры: Проклятые земли - затерянные в астрале"

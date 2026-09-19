@@ -67,6 +67,34 @@ export function namesMatch(ours, theirs, { strict = false } = {}) {
   });
 }
 
+/* Уточнения в скобках: «Аллоды (игра)», «Cradle (video game)». */
+const DISAMBIG = /\s*\((?:[^)]*?(?:игра|game|серия|series|компьютерн\w*)[^)]*)\)\s*$/i;
+
+/**
+ * Похоже ли название статьи в Википедии на название игры.
+ *
+ * Вхождением тут пользоваться нельзя: «Ex Machina» входит в «Deus Ex
+ * Machina», хотя это разные игры с разницей в двадцать лет. Зато приставка
+ * спереди — верный признак другой игры, а хвост обычно подзаголовок
+ * («Аллоды» → «Аллоды: Печать тайны»). Поэтому требуем общее начало.
+ *
+ * Ровное совпадение возвращает 2, общее начало — 1, непохожее — 0: по этому
+ * числу кандидаты сортируются. Поиск по «Проклятым землям» отдаёт первой
+ * статью о сиквеле «Затерянные в астрале», и без такой сортировки обложка
+ * продолжения уезжала в статью об оригинале.
+ */
+export function titleRank(ours, theirs) {
+  const b = norm(String(theirs).replace(DISAMBIG, ''));
+  if (b.length < 3) return 0;
+  let best = 0;
+  for (const a of ours.map(norm)) {
+    if (a.length < 3) continue;
+    if (a === b) return 2;
+    if (a.startsWith(b) || b.startsWith(a)) best = 1;
+  }
+  return best;
+}
+
 /** Список значений вложенного ключа frontmatter: altNames, platforms и прочие. */
 export function fieldList(fm, name) {
   const block = fm.match(new RegExp(String.raw`^${name}:\s*\n((?:\s+- .*\n)+)`, 'm'));

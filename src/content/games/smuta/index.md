@@ -19,7 +19,14 @@ specs:
   setting: "Смутное время, Русское царство, 1612 год"
   salesNote: "около 1 млн скачиваний игры и учебных приложений ИРИ к 27 ноября 2024 года"
   development: "2020–2024"
+poster: ./shots/cover-01.jpg
 gallery:
+  - kind: image
+    src: ./shots/cover-01.jpg
+    caption: "Смута: обложка"
+    author: "Cyberia Nova"
+    license: "Обложка"
+    sourceUrl: "https://en.wikipedia.org/wiki/File:Smuta_cover.jpg"
   - kind: youtube
     id: "X3NnyP7HdT4"
     title: "Смута - Игросодержащий продукт [Обзор]"

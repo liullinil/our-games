@@ -20,7 +20,14 @@ specs:
   setting: "фэнтезийный мир с замками, осадами и клановыми войнами"
 summary: >-
   Первая российская массовая онлайн-ролевая игра: замки, осады и клановые войны в фэнтезийном мире. Пережила несколько перезапусков и жива до сих пор.
+poster: ./shots/cover-01.jpg
 gallery:
+  - kind: image
+    src: ./shots/cover-01.jpg
+    caption: "Сфера: обложка"
+    author: "Burut"
+    license: "Обложка"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Wallpaper-tn-03.jpg"
   - kind: youtube
     id: "fyqOZGr11Lg"
     title: "[ЗЗШ #4] Обзор Сфера 3: Зачарованный мир"

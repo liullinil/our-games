@@ -21,7 +21,14 @@ specs:
   development: "анонс 20 февраля 2004, релиз 15 марта 2006"
 summary: >-
   Гонки на тюнингованных «Ладах» по ночной Москве, анонсированные как ответ Need for Speed. Огромная реклама и провальный релиз сделали игру мемом на десятилетия.
+poster: ./shots/cover-01.jpg
 gallery:
+  - kind: image
+    src: ./shots/cover-01.jpg
+    caption: "Lada Racing Club: обложка"
+    author: "Geleos"
+    license: "Обложка"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Lada_Racing_Club_(game).jpg"
   - kind: youtube
     id: "JR1lKAT4CZk"
     title: "ИСТОРИЯ БОЛЬШОГО ОБМАНА - LADA RACING CLUB"
