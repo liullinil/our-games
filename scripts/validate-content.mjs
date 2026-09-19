@@ -50,9 +50,40 @@ function checkFrontmatter(label, text) {
  * стеком вызовов, а `content:validate` рапортует «в порядке». Ловим здесь
  * и называем файл.
  */
+/*
+ * Ключи, которые в схеме объявлены списками.
+ *
+ * YAML читает голый ключ «gallery:» без пунктов не как пустой список, а как
+ * null, и сборка падает на несоответствии схеме. Сам по себе такой ключ
+ * появляется не руками: он остаётся, когда из галереи убрали последний
+ * ролик. Разбор YAML при этом проходит, поэтому проверка нужна отдельная.
+ */
+const LIST_FIELDS = {
+  '': ['gallery', 'altNames', 'sources'],
+  games: ['platforms', 'publishers', 'engines', 'predecessors', 'basedOn', 'variants'],
+  studios: ['names'],
+  eras: ['images', 'motifs'],
+};
+
+function checkListShape(label, doc) {
+  if (!doc || typeof doc !== 'object') return;
+  // «games/diversant» → games. У движков basedOn — строка, а не список.
+  const collection = label.split('/')[0];
+  const keys = [...LIST_FIELDS[''], ...(LIST_FIELDS[collection] ?? [])];
+  for (const key of keys) {
+    if (!(key in doc)) continue;
+    const value = doc[key];
+    if (value === null) {
+      problems.push(`${label}: ключ ${key} пуст — напишите ${key}: [] или уберите его`);
+    } else if (!Array.isArray(value)) {
+      problems.push(`${label}: ключ ${key} должен быть списком, а не ${typeof value}`);
+    }
+  }
+}
+
 function checkYamlSyntax(label, fm) {
   try {
-    parseYaml(fm);
+    checkListShape(label, parseYaml(fm));
     return true;
   } catch (e) {
     const where = e.linePos && e.linePos[0] ? ` (строка ${e.linePos[0].line})` : '';

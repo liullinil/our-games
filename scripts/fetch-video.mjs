@@ -713,6 +713,12 @@ async function dropVideos(slug, ids) {
     if (text !== before) removed += 1;
     else console.log(`${id}: в статье не нашёл`);
   }
+  /*
+   * Убрали последний пункт — надо вернуть пустой список. Голый ключ
+   * «gallery:» без пунктов YAML читает не как пустой массив, а как null,
+   * и сборка падает на несоответствии схеме.
+   */
+  if (removed) text = text.replace(/^gallery:[ \t]*\r?\n(?=[A-Za-z0-9_-]+:)/m, 'gallery: []\n');
   if (removed) await writeFile(file, text, 'utf8');
   return removed;
 }
