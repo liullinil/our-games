@@ -17,7 +17,45 @@ platforms:
   - windows
 summary: >-
   Калифорния, реальные шоссе и десять лет разработки: самый долгий долгострой российского игростроя, вышедший под именем Rig’n’Roll.
+steamAppId: 46370
+poster: ./shots/poster.jpg
 gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Rig n Roll: обложка в Steam"
+    author: "SoftLab-NSK, Fulqrum Publishing"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/46370/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Rig n Roll: кадр из игры"
+    author: "SoftLab-NSK, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/46370/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Rig n Roll: кадр из игры"
+    author: "SoftLab-NSK, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/46370/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Rig n Roll: кадр из игры"
+    author: "SoftLab-NSK, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/46370/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Rig n Roll: кадр из игры"
+    author: "SoftLab-NSK, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/46370/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Rig n Roll: кадр из игры"
+    author: "SoftLab-NSK, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/46370/"
   - kind: youtube
     id: "-1--sgHWhpk"
     title: "Обзор игры Дальнобойщики 3 Покорение Америки"

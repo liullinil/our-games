@@ -15,12 +15,15 @@
     "fonts:sync": "node scripts/sync-fonts.mjs",
     "commons:fetch": "node scripts/fetch-commons.mjs",
     "steam:fetch": "node scripts/fetch-steam.mjs",
+    "steam:find": "node scripts/find-steam.mjs",
+    "steam:check": "node scripts/check-steam.mjs",
     "wiki:fetch": "node scripts/fetch-wiki.mjs",
     "video": "node scripts/fetch-video.mjs",
     "photos:shrink": "node scripts/shrink-photos.mjs",
     "links:check": "node scripts/check-links.mjs",
     "serve:pages": "node scripts/serve-like-pages.mjs",
-    "coverage": "node scripts/coverage.mjs"
+    "coverage": "node scripts/coverage.mjs",
+    "contrast:check": "node scripts/check-contrast.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.1",

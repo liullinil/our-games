@@ -31,3 +31,31 @@ motifs:
   - Журнал «Игромания» с диском
   - PlayStation 2 и PSP
   - Xbox 360 и первые «сюжетные» трейлеры
+images:
+  - src: ./noughties/sony-playstation-2-30001-console-fl.jpg
+    caption: "PlayStation 2 (2000) — самая продаваемая приставка в истории и мечта каждого школьника нулевых."
+    author: "Evan-Amos"
+    license: "PD"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sony-PlayStation-2-30001-Console-FL.jpg"
+  - src: ./noughties/microsoft-xbox-360-pro-console-fl.jpg
+    caption: "Xbox 360 (2005) — консоль Microsoft, с которой в Россию пришли крупнобюджетные игры с киношными сюжетами."
+    author: "Evan-Amos"
+    license: "PD"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Microsoft-Xbox-360-Pro-Console-FL.jpg"
+  - src: ./noughties/psp-1000.jpg
+    caption: "PlayStation Portable (2004) — карманная приставка с полноценной трёхмерной графикой, конкурент мобильных телефонов с играми."
+    author: "Evan-Amos"
+    license: "PD"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Psp-1000.jpg"
+  - src: ./noughties/nokia-3310-grey-front-tidied-and-enhanced.jpg
+    caption: "Nokia 3310 (2000) — телефон с «Змейкой», который был в кармане почти у каждого в середине нулевых."
+    author: "Multicherry"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nokia_3310_grey_front_(tidied_and_enhanced).jpg"
+  - src: ./noughties/cd-jewel-case-front.jpg
+    caption: "Jewel-бокс — стандартная упаковка компьютерных игр 2000-х: под прозрачной крышкой лежал диск с наклейкой издателя."
+    author: "DiscoA340"
+    license: "CC0"
+    licenseUrl: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:CD_Jewel_Case_(Front).jpg"

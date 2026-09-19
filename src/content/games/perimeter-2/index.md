@@ -15,9 +15,53 @@ predecessors:
   - perimeter
 platforms:
   - windows
+specs:
+  releaseDate: "12 декабря 2008"
+  modes: [single, multiplayer]
+  perspective: "вид сверху"
+  setting: "Планета «Новая Земля»"
+  metacritic: 43
 summary: >-
   Продолжение о войне двух рас за землю и воду: одни заливают мир, другие сушат. Более традиционная стратегия, чем первая часть.
+steamAppId: 12420
+poster: ./shots/poster.jpg
 gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Perimeter 2: New Earth: обложка в Steam"
+    author: "KDV Games, Strategy First"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/12420/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Perimeter 2: New Earth: кадр из игры"
+    author: "KDV Games, Strategy First"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/12420/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Perimeter 2: New Earth: кадр из игры"
+    author: "KDV Games, Strategy First"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/12420/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Perimeter 2: New Earth: кадр из игры"
+    author: "KDV Games, Strategy First"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/12420/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Perimeter 2: New Earth: кадр из игры"
+    author: "KDV Games, Strategy First"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/12420/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Perimeter 2: New Earth: кадр из игры"
+    author: "KDV Games, Strategy First"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/12420/"
   - kind: youtube
     id: "r72fUVApLBk"
     title: "Perimeter 2 New Earth PC Game Video HD"
@@ -29,7 +73,32 @@ gallery:
     channel: "Снегирь XIII The Gamer"
     poster: "https://pic.rtbcdn.ru/video/2025-06-21/2b/72/2b72cabe51038fb7e3ea10ab95c98f8f.jpg"
     checkedAt: "2026-09-19"
-sources: []
-status: card
+sources:
+  - title: "Периметр 2: Новая Земля — Википедия"
+    url: "https://ru.wikipedia.org/wiki/Периметр_2:_Новая_Земля"
+status: article
 ---
 
+«Периметр 2: Новая Земля» — стратегия реального времени студии [K-D Lab](../../studios/kd-lab/), прямое продолжение [«Периметра»](../perimeter/) (2004): та же война двух фракций за землю, но заметно более традиционная по механике.
+
+## История создания
+
+K-D Lab отказалась от главной особенности первой игры — терраформирования ландшафта и защитного поля-периметра — в пользу более понятной формулы: одна фракция, «Исход», осваивает сушу планеты «Новая Земля», другая, «Возврат», обитает в морях и стремится затопить территорию противника.
+
+## Игровой процесс
+
+Игра ведётся двумя отдельными кампаниями — за каждую из фракций, — а победа зависит от контроля над территорией: «Исход» осушает моря под застройку, «Возврат» топит сушу под свои нужды. По сравнению с оригиналом бои и база строятся ближе к канонам жанра, без изобретённой K-D Lab системы деформации ландшафта.
+
+## Выход и приём
+
+В России игра вышла 12 декабря 2008 года, в остальном мире — в феврале 2009-го. Приём оказался прохладным: Metacritic усреднил рецензии до 43 баллов из 100, российский Absolute Games поставил всего 28 из 100, а «PC Игры» и «Игромания» — около 6 из 10. Критики почти единодушно отмечали, что сиквел растерял именно то, что делало первый «Периметр» особенным.
+
+## Наследие
+
+После прохладного приёма «Новой Земли» серия не получила прямого продолжения на движке K-D Lab; статус культовой игры так и остался за первым «Периметром».
+
+## Интересные факты
+
+- Фракции игры называются «Исход» и «Возврат» — уже сами имена описывают их стратегию: уйти на сушу или остаться в воде.
+- Absolute Games поставил игре одну из самых низких оценок среди крупных российских стратегий своего времени — 28 из 100.
+- В отличие от первой части, вторая отказалась от фирменной механики терраформирования ландшафта.

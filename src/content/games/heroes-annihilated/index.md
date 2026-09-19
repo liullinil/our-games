@@ -14,39 +14,45 @@ platforms:
   - windows
 summary: >-
   Фэнтезийная стратегия GSC на движке «Казаков II» с героем, который может стать сильнее целой армии. Задуманная трилогия остановилась на первой части.
-steamAppId: 4870
+steamAppId: 4800
 poster: ./shots/poster.jpg
 gallery:
   - kind: image
     src: ./shots/poster.jpg
-    caption: "Cossacks: Art of War: обложка в Steam"
-    author: "GSC Game World, GSC World Publishing"
+    caption: "Heroes of Annihilated Empires: обложка в Steam"
+    author: "GSC Game World"
     license: "Промо"
-    sourceUrl: "https://store.steampowered.com/app/4870/"
+    sourceUrl: "https://store.steampowered.com/app/4800/"
   - kind: image
     src: ./shots/shot-01.jpg
-    caption: "Cossacks: Art of War: кадр из игры"
-    author: "GSC Game World, GSC World Publishing"
+    caption: "Heroes of Annihilated Empires: кадр из игры"
+    author: "GSC Game World"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/4870/"
+    sourceUrl: "https://store.steampowered.com/app/4800/"
   - kind: image
     src: ./shots/shot-02.jpg
-    caption: "Cossacks: Art of War: кадр из игры"
-    author: "GSC Game World, GSC World Publishing"
+    caption: "Heroes of Annihilated Empires: кадр из игры"
+    author: "GSC Game World"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/4870/"
+    sourceUrl: "https://store.steampowered.com/app/4800/"
   - kind: image
     src: ./shots/shot-03.jpg
-    caption: "Cossacks: Art of War: кадр из игры"
-    author: "GSC Game World, GSC World Publishing"
+    caption: "Heroes of Annihilated Empires: кадр из игры"
+    author: "GSC Game World"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/4870/"
+    sourceUrl: "https://store.steampowered.com/app/4800/"
   - kind: image
     src: ./shots/shot-04.jpg
-    caption: "Cossacks: Art of War: кадр из игры"
-    author: "GSC Game World, GSC World Publishing"
+    caption: "Heroes of Annihilated Empires: кадр из игры"
+    author: "GSC Game World"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/4870/"
+    sourceUrl: "https://store.steampowered.com/app/4800/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Heroes of Annihilated Empires: кадр из игры"
+    author: "GSC Game World"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/4800/"
   - kind: youtube
     id: "tKHpdzgtTvo"
     title: "Обзор игры: Герои уничтоженных империй."

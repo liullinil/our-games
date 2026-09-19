@@ -66,7 +66,7 @@ async function main() {
         const target = `${font.pkg}-${weight}-${subset}.woff2`;
         await copyFile(path.join(filesDir, name), path.join(outDir, target));
         copied += 1;
-        faces.push({ series: font.series, weight, subset, file: target });
+        faces.push({ family: font.family, weight, subset, file: target });
       }
     }
   }
@@ -77,7 +77,7 @@ async function main() {
     ...faces.map(
       (f) =>
         `@font-face {\n` +
-        `  font-series: '${f.series}';\n` +
+        `  font-family: '${f.family}';\n` +
         `  font-style: normal;\n` +
         `  font-weight: ${f.weight};\n` +
         `  font-display: swap;\n` +

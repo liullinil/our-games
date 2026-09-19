@@ -19,7 +19,45 @@ engines:
   - storm-engine
 summary: >-
   Пиратская ролевая игра о Карибах XVII века: торговля, абордажи и открытое море. На Западе вышла как Sea Dogs у Bethesda и дала начало серии, дожившей до «Пиратов Карибского моря».
+steamAppId: 764670
+poster: ./shots/poster.jpg
 gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Sea Dogs: обложка в Steam"
+    author: "Akella"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/764670/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Sea Dogs: кадр из игры"
+    author: "Akella"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/764670/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Sea Dogs: кадр из игры"
+    author: "Akella"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/764670/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Sea Dogs: кадр из игры"
+    author: "Akella"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/764670/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Sea Dogs: кадр из игры"
+    author: "Akella"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/764670/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Sea Dogs: кадр из игры"
+    author: "Akella"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/764670/"
   - kind: youtube
     id: "SfPI2UXEuNw"
     title: "Прошёл «Корсары» в 2024 году"

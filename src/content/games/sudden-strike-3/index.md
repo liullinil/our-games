@@ -15,53 +15,50 @@ predecessors:
   - sudden-strike-2
 platforms:
   - windows
+specs:
+  releaseDate: "7 декабря 2007"
+  modes: [single, multiplayer]
+  perspective: "вид сверху"
+  setting: "Вторая мировая война, Тихий океан и Европа"
+  metacritic: 63
 summary: >-
   Переход серии в трёхмерную графику с морскими десантами и Тихим океаном.
-steamAppId: 315990
-poster: ./shots/poster.jpg
 gallery:
-  - kind: image
-    src: ./shots/poster.jpg
-    caption: "Modding Tool add-on for Rulers of Nations: обложка в Steam"
-    author: "Eversim"
-    license: "Промо"
-    sourceUrl: "https://store.steampowered.com/app/315990/"
-  - kind: image
-    src: ./shots/shot-01.jpg
-    caption: "Modding Tool add-on for Rulers of Nations: кадр из игры"
-    author: "Eversim"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/315990/"
-  - kind: image
-    src: ./shots/shot-02.jpg
-    caption: "Modding Tool add-on for Rulers of Nations: кадр из игры"
-    author: "Eversim"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/315990/"
-  - kind: image
-    src: ./shots/shot-03.jpg
-    caption: "Modding Tool add-on for Rulers of Nations: кадр из игры"
-    author: "Eversim"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/315990/"
-  - kind: image
-    src: ./shots/shot-04.jpg
-    caption: "Modding Tool add-on for Rulers of Nations: кадр из игры"
-    author: "Eversim"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/315990/"
-  - kind: image
-    src: ./shots/shot-05.jpg
-    caption: "Modding Tool add-on for Rulers of Nations: кадр из игры"
-    author: "Eversim"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/315990/"
   - kind: youtube
     id: "KSwCEo6fnpo"
     title: "Sudden Strike 3 Arms for Victory обзор и прохождение стратегии про Вторую Мировую"
     channel: "RWG-team"
     checkedAt: "2026-09-19"
-sources: []
-status: card
+sources:
+  - title: "Sudden Strike 3: Arms for Victory — Wikipedia"
+    url: "https://en.wikipedia.org/wiki/Sudden_Strike_3:_Arms_for_Victory"
+  - title: "Sudden Strike 3: Arms for Victory — Metacritic"
+    url: "https://www.metacritic.com/game/sudden-strike-3-arms-for-victory/"
+  - title: "Sudden Strike 3: Arms for Victory Review — GameSpot"
+    url: "https://www.gamespot.com/reviews/sudden-strike-3-arms-for-victory-review/1900-6189308/"
+status: article
 ---
 
+Sudden Strike 3: Arms for Victory — стратегия реального времени о Второй мировой войне от московской студии [Fireglow](../../studios/fireglow/), продолжение серии Sudden Strike, впервые перешедшее с плоских спрайтов на полноценную трёхмерную графику.
+
+## История создания
+
+Fireglow делала третью часть серии, начатой ещё в 2000 году, когда сражения показывали видом сверху на спрайтовой графике. Помимо смены движка на трёхмерный, студия расширила географию боевых действий — впервые в серии появился Тихоокеанский театр войны с морскими десантами на островах, наравне с привычной Европой.
+
+## Игровой процесс
+
+Четыре кампании поделены поровну между двумя фронтами: за американцев и Японию на тихоокеанских островах, за союзников и Германию в Европе. Игра остаётся тактикой без прокачки и добычи ресурсов — важны расстановка юнитов, использование укрытий и рельефа, скоординированные десанты с моря и воздуха.
+
+## Выход и приём
+
+На Западе игру издала CDV, релиз состоялся 7 декабря 2007 года; в России в те же месяцы её выпустила «РуссоБит-М». Отзывы оказались смешанными: Metacritic поставил игре 63 балла из 100, пользователи — в среднем 7,8 из 10. Обозреватель GameSpot писал, что игра «далека от идеала», но остаётся лучшей в истории серии за счёт масштаба сражений, и критиковал интерфейс и поведение ИИ.
+
+## Наследие
+
+Переход на трёхмерную графику, начатый Sudden Strike 3, определил облик всех последующих частей серии, которая после Fireglow перешла к другим студиям и издателям.
+
+## Интересные факты
+
+- Sudden Strike 3 — первая часть серии на трёхмерном движке; предыдущие две использовали двухмерную спрайтовую графику с видом сверху.
+- Игра впервые для серии перенесла часть кампании на Тихий океан — с высадками на островах и войной против Японии.
+- Metacritic оценил игру в 63 балла из 100, тогда как игроки в среднем поставили 7,8 из 10 — аудитория приняла её теплее критиков.

@@ -31,3 +31,34 @@ motifs:
   - Шлем Meta Quest 2
   - Видеокарта GeForce RTX и трассировка лучей
   - VK Play и релокация студий
+images:
+  - src: ./twenties/gigabyte-geforce-rtx-3090-eagle-oc-24g-24576-mib.jpg
+    caption: "Видеокарта GeForce RTX (на фото — модель RTX 3090) — трассировка лучей и нейросетевое масштабирование стали нормой для игр этого десятилетия."
+    author: "PantheraLeo1359531"
+    license: "CC BY 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gigabyte_GeForce_RTX_3090_Eagle_OC_24G,_24576_MiB_GDDR6X_Front_20201114_DSC5880.jpg"
+  - src: ./twenties/playstation-5-and-dualsense-2.jpg
+    caption: "PlayStation 5 (2020) с геймпадом DualSense — на ней Atomic Heart добрался до мировых чартов."
+    author: "Osh33m"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:PlayStation_5_and_DualSense_(2).jpg"
+  - src: ./twenties/xbox-series-x-2.jpg
+    caption: "Xbox Series X (2020) — консоль нового поколения Microsoft, конкурент PlayStation 5."
+    author: "Der. Bellemer"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Xbox_Series_X_2.jpg"
+  - src: ./twenties/nintendo-switch-oled-modell-mit-gedockter-konsol.png
+    caption: "Nintendo Switch OLED (2021) — обновлённая версия гибридной консоли с ярким экраном."
+    author: "PantheraLeo1359531"
+    license: "CC BY 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nintendo_Switch_%E2%80%93_OLED-Modell_mit_gedockter_Konsole_20230506_HOF01624_RAW-Export.png"
+  - src: ./twenties/minetest-on-steam-deck-device-fosdem-2024.jpg
+    caption: "Steam Deck (2022) — портативный ПК от Valve, который принёс библиотеку Steam в карман."
+    author: "Zughy"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Minetest_on_Steam_Deck_device_-_FOSDEM_2024.jpg"

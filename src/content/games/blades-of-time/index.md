@@ -19,45 +19,45 @@ engines:
   - dagor
 summary: >-
   Слэшер с перемоткой времени, позволяющей сражаться вместе с собственными копиями. Продолжение X-Blades о той же героине.
-steamAppId: 209330
+steamAppId: 208670
 poster: ./shots/poster.jpg
 gallery:
   - kind: image
     src: ./shots/poster.jpg
-    caption: "A Valley Without Wind: обложка в Steam"
-    author: "Arcen Games"
+    caption: "Blades of Time: обложка в Steam"
+    author: "Gaijin Entertainment Corporation"
     license: "Промо"
-    sourceUrl: "https://store.steampowered.com/app/209330/"
+    sourceUrl: "https://store.steampowered.com/app/208670/"
   - kind: image
     src: ./shots/shot-01.jpg
-    caption: "A Valley Without Wind: кадр из игры"
-    author: "Arcen Games"
+    caption: "Blades of Time: кадр из игры"
+    author: "Gaijin Entertainment Corporation"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/209330/"
+    sourceUrl: "https://store.steampowered.com/app/208670/"
   - kind: image
     src: ./shots/shot-02.jpg
-    caption: "A Valley Without Wind: кадр из игры"
-    author: "Arcen Games"
+    caption: "Blades of Time: кадр из игры"
+    author: "Gaijin Entertainment Corporation"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/209330/"
+    sourceUrl: "https://store.steampowered.com/app/208670/"
   - kind: image
     src: ./shots/shot-03.jpg
-    caption: "A Valley Without Wind: кадр из игры"
-    author: "Arcen Games"
+    caption: "Blades of Time: кадр из игры"
+    author: "Gaijin Entertainment Corporation"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/209330/"
+    sourceUrl: "https://store.steampowered.com/app/208670/"
   - kind: image
     src: ./shots/shot-04.jpg
-    caption: "A Valley Without Wind: кадр из игры"
-    author: "Arcen Games"
+    caption: "Blades of Time: кадр из игры"
+    author: "Gaijin Entertainment Corporation"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/209330/"
+    sourceUrl: "https://store.steampowered.com/app/208670/"
   - kind: image
     src: ./shots/shot-05.jpg
-    caption: "A Valley Without Wind: кадр из игры"
-    author: "Arcen Games"
+    caption: "Blades of Time: кадр из игры"
+    author: "Gaijin Entertainment Corporation"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/209330/"
+    sourceUrl: "https://store.steampowered.com/app/208670/"
   - kind: youtube
     id: "nmQ9tHQp7Hc"
     title: "Blades of Time. Видеообзор"

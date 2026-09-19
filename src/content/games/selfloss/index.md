@@ -15,45 +15,45 @@ platforms:
   - nintendo-switch
 summary: >-
   Старик Казимир с волшебным посохом плывёт на лодке по миру славянских и исландских мифов, чтобы исцелить свою утрату.
-steamAppId: 1465370
+steamAppId: 1086620
 poster: ./shots/poster.jpg
 gallery:
   - kind: image
     src: ./shots/poster.jpg
-    caption: "Detective notes. Lighthouse Mystery Solitaire: обложка в Steam"
-    author: "DigiMight"
+    caption: "Selfloss: обложка в Steam"
+    author: "Goodwin Games, Silver Lining Interactive"
     license: "Промо"
-    sourceUrl: "https://store.steampowered.com/app/1465370/"
+    sourceUrl: "https://store.steampowered.com/app/1086620/"
   - kind: image
     src: ./shots/shot-01.jpg
-    caption: "Detective notes. Lighthouse Mystery Solitaire: кадр из игры"
-    author: "DigiMight"
+    caption: "Selfloss: кадр из игры"
+    author: "Goodwin Games, Silver Lining Interactive"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/1465370/"
+    sourceUrl: "https://store.steampowered.com/app/1086620/"
   - kind: image
     src: ./shots/shot-02.jpg
-    caption: "Detective notes. Lighthouse Mystery Solitaire: кадр из игры"
-    author: "DigiMight"
+    caption: "Selfloss: кадр из игры"
+    author: "Goodwin Games, Silver Lining Interactive"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/1465370/"
+    sourceUrl: "https://store.steampowered.com/app/1086620/"
   - kind: image
     src: ./shots/shot-03.jpg
-    caption: "Detective notes. Lighthouse Mystery Solitaire: кадр из игры"
-    author: "DigiMight"
+    caption: "Selfloss: кадр из игры"
+    author: "Goodwin Games, Silver Lining Interactive"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/1465370/"
+    sourceUrl: "https://store.steampowered.com/app/1086620/"
   - kind: image
     src: ./shots/shot-04.jpg
-    caption: "Detective notes. Lighthouse Mystery Solitaire: кадр из игры"
-    author: "DigiMight"
+    caption: "Selfloss: кадр из игры"
+    author: "Goodwin Games, Silver Lining Interactive"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/1465370/"
+    sourceUrl: "https://store.steampowered.com/app/1086620/"
   - kind: image
     src: ./shots/shot-05.jpg
-    caption: "Detective notes. Lighthouse Mystery Solitaire: кадр из игры"
-    author: "DigiMight"
+    caption: "Selfloss: кадр из игры"
+    author: "Goodwin Games, Silver Lining Interactive"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/1465370/"
+    sourceUrl: "https://store.steampowered.com/app/1086620/"
   - kind: youtube
     id: "gKN6RbOm4qs"
     title: "Selfloss Review - Gaming with Joy"

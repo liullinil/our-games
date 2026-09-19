@@ -18,47 +18,14 @@ platforms:
   - windows
 engines:
   - storm-engine
+specs:
+  releaseDate: "22 ноября 2007"
+  modes: [single]
+  perspective: "от третьего лица"
+  setting: "Карибское море, конец XVII века"
 summary: >-
   Часть, сделанную фанатами, признали лучшей в серии: огромный Карибский архипелаг, десятки квестов и «Город потерянных кораблей» как продолжение.
-steamAppId: 12430
-poster: ./shots/poster.jpg
 gallery:
-  - kind: image
-    src: ./shots/poster.jpg
-    caption: "SlamIt Pinball Big Score: обложка в Steam"
-    author: "Technetium Games, Kalypso Media Digital"
-    license: "Промо"
-    sourceUrl: "https://store.steampowered.com/app/12430/"
-  - kind: image
-    src: ./shots/shot-01.jpg
-    caption: "SlamIt Pinball Big Score: кадр из игры"
-    author: "Technetium Games, Kalypso Media Digital"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/12430/"
-  - kind: image
-    src: ./shots/shot-02.jpg
-    caption: "SlamIt Pinball Big Score: кадр из игры"
-    author: "Technetium Games, Kalypso Media Digital"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/12430/"
-  - kind: image
-    src: ./shots/shot-03.jpg
-    caption: "SlamIt Pinball Big Score: кадр из игры"
-    author: "Technetium Games, Kalypso Media Digital"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/12430/"
-  - kind: image
-    src: ./shots/shot-04.jpg
-    caption: "SlamIt Pinball Big Score: кадр из игры"
-    author: "Technetium Games, Kalypso Media Digital"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/12430/"
-  - kind: image
-    src: ./shots/shot-05.jpg
-    caption: "SlamIt Pinball Big Score: кадр из игры"
-    author: "Technetium Games, Kalypso Media Digital"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/12430/"
   - kind: youtube
     id: "nI26doHQP4A"
     title: "Обзор на Корсары. Возвращение легенды"
@@ -70,7 +37,36 @@ gallery:
     channel: "Речная авантюра"
     poster: "https://pic.rtbcdn.ru/video/e6/4a/e64a164e635dc9b39248cb3a6c310a35.jpg"
     checkedAt: "2026-09-19"
-sources: []
-status: card
+sources:
+  - title: "Корсары: Город потерянных кораблей — Википедия"
+    url: "https://ru.wikipedia.org/wiki/Корсары:_Город_потерянных_кораблей"
+  - title: "Age of Pirates 2: City of Abandoned Ships — Wikipedia"
+    url: "https://en.wikipedia.org/wiki/Age_of_Pirates_2:_City_of_Abandoned_Ships"
+  - title: "Корсары: Город потерянных кораблей — StopGame"
+    url: "https://stopgame.ru/game/korsary_gorod_poterjannyh_korablej"
+status: article
 ---
 
+«Корсары: Возвращение легенды» — ролевая игра о пиратах Карибского моря от студии [Seaward](../../studios/seaward/), изданная «Акеллой» на движке Storm Engine. На Западе игра вышла под названием Age of Pirates 2: City of Abandoned Ships, а делала её команда, выросшая из мододелов «Корсаров 3».
+
+## История создания
+
+После неудачного релиза «Корсаров 3» (2005) доработку движка Storm Engine доверили небольшой студии Seaward, значительная часть которой начинала как авторы модов к прежним частям серии. Вместо новой игры с нуля команда взялась чинить и переосмыслять то, что не удалось «Акелле»: экономику, генератор квестов, баланс морских и сухопутных сражений.
+
+## Игровой процесс
+
+Игрок — капитан, свободно перемещающийся по Карибскому архипелагу конца XVII века: абордажи, дуэли на шпагах, торговля, вербовка команды и строительство собственной колонии. От предыдущих частей игру отличает объём контента — десятки сюжетных и процедурно генерируемых побочных квестов — и более гибкая настройка корабля и экипажа.
+
+## Выход и приём
+
+Игра вышла 22 ноября 2007 года. Среди всех частей «Корсаров» именно эту чаще всего называют лучшей — сказался труд команды, доводившей до ума собственную некогда любимую серию.
+
+## Наследие
+
+Вскоре вышло расширенное издание «Корсары: Город потерянных кораблей» с дополнительными сюжетными линиями. Серия на Storm Engine продолжилась дополнениями и в 2012 году — финальной большой частью, [«Корсары: Каждому своё»](../corsairs-to-each/).
+
+## Интересные факты
+
+- Storm Engine, на котором сделана игра, к моменту релиза «Возвращения легенды» использовался в серии уже седьмой год подряд — с самого первого Sea Dogs (2000).
+- Значительная часть команды Seaward начинала как авторы модов к «Корсарам 3».
+- На Западе игра вышла под тем же названием линейки, что и предыдущая часть, — Age of Pirates, — из-за чего её нередко путают с однотипными релизами серии.

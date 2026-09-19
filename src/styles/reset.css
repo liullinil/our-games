@@ -74,7 +74,7 @@ body {
   background-color: var(--c-bg);
   background-image: var(--texture-bg);
   color: var(--c-text);
-  font-series: var(--font-body);
+  font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
   letter-spacing: var(--tracking-body);
@@ -84,7 +84,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-series: var(--font-display);
+  font-family: var(--font-display);
   font-weight: var(--weight-display);
   text-transform: var(--case-display);
   letter-spacing: var(--tracking-display);
@@ -139,7 +139,7 @@ hr {
 
 code,
 kbd {
-  font-series: var(--font-mono);
+  font-family: var(--font-mono);
   font-size: 0.9em;
 }
 

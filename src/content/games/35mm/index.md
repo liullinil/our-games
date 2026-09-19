@@ -14,45 +14,45 @@ engines:
   - unity
 summary: >-
   Двое идут через опустевшую после эпидемии Россию: деревни, гаражи, электрички. Сделана одним человеком и стала главной русской «инди про провинцию».
-steamAppId: 442760
+steamAppId: 466500
 poster: ./shots/poster.jpg
 gallery:
   - kind: image
     src: ./shots/poster.jpg
-    caption: "Endless Burst: обложка в Steam"
-    author: "Neon Squid Games"
+    caption: "35MM: обложка в Steam"
+    author: "Носков Сергей"
     license: "Промо"
-    sourceUrl: "https://store.steampowered.com/app/442760/"
+    sourceUrl: "https://store.steampowered.com/app/466500/"
   - kind: image
     src: ./shots/shot-01.jpg
-    caption: "Endless Burst: кадр из игры"
-    author: "Neon Squid Games"
+    caption: "35MM: кадр из игры"
+    author: "Носков Сергей"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/442760/"
+    sourceUrl: "https://store.steampowered.com/app/466500/"
   - kind: image
     src: ./shots/shot-02.jpg
-    caption: "Endless Burst: кадр из игры"
-    author: "Neon Squid Games"
+    caption: "35MM: кадр из игры"
+    author: "Носков Сергей"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/442760/"
+    sourceUrl: "https://store.steampowered.com/app/466500/"
   - kind: image
     src: ./shots/shot-03.jpg
-    caption: "Endless Burst: кадр из игры"
-    author: "Neon Squid Games"
+    caption: "35MM: кадр из игры"
+    author: "Носков Сергей"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/442760/"
+    sourceUrl: "https://store.steampowered.com/app/466500/"
   - kind: image
     src: ./shots/shot-04.jpg
-    caption: "Endless Burst: кадр из игры"
-    author: "Neon Squid Games"
+    caption: "35MM: кадр из игры"
+    author: "Носков Сергей"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/442760/"
+    sourceUrl: "https://store.steampowered.com/app/466500/"
   - kind: image
     src: ./shots/shot-05.jpg
-    caption: "Endless Burst: кадр из игры"
-    author: "Neon Squid Games"
+    caption: "35MM: кадр из игры"
+    author: "Носков Сергей"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/442760/"
+    sourceUrl: "https://store.steampowered.com/app/466500/"
   - kind: youtube
     id: "7iVhl7MD4EA"
     title: "35 MM | Атмосферное приключение с МЫЛОМ на ГЛАЗАХ | Обзор-признание"

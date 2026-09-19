@@ -449,10 +449,10 @@ function init(): void {
     clearHighlight();
     root.classList.add('is-highlight');
     nodes.get(id)?.classList.add('is-focus');
-    const series = relatedSet(id, relKind);
-    markNear(series);
+    const chain = relatedSet(id, relKind);
+    markNear(chain);
     for (const edge of layerEdges.get(relKind) ?? []) {
-      if (series.has(edge.from) && series.has(edge.to)) edge.el.classList.add('is-chain');
+      if (chain.has(edge.from) && chain.has(edge.to)) edge.el.classList.add('is-chain');
     }
   };
 

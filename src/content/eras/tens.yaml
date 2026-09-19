@@ -32,3 +32,30 @@ motifs:
   - PlayStation Vita и Nintendo Switch
   - Шлем Oculus Rift и Steam Controller
   - Ноутбук со Steam и стримом на Twitch
+images:
+  - src: ./tens/nintendo-switch-console-docked-wjoyconrb.jpg
+    caption: "Nintendo Switch (2017) — гибрид консоли и портативки со съёмными разноцветными Joy-Con, главный хит второй половины десятилетия."
+    author: "Evan-Amos"
+    license: "PD"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Nintendo-Switch-Console-Docked-wJoyConRB.jpg"
+  - src: ./tens/ps4-console-wds4.jpg
+    caption: "PlayStation 4 (2013) с геймпадом DualShock 4 — самая популярная консоль десятилетия."
+    author: "Evan-Amos"
+    license: "PD"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:PS4-Console-wDS4.jpg"
+  - src: ./tens/xbox-one-console-wcontroller-fl.jpg
+    caption: "Xbox One (2013) — ответ Microsoft на PlayStation 4 в новом раунде консольной войны."
+    author: "Evan-Amos"
+    license: "PD"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Xbox-One-Console-wController-FL.jpg"
+  - src: ./tens/playstation-vita-1101-fl.jpg
+    caption: "PlayStation Vita (2012) — мощная портативная консоль Sony, не выдержавшая конкуренции со смартфонами."
+    author: "Evan-Amos"
+    license: "PD"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:PlayStation-Vita-1101-FL.jpg"
+  - src: ./tens/apple-iphone-5s-15048820331.jpg
+    caption: "Смартфон вроде iPhone 5s — на таких телефонах целое поколение играло в Cut the Rope и другие хиты App Store."
+    author: "Maurizio Pesce from Milan, Italia"
+    license: "CC BY 2.0"
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Apple_iPhone_5s_(15048820331).jpg"

@@ -20,45 +20,45 @@ engines:
   - theengine
 summary: >-
   Самостоятельное продолжение о принцессе Амели с ручным драконом, новыми островами и медалями за подвиги.
-steamAppId: 25910
+steamAppId: 3170
 poster: ./shots/poster.jpg
 gallery:
   - kind: image
     src: ./shots/poster.jpg
-    caption: "Supreme Ruler 2020 Gold: обложка в Steam"
-    author: "BattleGoat Studios"
+    caption: "King’s Bounty. Принцесса в доспехах: обложка в Steam"
+    author: "Katauri Interactive, Fulqrum Publishing"
     license: "Промо"
-    sourceUrl: "https://store.steampowered.com/app/25910/"
+    sourceUrl: "https://store.steampowered.com/app/3170/"
   - kind: image
     src: ./shots/shot-01.jpg
-    caption: "Supreme Ruler 2020 Gold: кадр из игры"
-    author: "BattleGoat Studios"
+    caption: "King’s Bounty. Принцесса в доспехах: кадр из игры"
+    author: "Katauri Interactive, Fulqrum Publishing"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/25910/"
+    sourceUrl: "https://store.steampowered.com/app/3170/"
   - kind: image
     src: ./shots/shot-02.jpg
-    caption: "Supreme Ruler 2020 Gold: кадр из игры"
-    author: "BattleGoat Studios"
+    caption: "King’s Bounty. Принцесса в доспехах: кадр из игры"
+    author: "Katauri Interactive, Fulqrum Publishing"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/25910/"
+    sourceUrl: "https://store.steampowered.com/app/3170/"
   - kind: image
     src: ./shots/shot-03.jpg
-    caption: "Supreme Ruler 2020 Gold: кадр из игры"
-    author: "BattleGoat Studios"
+    caption: "King’s Bounty. Принцесса в доспехах: кадр из игры"
+    author: "Katauri Interactive, Fulqrum Publishing"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/25910/"
+    sourceUrl: "https://store.steampowered.com/app/3170/"
   - kind: image
     src: ./shots/shot-04.jpg
-    caption: "Supreme Ruler 2020 Gold: кадр из игры"
-    author: "BattleGoat Studios"
+    caption: "King’s Bounty. Принцесса в доспехах: кадр из игры"
+    author: "Katauri Interactive, Fulqrum Publishing"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/25910/"
+    sourceUrl: "https://store.steampowered.com/app/3170/"
   - kind: image
     src: ./shots/shot-05.jpg
-    caption: "Supreme Ruler 2020 Gold: кадр из игры"
-    author: "BattleGoat Studios"
+    caption: "King’s Bounty. Принцесса в доспехах: кадр из игры"
+    author: "Katauri Interactive, Fulqrum Publishing"
     license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/25910/"
+    sourceUrl: "https://store.steampowered.com/app/3170/"
   - kind: youtube
     id: "q1_1S56X0qQ"
     title: "ПАПИЧ КАЙФУЕТ от ИГРЫ KING'S BOUNTY 2008 Года! 😍 Kings Bounty Принцесса в Доспехах (часть 1)"

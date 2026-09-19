@@ -40,11 +40,69 @@ async function api(lang, params) {
   return res.json();
 }
 
-/** Поиск статьи об игре по названию. */
+/**
+ * Категории статьи. По ним видно, о чём она на самом деле.
+ */
+async function categories(lang, titles) {
+  const data = await api(lang, {
+    action: 'query',
+    titles: titles.join('|'),
+    prop: 'categories',
+    cllimit: 'max',
+    clshow: '!hidden',
+  });
+  const out = new Map();
+  for (const page of data.query?.pages ?? []) {
+    out.set(page.title, (page.categories ?? []).map((c) => c.title).join(' | '));
+  }
+  return out;
+}
+
+/** Приметы статьи о видеоигре в названиях категорий. */
+const GAME_CATEGORY = /компьютерные игры|видеоигр|video games|игры для |компьютерных игр/i;
+
+/**
+ * Поиск статьи об игре по названию.
+ *
+ * Одного поиска мало: по запросу «Перестройка» первой идёт статья о политике
+ * позднего СССР, по «Ну, погоди!» — о мультфильме, по «Морскому бою» — о
+ * настольной игре. Все три отдают снимки, которые не имеют к игре отношения,
+ * и без проверки они попадали в статью. Поэтому смотрим категории каждого
+ * кандидата и берём первого, у которого они говорят о видеоигре.
+ */
 async function findTitle(lang, name) {
-  const data = await api(lang, { action: 'query', list: 'search', srsearch: `${name} игра`, srlimit: 5, srnamespace: 0 });
-  const hits = data.query?.search ?? [];
-  return hits[0]?.title ?? null;
+  const data = await api(lang, {
+    action: 'query',
+    list: 'search',
+    srsearch: lang === 'ru' ? `${name} компьютерная игра` : `${name} video game`,
+    srlimit: 6,
+    srnamespace: 0,
+  });
+  const hits = (data.query?.search ?? []).map((h) => h.title);
+  if (hits.length === 0) return null;
+  const cats = await categories(lang, hits.slice(0, 6));
+  for (const title of hits) {
+    if (!GAME_CATEGORY.test(cats.get(title) ?? '')) continue;
+    if (!sameNumbers(name, title)) continue;
+    return title;
+  }
+  return null;
+}
+
+/**
+ * Совпадают ли числа в названиях.
+ *
+ * По запросу «Периметр 2: Новая Земля» поиск уверенно отдаёт статью
+ * «Периметр (игра)» — про первую часть. Категории у неё правильные, и без этой
+ * проверки в статью о второй части попадали кадры из первой. Номер части —
+ * самое надёжное, что отличает продолжение от оригинала.
+ */
+function sameNumbers(name, title) {
+  const digits = (s) => (String(s).match(/\d+/g) ?? []).filter((d) => d.length <= 2);
+  const want = digits(name);
+  const got = digits(title.replace(/\s*\(.*\)\s*$/, ''));
+  if (want.length === 0) return got.length === 0;
+  return want.every((d) => got.includes(d));
 }
 
 /** Файлы на странице с адресами, лицензией и описанием. */
@@ -107,7 +165,7 @@ function patchFrontmatter(fm, { poster, shots }) {
   return out;
 }
 
-async function fetchFor(gameId, lang, title, developer) {
+async function fetchFor(gameId, lang, title, developer, gameName = title) {
   const files = (await pageImages(lang, title)).filter((f) => {
     const info = f.imageinfo[0];
     if (!/^image\/(jpeg|png)$/.test(info.mime ?? '')) return false;
@@ -143,7 +201,7 @@ async function fetchFor(gameId, lang, title, developer) {
     await writeFile(path.join(dir, file), out);
     shots.push({
       file,
-      caption: license === 'Обложка' ? `${title}: обложка` : `${title}: кадр из игры`,
+      caption: license === 'Обложка' ? `${gameName}: обложка` : `${gameName}: кадр из игры`,
       author: developer,
       license,
       sourceUrl: info.descriptionurl,
@@ -197,7 +255,7 @@ async function main() {
       for (const lang of ['ru', 'en']) {
         const title = await findTitle(lang, game.name);
         if (!title) continue;
-        result = await fetchFor(id, lang, title, await studioName(game.developer));
+        result = await fetchFor(id, lang, title, await studioName(game.developer), game.name);
         if (result) break;
         await sleep(500);
       }
@@ -221,7 +279,7 @@ async function main() {
     console.error(`Нет игры ${id}`);
     process.exit(1);
   }
-  const result = await fetchFor(id, opt('lang', 'ru'), title, await studioName(game.developer));
+  const result = await fetchFor(id, opt('lang', 'ru'), title, await studioName(game.developer), game.name);
   if (result) {
     await apply(game, result);
     console.log(`✓ записано ${result.shots.length}`);

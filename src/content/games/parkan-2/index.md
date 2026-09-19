@@ -17,45 +17,7 @@ platforms:
   - windows
 summary: >-
   Возвращение Parkan: пять сотен планет в свободном полёте, высадки, торговля и битвы флотов на собственном движке «Никиты».
-steamAppId: 271640
-poster: ./shots/poster.jpg
 gallery:
-  - kind: image
-    src: ./shots/poster.jpg
-    caption: "Humanity Asset: обложка в Steam"
-    author: "Browny Application, KISS ltd"
-    license: "Промо"
-    sourceUrl: "https://store.steampowered.com/app/271640/"
-  - kind: image
-    src: ./shots/shot-01.jpg
-    caption: "Humanity Asset: кадр из игры"
-    author: "Browny Application, KISS ltd"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/271640/"
-  - kind: image
-    src: ./shots/shot-02.jpg
-    caption: "Humanity Asset: кадр из игры"
-    author: "Browny Application, KISS ltd"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/271640/"
-  - kind: image
-    src: ./shots/shot-03.jpg
-    caption: "Humanity Asset: кадр из игры"
-    author: "Browny Application, KISS ltd"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/271640/"
-  - kind: image
-    src: ./shots/shot-04.jpg
-    caption: "Humanity Asset: кадр из игры"
-    author: "Browny Application, KISS ltd"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/271640/"
-  - kind: image
-    src: ./shots/shot-05.jpg
-    caption: "Humanity Asset: кадр из игры"
-    author: "Browny Application, KISS ltd"
-    license: "Скриншот"
-    sourceUrl: "https://store.steampowered.com/app/271640/"
   - kind: youtube
     id: "Fu8sPeUtGg0"
     title: "Обзор игры \"Parkan 2\""
