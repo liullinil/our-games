@@ -13,6 +13,10 @@ country: belarus
 founded: 2007
 closed: null
 kind: developer
+related:
+  - studio: wargaming
+    kind: parent
+    note: "принадлежала Wargaming до конца 2020 года, затем была продана израильской Moon Active"
 summary: >-
   Минская студия казуальных игр, придумавшая «Весёлую ферму» — самый известный тайм-менеджер русскоязычного рынка, разошедшийся по миру как Farm Frenzy. С 2015 года работает под именем Melsoft.
 sources:

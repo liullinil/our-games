@@ -18,6 +18,10 @@ founded: 1991
 closed: null
 kind: developer
 website: https://lesta.ru
+related:
+  - studio: wargaming
+    kind: spinoff
+    note: "петербургская студия Wargaming, ставшая самостоятельной после ухода холдинга из России"
 summary: >-
   Петербургская студия с тридцатилетней историей: от квеста «Князь» и «Стальных монстров» до World of Warships и «Мира танков», которые она ведёт после ухода Wargaming из России.
 sources:

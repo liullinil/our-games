@@ -9,6 +9,10 @@ country: russia
 founded: 2004
 closed: null
 kind: developer
+related:
+  - studio: elemental-games
+    kind: successor
+    note: "выделилась в 2004 году из основной части команды Elemental Games во главе с Дмитрием Гусаровым"
 summary: >-
   Часть команды «Космических рейнджеров», отделившаяся ради King's Bounty: «Легенда о рыцаре» вернула жанр к жизни и получила продолжения.
 sources:

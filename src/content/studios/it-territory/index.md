@@ -9,6 +9,10 @@ country: russia
 founded: 2003
 closed: 2011
 kind: developer
+related:
+  - studio: mail-ru-games
+    kind: parent
+    note: "в 2007 году вошла в холдинг Astrum Online Entertainment — будущий Mail.Ru Games — и потеряла самостоятельность"
 summary: >-
   Студия браузерных игр, сделавшая «Легенду: Наследие драконов» — одну из самых популярных браузерных онлайн-игр Рунета середины нулевых. В 2007 году вошла в холдинг Astrum Online, позже ставший Mail.Ru Games.
 sources:

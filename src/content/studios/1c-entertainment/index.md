@@ -13,6 +13,10 @@ country: russia
 founded: 2011
 closed: null
 kind: both
+related:
+  - studio: 1c
+    kind: parent
+    note: "международное издательское подразделение «1С», оформившееся в отдельную структуру в 2011 году"
 summary: >-
   Игровое подразделение «1С», которое издавало игры за рубежом и само сделало King's Bounty II. В 2022 году продано Tencent и переименовано в Fulqrum Games.
 sources:

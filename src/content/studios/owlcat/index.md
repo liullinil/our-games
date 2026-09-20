@@ -10,6 +10,10 @@ founded: 2016
 closed: null
 kind: developer
 website: https://owlcat.games
+related:
+  - studio: nival
+    kind: spinoff
+    note: "основана в 2016 году Олегом Шпильчевским и Александром Мишулиным, делавшими в Nival «Heroes of Might and Magic V»"
 summary: >-
   Студия выходцев из Nival и Mail.Ru, сделавшая большие изометрические ролевые игры: Pathfinder: Kingmaker, Wrath of the Righteous и Warhammer 40,000: Rogue Trader. Штаб-квартира на Кипре.
 sources:

@@ -9,6 +9,10 @@ country: russia
 founded: 2009
 closed: null
 kind: developer
+related:
+  - studio: seaward
+    kind: spinoff
+    note: "выросла из той же среды фанатских доработок «Корсаров»: часть участников Seaward отделилась и образовала BlackMark"
 summary: >-
   Команда, выделившаяся из фанатского сообщества «Корсаров» вокруг Seaward, и сделавшая «Корсары: Каждому своё!» — последнюю большую часть серии на движке Storm.
 sources:

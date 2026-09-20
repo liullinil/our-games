@@ -10,6 +10,10 @@ founded: 2006
 closed: null
 kind: developer
 website: https://www.4a-games.com.mt
+related:
+  - studio: gsc-game-world
+    kind: spinoff
+    note: "основана выходцами из GSC во главе с Андреем Прохоровым"
 summary: >-
   Студия выходцев из GSC, сделавшая трилогию Metro по романам Дмитрия Глуховского на собственном движке 4A Engine. Штаб-квартира переехала на Мальту в 2014 году, киевский офис продолжил работу как отдельная студия Reburn.
 sources:

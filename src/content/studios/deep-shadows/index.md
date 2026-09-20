@@ -9,6 +9,10 @@ country: ukraine
 founded: 2001
 closed: null
 kind: developer
+related:
+  - studio: gsc-game-world
+    kind: spinoff
+    note: "основана в Киеве 30 августа 2001 года бывшими сотрудниками GSC Сергеем Забарянским и Романом Лутем"
 summary: >-
   Киевская студия открытых миров на движке Vital Engine: Xenus с латиноамериканской республикой, Xenus 2 и космическая ролевая игра Precursors.
 sources:

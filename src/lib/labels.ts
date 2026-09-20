@@ -222,7 +222,12 @@ export const AVAILABILITY_LABEL: Record<string, string> = {
  */
 export const STUDIO_RELATION_LABEL: Record<string, { own: string; mirror: string }> = {
   spinoff: { own: 'основана выходцами из', mirror: 'выходцы основали' },
-  parent: { own: 'дочерняя студия', mirror: 'дочерние студии' },
+  /*
+   * «Дочерняя студия» с обеих сторон читалось одинаково и потому никуда не
+   * годилось: по надписи нельзя было понять, кто кому дочерний. Родство
+   * пишется у младшей студии, и подписи теперь прямо это говорят.
+   */
+  parent: { own: 'входит в', mirror: 'в состав входят' },
   successor: { own: 'продолжает дело', mirror: 'дело продолжила' },
   sibling: { own: 'родственная студия', mirror: 'родственная студия' },
 };

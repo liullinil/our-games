@@ -13,6 +13,10 @@ country: ukraine
 founded: 2012
 closed: null
 kind: developer
+related:
+  - studio: gsc-game-world
+    kind: spinoff
+    note: "собрана в марте 2012 года бывшими сотрудниками GSC во главе с Олегом Яворским после отмены S.T.A.L.K.E.R. 2"
 summary: >-
   Команда бывших разработчиков GSC Game World, собравшаяся в марте 2012 года после отмены S.T.A.L.K.E.R. 2 ради онлайн-шутера Survarium. В 2023 году переименована в VG Entertainment.
 sources:

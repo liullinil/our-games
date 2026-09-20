@@ -9,6 +9,10 @@ country: russia
 founded: 2015
 closed: null
 kind: developer
+related:
+  - studio: alawar
+    kind: parent
+    note: "по сути бренд издателя Alawar: Beholder делала команда Alawar Stargaze, барнаульское подразделение компании"
 summary: >-
   Барнаульская студия, по сути — бренд издателя Alawar: под ним вышла Beholder, игра об управдоме-доносчике в тоталитарном государстве, ставшая самым успешным проектом Alawar Entertainment за всю его историю.
 sources:

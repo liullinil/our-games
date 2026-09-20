@@ -9,6 +9,10 @@ country: russia
 founded: 2011
 closed: null
 kind: developer
+related:
+  - studio: nival
+    kind: spinoff
+    note: "выделилась в 2011 году из Astrum Nival — онлайнового направления московской Nival"
 summary: >-
   Команда, выделившаяся из Astrum Nival (наследницы московской Nival) в 2011 году: ведёт «Аллоды Онлайн» и сделала Skyforge — научно-фантастическую онлайн-ролевую игру с богами.
 sources:
