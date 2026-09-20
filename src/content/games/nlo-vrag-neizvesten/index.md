@@ -28,6 +28,16 @@ gallery:
     title: "НЛО. Враг Неизвестен. Обзор"
     channel: "JaggedGaming"
     checkedAt: "2026-09-19"
+availability:
+  status: freeware
+  note: "8 января 1998 года Вячеслав и Алексей Медноноговы объявили свои программы свободно распространяемыми — и «НЛО: Враг Неизвестен» назван в том объявлении прямо. Разрешено копирование, переработка, перевод, заимствование кусков кода и даже коммерческое использование. Образ диска лежит в спектрумовских архивах"
+  where:
+    - title: "ZX-Art"
+      url: "https://zxart.ee/rus/soft/game/tactical-combat/nlo-vrag-neizvesten/"
+      note: "архив"
+    - title: "World of Spectrum"
+      url: "https://worldofspectrum.org/archive/software/games/ufo-enemy-unknown"
+      note: "архив"
 sources:
   - title: "Медноногов, Вячеслав Сергеевич — Википедия"
     url: "https://ru.wikipedia.org/wiki/Медноногов,_Вячеслав_Сергеевич"

@@ -9,6 +9,7 @@ developer: sigma-team
 publishers:
   - 1c
   - cdv
+  - virtual-programming
 series: alien-shooter
 country: russia
 years:
@@ -17,6 +18,7 @@ predecessors:
   - alien-shooter
 platforms:
   - windows
+  - macos
 specs:
   releaseDate: "7 сентября 2006"
   modes: [single, coop, multiplayer]
