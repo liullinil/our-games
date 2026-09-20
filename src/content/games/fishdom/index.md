@@ -19,7 +19,44 @@ specs:
   salesNote: "свыше 15 млн загрузок исходной версии к 2020 году; мобильная версия впоследствии собрала сотни миллионов установок"
 summary: >-
   Головоломка «три в ряд», где выигрыш тратится на обустройство аквариума. Первый большой хит Playrix, переросший в мобильную игру с сотнями миллионов загрузок.
+poster: ./shots/poster.jpg
 gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Fishdom: значок в App Store"
+    author: "PLR Worldwide Sales Limited"
+    license: "Промо"
+    sourceUrl: "https://apps.apple.com/app/id664575829"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Fishdom: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id664575829"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Fishdom: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id664575829"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Fishdom: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id664575829"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Fishdom: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id664575829"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Fishdom: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id664575829"
   - kind: youtube
     id: "_i2NURooYkU"
     title: "Fishdom Аквариум Мечты #1 (уровни 1-10) Обзор и Первые Рыбки Игровое Видео Let's Play"

@@ -17,8 +17,6 @@ predecessors:
   - space-rangers
 platforms:
   - windows
-engines:
-  - theengine
 specs:
   releaseDate: "26 ноября 2004"
   modes: [single]

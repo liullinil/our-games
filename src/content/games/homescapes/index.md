@@ -18,7 +18,44 @@ specs:
   salesNote: "28 млн загрузок за первую неделю; свыше 1 млрд долларов дохода к концу 2019 года"
 summary: >-
   Тот же дворецкий Остин, но теперь ремонтирует родительский особняк. Вторая опора мобильной империи Playrix.
+poster: ./shots/poster.jpg
 gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Homescapes: значок в App Store"
+    author: "PLR Worldwide Sales Limited"
+    license: "Промо"
+    sourceUrl: "https://apps.apple.com/app/id1195621598"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Homescapes: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id1195621598"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Homescapes: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id1195621598"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Homescapes: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id1195621598"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Homescapes: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id1195621598"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Homescapes: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id1195621598"
   - kind: youtube
     id: "v5Ioz5Q3Qhc"
     title: "Homescapes - ПЛАГИАТ У хроник ХАОСА и рекламный РАЗВОД на мобильные ИГРЫ головоломки"

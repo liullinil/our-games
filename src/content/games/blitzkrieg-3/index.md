@@ -16,6 +16,8 @@ predecessors:
 platforms:
   - windows
   - macos
+engines:
+  - unity
 specs:
   releaseDate: "2 июня 2017 (полный релиз); ранний доступ — с мая 2015 года"
   modes: [single, multiplayer, online]

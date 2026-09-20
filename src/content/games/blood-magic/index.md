@@ -15,6 +15,8 @@ years:
   start: 2005
 platforms:
   - windows
+engines:
+  - theengine
 specs:
   releaseDate: "16 декабря 2005"
   modes: [single]

@@ -93,6 +93,13 @@ function checkYamlSyntax(label, fm) {
   }
 }
 
+/** Значения списочного ключа: platforms, engines, publishers и прочие. */
+const listField = (fm, name) => {
+  const block = fm.match(new RegExp(String.raw`^${name}:\s*\n((?:[ \t]+- .*\n)+)`, 'm'));
+  if (!block) return [];
+  return [...block[1].matchAll(/^[ \t]+- "?(.+?)"?\s*$/gm)].map((m) => m[1].trim());
+};
+
 const field = (fm, name) => {
   const m = fm.match(new RegExp(`^${name}:\\s*(.*)$`, 'm'));
   return m ? m[1].trim() : null;
@@ -114,6 +121,20 @@ async function enumFromConfig(name) {
   return new Set([...m[1].matchAll(/'([^']+)'/g)].map((x) => x[1]));
 }
 
+/**
+ * Что вообще есть в коллекции: имена папок и файлов без расширения.
+ *
+ * Нужно, чтобы ловить ссылки на несуществующие записи здесь, а не на сборке.
+ * Разница существенная: сборку авторы статей не запускают, а эту проверку
+ * запускают после каждого файла.
+ */
+async function idsOf(collection) {
+  const base = path.join(root, 'src', 'content', collection);
+  if (!existsSync(base)) return new Set();
+  const entries = await readdir(base, { withFileTypes: true });
+  return new Set(entries.map((e) => (e.isDirectory() ? e.name : e.name.replace(/\.(md|ya?ml)$/, ''))));
+}
+
 async function checkGames() {
   const base = path.join(root, 'src', 'content', 'games');
   const dirs = await readdir(base, { withFileTypes: true });
@@ -121,6 +142,12 @@ async function checkGames() {
   const classes = await enumFromConfig('GAME_CLASSES');
   const types = await enumFromConfig('GAME_TYPES');
   const countries = await enumFromConfig('COUNTRIES');
+  const known = {
+    platforms: await idsOf('platforms'),
+    engines: await idsOf('engines'),
+    studios: await idsOf('studios'),
+    series: await idsOf('series'),
+  };
 
   for (const dir of dirs.filter((d) => d.isDirectory())) {
     const id = dir.name;
@@ -141,6 +168,32 @@ async function checkGames() {
       const value = field(fm, key);
       if (allowed && value && !allowed.has(value)) {
         problems.push(`games/${id}: ${key}: ${value} — нет такого значения в схеме`);
+      }
+    }
+
+    /*
+     * Ссылки на другие коллекции. Опечатку тут ловила только сборка, а до
+     * неё дело доходило нескоро: «  - windows  - macos» в одну строку YAML
+     * читает как одну платформу с таким именем, схеме это не противоречит,
+     * и валидатор говорил, что всё в порядке.
+     */
+    for (const [key, ids] of [
+      ['platforms', known.platforms],
+      ['engines', known.engines],
+      ['publishers', known.studios],
+      ['predecessors', new Set([...(await idsOf('games'))])],
+    ]) {
+      for (const ref of listField(fm, key)) {
+        if (!ids.has(ref)) problems.push(`games/${id}: ${key}: «${ref}» — нет такой записи`);
+      }
+    }
+    for (const [key, ids] of [
+      ['developer', known.studios],
+      ['series', known.series],
+    ]) {
+      const ref = field(fm, key);
+      if (ref && ref !== '[]' && !ids.has(ref)) {
+        problems.push(`games/${id}: ${key}: «${ref}» — нет такой записи`);
       }
     }
     const body = text.slice(text.indexOf('---', 3) + 3).trim();

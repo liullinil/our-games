@@ -19,7 +19,44 @@ specs:
   salesNote: "свыше 500 млн установок в Google Play; 120 млн загрузок и 3,5 млн игроков в день к ноябрю 2017 года"
 summary: >-
   Ферма и город в одной игре: сеять, собирать, строить и торговать. Один из самых долгоживущих мобильных хитов Playrix.
+poster: ./shots/poster.jpg
 gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Township: значок в App Store"
+    author: "PLR Worldwide Sales Limited"
+    license: "Промо"
+    sourceUrl: "https://apps.apple.com/app/id638689075"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Township: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id638689075"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Township: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id638689075"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Township: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id638689075"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Township: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id638689075"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Township: кадр из игры"
+    author: "PLR Worldwide Sales Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id638689075"
   - kind: youtube
     id: "4rqp9PVOP_A"
     title: "Township — мастер игры! Советы"

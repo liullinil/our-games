@@ -14,6 +14,7 @@ years:
   start: 2003
 platforms:
   - windows
+  - macos
 engines:
   - enigma
 specs:
