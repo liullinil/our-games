@@ -21,7 +21,7 @@ platforms:
   - nintendo-switch
 specs:
   releaseDate: "29 сентября 2022"
-  modes: [single]
+  modes: [single, online]
   perspective: "двухмерный, вид сбоку"
   setting: "антиутопическое подземелье под властью машины-Деспота"
   metacritic: 73
@@ -122,7 +122,7 @@ reading:
     note: "интервью 2025 года: куда движется вселенная Деспота и почему ориентиры — Balatro и FTL"
 availability:
   status: sold
-  note: "продаётся в Steam с раннего доступа 2021 года, есть издания для PlayStation, Xbox и Nintendo Switch; к игре выпущены саундтрек и набор испытаний отдельными дополнениями"
+  note: "в Steam с раннего доступа 2021 года, плюс магазины PlayStation, Xbox и Nintendo; отдельными дополнениями идут саундтрек и набор испытаний"
   where:
     - title: "Steam"
       url: "https://store.steampowered.com/app/1227280/"

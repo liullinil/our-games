@@ -22,6 +22,7 @@ specs:
   perspective: "вид из кабины самолёта"
   setting: "Восточный фронт Второй мировой войны, финский и венгерский театры"
   metacritic: 86
+  abroad: "по всему миру под названием IL-2 Sturmovik: Forgotten Battles, издатель Ubisoft: 4 марта 2003 года в Северной Америке, 21 марта — в Европе; приняли тепло, PC Gamer US назвал игру лучшим симулятором 2003 года"
 poster: ./shots/cover-01.jpg
 gallery:
   - kind: image
@@ -48,6 +49,53 @@ gallery:
     checkedAt: "2026-09-20"
 summary: >-
   Расширенное продолжение «Ил-2»: Финляндия, Венгрия, десятки новых самолётов и динамическая кампания. Основа, на которой выросли «Асы в небе» и «1946».
+reviews:
+  - outlet: "Absolute Games (AG.ru)"
+    score: "95%"
+    verdict: "Заново пересобранная модель полёта, поумневшие вражеские пилоты, тяжёлые бомбардировщики с честным прицеливанием и динамическая кампания, двигающая линию фронта; портит впечатление только резко выросший аппетит к железу."
+    url: "https://ag.ru/games/il-2-sturmovik-forgotten-battles/review"
+    author: "HORNET"
+    date: "2003"
+  - outlet: "Игромания"
+    score: "9,5/10"
+    verdict: "У каждого самолёта своя физика, считанная с реальных характеристик, а машина возвращается на аэродром без элерона и с пробитыми баками; мешают разве что ручка управления, заслоняющая приборы, и неподвижная камера в кабине."
+    url: "https://www.igromania.ru/article/3217/Il-2_Shturmovik_Zabytye_srazheniya.html"
+    author: "Александр Тихонов"
+  - outlet: "Pocket-lint"
+    score: "4 из 5"
+    verdict: "Полсотни новых машин, настраиваемая сложность для новичков и ветеранов и сетевой режим на 32 человека; ощущается всё же скорее как большой набор миссий, чем как полноценное продолжение, да и уровни грузятся долго."
+    url: "https://www.pocket-lint.com/games/reviews/ubisoft/67483-il2-sturmovik-forgotton-battles-pc/"
+    author: "Stuart Miles"
+    date: "2003"
+  - outlet: "GameWatcher"
+    score: "7,8/10"
+    verdict: "Огромный авиапарк и непредсказуемый сетевой режим против долгих загрузок, получасовых полётов до первого противника и невнимательных ведомых."
+    url: "https://www.gamewatcher.com/reviews/il-2-sturmovik-the-forgotten-battles-review/10337"
+    author: "Chris Stavros"
+    date: "2004"
+reading:
+  - title: "«Ил-2 Штурмовик: Забытые сражения»: взгляд изнутри"
+    url: "https://fcenter.ru/online/hardarticles/games/6527-Il_2_Shturmovik_Zabytye_srazheniya_vzglyad_iznutri"
+    outlet: "F-Center"
+    note: "подробный технический разбор: авиапарк, новые карты, система наград четырёх стран, звук и модель полёта"
+  - title: "Ил-2 Штурмовик: Забытые сражения. Обзор"
+    url: "https://gameguru.ru/publication/il-2_shturmovik_zabytye_srazhenija_obzor/"
+    outlet: "GameGuru"
+    note: "что именно переделали относительно первой части — от облаков и прожекторов до тактики ИИ"
+  - title: "Ил-2 Штурмовик — годовщина легендарной серии авиасимуляторов"
+    url: "https://www.goha.ru/il-2-shturmovik-godovshhina-legendarnoj-serii-aviasimulyatorov-dJMbpA"
+    outlet: "GoHa.ru"
+    note: "ретроспектива всей линейки к двадцатилетию: от первой игры до Pacific Fighters и «1946»"
+availability:
+  status: unavailable
+  note: "отдельного издания в продаже больше нет; весь материал «Забытых сражений» вошёл в сборник «Ил-2 Штурмовик: 1946», который есть в Steam и на GOG без защиты от копирования"
+  where:
+    - title: "«Ил-2 Штурмовик: 1946» в Steam"
+      url: "https://store.steampowered.com/app/15320/IL2_Sturmovik_1946/"
+      note: "сборник, включающий «Забытые сражения»"
+    - title: "«Ил-2 Штурмовик: 1946» на GOG"
+      url: "https://www.gog.com/en/game/il_2_sturmovik_1946"
+      note: "сборник, включающий «Забытые сражения»"
 sources:
   - title: "IL-2 Sturmovik: Forgotten Battles — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/IL-2_Sturmovik:_Forgotten_Battles"
@@ -55,6 +103,8 @@ sources:
     url: "https://www.metacritic.com/game/il-2-sturmovik-forgotten-battles/"
   - title: "Ил-2 Штурмовик: Забытые сражения — StopGame"
     url: "https://stopgame.ru/game/il_2_shturmovik_zabytye_srazhenija"
+  - title: "Ил-2 Штурмовик: Забытые сражения — Википедия"
+    url: "https://ru.wikipedia.org/wiki/Ил-2_Штурмовик:_Забытые_сражения"
 status: article
 ---
 

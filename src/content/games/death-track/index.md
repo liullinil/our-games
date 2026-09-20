@@ -13,6 +13,8 @@ years:
 platforms:
   - windows
   - playstation-3
+engines:
+  - theengine
 specs:
   releaseDate: "22 февраля 2008"
   modes: [single]
@@ -104,7 +106,7 @@ reading:
     note: "даты всех изданий, включая выход на PlayStation 3, оценки редакции и игроков, большая галерея"
 availability:
   status: sold
-  note: "продаётся в Steam и GOG изданием Fulqrum Publishing (бывшая «1С»); русского языка в этих версиях нет, хотя официальная локализация «1С» существует"
+  note: "в Steam и на GOG, изданием Fulqrum Publishing (бывшая «1С»); русского языка в этих версиях нет, хотя официальная локализация «1С» существует"
   where:
     - title: "Steam"
       url: "https://store.steampowered.com/app/7840/"
