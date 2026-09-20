@@ -79,6 +79,11 @@ gallery:
     channel: "STALKER - MODS"
     poster: "https://pic.rtbcdn.ru/video/2025-08-11/c2/c1/c2c108949517881036a2316c77cc9da5.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "hHW7QRPb9sI"
+    title: "Как я играл в S.T.A.L.K.E.R.: Зов Припяти. Часть 1"
+    channel: "Нарратор"
+    checkedAt: "2026-09-20"
 sources:
   - title: "S.T.A.L.K.E.R.: Call of Pripyat — Wikipedia"
     url: "https://en.wikipedia.org/wiki/S.T.A.L.K.E.R.:_Call_of_Pripyat"

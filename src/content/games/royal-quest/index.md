@@ -61,6 +61,17 @@ gallery:
     title: "[ЗЗВ Лайт #6] Обзор Royal Quest"
     channel: "Орк-подкастер"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "YEyp1vnzzTM"
+    title: "Royal Quest Online - Gameplay"
+    channel: "Game Mojo"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "4d812f56a1a1b39cd7b662ae9b471734"
+    title: "Royal Quest / Роял Квест-\"Мистерия Кардигана 2025\" Прохождение Ивента - 1 часть"
+    channel: "Владислав Ворон"
+    poster: "https://pic.rtbcdn.ru/video/2025-08-28/83/f9/83f9e7b47ea36276848a663294bcf886.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Royal Quest — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Royal_Quest"

@@ -75,6 +75,11 @@ gallery:
     channel: "VedroidGaming"
     poster: "https://pic.rtbcdn.ru/video/92/db/92db6b517463f381fdbc1fca56898f48.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "r0LI0S6VCdQ"
+    title: "Punch Club прохождение ► СИМУЛЯТОР БОЙЦОВСКОГО КЛУБА |1|"
+    channel: "ViteC ► Play"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Punch Club — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Punch_Club"

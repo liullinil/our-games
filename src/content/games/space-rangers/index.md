@@ -39,6 +39,11 @@ gallery:
     title: "Обзор Космические рейнджеры HD: Революция [Review]"
     channel: "StopGame"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "VXAWg-suonM"
+    title: "Space Rangers Gameplay"
+    channel: "Oleg “MedWeLap” Podolsky"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Космические рейнджеры — Википедия"
     url: "https://ru.wikipedia.org/wiki/Космические_рейнджеры"

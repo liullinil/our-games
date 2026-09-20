@@ -75,6 +75,11 @@ gallery:
     title: "Космические Рейнджеры 2: Доминаторы. Обзор лучшей игры СНГ"
     channel: "KronosV"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "-Hpu84gvq_A"
+    title: "Эх, сейчас бы... Космические Рейнджеры 2. Доминаторы. Часть 1."
+    channel: "Mihagan"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Космические рейнджеры 2: Доминаторы — Википедия"
     url: "https://ru.wikipedia.org/wiki/Космические_рейнджеры_2:_Доминаторы"

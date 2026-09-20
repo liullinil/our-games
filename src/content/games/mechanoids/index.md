@@ -44,6 +44,11 @@ gallery:
     channel: "born | retro gaming+"
     poster: "https://pic.rtbcdn.ru/video/08/e5/08e58bec1addcd3cebc05acb21bcebf6.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "9AVK6y-zalQ"
+    title: "Механоиды: 20 лет спустя (сюжет, геймплей, последователи)"
+    channel: "GoodManTactics"
+    checkedAt: "2026-09-20"
 summary: >-
   Ролевой боевик о разумных глайдерах на планете, где нет ни одного человека: торговля, война кланов и своя философия машин.
 sources:

@@ -74,6 +74,11 @@ gallery:
     channel: "Играем вместе и смотрим вместе."
     poster: "https://pic.rtbcdn.ru/video/2025-05-16/d2/fb/d2fb0a58acc0602432d374eee9b8ebdf.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "bAs7b0tjxHE"
+    title: "ПРОХОЖДЕНИЕ ДАЛЬНОБОЙЩИКИ 3 ПОКОРЕНИЕ АМЕРИКИ | СТРИМ #1"
+    channel: "Lissa"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Дальнобойщики (серия игр) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Дальнобойщики_(серия_игр)"

@@ -42,6 +42,11 @@ gallery:
     channel: "Речная авантюра"
     poster: "https://pic.rtbcdn.ru/video/e6/4a/e64a164e635dc9b39248cb3a6c310a35.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "B-Hak7ouD9s"
+    title: "Корсары Возвращение легенды прохождение #1"
+    channel: "BK-201"
+    checkedAt: "2026-09-20"
 summary: >-
   Часть, сделанную фанатами, признали лучшей в серии: огромный Карибский архипелаг, десятки квестов и «Город потерянных кораблей» как продолжение.
 sources:

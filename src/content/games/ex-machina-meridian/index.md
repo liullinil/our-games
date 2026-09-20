@@ -74,6 +74,11 @@ gallery:
     channel: "UNIO Production"
     poster: "https://pic.rtbcdn.ru/video/2026-04-21/37/ae/37aec202dc8b9ebd8065e090bef76c34.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "d4L7YXePQz4"
+    title: "Ex Machina Меридиан 113 - Часть 1 [Бродяга]"
+    channel: "NormandyRen"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Ex Machina: Меридиан 113 — Википедия"
     url: "https://ru.wikipedia.org/wiki/Ex_Machina:_Меридиан_113"

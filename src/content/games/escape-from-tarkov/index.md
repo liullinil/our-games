@@ -69,6 +69,11 @@ gallery:
     channel: "Мир монстров"
     poster: "https://pic.rtbcdn.ru/video/77/e3/77e327e2a4b9dac91d46eb590e6e4ae3.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "a70_QmnjhCU"
+    title: "Escape from Tarkov - Action Gameplay Trailer"
+    channel: "Battlestate"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Escape from Tarkov — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Escape_from_Tarkov"

@@ -68,6 +68,11 @@ gallery:
     title: "Heroes of Annihilated Empires - Review"
     channel: "Bonepile Media"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "CpUf6CC9JLU"
+    title: "Heroes of Annihilated Empires Gameplay"
+    channel: "MasterofRoflness"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Heroes of Annihilated Empires — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Heroes_of_Annihilated_Empires"

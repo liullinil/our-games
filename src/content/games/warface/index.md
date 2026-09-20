@@ -71,6 +71,11 @@ gallery:
     channel: "Дрымский"
     poster: "https://pic.rtbcdn.ru/video/c2/4f/c24f2bb8aeefb13b5c05d6270d4b194c.png"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "MvM2cRo7D7s"
+    title: "WARFACE - Gameplay 2023 (No Commentary)"
+    channel: "Kimono"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Warface — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Warface"

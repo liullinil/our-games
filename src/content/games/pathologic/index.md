@@ -65,6 +65,17 @@ gallery:
     title: "Мор. Утопия (Обзор Zulin`s v-log) RE:Edit"
     channel: "Zulin`s v-log"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "JOhpIN1qC0A"
+    title: "Прохождение Мор.Утопия #1 Самозванка Клара"
+    channel: "TESler Channel"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "9934f835f1abc5d68700f9c36e34e9f6"
+    title: "Прохождение Мор.Утопия #11 Тело бессмертного"
+    channel: "ДРАЫГ"
+    poster: "https://pic.rtbcdn.ru/video/2025-08-26/9a/44/9a449370a6058bebfab237c3f3c60e0c.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Мор (Утопия) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Мор_(Утопия)"

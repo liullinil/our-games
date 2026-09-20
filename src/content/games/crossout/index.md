@@ -68,6 +68,17 @@ gallery:
     title: "ОБЗОР Crossout | Это БЕЗУМИЕ!"
     channel: "Leckie Play"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "L6Wa2P15gYI"
+    title: "Crossout Gameplay #7 — ТЕСТ ПУШЕК"
+    channel: "Первый Хоррор Канал"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "649471a3b044923b91271779e7b9ed63"
+    title: "Crossout Xbox Series S Геймплей 60 FPS"
+    channel: "Мужской ринг: преодоление себя в боксе"
+    poster: "https://pic.rtbcdn.ru/video/b8/7a/b87a078baddab537d913c2357f865738.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Crossout — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Crossout"

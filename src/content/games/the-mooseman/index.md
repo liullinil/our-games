@@ -72,6 +72,17 @@ gallery:
     title: "Человеколось: обзор игры / The Mooseman"
     channel: "Канал Иваныча про игры ► 6barrel.com"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "w__oCybK4AY"
+    title: "Человеколось / The Mooseman [Полное прохождение]"
+    channel: "Kino Konformist"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "d5e6788c23d360f390a10cab5d94e162"
+    title: "Человеколось - Прохождение - Часть 1"
+    channel: "✅ МΞКСИКА | БЛОГ КУРСК"
+    poster: "https://pic.rtbcdn.ru/video/0f/b9/0fb94c091b7a0854e610d4b0a804087c.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "The Mooseman — Wikipedia (English)"
     url: "https://en.wikipedia.org/wiki/The_Mooseman"

@@ -75,6 +75,11 @@ gallery:
     channel: "Echoes of the Past"
     poster: "https://pic.rtbcdn.ru/video/c0/c3/c0c3a11764146f7bc011a265ae941934.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "q5GkrLv0YQA"
+    title: "Мои карты в Men of War(В тылу врага 2 Лис пустыни)"
+    channel: "Niko Ni"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Men of War (video game) — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Men_of_War_(video_game)"

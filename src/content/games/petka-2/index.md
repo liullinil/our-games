@@ -76,6 +76,11 @@ gallery:
     title: "Петька-2. Судный день - Чапаев пришел в iOS"
     channel: "AppleInsider.ru"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "gzLQxEP6DhM"
+    title: "Петька и Василий Иванович 2 Судный день 2 прохождение walkthrough"
+    channel: "LongPlay 4K"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Петька и Василий Иванович 2: Судный день — Википедия"
     url: "https://ru.wikipedia.org/wiki/Петька_и_Василий_Иванович_2:_Судный_день"

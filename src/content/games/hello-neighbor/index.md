@@ -75,6 +75,11 @@ gallery:
     channel: "Сооl GАМЕS."
     poster: "https://pic.rtbcdn.ru/video/2025-04-06/3b/3b/3b3b12521d9328501973689d48bbcde0.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "ig1N2jxSKvA"
+    title: "#1 ПРИВЕТ СОСЕД ПРОХОЖДЕНИЕ - 1 акт Быстрое и правильное прохождение HELLO NEIGHBOUR Оригинал"
+    channel: "DarRidi"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Hello Neighbor — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Hello_Neighbor"

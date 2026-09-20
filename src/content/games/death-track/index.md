@@ -69,6 +69,11 @@ gallery:
     title: "Обзор Death Track Возрождение (Death Track Resurrection) (Вот это Игры) Wolfing"
     channel: "Александр Волков"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "oBTyTjQMhCw"
+    title: "Death Track: Resurrection PC Gameplay On HD4850"
+    channel: "moshepo"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Death Track: Resurrection — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Death_Track:_Resurrection"

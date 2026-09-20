@@ -74,6 +74,11 @@ gallery:
     title: "Большой разбор Party hard, весь сюжет от начала, и до конца"
     channel: "Fertday"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "HqvSl4Uohtk"
+    title: "PC Longplay [798] Party Hard"
+    channel: "World-of-Longplays"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Party Hard (video game) — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Party_Hard_(video_game)"

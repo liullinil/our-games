@@ -44,6 +44,11 @@ gallery:
     title: "Анабиоз: Сон разума (Cryostasis: Sleep of Reason) | Игрореликт"
     channel: "Либрариум"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "P_Vwt8UYNxc"
+    title: "Cryostasis: Sleep of Reason - PC Gameplay 1080p"
+    channel: "FirstPlays HD"
+    checkedAt: "2026-09-20"
 summary: >-
   Хоррор на вмёрзшем в лёд атомном ледоколе «Северный ветер»: герой греется у любого источника тепла и переживает смерти членов экипажа. Одна из первых игр с физикой воды на PhysX.
 sources:

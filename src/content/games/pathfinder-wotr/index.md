@@ -80,6 +80,11 @@ gallery:
     channel: "Gamer Instinct"
     poster: "https://pic.rtbcdn.ru/video/2025-08-06/fe/90/fe90a37d7911d6df26d250ce292bd031.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "f076zyuWyn0"
+    title: "Pathfinder Wrath of the Righteous Gameplay Walkthrough Part 1 - 4K 60FPS"
+    channel: "VikanGaming"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Pathfinder: Wrath of the Righteous — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Pathfinder:_Wrath_of_the_Righteous"

@@ -70,6 +70,11 @@ gallery:
     channel: "Уголок любителя RPG"
     poster: "https://pic.rtbcdn.ru/video/25/91/25912039cb886655b229e7c548bcb1d3.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "eaKOgfwtxDM"
+    title: "Star Wolves 3: Civil War - Gameplay Battle HD"
+    channel: "Crawdaddy79"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Star Wolves — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Star_Wolves"

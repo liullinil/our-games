@@ -74,6 +74,11 @@ gallery:
     title: "ТАНКИ ОНЛАЙН СПУСТЯ 17 ЛЕТ – ЧТО С НИМИ?"
     channel: "Kenr"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "Xy3sXnh5FDM"
+    title: "Танки онлайн-\"Золотой Let`s play #38\" - [ 1 Апреля I Х5 Голды I 2 Часть ] [^ЗЛП^]"
+    channel: "The_CaHeK_Play"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Tanki Online — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Tanki_Online"

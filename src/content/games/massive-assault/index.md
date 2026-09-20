@@ -69,6 +69,11 @@ gallery:
     title: "Прохождение Massive Assault: Phantom Renaissance (Расцвет Лиги). #1 Революция или смерть!"
     channel: "И К"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "kd0micX9nYw"
+    title: "Massive Assault (2003) - PC Gameplay 4k 2160p / Win 10"
+    channel: "FirstPlays HD"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Retrospective: Massive Assault — Wargaming"
     url: "https://wargaming.com/en/news/timeless_series_massive_assault/"

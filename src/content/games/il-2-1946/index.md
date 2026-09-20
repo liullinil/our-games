@@ -75,6 +75,11 @@ gallery:
     channel: "AviaCom"
     poster: "https://pic.rtbcdn.ru/video/d0/f8/d0f829f7bba07c473e8ccb95f0d98ca6.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "t81T6om3aQo"
+    title: "Ил-2 Штурмовик 1946: Первый взгляд"
+    channel: "cmasupra"
+    checkedAt: "2026-09-20"
 sources:
   - title: "IL-2 Sturmovik: 1946 — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/IL-2_Sturmovik:_1946"

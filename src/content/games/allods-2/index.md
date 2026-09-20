@@ -41,6 +41,11 @@ gallery:
     title: "Аллод некромантов! Обзор игры Аллоды 2 повелитель душ (1999)"
     channel: "Избранный"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "fS53WQe9ijU"
+    title: "Аллоды 2(Rage of Mages 2) - Повелитель Душ - Максимальная Сложность - Прохождение #1"
+    channel: "RKane"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Аллоды II: Повелитель душ — Википедия"
     url: "https://ru.wikipedia.org/wiki/Аллоды_II:_Повелитель_душ"

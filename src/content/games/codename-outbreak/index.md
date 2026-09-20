@@ -32,6 +32,17 @@ gallery:
     title: "ЧЕРНОЕ ГНЕЗДО ОБЗОР - РЕМЕЙК VENOM: CODENAME OUTBREAK. REMASTERED"
     channel: "MegaTiEstO96"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "VkgqjYg3szA"
+    title: "Venom Codename Outbreak Прохождение миссии No 1 Осиное Гнездо"
+    channel: "Gameliker2013"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "0989e7560064e6982dbdf7c2ff6b9bf4"
+    title: "Venom Codename Outbreak Прохождение миссии No 1 Осиное Гнездо"
+    channel: "Семейные обзоры кино"
+    poster: "https://pic.rtbcdn.ru/video/d5/6f/d56fc9c627f1e42fb567b4747b342397.jpg"
+    checkedAt: "2026-09-20"
 summary: >-
   Тактический шутер о пришельцах-паразитах с командой из двух бойцов и большими открытыми картами. Первый шутер GSC и полигон для идей будущего S.T.A.L.K.E.R.
 sources:

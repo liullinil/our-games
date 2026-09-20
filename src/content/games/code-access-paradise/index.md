@@ -38,6 +38,12 @@ gallery:
     title: "Код доступа Рай Ремастер. Режим \"Терминатор\". Без сейвов. Одним кадром без монтажа. Тяжёлый уровень."
     channel: "олег KalyaN орович"
     checkedAt: "2026-09-19"
+  - kind: rutube
+    id: "0e8ef5c2c1732e5219ef07659529d198"
+    title: "Код доступа_ РАЙ #1 Прохождение в соло. Максимальная сложность."
+    channel: "DarkNimusCastle"
+    poster: "https://pic.rtbcdn.ru/video/11/ed/11ede2d9f55b50a4c7dd892a6dd6a8ef.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Код доступа: РАЙ — Википедия"
     url: "https://ru.wikipedia.org/wiki/Код_доступа:_РАЙ"

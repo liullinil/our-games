@@ -41,6 +41,11 @@ gallery:
     channel: "Funny Games TV"
     poster: "https://pic.rtbcdn.ru/video/14/69/1469335e54125632ea7214750aa0a988.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "zSOwl2voALQ"
+    title: "Shadow Fight 3 - Gameplay Walkthrough Part 1 - Chapter 1 (iOS, Android)"
+    channel: "TapGameplay"
+    checkedAt: "2026-09-20"
 sources:
   - title: "'Shadow Fight 3' Gets an Official Global Release Date — TouchArcade"
     url: "https://toucharcade.com/2017/07/25/shadow-fight-3-release-date-november-16th/"

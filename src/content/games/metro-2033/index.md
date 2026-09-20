@@ -77,6 +77,17 @@ gallery:
     channel: "Gametrailer"
     poster: "https://pic.rtbcdn.ru/video/2024-12-28/fd/a2/fda2b037da584976e8097896bfe00fb5.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "EYiwffKSUgs"
+    title: "СТИНТ ИГРАЕТ в METRO 2033 REDUX #1 // ПРОХОЖДЕНИЕ ИГРЫ"
+    channel: "Нарезки Стинта"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "2969b04c5e03923972d644a0ab364643"
+    title: "METRO 2033 Legacy, Наследие | Геймплей, Мод дата выхода игры?"
+    channel: "РУССКИЙ ГАЙД"
+    poster: "https://pic.rtbcdn.ru/video/2024-11-13/41/21/412149188dce714ed2a7929ba5ac7fbe.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Metro 2033 (video game) — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Metro_2033_(video_game)"

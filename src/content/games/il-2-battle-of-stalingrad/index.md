@@ -72,6 +72,11 @@ gallery:
     channel: "Евгений Малахов"
     poster: "https://pic.rtbcdn.ru/video/82/af/82af6d9b0de4e85bab1b3f209f0830cd.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "MWxtDLpPMnA"
+    title: "Ил-2 Штурмовик. Битва за Сталинград. Продолжаем путь одного пилота."
+    channel: "ТАНКИСТ"
+    checkedAt: "2026-09-20"
 sources:
   - title: "IL-2 Sturmovik: Great Battles — Wikipedia"
     url: "https://en.wikipedia.org/wiki/IL-2_Sturmovik:_Great_Battles"

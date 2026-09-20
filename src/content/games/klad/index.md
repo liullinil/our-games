@@ -31,6 +31,12 @@ gallery:
     title: "Напряг мозга и хардкор ❤\"Клад\" для БК-0010\" ❤Прохождение, FULL PLAY! Автор игры - Баранов Д.Г, 1987."
     channel: "Старые Игры"
     checkedAt: "2026-09-19"
+  - kind: rutube
+    id: "4ca73c4d9c04dd6cbd15940911f7e295"
+    title: "Вектор-06Ц, игра Клад (1990)"
+    channel: "Classic Retro Gaming"
+    poster: "https://pic.rtbcdn.ru/video/82/36/823683395a1118bcb6a78d246a805822.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Клад — Old-Games.RU Wiki"
     url: "https://www.old-games.ru/wiki/Клад"

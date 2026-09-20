@@ -75,6 +75,11 @@ gallery:
     channel: "Prodigy Protector"
     poster: "https://pic.rtbcdn.ru/video/2025-06-06/6e/20/6e200f635968fedea74ea3ca347db093.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "auK00mq9BSY"
+    title: "Противостояние 4 (Sudden Strike 2) прохождение кампании США #1"
+    channel: "RWG-team"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Sudden Strike 2 — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Sudden_Strike_2"

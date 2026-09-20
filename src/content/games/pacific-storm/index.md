@@ -67,6 +67,11 @@ gallery:
     title: "Стальные монстры: Союзники - Обзор от ЛКИ"
     channel: "KENESOLJAS ホンダ"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "K-Otc0Z8LpY"
+    title: "Pacific Storm |Gameplay #1| part 1"
+    channel: "PropagandaPanda"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Pacific Storm — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Pacific_Storm"

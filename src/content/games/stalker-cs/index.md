@@ -79,6 +79,11 @@ gallery:
     channel: "TheEasyNick"
     poster: "https://pic.rtbcdn.ru/video/fa/8e/fa8e6cc15be5c184d78b7ce0f451d55f.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "BX-mjwSZoCw"
+    title: "Как я играл в S.T.A.L.K.E.R.: Чистое Небо"
+    channel: "Нарратор"
+    checkedAt: "2026-09-20"
 sources:
   - title: "S.T.A.L.K.E.R.: Clear Sky — Wikipedia"
     url: "https://en.wikipedia.org/wiki/S.T.A.L.K.E.R.:_Clear_Sky"

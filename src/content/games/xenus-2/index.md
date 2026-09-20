@@ -42,6 +42,11 @@ gallery:
     title: "Редкостный Обзор 25. Xenus 2: белое золото (2008)Колумбийские гостинцы.(весь сюжет.)"
     channel: "OlD BUll"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "ubg6kgKDRBM"
+    title: "Xenus 2 White Gold - Обзор"
+    channel: "Stivman's Reviews"
+    checkedAt: "2026-09-20"
 sources:
   - title: "White Gold: War in Paradise — Wikipedia"
     url: "https://en.wikipedia.org/wiki/White_Gold:_War_in_Paradise"

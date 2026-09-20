@@ -38,6 +38,17 @@ gallery:
     title: "Обзор Cradle - Красивая, атмосферная и глубокая игра"
     channel: "Jakir Channel - Архивный канал"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "igNf54KYS90"
+    title: "Cradle. Прохождение. Часть 1 (Монголия 2076г. Еда для птицы) 60fps"
+    channel: "Летсплеи от LikeMySty1e"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "2bb2db91cda477b3ffd81d434d4f2717"
+    title: "Cradle. Прохождение на русском языке #1"
+    channel: "TVGames"
+    poster: "https://pic.rtbcdn.ru/video/2025-01-20/2e/bf/2ebf70c28413875abe81a579974f9998.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Cradle (video game) — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Cradle_(video_game)"

@@ -68,6 +68,11 @@ gallery:
     title: "Обзор на Postal 3"
     channel: "MaddysonShow"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "KI25V2e--7s"
+    title: "Прохождение Postal 3 [Часть 1 - Добро Пожаловать в Катарсис]"
+    channel: "MrGoGaAaAa"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Postal III — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Postal_III"

@@ -43,6 +43,11 @@ gallery:
     channel: "Квестовщик"
     poster: "https://pic.rtbcdn.ru/video/7b/34/7b34c0db939a0886dcaa025bb277556f.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "ALUKYbbScsM"
+    title: "Братья Пилоты: По следам полосатого слона. Прохождение."
+    channel: "Magic Carpet"
+    checkedAt: "2026-09-20"
 summary: >-
   Квест по мотивам мультфильмов студии «Пилот» о сыщиках Шефе и Коллеге, которые ищут похищенного полосатого слона. Один из первых российских квестов и начало длинной серии.
 steamAppId: 336760

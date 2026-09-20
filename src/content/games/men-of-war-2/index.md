@@ -34,6 +34,11 @@ gallery:
     channel: "Артём прохождение игр"
     poster: "https://pic.rtbcdn.ru/video/2025-03-08/41/22/412268bf0c9f78a293db39728c2a3834.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "KigLKm5L-gU"
+    title: "В Тылу Врага 2: Штурм [МОД: Грозовые Ворота] — Первый взгляд / GamePlayerRUS (Часть 1)"
+    channel: "GamePlayerRUS"
+    checkedAt: "2026-09-20"
 summary: >-
   Продолжение с тремя кампаниями за союзников, СССР и Германию и подчинёнными отрядами, действующими сами по себе.
 sources:

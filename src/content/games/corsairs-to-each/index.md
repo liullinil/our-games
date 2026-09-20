@@ -74,6 +74,12 @@ gallery:
     channel: "Element Game Show"
     poster: "https://pic.rtbcdn.ru/video/2026-03-19/79/cf/79cfdf17eaf17a77cf1b3a0ee86fc08e.jpg"
     checkedAt: "2026-09-19"
+  - kind: rutube
+    id: "32868ef27847778426869e04b1389ad0"
+    title: "Ⓔ Корсары Каждому своё Прохождение Ⓖ Стрим (#5/2) Ⓢ"
+    channel: "Element Game Show"
+    poster: "https://pic.rtbcdn.ru/video/2026-03-19/58/46/584635a92f944988c813850c425598d0.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Sea Dogs: To Each His Own — Metacritic"
     url: "https://www.metacritic.com/game/sea-dogs-to-each-his-own/"

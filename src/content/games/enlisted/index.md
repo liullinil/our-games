@@ -76,6 +76,11 @@ gallery:
     channel: "FMgame"
     poster: "https://pic.rtbcdn.ru/video/5d/1d/5d1ddeec2e7746c7119b1bb852b512d1.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "OcsGUfwo580"
+    title: "Enlisted Gameplay - Fortress - Battle of Tunisia (1440p 60FPS)"
+    channel: "JustGameplay_YT"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Enlisted (video game) — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Enlisted_(video_game)"

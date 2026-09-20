@@ -71,6 +71,11 @@ gallery:
     title: "Обзор игры Ex Machina"
     channel: "LERNER"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "Gwu94y_P1eo"
+    title: "Hard Truck: Apocalypse / Ex Machina (2005) - PC Gameplay 4k 2160p / Win 10"
+    channel: "FirstPlays HD"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Hard Truck Apocalypse — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Hard_Truck_Apocalypse"

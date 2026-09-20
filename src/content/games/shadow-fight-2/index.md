@@ -39,6 +39,11 @@ gallery:
     channel: "Gametrailer"
     poster: "https://pic.rtbcdn.ru/video/2025-02-09/9c/bd/9cbddde716d5178068ca4f9e31317212.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "FQJwZ5FhECM"
+    title: "Shadow Fight 2 || ALL WEAPONS OF BOSS vs TITAN Bodyguards 「Android Gameplay」"
+    channel: "Antv Games"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Shadow Fight 2 — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Shadow_Fight_2"

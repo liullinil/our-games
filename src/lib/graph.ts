@@ -358,9 +358,10 @@ async function buildGraph(): Promise<Graph> {
     const onlyPubA = a.gameIds.length === 0 ? 1 : 0;
     const onlyPubB = b.gameIds.length === 0 ? 1 : 0;
     if (onlyPubA !== onlyPubB) return onlyPubA - onlyPubB;
-    const firstA = a.gameIds.length ? games.get(a.gameIds[0]!)!.data.years.start : a.data.founded;
-    const firstB = b.gameIds.length ? games.get(b.gameIds[0]!)!.data.years.start : b.data.founded;
-    return firstA - firstB || a.data.city.localeCompare(b.data.city, 'ru');
+    // Студия без игр и без известного года основания уходит в конец списка.
+    const firstA = a.gameIds.length ? games.get(a.gameIds[0]!)!.data.years.start : (a.data.founded ?? 9999);
+    const firstB = b.gameIds.length ? games.get(b.gameIds[0]!)!.data.years.start : (b.data.founded ?? 9999);
+    return firstA - firstB || (a.data.city ?? '').localeCompare(b.data.city ?? '', 'ru');
   });
 
   const seriesList = [...series.values()].sort((a, b) => {

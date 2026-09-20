@@ -71,6 +71,11 @@ gallery:
     channel: "Мир Геймплея"
     poster: "https://pic.rtbcdn.ru/video/99/93/99932237cfa04ad88b7bcb295c29c7b8.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "gqQ4xkDB4dw"
+    title: "Vangers gameplay (PC Game, 1998)"
+    channel: "Squakenet"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Vangers — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Vangers"

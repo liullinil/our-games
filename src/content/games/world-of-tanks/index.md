@@ -76,6 +76,17 @@ gallery:
     title: "НЕ ИГРАЙ В WORLD OF TANKS"
     channel: "Kanissstra"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "rfYWBr5mut4"
+    title: "World of Tanks (2021) - Gameplay (PC UHD) [4K60FPS]"
+    channel: "Throneful"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "e3c4b4d7de2b0b5470d2cc6b6381a5f4"
+    title: "World of Tanks: HEAT — танковый шутер с элементами альтернативной истории * геймплей"
+    channel: "🔥GAMES-LONG / ТРЕЙЛЕРЫ ИГР - ГЕЙМПЛЕЙ🔥"
+    poster: "https://pic.rtbcdn.ru/video/2026-05-28/35/2c/352c9944052c845a8c3419586d177b0e.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "World of Tanks — Wikipedia"
     url: "https://en.wikipedia.org/wiki/World_of_Tanks"

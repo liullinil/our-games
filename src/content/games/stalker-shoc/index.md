@@ -89,6 +89,11 @@ gallery:
     channel: "Прохождение Stalker: Тень Чернобыля"
     poster: "https://pic.rtbcdn.ru/video/f2/97/f297ae64504399a0ef6002764cc3f412.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "-lfWFzhdqv4"
+    title: "Прохождение S.T.A.L.K.E.R.: Тень Чернобыля — Часть #1: KILL THE STRELOK!"
+    channel: "GamePlayerRUS"
+    checkedAt: "2026-09-20"
 sources:
   - title: "S.T.A.L.K.E.R.: Shadow of Chernobyl — Wikipedia"
     url: "https://en.wikipedia.org/wiki/S.T.A.L.K.E.R.:_Shadow_of_Chernobyl"

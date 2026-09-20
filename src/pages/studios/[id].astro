@@ -65,8 +65,9 @@ const era = games[0]?.era ?? 'site';
         <h1 data-pagefind-meta="title">{studioShort(studio)}</h1>
         <p class="lead">{studio.data.summary}</p>
         <p class="muted">
-          {studio.data.city} · {COUNTRY_LABEL[studio.data.country]} · {STUDIO_KIND_LABEL[studio.data.kind]} · основана в{' '}
-          {studio.data.founded}
+          {studio.data.city && `${studio.data.city} · `}{COUNTRY_LABEL[studio.data.country]} · {
+            STUDIO_KIND_LABEL[studio.data.kind]
+          }{studio.data.founded ? ` · основана в ${studio.data.founded}` : ''}
           {studio.data.closed ? `, закрыта в ${studio.data.closed}` : ''}
           {studio.data.website && (
             <>

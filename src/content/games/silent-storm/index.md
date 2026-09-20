@@ -73,6 +73,11 @@ gallery:
     channel: "Alandr Games"
     poster: "https://pic.rtbcdn.ru/video/ea/88/ea88fb7afb60b91627b00c9502e54de3.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "QRf2lOuDTBQ"
+    title: "Прохождение Операция Silent Storm Часовые ◄#1► Русские комментарии"
+    channel: "RobosergTV"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Silent Storm — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Silent_Storm"

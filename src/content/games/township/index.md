@@ -25,6 +25,17 @@ gallery:
     title: "Township — мастер игры! Советы"
     channel: "OnTheReal Gaming"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "X016xxJSVx8"
+    title: "TOWNSHIP Level 157 Gameplay # 3"
+    channel: "TownshipDotCom"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "97a94d29b75e903647ee04f830a0930c"
+    title: "Township прохождение «ни дня без бустеров», сложные уровни"
+    channel: "MsOladushka"
+    poster: "https://pic.rtbcdn.ru/video/2025-07-27/c3/05/c30597e236d72e5bbff72652b2121851.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Township (video game) — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Township_(video_game)"

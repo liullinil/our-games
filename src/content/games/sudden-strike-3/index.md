@@ -35,6 +35,17 @@ gallery:
     title: "Sudden Strike 3 Arms for Victory обзор и прохождение стратегии про Вторую Мировую"
     channel: "RWG-team"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "V9zMwkZ-hK4"
+    title: "Sudden Strike 3 Arms for Victory - Gameplay (PC/UHD)"
+    channel: "SergiuHellDragoonHQ"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "71eb8d23c535d471e058ae892506fdaa"
+    title: "Sudden Strike 3 Arms for Victory обзор и прохождение стратегии про Вторую Мировую"
+    channel: "Totalitar - прохождение и обзоры игр"
+    poster: "https://pic.rtbcdn.ru/video/00/84/0084315cfddc4c325534b54339b6fd25.jpg"
+    checkedAt: "2026-09-20"
 summary: >-
   Переход серии в трёхмерную графику с морскими десантами и Тихим океаном.
 sources:

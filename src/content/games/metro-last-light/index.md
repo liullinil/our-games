@@ -79,6 +79,11 @@ gallery:
     channel: "Game Kingdom"
     poster: "https://pic.rtbcdn.ru/video/26/55/26556ffde03a62869e2117e297719877.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "z6Jxl0EbeIs"
+    title: "Metro Last Light Redux: Brutal Stealth Action Gameplay"
+    channel: "Swifty Unknown"
+    checkedAt: "2026-09-20"
 sources:
   - title: "4A Games — Wikipedia"
     url: "https://en.wikipedia.org/wiki/4A_Games"

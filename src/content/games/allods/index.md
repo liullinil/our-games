@@ -36,6 +36,11 @@ gallery:
     channel: "Ящик Артефактов"
     poster: "https://pic.rtbcdn.ru/video/d8/8d/d88daaea13a957bc2cd0abb235398b4c.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "wbPS-k8QLIQ"
+    title: "Аллоды: Печать тайны прохождение"
+    channel: "Александр Михайлов"
+    checkedAt: "2026-09-20"
 summary: >-
   Первая игра Nival: смесь ролевой игры и тактики в реальном времени в фэнтезийном мире летающих островов-аллодов. Вышла на Западе как Rage of Mages и открыла Nival дорогу к мировым издателям.
 sources:

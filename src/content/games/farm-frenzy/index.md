@@ -56,6 +56,11 @@ gallery:
     title: "Farm Frenzy Pizza Party only GOLD American Street 5 (86) Веселая ферма Печем пиццу Американская 5"
     channel: "Alex Game Style"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "90sjAEfH1YE"
+    title: "Веселая Ферма прохождение на русском Farm Frenzy Collection [4K ULTRA]"
+    channel: "VOLKOFRENIA"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Farm Frenzy — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Farm_Frenzy"

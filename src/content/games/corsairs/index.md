@@ -75,6 +75,11 @@ gallery:
     title: "Корсары (Испааанцы) | Обзор шедевра от Акеллы"
     channel: "RPG Geeks"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "hXbkD-hg-n4"
+    title: "Let's Play на игру Корсары:проклятье дальних морей.часть 1/3"
+    channel: "dmitriy4099"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Корсары: Проклятье дальних морей — Википедия"
     url: "https://ru.wikipedia.org/wiki/Корсары:_Проклятье_дальних_морей"

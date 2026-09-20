@@ -72,6 +72,11 @@ gallery:
     channel: "Demon"
     poster: "https://pic.rtbcdn.ru/video/2025-02-25/a9/da/a9da6c24c46556d0a45120b831801d4f.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "vEpO-HPjzNc"
+    title: "War Robots: This TITAN is Brutal | The Power of the new Devourer | WR Gameplay"
+    channel: "DiDis YT"
+    checkedAt: "2026-09-20"
 sources:
   - title: "War Robots — Wikipedia"
     url: "https://en.wikipedia.org/wiki/War_Robots"

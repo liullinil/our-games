@@ -26,6 +26,17 @@ gallery:
     title: "МИР ТАНКОВ ХУЖЕ ЧЕМ WAR THUNDER?"
     channel: "AQUA"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "qkuk4YB_4Fg"
+    title: "ДВА ПРОСТЫХ ПРАВИЛА ГРАМОТНОЙ ИГРЫ | ОБУЧЕНИЕ МИР ТАНКОВ | МИР ТАНКОВ УРОКИ | ОБУЧЕНИЕ НОВИЧКА"
+    channel: "SNAKON"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "f296d488cfb54dbd1edce32f06b5bcc3"
+    title: "Мир танков. Разлом, прохождение."
+    channel: "Румпель"
+    poster: "https://pic.rtbcdn.ru/video/2025-10-28/92/f0/92f019e672c01f95709ab0cdadae5534.jpg"
+    checkedAt: "2026-09-20"
 summary: >-
   Российская версия World of Tanks, которую после раздела с Wargaming ведёт петербургская «Леста Игры» с собственными ветками техники и событиями.
 sources:

@@ -79,6 +79,11 @@ gallery:
     channel: "ArtGames"
     poster: "https://pic.rtbcdn.ru/video/2025-04-10/4d/01/4d011c24e6d9c902696bf9f026651eb3.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "_QxE9DpHMt4"
+    title: "Sherlock Holmes Chapter One - Official Gameplay Reveal | PS5, PS4"
+    channel: "PlayStation"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Sherlock Holmes Chapter One — Wikipedia (английский раздел)"
     url: "https://en.wikipedia.org/wiki/Sherlock_Holmes_Chapter_One"

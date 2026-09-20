@@ -32,6 +32,11 @@ gallery:
     channel: "IRONGAMERS.ru"
     poster: "https://pic.rtbcdn.ru/video/a7/e3/a7e3a69ede51dc4e0b8acc3b0d5e6c2e.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "VrOoWN2BOO8"
+    title: "Штырлиц Операция «Бюст» Полное прохождение"
+    channel: "player00713 LIVE"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Штырлиц: Операция «Бюст» — StopGame"
     url: "https://stopgame.ru/game/shtyrlic_ili_ljubimyj_bjust_fjurrera"

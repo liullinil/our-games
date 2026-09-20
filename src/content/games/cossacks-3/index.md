@@ -72,6 +72,11 @@ gallery:
     title: "Казаки 3 - Ремейк, а не продолжение (Обзор/Review)"
     channel: "Игромания Новости"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "xF81tWZX84c"
+    title: "Cossacks 3 - 8P FFA ULTIMATE MASSIVE WAR | Multiplayer 4K Gameplay"
+    channel: "SergiuHellDragoonHQ"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Cossacks 3 — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Cossacks_3"

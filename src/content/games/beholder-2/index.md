@@ -81,6 +81,11 @@ gallery:
     title: "ИЛЛЮЗИЯ ВЫБОРА? | Beholder 2 обзор"
     channel: "Dr. STR"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "8p8Sz6U--oY"
+    title: "Beholder 2 Прохождение ► НОВЫЕ ДРУЗЬЯ И КОЛЛЕГИ"
+    channel: "OfficialZelel"
+    checkedAt: "2026-09-20"
 reviews:
   - outlet: "StopGame"
     score: "Похвально"

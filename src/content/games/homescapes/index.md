@@ -30,6 +30,11 @@ gallery:
     channel: "Modgames42"
     poster: "https://pic.rtbcdn.ru/video/74/c8/74c8a5d27b3031f22c5ba3b4fd39414a.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "3ozP9RzOgPo"
+    title: "Homescapes - Gameplay Walkthrough Part 1 - Days 1-2 (iOS, Android)"
+    channel: "TapGameplay"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Homescapes — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Homescapes"

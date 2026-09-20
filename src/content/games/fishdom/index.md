@@ -30,6 +30,11 @@ gallery:
     title: "Fishdom, fish, review (рыбки, обзор)"
     channel: "Zloy Revizor"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "Fvn77fHzakc"
+    title: "Fishdom | Is it like the Ads? | Gameplay"
+    channel: "i3Stars"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Fishdom — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Fishdom"

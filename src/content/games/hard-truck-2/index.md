@@ -70,6 +70,11 @@ gallery:
     channel: "Nerevar Superstar"
     poster: "https://pic.rtbcdn.ru/video/d6/f3/d6f388cbc87c77f0db5e5c80a48ff690.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "Ej6IuhNGbGU"
+    title: "ДАЛЬНОБОЙЩИКИ 2 - ГОРДОСТЬ РОССИЙСКОГО ГЕЙМДЕВА"
+    channel: "Игорь Линк"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Дальнобойщики 2 (игра) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Дальнобойщики_2_(игра)"

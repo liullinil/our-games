@@ -48,6 +48,11 @@ gallery:
     channel: "Puzzle Pursuers"
     poster: "https://pic.rtbcdn.ru/video/2025-05-31/97/47/9747c59c6946331f5895e157a639795e.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "9qWqorrIVFg"
+    title: "Lock On: Modern Air Combat PC Games Gameplay - Big battle"
+    channel: "IGN"
+    checkedAt: "2026-09-20"
 summary: >-
   Симулятор современных истребителей: Су-27, Су-33, МиГ-29, F-15 и A-10 над Крымом и Кавказом. Прямой предок DCS World.
 sources:

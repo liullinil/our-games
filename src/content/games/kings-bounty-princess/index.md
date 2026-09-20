@@ -69,6 +69,11 @@ gallery:
     title: "ПАПИЧ КАЙФУЕТ от ИГРЫ KING'S BOUNTY 2008 Года! 😍 Kings Bounty Принцесса в Доспехах (часть 1)"
     channel: "Лучшее с Папичем"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "Z1DXUnzn3T4"
+    title: "Первое прохождение Kings Bounty Принцесса в доспехах! Воин! Тяжелый! Остров Боло"
+    channel: "Davetson"
+    checkedAt: "2026-09-20"
 sources:
   - title: "King's Bounty: Armored Princess — Wikipedia"
     url: "https://en.wikipedia.org/wiki/King%27s_Bounty:_Armored_Princess"

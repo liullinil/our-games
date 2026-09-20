@@ -44,6 +44,12 @@ gallery:
     title: "Электроника \"Ну погоди!\" и \"Космический мост\" Space bridge Игра на экране."
     channel: "PokuPashka: обзоры интересных товаров"
     checkedAt: "2026-09-19"
+  - kind: rutube
+    id: "ec2f5a8a491b5b667d749b5a1e8a029b"
+    title: "Игра Космический мост"
+    channel: "Thrilling Experiences"
+    poster: "https://pic.rtbcdn.ru/video/35/0e/350e49fcc0efcea9ad84597522e23bcc.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Электроника (игры) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Электроника_(игры)"

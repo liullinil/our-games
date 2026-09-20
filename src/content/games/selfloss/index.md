@@ -71,6 +71,11 @@ gallery:
     channel: "Верни консоль"
     poster: "https://pic.rtbcdn.ru/video/37/3d/373ddd5c22362f78966ce6d7f3304ce6.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "ZslzelLn3GY"
+    title: "Selfloss - Gameplay"
+    channel: "Game Mojo"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Обзор Selfloss — красивой игры, которая вас обманет — Skillbox"
     url: "https://skillbox.ru/media/gamedev/obzor-selfloss-krasivoy-igry-kotoraya-vas-obmanet/"

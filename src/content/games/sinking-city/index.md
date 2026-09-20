@@ -76,6 +76,11 @@ gallery:
     title: "The Sinking City – Ведьмак с дробовиком и секрет Ктулху (Обзор/Review)"
     channel: "Игромания Новости"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "F2e0RCvSge0"
+    title: "The SINKING CITY ➤ Прохождение #1 ➤ ТОНУЩИЙ В БЕЗУМИИ ГОРОД"
+    channel: "TheGideonGames"
+    checkedAt: "2026-09-20"
 sources:
   - title: "The Sinking City — Wikipedia"
     url: "https://en.wikipedia.org/wiki/The_Sinking_City"

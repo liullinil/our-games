@@ -77,6 +77,11 @@ gallery:
     title: "Почему Loop Hero так затягивает"
     channel: "DTF"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "sIM876LaLUs"
+    title: "Обзор игры Loop Hero ➤ вас купит геймплей а не графика"
+    channel: "zombieVegas"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Loop Hero — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Loop_Hero"

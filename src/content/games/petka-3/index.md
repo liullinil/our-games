@@ -76,6 +76,11 @@ gallery:
     channel: "Нептун и его водяные шары"
     poster: "https://pic.rtbcdn.ru/video/e7/c3/e7c308adf1b909aa2f5aba79a567f1bc.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "RCzTSIzuaM4"
+    title: "Прохождение Петька 3: Возвращение Аляски-#1-Америка"
+    channel: "Lyahov Play Games"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Петька 3: Возвращение Аляски — Википедия"
     url: "https://ru.wikipedia.org/wiki/Петька_3:_Возвращение_Аляски"

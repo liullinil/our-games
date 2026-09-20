@@ -70,6 +70,17 @@ gallery:
     title: "35 MM | Атмосферное приключение с МЫЛОМ на ГЛАЗАХ | Обзор-признание"
     channel: "Johnny Half"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "ZgpbUmFuqSY"
+    title: "35MM - Gameplay Trailer | PS4"
+    channel: "PlayStation"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "c50ffaa70d2b7464a9f3a03740380a03"
+    title: "35mm - Полное прохождение - 35 миллиметров игра - Обзор"
+    channel: "Diezel Game"
+    poster: "https://pic.rtbcdn.ru/video/c5/e6/c5e69c4ed861e0c2960766e8ba1b3e88.jpg"
+    checkedAt: "2026-09-20"
 reviews:
   - outlet: "Игромания"
     score: "4/10"

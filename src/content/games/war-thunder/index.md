@@ -74,6 +74,11 @@ gallery:
     channel: "War Thunder Гайды и Обзоры"
     poster: "https://pic.rtbcdn.ru/video/e1/0b/e10b3aa5fea2091f7fde0189667d9cec.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "xHpwvAlAKj8"
+    title: "КАК ИГРАЕТСЯ WAR THUNDER В 2025"
+    channel: "Lych"
+    checkedAt: "2026-09-20"
 sources:
   - title: "War Thunder — Wikipedia"
     url: "https://en.wikipedia.org/wiki/War_Thunder"

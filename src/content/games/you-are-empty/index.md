@@ -70,6 +70,11 @@ gallery:
     channel: "TheEasyNick"
     poster: "https://pic.rtbcdn.ru/video/2024-10-16/f7/b7/f7b75c0a21da06688aae0d0f68e93353.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "oE54Lvd4BbU"
+    title: "Прохождение You are Empty: Вступление от автора."
+    channel: "Шустер Сухов"
+    checkedAt: "2026-09-20"
 sources:
   - title: "You Are Empty — Wikipedia"
     url: "https://en.wikipedia.org/wiki/You_Are_Empty"

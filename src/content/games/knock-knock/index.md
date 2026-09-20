@@ -68,6 +68,17 @@ gallery:
     title: "Обзор игра \"Тук-тук-тук\" / Knock-knock [Review]"
     channel: "StopGame"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "At6RZ_Uf8ss"
+    title: "▶ Тук-тук-тук / Knock-knock! - Начало игры"
+    channel: "Игромания Новости"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "6a6637582501fea8ed0596018b777e9d"
+    title: "Тук-Тук-Тук геймплей (gameplay) HD качество"
+    channel: "Детский Игровой Парк"
+    poster: "https://pic.rtbcdn.ru/video/c3/83/c383db0e7bf8c5546661d9d9bd70bfac.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Knock-Knock (video game) — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Knock-Knock_(video_game)"

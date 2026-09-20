@@ -74,6 +74,11 @@ gallery:
     title: "ИГРЫ КАТЕГОРИИ Б - XENUS: ТОЧКА КИПЕНИЯ"
     channel: "IGM"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "0-iVF89HiVs"
+    title: "Xenus: Точка Кипения. Прохождение. #1. Колумбия."
+    channel: "TheEasyNICK"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Boiling Point: Road to Hell — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Boiling_Point:_Road_to_Hell"

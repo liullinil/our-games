@@ -66,6 +66,11 @@ gallery:
     title: "Vector – ЧТО СТАЛО С ИГРОЙ"
     channel: "tupizm"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "YAHDpJS-VuU"
+    title: "Vector - Gameplay Walkthrough Part 6 - Technology Park Level 6 - 11 3 stars(iOS, Android)"
+    channel: "TanJinGames"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Vector (video game) — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Vector_(video_game)"

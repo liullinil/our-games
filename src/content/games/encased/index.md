@@ -71,6 +71,11 @@ gallery:
     title: "Обзор игры: Encased (2019)"
     channel: "Сан саныч"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "CJ300mIuJWI"
+    title: "Encased - впечатления после прохождения"
+    channel: "Что поделать"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Encased — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Encased"

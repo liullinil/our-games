@@ -32,6 +32,11 @@ gallery:
     title: "Обзор игры Tetris"
     channel: "Darkk Mane"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "QDGAN_kPkPI"
+    title: "Original Tetris for PC - Gameplay"
+    channel: "sasko2k"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Tetris — Wikipedia (англ.)"
     url: "https://en.wikipedia.org/wiki/Tetris"

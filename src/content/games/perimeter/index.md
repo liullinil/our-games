@@ -66,6 +66,17 @@ gallery:
     title: "Обзор Периметр - самая необычная российская RTS стратегия"
     channel: "Basset"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "NUYjLgw7fII"
+    title: "Perimeter gameplay"
+    channel: "Rider339"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "0223cc90c2d4421f4aa57c93fa9dba2a"
+    title: "ПРОХОЖДЕНИЕ: ПЕРИМЕТР/PERIMETER Legate Edition. Часть 1"
+    channel: "6loodymir_play"
+    poster: "https://pic.rtbcdn.ru/video/45/61/456157c1246560a847930662c1e016f4.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Perimeter (video game) — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Perimeter_(video_game)"

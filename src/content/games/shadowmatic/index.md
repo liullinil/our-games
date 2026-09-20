@@ -34,6 +34,11 @@ gallery:
     title: "Обзор Shadowmatic - лучшая головоломка для iOS!"
     channel: "Apple Explosion"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "zUTiDp9_mhc"
+    title: "Shadowmatic (By TRIADA Studio) - iOS - iPhone/iPad/iPod Touch Gameplay"
+    channel: "rrvirus"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Shadowmatic — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Shadowmatic"

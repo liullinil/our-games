@@ -74,6 +74,11 @@ gallery:
     title: "Казаки 2. Обзор Фракций + коротенький гайд на первые 3 минуты"
     channel: "Bustard"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "rw1XrzhbT3o"
+    title: "Прохождение игры Казаки 2 Наполеоновские войны #1 [Поход на Мюнхен]"
+    channel: "SlaOneDer"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Cossacks II: Napoleonic Wars — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Cossacks_II:_Napoleonic_Wars"

@@ -69,6 +69,11 @@ gallery:
     title: "ИСТОРИЯ ПРОВАЛА WORLD OF WARPLANES"
     channel: "Kanissstra"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "l2UkzfwD_S8"
+    title: "World of Warplanes | Lockheed XF-90 | 13 KILLS - Replay Gameplay 1080p 60 fps"
+    channel: "MecaWOWS Gameplays"
+    checkedAt: "2026-09-20"
 sources:
   - title: "World of Warplanes — Wikipedia"
     url: "https://en.wikipedia.org/wiki/World_of_Warplanes"

@@ -33,6 +33,12 @@ gallery:
     channel: "СыгыкПК"
     poster: "https://pic.rtbcdn.ru/video/2024-12-04/2b/03/2b037e5c6d75d6937e552551dbf56370.jpg"
     checkedAt: "2026-09-19"
+  - kind: rutube
+    id: "4d1f9a2361bf45a2bd32bdad6a61c38d"
+    title: "Легенда: Наследие Драконов. Регистрация и прохождение главных квестов."
+    channel: "Техники вышивки крестом"
+    poster: "https://pic.rtbcdn.ru/video/e2/b5/e2b5011edcdf3e4192565d035d87587a.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Легенда: Наследие Драконов — Википедия"
     url: "https://ru.wikipedia.org/wiki/Легенда:_Наследие_Драконов"

@@ -55,6 +55,11 @@ gallery:
     title: "ПОСТРОЙ РИМ В 2007 –Cradle of Rome match-3 – обзор ностальгии"
     channel: "Dmitrii “DartDimon” Mayer"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "MGk2HneqMgU"
+    title: "Cradle of Rome Seven Hills Level 1-6 Gameplay"
+    channel: "VideoGames"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Cradle of Rome — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Cradle_of_Rome"

@@ -65,6 +65,11 @@ gallery:
     title: "Обзор Prime World. Обзор альфа-версии. via MMORPG.su"
     channel: "MMORPG.SU. Онлайн игры"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "1uxPqMoFUIM"
+    title: "Maddyson Обзор игры Prime World"
+    channel: "MADDYSON"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Prime World — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Prime_World"

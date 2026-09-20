@@ -36,6 +36,11 @@ gallery:
     channel: "lines-98.ru"
     poster: "https://pic.rtbcdn.ru/video/2025-03-02/66/70/667064f09df089b71db792083307e1c6.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "8aGUDhXJIQg"
+    title: "Color Lines (a.k.a. Цветные Линии) (Gamos) (MS-DOS) [1992] [PC Longplay]"
+    channel: "La Mazmorra Abandon"
+    checkedAt: "2026-09-20"
 summary: >-
   Головоломка о цветных шариках, которые нужно выстраивать в линии по пять. Стояла на каждом офисном компьютере девяностых и до сих пор клонируется под именем Lines.
 sources:

@@ -73,6 +73,11 @@ gallery:
     channel: "Снегирь XIII The Gamer"
     poster: "https://pic.rtbcdn.ru/video/2025-06-21/2b/72/2b72cabe51038fb7e3ea10ab95c98f8f.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "pKCZX9Rmrrw"
+    title: "Let's Play Perimeter 2: New Earth - 19 - The Final Move"
+    channel: "DrrZed “Rhotaric Hikky”"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Периметр 2: Новая Земля — Википедия"
     url: "https://ru.wikipedia.org/wiki/Периметр_2:_Новая_Земля"

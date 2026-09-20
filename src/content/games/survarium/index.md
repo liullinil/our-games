@@ -27,6 +27,17 @@ gallery:
     title: "Escape from Survarium. Как загубить шикарную идею. Обзор игры Сурвариум."
     channel: "Taganay"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "Of2rTBL7s0s"
+    title: "Survarium Gameplay - First Look HD!"
+    channel: "undercoverdudes"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "82684beac34b49be5c300c1bef487949"
+    title: "Survarium — Геймплейный трейлер"
+    channel: "Коварная Сосиска"
+    poster: "https://pic.rtbcdn.ru/video/df/33/df334a8a57474692b49756b18a12073f.jpg"
+    checkedAt: "2026-09-20"
 summary: >-
   Сетевой шутер о мире, захваченном аномальным лесом, от бывших разработчиков S.T.A.L.K.E.R. 2. Так и не дожил до обещанного открытого мира и закрылся в 2022 году.
 sources:

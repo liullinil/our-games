@@ -83,6 +83,11 @@ gallery:
     title: "Ядерный обзор Metro Exodus"
     channel: "IGM"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "fbbqlvuovQ0"
+    title: "Metro Exodus - E3 2017 Announce Gameplay Trailer [UK]"
+    channel: "metrovideogame"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Metro Exodus — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Metro_Exodus"

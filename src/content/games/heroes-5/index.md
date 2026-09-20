@@ -78,6 +78,11 @@ gallery:
     channel: "KeynTR"
     poster: "https://pic.rtbcdn.ru/video/ed/7a/ed7aa17b6ab82db023a6cda9f80dfc8c.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "tni1KWTEE98"
+    title: "Heroes 5 - Slaying a MILLION Devils"
+    channel: "Nightcloud Extreme"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Heroes of Might and Magic V — Википедия"
     url: "https://ru.wikipedia.org/wiki/Heroes_of_Might_and_Magic_V"

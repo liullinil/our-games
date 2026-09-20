@@ -73,6 +73,11 @@ gallery:
     channel: "YezzeY"
     poster: "https://pic.rtbcdn.ru/video/a1/77/a177ec3871522bff2bda0b045c1600ac.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "oPq9jxJtxsM"
+    title: "JUE-GA-ZO | STONESHARD Gameplay Español Ep 1"
+    channel: "El Escoces gamer"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Development roadmap — Stoneshard Wiki"
     url: "https://stoneshard.com/wiki/Development_roadmap"

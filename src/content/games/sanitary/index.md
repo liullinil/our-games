@@ -69,6 +69,11 @@ gallery:
     title: "Редкостный Обзор 27. Санитары подземелий 2 (2008) Вынести мусор.(весь сюжет.)"
     channel: "OlD BUll"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "KO3t_buRqa0"
+    title: "Санитары подземелий 2 — Геймплей"
+    channel: "СофтКлаб"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Санитары подземелий — Википедия"
     url: "https://ru.wikipedia.org/wiki/Санитары_подземелий"

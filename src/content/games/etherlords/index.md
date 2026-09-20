@@ -68,6 +68,11 @@ gallery:
     title: "Обзор игры \"Демиурги 2\""
     channel: "Сан саныч"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "QKoknZ8Dfw0"
+    title: "Демиурги - Etherlords - прохождение - Летящий лист - миссия 1"
+    channel: "foresterization. Прохождение игр нулевых"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Демиурги — Википедия"
     url: "https://ru.wikipedia.org/wiki/Демиурги"

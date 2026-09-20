@@ -69,6 +69,11 @@ gallery:
     title: "(НЕ)ОБЗОР SkyForge в 2021 - БОГА НЕТ ( ͡° ͜ʖ ͡°)"
     channel: "Cathey"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "EQrdRnFcCAQ"
+    title: "Skyforge Nintendo Switch Gameplay"
+    channel: "Handheld Players"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Серверы экшен-MMO Skyforge закрывают в России и СНГ — iXBT Games, 31 июля 2025"
     url: "https://ixbt.games/news/2025/07/31/servery-skyforge-zakryvayut-v-rossii-i-sng.html"

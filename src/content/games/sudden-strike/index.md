@@ -42,6 +42,11 @@ gallery:
     title: "Старенькая Sudden Strike (Противостояние 3) теперь в Full HD"
     channel: "ShermanBy"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "m4ovyO5sxxI"
+    title: "Sudden Strike Gold (2001) - PC Gameplay / Win 10 / GOG"
+    channel: "FirstPlays HD"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Sudden Strike (video game) — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Sudden_Strike_(video_game)"

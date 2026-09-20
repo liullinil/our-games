@@ -39,6 +39,11 @@ gallery:
     title: "SU-27 Flanker gameplay (PC Game, 1995)"
     channel: "Squakenet"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "QSpIp9QxbSs"
+    title: "SU-27 FLANKER IS INSANE | Extreme Maneuverability"
+    channel: "PhlyDaily"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Su-27 Flanker (video game) — Wikipedia (англ.)"
     url: "https://en.wikipedia.org/wiki/Su-27_Flanker_(video_game)"

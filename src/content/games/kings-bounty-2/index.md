@@ -79,6 +79,11 @@ gallery:
     title: "Kings bounty 2 Dos Сергей Прокофьев #1: Ностальгия или тренировка 1."
     channel: "Dan0Randan"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "OEQsTEI1KSA"
+    title: "Приключения воина Айвара — Kings Bounty 2 Прохождение игры #1"
+    channel: "Shadville LPlay"
+    checkedAt: "2026-09-20"
 sources:
   - title: "King's Bounty II — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/King%27s_Bounty_II"

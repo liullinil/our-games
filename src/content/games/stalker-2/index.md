@@ -80,6 +80,11 @@ gallery:
     channel: "НЭРИЛ"
     poster: "https://pic.rtbcdn.ru/video/2025-11-13/c4/03/c403cbfac5a1f95242662ab2765a9a26.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "ZNLaKOlXVvw"
+    title: "S.T.A.L.K.E.R. 2: Сердце Чернобыля — Официальный геймплейный трейлер"
+    channel: "GSC Game World"
+    checkedAt: "2026-09-20"
 sources:
   - title: "S.T.A.L.K.E.R. 2: Сердце Чернобыля — Википедия"
     url: "https://ru.wikipedia.org/wiki/S.T.A.L.K.E.R._2:_Сердце_Чернобыля"

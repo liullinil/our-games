@@ -68,6 +68,17 @@ gallery:
     title: "Ретро обзор - Parkan - Хроника Империи"
     channel: "Loki - ALL GAME'S SKY"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "LFTss8NeMj0"
+    title: "Полное прохождение Паркан: Хроника Империи"
+    channel: "DiZ Like"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "c74806de1b3b8028d75d6030673b2035"
+    title: "Parkan: Хроника Империи (первая редакция) - прохождение (by cybermind, часть 6-1)"
+    channel: "Радость игроков"
+    poster: "https://pic.rtbcdn.ru/video/2024-09-20/45/f1/45f17c53d596930422ebc1f44d31b80c.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Паркан: Хроника Империи — Википедия"
     url: "https://ru.wikipedia.org/wiki/Паркан:_Хроника_Империи"

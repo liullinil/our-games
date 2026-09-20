@@ -37,6 +37,11 @@ gallery:
     title: "Gardenscapes: New Acres - обзор игры на русском"
     channel: "9ffka.ru"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "AOZaTRHOR5w"
+    title: "Gardenscapes Full Game Walkthrough Longplay"
+    channel: "lariXP – Longplays"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Gardenscapes: New Acres — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Gardenscapes:_New_Acres"

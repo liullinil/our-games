@@ -39,6 +39,11 @@ gallery:
     title: "Обзор игры Lada Racing Club"
     channel: "bartvideosrutube"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "kikPvnSYfWE"
+    title: "Lada Racing Club - прохождение - чемпионат \"Десятка\""
+    channel: "foresterization. Прохождение игр нулевых"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Lada Racing Club — Википедия"
     url: "https://ru.wikipedia.org/wiki/Lada_Racing_Club"

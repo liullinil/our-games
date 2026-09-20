@@ -71,6 +71,11 @@ gallery:
     title: "Precursors gameplay"
     channel: "mkreku"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "vTHmJbZQdmc"
+    title: "The Precursors (2009) - PC Gameplay 4k 2160p / Win 10"
+    channel: "FirstPlays HD"
+    checkedAt: "2026-09-20"
 sources:
   - title: "The Precursors — Wikipedia"
     url: "https://en.wikipedia.org/wiki/The_Precursors"

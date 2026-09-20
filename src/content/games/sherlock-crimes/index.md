@@ -76,6 +76,11 @@ gallery:
     title: "Прохождение Шерлок Холмс Преступления и наказания - Часть 1 (Черный Питер)"
     channel: "Игровой Канал Хебрина"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "vmGwhvbq0Vc"
+    title: "Прохождение Шерлок Холмс Преступления и наказания - Часть 14 (Цветочное дело)"
+    channel: "Игровой Канал Хебрина"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Sherlock Holmes: Crimes & Punishments — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Sherlock_Holmes:_Crimes_%26_Punishments"

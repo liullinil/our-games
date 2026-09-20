@@ -68,6 +68,11 @@ gallery:
     title: "Затянет ли? ОБЗОР Аллоды онлайн. Лучше чем WoW? Бесплатная MMORPG. // Аллоды 2023"
     channel: "Вагоныч"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "rTxa2TD6-X0"
+    title: "АЛЛОДЫ ОНЛАЙН – стоит ли играть? Почему такой хайп?"
+    channel: "Орк-подкастер"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Аллоды Онлайн — Википедия"
     url: "https://ru.wikipedia.org/wiki/Аллоды_Онлайн"

@@ -73,6 +73,17 @@ gallery:
     channel: "FMgame"
     poster: "https://pic.rtbcdn.ru/video/94/c5/94c5a796db39fb32d7b4eafd432ed53b.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "Gdy4R6hKHSc"
+    title: "Disco Elysium — игра или постмодернистский роман?"
+    channel: "DTF"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "ccee5177316e5dcddbb2597aa496d128"
+    title: "Disco Elysium The Final Cut - ЛУЧШИЕ игры первый взгляд геймплей и впечатление"
+    channel: "ШэфЗэро"
+    poster: "https://pic.rtbcdn.ru/video/2025-07-07/c1/38/c138aa2658e2deba6b5e23a62ff0b85a.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Disco Elysium — Википедия"
     url: "https://ru.wikipedia.org/wiki/Disco_Elysium"

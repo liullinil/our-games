@@ -72,6 +72,11 @@ gallery:
     title: "Обзор X–Blades и Blades of Time (+ Spiderland) [Войны Клонов: Сезон 2/Выпуск 5]"
     channel: "WeAreR2"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "pp-yK-AzbMM"
+    title: "X-Blades Gameplay HD"
+    channel: "steve88HUN"
+    checkedAt: "2026-09-20"
 sources:
   - title: "X-Blades — Wikipedia"
     url: "https://en.wikipedia.org/wiki/X-Blades"

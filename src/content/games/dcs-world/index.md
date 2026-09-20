@@ -73,6 +73,11 @@ gallery:
     title: "DCS World - Ми-24П Первый Полет"
     channel: "Alamar"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "o-l6m26tfbE"
+    title: "КАК НАЧАТЬ ИГРАТЬ В DCS WORLD"
+    channel: "Valique"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Digital Combat Simulator — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Digital_Combat_Simulator"

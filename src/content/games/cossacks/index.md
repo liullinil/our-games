@@ -67,6 +67,11 @@ gallery:
     title: "Cossacks: European Wars | Обзор"
     channel: "StrategyJoe"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "jisHi3pd_Mg"
+    title: "Прохождение казаки европейские войны. Английская компания 3 миссия \"Ямайка\".\""
+    channel: "Rifos World"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Cossacks: European Wars — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Cossacks:_European_Wars"

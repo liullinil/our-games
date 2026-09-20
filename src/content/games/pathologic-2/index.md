@@ -72,6 +72,11 @@ gallery:
     title: "Мор. Утопия (Обзор Zulin`s v-log) RE:Edit"
     channel: "Zulin`s v-log"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "ie6_DngjPF8"
+    title: "Мор: Гениальная игра, в которую вы не захотите играть | Pathologic 2"
+    channel: "later"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Pathologic 2 — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Pathologic_2"

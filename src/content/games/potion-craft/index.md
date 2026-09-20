@@ -78,6 +78,11 @@ gallery:
     title: "Обзор Potion Craft - да не торч я (Underground)"
     channel: "Paleolith Games"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "GzhoSFyHUAE"
+    title: "ИНТЕРЕСНАЯ АЛХИМИЯ! - POTION CRAFT ПРОХОЖДЕНИЕ"
+    channel: "KerneX"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Potion Craft — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Potion_Craft"

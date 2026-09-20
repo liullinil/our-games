@@ -70,6 +70,17 @@ gallery:
     title: "Трейлер классный. Обзор The Bookwalker: Thief of Tales"
     channel: "IXBT Games"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "p3tqCGcxlKI"
+    title: "The Bookwalker: Thief of Tales Gameplay - First Look (4K)"
+    channel: "Snowmind"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "f028a7fa1c4925758e821b12ded9954a"
+    title: "THE BOOKWALKER: THIEF OF TALES - ПРОХОЖДЕНИЕ - СЕРИЯ 1"
+    channel: "Пофигейм"
+    poster: "https://pic.rtbcdn.ru/video/52/5a/525af4b4142d503e5e7345256595b02e.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "The Bookwalker: Thief of Tales — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/The_Bookwalker:_Thief_of_Tales"

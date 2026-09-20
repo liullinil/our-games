@@ -40,6 +40,11 @@ gallery:
     title: "ИЛ-2 Штурмовик : Обзор Игры"
     channel: "OPLOT"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "8DmVX6Fqz2U"
+    title: "IL-2 Sturmovik: Battle of Stalingrad 60fps Yak-1 gameplay"
+    channel: "Penshoon"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Ил-2 Штурмовик (игра) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Ил-2_Штурмовик_(игра)"

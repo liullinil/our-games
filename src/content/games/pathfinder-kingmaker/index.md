@@ -72,6 +72,17 @@ gallery:
     title: "Обзор Pathfinder Kingmaker часть 1 или \"Kак начать путь короля\" by Ariox"
     channel: "Old Porridge"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "aH4tfl9E1bA"
+    title: "Pathfinder Kingmaker - Впечатления от игры"
+    channel: "Легендарий"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "ef2e0d1928c544b0eb921aee9ab9f545"
+    title: "Pathfinder Kingmaker Прохождение ч1 - Первый Запуск"
+    channel: "DeDGovnak"
+    poster: "https://pic.rtbcdn.ru/video/d4/7c/d47cfa7c5dd8cd0462621cd72b1131ae.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Pathfinder: Kingmaker — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Pathfinder:_Kingmaker"

@@ -73,6 +73,11 @@ gallery:
     title: "Широка страна моя родная. Обзор Serious Sam Siberian Mayhem"
     channel: "IXBT Games"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "7RXi_JdNx_w"
+    title: "Serious Sam Siberian Mayhem - FULL GAME Walkthrough Gameplay No Commentary"
+    channel: "Gamer Max Channel"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Serious Sam: Siberian Mayhem — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Serious_Sam:_Siberian_Mayhem"

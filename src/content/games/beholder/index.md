@@ -71,6 +71,17 @@ gallery:
     title: "Обзор игр Beholder I и II"
     channel: "StopGame"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "sTEfveRn_Oo"
+    title: "Я прошел ВСЕ части BEHOLDER на 100% достижений"
+    channel: "wwkulichik"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "6f3ad3662ef1d025587e11cd139a1078"
+    title: "BEHOLDER ▸ Прохождение #1 ◂ Смотрящий"
+    channel: "marusya, let's play!"
+    poster: "https://pic.rtbcdn.ru/video/fb/4c/fb4ce3624d6e266f198e868bb67be5a1.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Beholder (video game) — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Beholder_(video_game)"

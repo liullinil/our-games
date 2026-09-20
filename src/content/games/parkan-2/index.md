@@ -71,6 +71,11 @@ gallery:
     channel: "LUCSATARION"
     poster: "https://pic.rtbcdn.ru/video/b4/96/b496b5062ec3c80d227cabb826bae86b.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "8x8mzZ-I1ec"
+    title: "Parkan 2 прохождение. Часть 1 - Возврощение."
+    channel: "Tikos"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Паркан 2 — Википедия"
     url: "https://ru.wikipedia.org/wiki/Паркан_2"

@@ -30,6 +30,11 @@ gallery:
     title: "Чёрный ворон | \"Black Raven\" ZX Spectrum"
     channel: "Coulthard's Channel"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "ZfVT-D9cCxI"
+    title: "Black Raven (Чёрный Ворон) walkthrough: level 12 for Humans - best ZX Spectrum game"
+    channel: "Alone Coder"
+    checkedAt: "2026-09-20"
 summary: >-
   Стратегия в реальном времени для ZX Spectrum, сделанная в Новокузнецке по образцу Warcraft II. Главная гордость постсоветской спектрумовской сцены: 128 килобайт памяти хватило на полноценную RTS.
 sources:

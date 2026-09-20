@@ -71,6 +71,11 @@ gallery:
     channel: "Petkevich'sGame"
     poster: "https://pic.rtbcdn.ru/video/2025-01-15/29/8c/298cf50bbf08d82cc63360acc0b1010b.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "tdNjNGWVeRQ"
+    title: "Star Conflict: Как играть УДАРНЫМ ШТУРМОВИКОМ?"
+    channel: "Игромания Новости"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Star Conflict shutdown announcement — Steam, 16 апреля 2026"
     url: "https://store.steampowered.com/news/app/212070"

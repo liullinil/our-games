@@ -37,6 +37,16 @@ gallery:
     title: "Видео обзор игры — Ил 2 Штурмовик Крылатые хищники"
     channel: "Обзор Игр"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "X7tXJIhFcdo"
+    title: "Wings of Prey. Прохождение компании. 1 часть."
+    channel: "Tetsunoken"
+    checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "-1Y36pbEsXQ"
+    title: "Wings of Prey. Прохождение компании. 7 часть."
+    channel: "Tetsunoken"
+    checkedAt: "2026-09-20"
 summary: >-
   Консольный «Ил-2» от Gaijin с аркадным и реалистичным режимами и лучшими на тот момент видами земли с высоты. На PC вышел как Wings of Prey и стал основой War Thunder.
 sources:

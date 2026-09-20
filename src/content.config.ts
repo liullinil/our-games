@@ -438,9 +438,15 @@ const studios = defineCollection({
           }),
         )
         .min(1),
-      city: z.string(),
+      /*
+       * Город бывает неизвестен: у молодых студий вроде Steel Balalaika
+       * он нигде не назван, а вписывать наугад нельзя. Тогда поле просто
+       * опускается, и страница обходится без него.
+       */
+      city: z.string().optional(),
       country: z.enum(COUNTRIES),
-      founded: z.number().int(),
+      /* Год основания у совсем молодых инди-студий тоже бывает нигде не назван. */
+      founded: z.number().int().optional(),
       closed: z.number().int().nullable().default(null),
       kind: z.enum(STUDIO_KINDS).default('developer'),
       logo: image().optional(),

@@ -72,6 +72,17 @@ gallery:
     title: "Честный Обзор Sherlock Holmes The Awakened 2023 Remake | Без Спойлеров"
     channel: "MakeYourGame! — Уроки Unreal Engine"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "KX6iGvRceVo"
+    title: "Sherlock Holmes The Awakened - Gameplay Deep Dive | PS5 & PS4 Games"
+    channel: "PlayStation"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "84ee77f5d653b3036b3b63ede4cf0d30"
+    title: "Sherlock Holmes The Awakened Прохождение # 1"
+    channel: "Территория игры"
+    poster: "https://pic.rtbcdn.ru/video/8e/7c/8e7c04f89016f7a3d318440688da8268.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Sherlock Holmes: The Awakened — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Sherlock_Holmes:_The_Awakened"

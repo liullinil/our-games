@@ -31,6 +31,12 @@ gallery:
     title: "Игра «Ночной дозор» 15 лет спустя [Разбор полётов]"
     channel: "StopGame"
     checkedAt: "2026-09-19"
+  - kind: rutube
+    id: "59c87409d3a9fc42dc521f3ee2f46a66"
+    title: "Ночной Дозор Прохождение игры 2 серия"
+    channel: "Гейминговый Король"
+    poster: "https://pic.rtbcdn.ru/video/4e/7c/4e7cd33bac7ced329c325088530d275e.jpg"
+    checkedAt: "2026-09-20"
 summary: >-
   Пошаговая тактика по роману Сергея Лукьяненко и фильму Тимура Бекмамбетова на движке Silent Storm: Иные, Сумрак и московские дворы.
 sources:

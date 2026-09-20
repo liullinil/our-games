@@ -35,6 +35,17 @@ gallery:
     title: "Обзор-1 Vivisector 'Beast Within' (2005)Вивисектор-Зверь внутри"
     channel: "Леха Петров"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "FWM3EkpBSnw"
+    title: "Vivisector: Beast Within - Gameplay"
+    channel: "MarphitimusBlackimus"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "bad8934e6b6e2eafc004c5974487d002"
+    title: "Новая жизнь. Vivisector: Beast Within HD😾. Прохождение #14 (Финал)"
+    channel: "Worgen Drives Play"
+    poster: "https://pic.rtbcdn.ru/video/cc/b2/ccb26533d654403059dc94fd3a9d22f8.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Vivisector: Beast Within — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Vivisector:_Beast_Within"

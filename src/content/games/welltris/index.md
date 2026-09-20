@@ -39,6 +39,11 @@ gallery:
     title: "УКНЦ, игра Welltris + оболочка NC (UKNC, Welltris + NC)"
     channel: "Vlad Tru"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "AAEed8UsWU0"
+    title: "Великие отечественные игры #014 - Welltris (DOS)"
+    channel: "Evgeniy Utkin"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Welltris — Wikipedia (англ.)"
     url: "https://en.wikipedia.org/wiki/Welltris"

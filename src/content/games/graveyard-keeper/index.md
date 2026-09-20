@@ -77,6 +77,11 @@ gallery:
     title: "ЛУЧШАЯ ИГРА-АНТИСТРЕСС - Graveyard Keeper | Обзор + комментарий разработчика"
     channel: "Неунывахин и драконы"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "2elZ_9UR1Zg"
+    title: "Я прошел GRAVEYARD KEEPER на 100%"
+    channel: "СКУМА"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Graveyard Keeper — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Graveyard_Keeper"

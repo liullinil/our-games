@@ -71,6 +71,11 @@ gallery:
     channel: "Skygravity"
     poster: "https://pic.rtbcdn.ru/video/90/e9/90e9fd2493889ff56278e9323c674931.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "tm5KgAWnI0A"
+    title: "The Void - Тургор gameplay KRI 2007"
+    channel: "PC Games"
+    checkedAt: "2026-09-20"
 sources:
   - title: "The Void (video game) — Wikipedia"
     url: "https://en.wikipedia.org/wiki/The_Void_(video_game)"

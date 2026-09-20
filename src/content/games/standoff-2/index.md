@@ -33,6 +33,17 @@ gallery:
     channel: "Игромания"
     poster: "https://pic.rtbcdn.ru/video/46/ac/46ac20bb364e2f3a93e178eacdc3a279.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "vbOihlOzFI4"
+    title: "Играем в STANDOFF 2 ! *ОТКРЫТИЕ КЕЙСОВ*"
+    channel: "A4"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "778d2b5a0bac69904124f73beaeedaa4"
+    title: "Standoff 2 gameplay | Геймплей Стандофф 2"
+    channel: "Lorder"
+    poster: "https://pic.rtbcdn.ru/video/2024-09-30/a2/97/a2973d49ccb0ce01163603b17eac9bdb.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Standoff 2 — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Standoff_2"

@@ -76,6 +76,11 @@ gallery:
     channel: "Многие"
     poster: "https://pic.rtbcdn.ru/video/2025-07-13/70/f4/70f4c2468748cd155d2c1d351a7f051c.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "O9xcoE859MA"
+    title: "Warhammer 40,000: Rogue Trader — официальный трейлер игрового процесса"
+    channel: "GameSpot Trailers"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Warhammer 40,000: Rogue Trader — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Warhammer_40,000:_Rogue_Trader_(video_game)"

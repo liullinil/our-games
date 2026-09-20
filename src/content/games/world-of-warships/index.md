@@ -69,6 +69,17 @@ gallery:
     title: "Обзор игры World of Warships"
     channel: "StopGame"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "LLFlzYuBj1Q"
+    title: "World of WarShips | Missouri | 10 KILLS | 311K Damage - Replay Gameplay 4K 60 fps"
+    channel: "MecaWOWS Gameplays"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "75f6417022a0839ee214de0d10acbe92"
+    title: "World of Warships ПРОХОЖДЕНИЕ МИР КОРАБЛЕЙ. УЧУСЬ ИГРАТЬ."
+    channel: "онигеймер"
+    poster: "https://pic.rtbcdn.ru/video/2024-11-23/20/81/208147530fdf3d0c756142dfe024e39e.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "World of Warships — Wikipedia"
     url: "https://en.wikipedia.org/wiki/World_of_Warships"

@@ -75,6 +75,11 @@ gallery:
     channel: "UNIO Production"
     poster: "https://pic.rtbcdn.ru/video/a2/bb/a2bb01eed01294a80dad4e60159216bc.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "fXnuX4SCeog"
+    title: "INDIKA Full Gameplay Walkthrough / No Commentary【FULL GAME】4K Ultra HD"
+    channel: "Gamer's Little Playground"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Indika (video game) — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Indika_(video_game)"

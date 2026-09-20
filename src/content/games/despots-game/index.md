@@ -76,6 +76,11 @@ gallery:
     title: "Обзор Despots Game/обнова!"
     channel: "Dexitti"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "y7ZLV9s9K6k"
+    title: "СЛАБОУМИЕ И ОТВАГА! - DESPOTS GAME ПРОХОЖДЕНИЕ"
+    channel: "KerneX"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Despot's Game"
     url: "https://en.wikipedia.org/wiki/Despot%27s_Game"

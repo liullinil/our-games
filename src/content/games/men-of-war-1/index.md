@@ -41,6 +41,11 @@ gallery:
     title: "Эволюция серии игр В тылу врага 2004-2023 | Evolution of Men of War 2004-2023"
     channel: "ShermanBy"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "EX3LPNTxovQ"
+    title: "В тылу врага - Прохождение - СССР (№4) - Кража."
+    channel: "Alex Pojinatel"
+    checkedAt: "2026-09-20"
 summary: >-
   Тактика Второй мировой, где любым солдатом и любой машиной можно управлять напрямую, а каждый снаряд считается по-настоящему. Начало серии Men of War.
 sources:

@@ -65,6 +65,17 @@ gallery:
     title: "Самогонки - Moonshine Runners - прохождение - часть 1"
     channel: "foresterization. Прохождение игр нулевых"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "kjd3RM71YBw"
+    title: "(2001) СамоГонки (Windows) - Полное прохождение в аркадном режиме"
+    channel: "TrashmasterMike"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "58d5604d88f2e4798dc7961713719909"
+    title: "(2001) СамоГонки (Windows) - Полное прохождение в аркадном режиме"
+    channel: "Герои и Победы"
+    poster: "https://pic.rtbcdn.ru/video/f8/20/f82036c346e86a295c21955732a45dda.jpg"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Самогонки — Википедия"
     url: "https://ru.wikipedia.org/wiki/Самогонки"

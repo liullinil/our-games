@@ -150,6 +150,44 @@ const SLOP = new RegExp(
 /** Разделы площадок, которые точно не про игру. */
 const BAD_CATEGORY = /музык|эротик|аниме|сериал|мультфильм/i;
 
+/**
+ * Чужая игра в том же заголовке.
+ *
+ * Половина наших названий — обычные слова, и они то и дело попадаются внутри
+ * роликов о совсем других играх: «Horizon Zero Dawn — Клад смерти», «Fallout
+ * 4. Перехватчик сигнала», «Clash of Clans. Перестройка базы», «GTA San
+ * Andreas. Вдали от дома», «S.T.A.L.K.E.R.: Диверсант». Название нашей игры
+ * в заголовке есть, примета игры тоже есть — и оба сита пропускают. Зато имя
+ * чужой большой игры в том же заголовке выдаёт подмену сразу.
+ *
+ * Список нарочно из громких чужих серий: если ролик и правда про нашу игру,
+ * заголовок не станет звать её Fallout.
+ */
+const OTHER_GAME = new RegExp(
+  [
+    'gta|гта|grand theft auto|san andreas|vice city',
+    'fallout|скайрим|skyrim|the elder scrolls|oblivion|morrowind',
+    'horizon zero dawn|god of war|the last of us|uncharted|assassin.s creed',
+    'warzone|call of duty|battlefield|counter.?strike|cs ?:?go|dayz|pubg|apex legends',
+    'minecraft|майнкрафт|roblox|fortnite|фортнайт|clash of clans|brawl stars',
+    'witcher|ведьмак|cyberpunk|киберпанк|red dead|dark souls|elden ring|bloodborne',
+    'anthem(?![а-я])|destiny 2|warframe|overwatch|valorant|dota|доте|лига легенд|league of legends',
+    'transformers|toy story|astro.s playroom|subnautica|terraria|starfield',
+    'resident evil|silent hill|hollow knight|baldur.s gate|dragon age|mass effect',
+    'world of warcraft|варкрафт|warcraft|starcraft|diablo|hearthstone',
+  ].join('|'),
+  'i',
+);
+
+/**
+ * Проход за геймплеем, а не за обзором.
+ *
+ * Статья ставит в раздел «Игровой процесс» ролик с приметой геймплея в
+ * названии; обзоров у нас много, а геймплея почти нет. С этим ключом
+ * запрос идёт сразу за геймплеем и он же выигрывает по рейтингу.
+ */
+const GAMEPLAY = process.argv.includes('--gameplay');
+
 const MIN_SECONDS = 90;
 const MAX_SECONDS = 4 * 3600;
 
@@ -517,7 +555,16 @@ function judge(video, ctx) {
   if (video.category && BAD_CATEGORY.test(video.category)) return { ok: false, why: 'чужой раздел' };
 
   const hit = ctx.forms.find((f) => f.re.test(video.title));
-  if (!hit) return { ok: false, why: 'в названии нет марки с индексом' };
+  if (!hit) return { ok: false, why: 'в названии нет самой игры' };
+  /*
+   * Чужая игра в заголовке важнее нашей: если рядом с «Перехватчиком» стоит
+   * Fallout, ролик про Fallout. Исключение — когда наша игра сама так
+   * называется, иначе сито съело бы «Мир танков» из-за слова «варкрафт»
+   * в чужом списке.
+   */
+  if (OTHER_GAME.test(video.title) && !ctx.ours.some((n) => OTHER_GAME.test(n))) {
+    return { ok: false, why: 'в заголовке чужая игра' };
+  }
   if (hit.strength === 'weak' && !ctx.topic.test(video.title)) {
     return { ok: false, why: 'короткое имя без слова про игру' };
   }
@@ -530,9 +577,18 @@ function judge(video, ctx) {
   score += Math.log10(video.views + 1) * 12;
   if (video.seconds >= 180 && video.seconds <= 2400) score += 12;
   if (video.title.search(hit.re) <= 25) score += 10;
-  // Обзор или ретроспектива — то, что нужно статье; геймплей и прохождение чуть ниже.
-  if (/обзор|review|ретро|retro|истори|history|разбор|ретроспектив/i.test(video.title)) score += 18;
-  else if (/геймплей|gameplay|прохожден|walkthrough|longplay|летсплей|let.?s ?play/i.test(video.title)) score += 8;
+  /*
+   * Обычно статье нужен обзор или ретроспектива, а геймплей идёт следом. Но
+   * в раздел «Игровой процесс» статья ставит именно геймплейный ролик, и
+   * для такого прохода приоритеты меняются местами: ключ --gameplay.
+   */
+  const review = /обзор|review|ретро|retro|истори|history|разбор|ретроспектив/i.test(video.title);
+  const play = /геймплей|gameplay|прохожден|walkthrough|longplay|летсплей|let.?s ?play|играем/i.test(video.title);
+  if (GAMEPLAY) {
+    if (play) score += 22;
+    else if (review) score += 4;
+  } else if (review) score += 18;
+  else if (play) score += 8;
   if (FOR_SALE.test(video.title)) score -= 60;
   // Заголовок капсом с восклицаниями — почти всегда перекупщик или пересказ.
   if (/[А-ЯA-Z]{8,}/.test(video.title) && /[!?]/.test(video.title)) score -= 25;
@@ -832,6 +888,8 @@ function buildCtx(game, slug) {
     .filter((f) => f.re);
   return {
     forms,
+    /** Наши собственные названия: по ним видно, что чужая игра — на самом деле наша. */
+    ours: [game.name, ...(game.altNames ?? [])],
     topic: topicRegex(game.type),
     strictTopic: strictTopicRegex(game.type),
     gameTopic: gameTopicRegex(),
@@ -1068,7 +1126,9 @@ async function main() {
 
     const ctx = buildCtx(game, slug);
     const short = game.name.replace(/[«(].*$/, '').replace(/[«»"]/g, '').trim();
-    const queries = [`${short} обзор`, `${short} геймплей`];
+    const queries = GAMEPLAY
+      ? [`${short} геймплей`, `${short} прохождение`]
+      : [`${short} обзор`, `${short} геймплей`];
 
     const seen = new Set(game.have.map((h) => `${h.platform}:${h.id}`));
     const candidates = [];
