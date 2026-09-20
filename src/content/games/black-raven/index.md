@@ -19,6 +19,9 @@ platforms:
 specs:
   releaseDate: "1997"
   modes: [single]
+  perspective: "вид сверху"
+  setting: "условная славянская древность: люди против кунгов"
+  abroad: "за рубежом не издавалась: копии расходились напрямую от авторов через российские фирмы, а на Западе игра известна только по архивам вроде World of Spectrum"
 gallery:
   - kind: youtube
     id: "PdlHkovYfZw"

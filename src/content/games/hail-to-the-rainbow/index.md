@@ -60,6 +60,17 @@ gallery:
     author: "Носков Сергей"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/1699230/"
+  - kind: youtube
+    id: "ZiL_KW9kgiA"
+    title: "Hail to the Rainbow - 5 minutes of gameplay. Frozen City"
+    channel: "Сергей Носков"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "9c21eef1f9fdbf8e8ff86c96bb44c919"
+    title: "HAIL TO THE RAINBOW #1 ПРОХОЖДЕНИЕ НА РУССКОМ"
+    channel: "Adonis"
+    poster: "https://pic.rtbcdn.ru/video/2025-12-12/9a/cf/9acfc88c7e41ed63d83556cee9dc5db5.jpg"
+    checkedAt: "2026-09-20"
 reviews:
   - outlet: "iXBT games"
     score: "без оценки"

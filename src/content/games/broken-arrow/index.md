@@ -61,6 +61,17 @@ gallery:
     author: "Steel Balalaika, Slitherine Ltd."
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/1604270/"
+  - kind: youtube
+    id: "19quY4-8FIs"
+    title: "Broken Arrow: Russia Gameplay - Multiplayer Battle"
+    channel: "JustGameplay_YT"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "6e6c590e82dbe47fb909838e1ab285ac"
+    title: "Broken Arrow // Первый геймплей"
+    channel: "WARNO_RUS"
+    poster: "https://pic.rtbcdn.ru/video/9e/10/9e1015fa1a7703f68a6a4712ee6e7509.jpg"
+    checkedAt: "2026-09-20"
 reviews:
   - outlet: "OpenCritic"
     score: "76/100"

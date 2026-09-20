@@ -65,6 +65,17 @@ gallery:
     author: "GFAGAMES"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/3105890/"
+  - kind: youtube
+    id: "2lhE8jqnzOo"
+    title: "PIONER. Игра на краю пропасти (расследование)"
+    channel: "IXBT Games"
+    checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "c9b142fc5609ab44b6b81816c2ccd1b3"
+    title: "PIONER: свежий геймплей и трейлер новой ММО - стоит ли ждать"
+    channel: "Evrial Gaming"
+    poster: "https://pic.rtbcdn.ru/video/2025-03-21/a5/31/a5318a2b03783ef29b906f04500ceddc.jpg"
+    checkedAt: "2026-09-20"
 reviews: []
 reading:
   - title: "Новый отечественный постапокалипсис: обзор «PIONER»"

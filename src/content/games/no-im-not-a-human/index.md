@@ -61,6 +61,16 @@ gallery:
     author: "Trioskaz, CRITICAL REFLEX"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/3180070/"
+  - kind: youtube
+    id: "0eRD7aQQ1hM"
+    title: "ДОБРО ПОЖАЛОВАТЬ! ► No, I'm not a Human #1"
+    channel: "Kuplinov ► Play"
+    checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "XV2yA9oCD1k"
+    title: "Откуда взялись Гости? Кто такой Бледный? - Полное объяснение истории No I'm not a Human"
+    channel: "Cesaria"
+    checkedAt: "2026-09-20"
 reviews:
   - outlet: "Metacritic"
     score: "76/100"

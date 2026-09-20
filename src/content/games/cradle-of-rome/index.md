@@ -15,7 +15,10 @@ platforms:
 specs:
   releaseDate: "27 февраля 2007"
   modes: [single]
+  perspective: "вид сверху на игровое поле"
+  setting: "Древний Рим: от деревни до столицы империи"
   salesNote: "более 10 млн загрузок"
+  abroad: "продавалась по всему миру на казуальных порталах, позже в Steam и App Store; в 2008–2009 годах порт для Nintendo DS и Wii сделала немецкая cerasus.media, издал D3 Publisher, в части регионов — под названием Jewel Master: Cradle of Rome; западная пресса приняла порт сдержанно"
 summary: >-
   Головоломка «три в ряд», где собранные ресурсы идут на постройку Рима. Хит казуальных порталов середины нулевых.
 steamAppId: 38170
@@ -60,6 +63,52 @@ gallery:
     title: "Cradle of Rome Seven Hills Level 1-6 Gameplay"
     channel: "VideoGames"
     checkedAt: "2026-09-20"
+reviews:
+  - outlet: "Gamezebo"
+    score: "80/100"
+    verdict: "Знакомая механика совпадений с ресурсной надстройкой: сотня уровней и два десятка римских построек затягивают, но режим всего один, а единственная жизнь и скупые перезапуски раздражают."
+    url: "https://www.gamezebo.com/reviews/cradle-of-rome-review/"
+    author: "Joel Brodie"
+    date: "2007"
+  - outlet: "Den of Geek"
+    score: "2 из 5"
+    verdict: "Жанр отработан компетентно, но без единой свежей мысли: картинка уровня стратегий девяностых, стратегии почти нет, а за провал уровня отбирают уже собранные ресурсы."
+    url: "https://www.denofgeek.com/games/jewel-master-cradle-of-rome-nintendo-ds-review/"
+    author: "Josh Barton"
+    date: "2008"
+  - outlet: "Nintendo World Report"
+    score: "6/10"
+    verdict: "Крепкая «три в ряд» с любопытной ресурсной надстройкой и отличным управлением стилусом, но без мультиплеера и дополнительных режимов; всё это уже делали, и делали лучше."
+    url: "http://www.nintendoworldreport.com/review/17841/cradle-of-rome-nintendo-ds"
+    author: "Neal Ronaghan"
+    date: "2009"
+  - outlet: "Game Informer"
+    score: "6/10"
+    verdict: "Ни стратегической глубины, ни затягивающего ритма: случайное выпадение фишек не даёт планировать ходы, игра порой не реагирует на команды, а до Puzzle Quest и Bejeweled ей далеко."
+    url: "https://gameinformer.com/games/cradle_of_rome/b/nintendo_ds/archive/2009/09/22/review.aspx"
+    author: "Adam Biessener"
+    date: "2009"
+reading:
+  - title: "Evolution AWEM"
+    url: "https://awem.com/en/history"
+    outlet: "Awem Games"
+    note: "официальная история студии: гаражный старт, shareware-годы и как Cradle of Rome собрала 10 млн загрузок"
+  - title: "Our games"
+    url: "https://awem.com/en/games"
+    outlet: "Awem Games"
+    note: "во что выросла серия Cradle сегодня — Cradle of Empires и Cradle of Maya"
+  - title: "Cradle of Rome Review (Nintendo DS)"
+    url: "http://www.nintendoworldreport.com/review/17841/cradle-of-rome-nintendo-ds"
+    outlet: "Nintendo World Report"
+    note: "разбор того, что изменилось в консольном порте и как работает управление стилусом"
+availability:
+  status: sold
+  note: "продаётся в Steam (издатель Next Game), отдельно и в составе сборника Cradle Bundle; версия для iPad есть в App Store. Издания для Nintendo DS и Wii давно сняты с производства."
+  where:
+    - title: "Steam"
+      url: "https://store.steampowered.com/app/38170/"
+    - title: "App Store (iPad)"
+      url: "https://apps.apple.com/us/app/cradle-of-rome/id456567951"
 sources:
   - title: "Cradle of Rome — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Cradle_of_Rome"
@@ -67,6 +116,10 @@ sources:
     url: "https://www.mobygames.com/game/32011/cradle-of-rome/"
   - title: "Awem — история студии"
     url: "https://awem.com/en/history"
+  - title: "Cradle of Rome — Metacritic"
+    url: "https://www.metacritic.com/game/cradle-of-rome/"
+  - title: "Cradle of Rome — Steam"
+    url: "https://store.steampowered.com/app/38170/"
 status: article
 ---
 
