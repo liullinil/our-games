@@ -1,24 +1,16 @@
 /**
- * Карта связей: перетаскивание, масштаб, выбор вида родства, подсветка связей
- * при наведении, карточка предпросмотра по нажатию, фильтр прочитанного и
- * отложенная загрузка листа миниатюр.
+ * Карта связей: подсветка родства при наведении, карточка предпросмотра,
+ * фильтр прочитанного, полноэкранный режим.
  *
- * Шкала лет сверху и полоса студий слева — обычная разметка вне холста: при
- * каждом сдвиге карты они пересчитываются под тот же масштаб и смещение.
- * Колесо мыши листает карту, как страницу; с Ctrl или ⌘ — приближает, щипок
- * на сенсорном экране тоже. При открытии карта вписывается в окно по ширине,
- * чтобы вся шкала лет была перед глазами и листать оставалось только вниз.
+ * Плитки — обычная разметка, а не холст, поэтому ни перетаскивания, ни
+ * масштаба здесь нет: карта листается как страница. Линии связи рисуются
+ * поверх плиток по координатам, снятым с самой разметки, и только для той
+ * игры, на которую навели: двести игр дают сотни рёбер, и нарисованные все
+ * разом они превращают карту в паутину.
  */
 import { all, isHideRead, setHideRead } from './read-state';
 
 type RelKind = 'predecessor' | 'basedOn' | 'engine' | 'publisher';
-
-const REL_LABEL: Record<RelKind, string> = {
-  predecessor: 'Продолжение',
-  basedOn: 'Одна серия',
-  engine: 'Общий движок',
-  publisher: 'Общий издатель',
-};
 
 /**
  * Виды, которые тянутся цепочкой.
@@ -31,6 +23,7 @@ const REL_LABEL: Record<RelKind, string> = {
  */
 const CHAINED: RelKind[] = ['predecessor', 'basedOn'];
 
+/** Ключи коротки, потому что повторяются сотни раз; расшифровка в graph-cards.json.ts. */
 interface Card {
   n: string;
   y: string;
@@ -44,738 +37,325 @@ interface Card {
   t?: string;
 }
 
-interface Box {
-  x: number;
-  y: number;
-  w: number;
-  cy: number;
-}
+type Neighbours = Record<string, Partial<Record<RelKind, string[]>>>;
 
-const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
+const SVG_NS = 'http://www.w3.org/2000/svg';
 
 function init(): void {
   const root = document.querySelector<HTMLElement>('[data-rgraph]');
   if (!root) return;
-  const viewport = root.querySelector<HTMLElement>('[data-rgraph-viewport]');
-  const svg = root.querySelector<SVGSVGElement>('.rgraph__svg');
-  const rail = root.querySelector<HTMLElement>('[data-rgraph-rail]');
-  const axis = root.querySelector<HTMLElement>('[data-rgraph-axis]');
-  if (!viewport || !svg) return;
+  const scroll = root.querySelector<HTMLElement>('[data-rgraph-scroll]');
+  const content = root.querySelector<HTMLElement>('[data-rgraph-content]');
+  const wires = root.querySelector<SVGSVGElement>('[data-rgraph-wires]');
+  const pop = root.querySelector<HTMLElement>('[data-rgraph-pop]');
+  if (!scroll || !content || !wires || !pop) return;
 
-  /** Размер холста в его собственных пикселях: по нему считаются пределы и вписывание. */
-  const WIDTH = Number(root.dataset.width) || svg.viewBox.baseVal.width;
-  const HEIGHT = Number(root.dataset.height) || svg.viewBox.baseVal.height;
-
-  const neighbours: Record<string, Partial<Record<RelKind, string[]>>> = JSON.parse(
-    root.querySelector('[data-rgraph-neighbours]')?.textContent || '{}',
-  );
-
-  /** Геометрия карточек: считаем один раз, координаты в системе SVG. */
-  const boxes = new Map<string, Box>();
-  const nodes = new Map<string, SVGGraphicsElement>();
-  for (const node of svg.querySelectorAll<SVGGraphicsElement>('[data-node]')) {
-    const id = node.getAttribute('data-node')!;
-    const rect = node.querySelector('rect');
-    if (!rect) continue;
-    const x = Number(rect.getAttribute('x'));
-    const y = Number(rect.getAttribute('y'));
-    const w = Number(rect.getAttribute('width'));
-    const h = Number(rect.getAttribute('height'));
-    boxes.set(id, { x, y, w, cy: y + h / 2 });
-    nodes.set(id, node);
+  const neighbours: Neighbours = JSON.parse(root.dataset.neighbours ?? '{}');
+  const cards = new Map<string, HTMLAnchorElement>();
+  for (const el of root.querySelectorAll<HTMLAnchorElement>('[data-node]')) {
+    cards.set(el.dataset.node!, el);
   }
 
-  // ── Лист миниатюр ────────────────────────────────────────────────────
-  /*
-   * Адрес листа лежит в data-href, а не в href: на главной карта стоит
-   * внизу, и качать двести килобайт до того, как до неё долистали, незачем.
-   * Переносим адрес, когда карта подходит к окну. Лист один на все
-   * карточки — браузер скачает его один раз.
-   */
-  const lazyImages = [...svg.querySelectorAll<SVGImageElement>('image[data-href]')];
-  const revealThumbs = () => {
-    for (const img of lazyImages) {
-      const href = img.dataset.href;
-      if (href) img.setAttribute('href', href);
-    }
-  };
-  if (lazyImages.length > 0) {
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          if (!entries.some((e) => e.isIntersecting)) return;
-          revealThumbs();
-          io.disconnect();
-        },
-        { rootMargin: '400px' },
-      );
-      io.observe(root);
-    } else {
-      revealThumbs();
-    }
-  }
+  let kind: RelKind = (root.dataset.rel as RelKind) ?? 'predecessor';
+  let litId: string | null = null;
 
-  // ── Панорамирование и масштаб ────────────────────────────────────────
-  let scale = 1;
-  let tx = 0;
-  let ty = 0;
-
-  /*
-   * Карту нельзя утащить в пустоту.
-   *
-   * Смещение держится в пределах холста: если карта шире окна, её край не
-   * уходит дальше края окна; если уже — она стоит у левого края и не
-   * болтается. Небольшой запас снизу оставляет воздух под последней полкой.
-   */
-  const clampPan = () => {
-    const vw = viewport.clientWidth;
-    const vh = viewport.clientHeight;
-    const w = WIDTH * scale;
-    const h = HEIGHT * scale;
-    tx = w <= vw ? clamp(tx, 0, vw - w) : clamp(tx, vw - w, 0);
-    ty = h <= vh ? clamp(ty, 0, vh - h) : clamp(ty, vh - h - 24, 0);
-  };
-
-  const applyTransform = () => {
-    clampPan();
-    svg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
-    syncChrome();
-  };
-
-  const railItems = rail ? [...rail.querySelectorAll<HTMLElement>('.rgraph__railitem')] : [];
-  const axisItems = axis ? [...axis.querySelectorAll<HTMLElement>('.rgraph__axisyear')] : [];
-
-  let chromeQueued = false;
-  /** Подписи студий и годы едут за картой: пересчёт после каждого сдвига. */
-  function syncChrome(): void {
-    if (chromeQueued) return;
-    chromeQueued = true;
-    requestAnimationFrame(() => {
-      chromeQueued = false;
-      if (rail) {
-        const height = rail.clientHeight;
-        for (const item of railItems) {
-          const top = Number(item.dataset.top) * scale + ty;
-          const bandHeight = Number(item.dataset.height) * scale;
-          // Подпись держится у верхнего края полосы, но не уезжает за экран:
-          // пока хоть часть студии видна, её имя остаётся на месте.
-          const clamped = Math.min(Math.max(top, 2), Math.max(top + bandHeight - 14, 2));
-          const off = top + bandHeight < 0 || top > height;
-          item.hidden = off;
-          item.style.transform = `translateY(${Math.min(clamped, height - 14)}px)`;
-          item.style.height = `${Math.max(14, Math.min(bandHeight, height - clamped))}px`;
-        }
-      }
-      if (axis) {
-        const width = axis.clientWidth;
-        for (const item of axisItems) {
-          const x = Number(item.dataset.x) * scale + tx;
-          item.hidden = x < -30 || x > width + 30;
-          item.style.left = `${x}px`;
-        }
-      }
-    });
-  }
-
-  const zoomAt = (factor: number, px: number, py: number) => {
-    const next = Math.min(3, Math.max(0.3, scale * factor));
-    if (next === scale) return;
-    tx = px - ((px - tx) * next) / scale;
-    ty = py - ((py - ty) * next) / scale;
-    scale = next;
-    applyTransform();
-  };
+  // ── Кто с кем связан ──────────────────────────────────────────────────
 
   /**
-   * Исходный вид: вся шкала лет в ширину окна.
+   * Соседи игры по выбранному виду родства.
    *
-   * На телефоне вписанная карта была бы нечитаемой — там оставляем
-   * натуральный размер и листаем во все стороны.
+   * Для преемственности и общей основы обходим цепочку целиком: показываем
+   * всю родословную, а не только соседние звенья.
    */
-  const fit = () => {
-    const ratio = viewport.clientWidth / WIDTH;
-    scale = ratio >= 0.72 ? Math.min(1, ratio) : 1;
-    tx = 0;
-    ty = 0;
-    applyTransform();
-  };
-
-  const pointers = new Map<number, { x: number; y: number }>();
-  const origins = new Map<number, { x: number; y: number }>();
-  const captured = new Set<number>();
-  /*
-   * Была ли последняя работа указателем протяжкой.
-   *
-   * Проверять captured в обработчике нажатия нельзя: указатель отпускают
-   * раньше, чем приходит событие нажатия, и к тому моменту множество уже
-   * пусто. Из-за этого карта, которую просто подвинули мышью, закрывала
-   * открытую карточку.
-   */
-  let didDrag = false;
-  let pinchDist = 0;
-  const DRAG_SLOP = 5;
-
-  viewport.addEventListener('pointerdown', (e) => {
-    didDrag = false;
-    // Протяжка внутри карточки предпросмотра — это прокрутка самой карточки,
-    // а не панорама карты: иначе на телефоне длинное описание не пролистать.
-    if ((e.target as Element).closest('[data-rgraph-card]')) return;
-    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-    origins.set(e.pointerId, { x: e.clientX, y: e.clientY });
-  });
-
-  viewport.addEventListener('pointermove', (e) => {
-    const prev = pointers.get(e.pointerId);
-    if (!prev) return;
-    const now = { x: e.clientX, y: e.clientY };
-
-    if (pointers.size === 2) {
-      pointers.set(e.pointerId, now);
-      const [a, b] = [...pointers.values()];
-      const dist = Math.hypot(a!.x - b!.x, a!.y - b!.y);
-      if (pinchDist > 0) {
-        const rect = viewport.getBoundingClientRect();
-        zoomAt(dist / pinchDist, (a!.x + b!.x) / 2 - rect.left, (a!.y + b!.y) / 2 - rect.top);
-      }
-      pinchDist = dist;
-      return;
+  function related(id: string, of: RelKind): Set<string> {
+    const out = new Set<string>();
+    if (!CHAINED.includes(of)) {
+      for (const next of neighbours[id]?.[of] ?? []) out.add(next);
+      return out;
     }
-
-    // Пока указатель не ушёл дальше порога, это ещё нажатие, а не протяжка:
-    // не двигаем карту и не захватываем указатель — иначе событие нажатия
-    // достанется холсту, и карточка игры не откроется.
-    const from = origins.get(e.pointerId);
-    if (!captured.has(e.pointerId)) {
-      if (!from || Math.hypot(now.x - from.x, now.y - from.y) <= DRAG_SLOP) {
-        pointers.set(e.pointerId, now);
-        return;
+    const queue = [id];
+    const seen = new Set([id]);
+    while (queue.length > 0) {
+      const at = queue.shift()!;
+      for (const next of neighbours[at]?.[of] ?? []) {
+        if (seen.has(next)) continue;
+        seen.add(next);
+        out.add(next);
+        queue.push(next);
       }
-      viewport.setPointerCapture(e.pointerId);
-      captured.add(e.pointerId);
-      didDrag = true;
-      viewport.classList.add('is-grabbing');
     }
+    return out;
+  }
 
-    tx += now.x - prev.x;
-    ty += now.y - prev.y;
-    pointers.set(e.pointerId, now);
-    applyTransform();
-  });
+  /** Все прочие связи игры — их показываем приглушённо, чтобы не терялись. */
+  function others(id: string, except: RelKind): Set<string> {
+    const out = new Set<string>();
+    for (const [name, list] of Object.entries(neighbours[id] ?? {})) {
+      if (name === except) continue;
+      for (const next of list ?? []) out.add(next);
+    }
+    return out;
+  }
 
-  /*
-   * Холст не должен прокручиваться сам.
+  // ── Линии ─────────────────────────────────────────────────────────────
+
+  /**
+   * Координаты карточки внутри полотна.
    *
-   * Положение карты держит преобразование, а не прокрутка: по нему же
-   * считаются подписи студий и годы. Но у холста `overflow: hidden`, и
-   * браузер всё равно прокручивает его, когда наводит фокус на нажатую
-   * ссылку внутри. Карта тогда уезжала, а полоса студий оставалась на месте.
-   * Переводим случайную прокрутку в преобразование: картинка не дёргается,
-   * а счёт снова сходится.
+   * Берём разницу прямоугольников, а не offsetTop: карточка лежит в двух
+   * вложенных сетках, и складывать смещения пришлось бы через всех предков.
    */
-  viewport.addEventListener('scroll', () => {
-    if (!viewport.scrollLeft && !viewport.scrollTop) return;
-    tx -= viewport.scrollLeft;
-    ty -= viewport.scrollTop;
-    viewport.scrollLeft = 0;
-    viewport.scrollTop = 0;
-    applyTransform();
-  });
+  function boxOf(el: HTMLElement): { x: number; y: number; w: number; h: number } {
+    const a = el.getBoundingClientRect();
+    const b = content!.getBoundingClientRect();
+    return { x: a.left - b.left, y: a.top - b.top, w: a.width, h: a.height };
+  }
 
-  const endPointer = (e: PointerEvent) => {
-    pointers.delete(e.pointerId);
-    captured.delete(e.pointerId);
-    origins.delete(e.pointerId);
-    if (pointers.size < 2) pinchDist = 0;
-    if (pointers.size === 0) viewport.classList.remove('is-grabbing');
-  };
-  viewport.addEventListener('pointerup', endPointer);
-  viewport.addEventListener('pointercancel', endPointer);
-
-  /*
-   * Колесо листает, а не приближает.
+  /**
+   * Дуга между карточками.
    *
-   * Карта высокая и узкая, как страница: колесо ведёт по ней вниз, как в
-   * любом списке, и не перехватывает привычный жест ради масштаба. Масштаб —
-   * с зажатым Ctrl или ⌘; щипок на тачпаде браузер присылает как раз так.
-   * Shift переводит вертикальную прокрутку в горизонтальную.
+   * Прямая через полкарты читается плохо и пересекает десятки плиток, поэтому
+   * ведём кривую: она заметно отходит от прямой и глаз прослеживает её до
+   * конца. Чем дальше игры друг от друга, тем сильнее прогиб.
    */
-  viewport.addEventListener(
-    'wheel',
-    (e) => {
-      e.preventDefault();
-      const rect = viewport.getBoundingClientRect();
-      if (e.ctrlKey || e.metaKey) {
-        const factor = Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0022));
-        zoomAt(factor, e.clientX - rect.left, e.clientY - rect.top);
-        return;
-      }
-      const unit = e.deltaMode === 1 ? 16 : 1;
-      let dx = e.deltaX * unit;
-      let dy = e.deltaY * unit;
-      if (e.shiftKey && !dx) {
-        dx = dy;
-        dy = 0;
-      }
-      tx -= dx;
-      ty -= dy;
-      applyTransform();
-    },
-    { passive: false },
-  );
+  function wire(from: HTMLElement, to: HTMLElement): string {
+    const a = boxOf(from);
+    const b = boxOf(to);
+    const ax = a.x + a.w / 2;
+    const ay = a.y + a.h / 2;
+    const bx = b.x + b.w / 2;
+    const by = b.y + b.h / 2;
+    const bow = Math.min(90, Math.hypot(bx - ax, by - ay) * 0.22);
+    const mx = (ax + bx) / 2;
+    const my = (ay + by) / 2 - bow;
+    return `M ${ax} ${ay} Q ${mx} ${my} ${bx} ${by}`;
+  }
 
-  root.querySelectorAll<HTMLButtonElement>('[data-rzoom]').forEach((button) => {
+  function clearWires(): void {
+    for (const el of wires!.querySelectorAll('path[data-wire]')) el.remove();
+  }
+
+  function drawWires(id: string, strong: Set<string>, soft: Set<string>): void {
+    clearWires();
+    const from = cards.get(id);
+    if (!from) return;
+    const size = content!.getBoundingClientRect();
+    wires!.setAttribute('viewBox', `0 0 ${size.width} ${size.height}`);
+    wires!.setAttribute('width', String(size.width));
+    wires!.setAttribute('height', String(size.height));
+
+    const draw = (to: string, weak: boolean) => {
+      const el = cards.get(to);
+      if (!el || el.offsetParent === null) return;
+      const path = document.createElementNS(SVG_NS, 'path');
+      path.setAttribute('d', wire(from, el));
+      path.setAttribute('data-wire', weak ? 'soft' : 'strong');
+      path.setAttribute('fill', 'none');
+      wires!.append(path);
+    };
+    for (const to of soft) if (!strong.has(to)) draw(to, true);
+    for (const to of strong) draw(to, false);
+  }
+
+  // ── Подсветка ─────────────────────────────────────────────────────────
+
+  function clearLight(): void {
+    root!.removeAttribute('data-lit');
+    for (const el of cards.values()) {
+      el.removeAttribute('data-lit');
+      el.removeAttribute('data-lit-soft');
+    }
+    clearWires();
+    litId = null;
+  }
+
+  function light(id: string): void {
+    const self = cards.get(id);
+    if (!self) return;
+    clearLight();
+    litId = id;
+    const strong = related(id, kind);
+    const soft = others(id, kind);
+    root!.setAttribute('data-lit', '');
+    self.setAttribute('data-lit', '');
+    for (const to of strong) cards.get(to)?.setAttribute('data-lit', '');
+    for (const to of soft) {
+      if (!strong.has(to)) cards.get(to)?.setAttribute('data-lit-soft', '');
+    }
+    drawWires(id, strong, soft);
+  }
+
+  for (const [id, el] of cards) {
+    el.addEventListener('mouseenter', () => light(id));
+    el.addEventListener('focus', () => light(id));
+  }
+  root.querySelector('[data-rgraph-frame]')?.addEventListener('mouseleave', clearLight);
+
+  // ── Вид родства ───────────────────────────────────────────────────────
+
+  for (const button of root.querySelectorAll<HTMLButtonElement>('[data-rel-kind]')) {
     button.addEventListener('click', () => {
-      const rect = viewport.getBoundingClientRect();
-      if (button.dataset.rzoom === 'reset') {
-        fit();
-      } else {
-        zoomAt(button.dataset.rzoom === 'in' ? 1.25 : 1 / 1.25, rect.width / 2, rect.height / 2);
+      kind = button.dataset.relKind as RelKind;
+      root.dataset.rel = kind;
+      for (const other of root.querySelectorAll<HTMLButtonElement>('[data-rel-kind]')) {
+        other.setAttribute('aria-pressed', other === button ? 'true' : 'false');
       }
+      if (litId) light(litId);
     });
-  });
-
-  const fullButton = root.querySelector<HTMLButtonElement>('[data-rfull]');
-  const setFull = (on: boolean) => {
-    root.classList.toggle('is-full', on);
-    fullButton?.setAttribute('aria-pressed', on ? 'true' : 'false');
-    if (fullButton) fullButton.textContent = on ? 'Свернуть' : 'На весь экран';
-    document.body.style.overflow = on ? 'hidden' : '';
-    // Окно карты изменилось — пределы и подписи считаются от его размера.
-    applyTransform();
-  };
-  fullButton?.addEventListener('click', () => setFull(!root.classList.contains('is-full')));
-
-  /** Ставим точку карты в центр окна. */
-  const centerOn = (id: string) => {
-    const box = boxes.get(id);
-    if (!box) return;
-    tx = viewport.clientWidth / 2 - (box.x + box.w / 2) * scale;
-    ty = viewport.clientHeight / 2 - box.cy * scale;
-    applyTransform();
-  };
-
-  railItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      ty = 8 - Number(item.dataset.top) * scale;
-      applyTransform();
-    });
-  });
-
-  // Размер окна поменялся — пределы и подписи пересчитать.
-  window.addEventListener('resize', () => applyTransform());
-
-  // ── Вид родства ──────────────────────────────────────────────────────
-  let relKind: RelKind = 'predecessor';
-
-  const setKind = (kind: RelKind) => {
-    relKind = kind;
-    root.dataset.rel = kind;
-    root.querySelectorAll<HTMLButtonElement>('[data-rel-kind]').forEach((b) => {
-      b.setAttribute('aria-pressed', b.dataset.relKind === kind ? 'true' : 'false');
-    });
-    svg.querySelectorAll<SVGGElement>('[data-layer]').forEach((layer) => {
-      if (layer.getAttribute('data-layer') === kind) layer.removeAttribute('hidden');
-      else layer.setAttribute('hidden', '');
-    });
-    svg.querySelectorAll<SVGGElement>('[data-pop]').forEach((pop) => pop.setAttribute('hidden', ''));
-    if (openId) {
-      fillCard(openId);
-      // Смена вида меняет и то, что подсвечено: пересобираем цепочку.
-      select(openId);
-    }
-  };
-
-  root.querySelectorAll<HTMLButtonElement>('[data-rel-kind]').forEach((button) => {
-    button.addEventListener('click', () => setKind(button.dataset.relKind as RelKind));
-  });
-
-  // ── Подсветка связей при наведении ───────────────────────────────────
-  /*
-   * Рёбра слоёв разбираем один раз: по ним считается цепочка предков и
-   * потомков, и они же подсвечиваются. Рисовать вместо них лучи из выбранной
-   * игры было бы неправдой — на карте цепочка идёт от звена к звену.
-   */
-  interface LayerEdge {
-    el: SVGPathElement;
-    from: string;
-    to: string;
-  }
-  const layerEdges = new Map<RelKind, LayerEdge[]>();
-  const upOf = new Map<RelKind, Map<string, string[]>>();
-  const downOf = new Map<RelKind, Map<string, string[]>>();
-  const push = (map: Map<string, string[]>, key: string, value: string) => {
-    const list = map.get(key);
-    if (list) list.push(value);
-    else map.set(key, [value]);
-  };
-  for (const layer of svg.querySelectorAll<SVGGElement>('[data-layer]')) {
-    const kind = layer.getAttribute('data-layer') as RelKind;
-    const list: LayerEdge[] = [];
-    const up = new Map<string, string[]>();
-    const down = new Map<string, string[]>();
-    for (const el of layer.querySelectorAll<SVGPathElement>('.rgraph__edge')) {
-      const from = el.getAttribute('data-from')!;
-      const to = el.getAttribute('data-to')!;
-      list.push({ el, from, to });
-      push(up, to, from);
-      push(down, from, to);
-    }
-    layerEdges.set(kind, list);
-    upOf.set(kind, up);
-    downOf.set(kind, down);
   }
 
-  // ── Фильтр «Скрыть прочитанные» ──────────────────────────────────────
+  // ── Фильтр «Скрыть прочитанные» ───────────────────────────────────────
+
   /*
-   * Карточки прочитанных игр прячет CSS по классу is-read, который ставит
-   * read-state. Но линии к спрятанной карточке остались бы висеть в пустоте,
-   * а список дополнений — раскрываться из ничего; их убираем здесь, по тому
-   * же списку прочитанного. Настройка общая с каталогом: один флажок
-   * «скрыть прочитанные» на весь сайт.
+   * Настройка общая с каталогом: один флажок «скрыть прочитанные» на весь
+   * сайт. Прячем сами плитки, а заодно гасим линии — вести их к спрятанной
+   * карточке некуда.
    */
   const hideButton = root.querySelector<HTMLButtonElement>('[data-hide-read]');
   const hideCount = hideButton?.querySelector<HTMLElement>('[data-hide-count]') ?? null;
-  const applyHideRead = () => {
+
+  function applyRead(): void {
     const on = isHideRead();
     const read = all().read;
-    root.classList.toggle('is-hide-read', on);
+    root!.toggleAttribute('data-hide-read', on);
     hideButton?.setAttribute('aria-pressed', on ? 'true' : 'false');
-    let readHere = 0;
-    const hidden = new Set<string>();
-    for (const id of nodes.keys()) {
-      if (!read[id]) continue;
-      readHere += 1;
-      if (on) hidden.add(id);
+    let count = 0;
+    for (const [id, el] of cards) {
+      const was = Boolean(read[id]);
+      el.toggleAttribute('data-read', was);
+      if (was) count += 1;
     }
-    for (const list of layerEdges.values()) {
-      for (const edge of list) {
-        edge.el.classList.toggle('is-hidden', hidden.has(edge.from) || hidden.has(edge.to));
-      }
-    }
-    svg.querySelectorAll<SVGGElement>('[data-pop]').forEach((pop) => {
-      pop.classList.toggle('is-hidden', hidden.has(pop.getAttribute('data-pop') ?? ''));
-    });
-    if (hideCount) hideCount.textContent = readHere > 0 ? String(readHere) : '';
-    // Открытую карточку спрятанной игры закрываем: указывать ей некуда.
-    if (on && openId && hidden.has(openId)) {
-      closeCard();
-      clearHighlight();
-    }
-  };
+    if (hideCount) hideCount.textContent = count > 0 ? String(count) : '';
+    if (litId) (on && read[litId] ? clearLight() : light(litId));
+  }
+
   hideButton?.addEventListener('click', () => {
     setHideRead(!isHideRead());
-    applyHideRead();
+    applyRead();
   });
-  document.addEventListener('igrostroy:progress', applyHideRead);
-  document.addEventListener('igrostroy:hideread', applyHideRead);
+  document.addEventListener('igrostroy:progress', applyRead);
+  document.addEventListener('igrostroy:hideread', applyRead);
+  applyRead();
 
-  /** Все предки и потомки игры по выбранному виду родства. */
-  const relatedSet = (id: string, kind: RelKind): Set<string> => {
-    const found = new Set<string>([id]);
-    if (!CHAINED.includes(kind)) {
-      for (const other of neighbours[id]?.[kind] ?? []) found.add(other);
-      return found;
-    }
-    const walk = (start: string, map: Map<string, string[]>) => {
-      const queue = [start];
-      while (queue.length) {
-        const current = queue.pop()!;
-        for (const next of map.get(current) ?? []) {
-          if (found.has(next)) continue;
-          found.add(next);
-          queue.push(next);
-        }
-      }
-    };
-    // Вверх и вниз отдельно: иначе через общего предка в родословную попадут
-    // двоюродные ветки, к самой игре отношения не имеющие.
-    walk(id, upOf.get(kind) ?? new Map());
-    walk(id, downOf.get(kind) ?? new Map());
-    return found;
-  };
-
-  const clearHighlight = () => {
-    root.classList.remove('is-highlight');
-    svg.querySelectorAll('.is-near').forEach((el) => el.classList.remove('is-near'));
-    svg.querySelectorAll('.is-focus').forEach((el) => el.classList.remove('is-focus'));
-    svg.querySelectorAll('.is-chain').forEach((el) => el.classList.remove('is-chain'));
-    railItems.forEach((i) => i.classList.remove('is-near'));
-  };
-
-  /** Отмечаем игры и полосы, которых касается подсветка. */
-  const markNear = (ids: Iterable<string>) => {
-    const bands = new Set<string>();
-    for (const other of ids) {
-      const node = nodes.get(other);
-      node?.classList.add('is-near');
-      const band = node?.getAttribute('data-band');
-      if (band) bands.add(band);
-    }
-    railItems.forEach((i) => i.classList.toggle('is-near', bands.has(i.dataset.band ?? '')));
-  };
-
-  /**
-   * Подсветка игры: вся цепочка выбранного вида родства.
-   *
-   * И наведение, и нажатие показывают одно и то же. Раньше наведение рисовало
-   * лучи ко всем соседям всех видов сразу — вокруг игры загоралась россыпь
-   * карточек, по которой непонятно, кто кому кем приходится.
-   */
-  const select = (id: string) => {
-    if (!boxes.has(id)) return;
-    clearHighlight();
-    root.classList.add('is-highlight');
-    nodes.get(id)?.classList.add('is-focus');
-    const chain = relatedSet(id, relKind);
-    markNear(chain);
-    for (const edge of layerEdges.get(relKind) ?? []) {
-      if (chain.has(edge.from) && chain.has(edge.to)) edge.el.classList.add('is-chain');
-    }
-  };
-
-  // ── Карточка предпросмотра ───────────────────────────────────────────
-  const card = root.querySelector<HTMLElement>('[data-rgraph-card]');
-  const cardsUrl = root.dataset.cards ?? '';
-  // Адреса в /graph-cards.json настольные; мобильная карта передаёт своё
-  // начало адреса игры и получает ссылки на страницы под /m/.
-  const gameBase = root.dataset.gameBase ?? '';
-  const urlOf = (id: string, c: Card | undefined) =>
-    gameBase ? `${gameBase}${id}/` : (c?.u ?? '#');
-  let cards: Record<string, Card> | null = null;
-  let openId: string | null = null;
-
-  const loadCards = async () => {
-    if (cards) return cards;
-    try {
-      const r = await fetch(cardsUrl);
-      cards = (await r.json()) as Record<string, Card>;
-    } catch {
-      cards = {};
-    }
-    return cards;
-  };
-
-  const el = <T extends HTMLElement>(sel: string) => card?.querySelector<T>(sel) ?? null;
-
-  function fillCard(id: string): void {
-    if (!card || !cards) return;
-    const c = cards[id];
-    if (!c) return;
-    const media = el('[data-card-media]');
-    if (media) {
-      media.replaceChildren();
-      if (c.t) {
-        const img = document.createElement('img');
-        img.src = c.t;
-        img.alt = '';
-        img.loading = 'lazy';
-        media.appendChild(img);
-      }
-    }
-    const link = el<HTMLAnchorElement>('[data-card-link]');
-    if (link) {
-      link.textContent = c.n;
-      link.href = urlOf(id, c);
-    }
-    const go = el<HTMLAnchorElement>('[data-card-go]');
-    if (go) go.href = urlOf(id, c);
-    const meta = el('[data-card-meta]');
-    if (meta) meta.textContent = [c.p, c.y, c.c].filter(Boolean).join(' · ');
-    const summary = el('[data-card-summary]');
-    if (summary) summary.textContent = c.s;
-
-    const has = el('[data-card-has]');
-    if (has) {
-      has.replaceChildren();
-      const marks: [string, boolean][] = [
-        [c.a ? 'Статья' : 'Карточка', c.a === 1],
-        [c.v ? `Видео · ${c.v}` : 'Видео', c.v > 0],
-        [c.f ? `Скриншоты · ${c.f}` : 'Скриншоты', c.f > 0],
-      ];
-      for (const [label, on] of marks) {
-        const li = document.createElement('li');
-        li.textContent = label;
-        if (on) li.classList.add('is-on');
-        has.appendChild(li);
-      }
-    }
-
-    const rels = el('[data-card-rels]');
-    if (rels) {
-      rels.replaceChildren();
-      /*
-       * У преемственности и общей основы перечисляем всю линию, а не ближайшее
-       * звено: карта подсвечивает именно её, и список должен совпадать
-       * с картинкой. Порядок — по годам, то есть слева направо по карте.
-       */
-      const list = CHAINED.includes(relKind)
-        ? [...relatedSet(id, relKind)]
-            .filter((other) => other !== id)
-            .sort((a, b) => (boxes.get(a)?.x ?? 0) - (boxes.get(b)?.x ?? 0))
-        : (neighbours[id]?.[relKind] ?? []);
-      const title = document.createElement('b');
-      title.textContent = list.length
-        ? REL_LABEL[relKind]
-        : `${REL_LABEL[relKind]} — связей нет`;
-      rels.appendChild(title);
-      for (const other of list.slice(0, 12)) {
-        const a = document.createElement('a');
-        a.href = urlOf(other, cards[other]);
-        a.textContent = cards[other]?.n ?? other;
-        a.addEventListener('click', (e) => {
-          // Переходим по карте, а не на другую страницу: соседа видно сразу.
-          e.preventDefault();
-          /*
-           * Дальше событие не пускаем.
-           *
-           * Холст закрывает карточку, когда нажали мимо неё, и узнаёт «мимо»
-           * по тому, лежит ли цель внутри карточки. Но карточку к этому
-           * моменту уже перерисовали под соседа, и нажатая ссылка из дерева
-           * удалена — проверка отвечала «мимо», и карточка тут же закрывалась.
-           */
-          e.stopPropagation();
-          openCard(other);
-          centerOn(other);
-          select(other);
-        });
-        rels.appendChild(a);
-      }
-    }
-  }
-
-  async function openCard(id: string): Promise<void> {
-    if (!card) return;
-    openId = id;
-    await loadCards();
-    if (openId !== id) return;
-    fillCard(id);
-    card.hidden = false;
-    history.replaceState(null, '', `#${id}`);
-  }
-
-  const closeCard = () => {
-    openId = null;
-    if (card) card.hidden = true;
-  };
-
-  el('[data-card-close]')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    closeCard();
-  });
+  // ── Карточка предпросмотра ────────────────────────────────────────────
 
   /*
-   * Нажатие по карточке ведёт в статью.
-   *
-   * Догадываться, что переход спрятан в заголовке, не нужно: работает вся
-   * карточка целиком. Ссылки соседей и крестик при этом остаются при своём —
-   * они обрабатывают нажатие сами.
-   *
-   * Но на телефоне карточка занимает экран целиком, и там это уже ловушка:
-   * читатель ведёт пальцем по тексту или промахивается мимо соседа — и
-   * улетает со страницы. На весь экран переход только по кнопке.
+   * Адреса в /graph-cards.json настольные; мобильная карта передаёт своё
+   * начало адреса игры и получает ссылки на страницы под /m/.
    */
-  const fullScreenCard = window.matchMedia('(max-width: 640px)');
-  card?.addEventListener('click', (e) => {
-    if (fullScreenCard.matches) return;
-    if ((e.target as Element).closest('a, button')) return;
-    const href = el<HTMLAnchorElement>('[data-card-go]')?.href;
-    if (href) location.href = href;
-  });
+  const cardsUrl = root.dataset.cards!;
+  const gameBase = root.dataset.gameBase;
+  let data: Record<string, Card> | null = null;
+  let openId: string | null = null;
 
-  // ── Наведение и нажатие на карточки ──────────────────────────────────
-  // На сенсорном экране наведения нет: там первое касание открывает карточку
-  // и подсвечивает связи. Одного «(hover: none)» мало — так себя описывает и
-  // браузер без мыши на обычном компьютере.
-  const touchOnly = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-  const dragging = () => didDrag;
-
-  for (const [id, node] of nodes) {
-    if (!touchOnly) {
-      node.addEventListener('mouseenter', () => {
-        if (!openId) select(id);
-      });
-      node.addEventListener('mouseleave', () => {
-        if (!openId) clearHighlight();
-      });
-    }
-    node.addEventListener('click', (e) => {
-      if (dragging()) {
-        e.preventDefault();
-        return;
-      }
-      e.preventDefault();
-      openCard(id);
-      select(id);
-    });
+  async function loadCards(): Promise<Record<string, Card>> {
+    if (data) return data;
+    const res = await fetch(cardsUrl);
+    data = (await res.json()) as Record<string, Card>;
+    return data;
   }
 
-  // Дополнения: счётчик «+N» раскрывает список наведением и нажатием.
-  svg.querySelectorAll<SVGGElement>('[data-mods]').forEach((mark) => {
-    const id = mark.getAttribute('data-mods')!;
-    const pop = svg.querySelector<SVGGElement>(`[data-pop="${CSS.escape(id)}"]`);
-    if (!pop) return;
-    // Наведение открывает список на время, нажатие оставляет его открытым.
-    let pinned = false;
-    const show = () => pop.removeAttribute('hidden');
-    const hide = () => {
-      if (!pinned) pop.setAttribute('hidden', '');
-    };
-    mark.addEventListener('mouseenter', show);
-    mark.addEventListener('mouseleave', hide);
-    mark.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      pinned = !pinned;
-      if (pinned) show();
-      else pop.setAttribute('hidden', '');
+  const num = (n: number, one: string, few: string, many: string) => {
+    const mod100 = n % 100;
+    const mod10 = n % 10;
+    if (mod100 >= 11 && mod100 <= 14) return `${n} ${many}`;
+    if (mod10 === 1) return `${n} ${one}`;
+    if (mod10 >= 2 && mod10 <= 4) return `${n} ${few}`;
+    return `${n} ${many}`;
+  };
+
+  function closeCard(): void {
+    pop!.hidden = true;
+    openId = null;
+  }
+
+  async function openCard(id: string, anchor: HTMLElement): Promise<void> {
+    const all = await loadCards();
+    const card = all[id];
+    if (!card) return;
+    openId = id;
+    const href = gameBase ? `${gameBase}${id}/` : card.u;
+    const media: string[] = [];
+    if (card.f > 0) media.push(num(card.f, 'кадр', 'кадра', 'кадров'));
+    if (card.v > 0) media.push(num(card.v, 'ролик', 'ролика', 'роликов'));
+    pop!.innerHTML = `
+      ${card.t ? `<img src="${card.t}" alt="" loading="lazy">` : ''}
+      <strong>${card.n}</strong>
+      <span class="rgraph__popmeta">${[card.y, card.p, card.c].filter(Boolean).join(' · ')}</span>
+      <span class="rgraph__popsum">${card.s}</span>
+      <span class="rgraph__popmeta">${card.a ? 'статья' : 'коротко'}${media.length ? ` · ${media.join(' · ')}` : ''}</span>
+      <a href="${href}">Открыть статью →</a>`;
+    pop!.hidden = false;
+
+    // Ставим карточку рядом с плиткой, но не даём вылезти за края окна карты.
+    const box = anchor.getBoundingClientRect();
+    const frame = root!.getBoundingClientRect();
+    const width = pop!.offsetWidth;
+    const left = Math.min(
+      Math.max(8, box.left - frame.left),
+      Math.max(8, frame.width - width - 8),
+    );
+    const below = box.bottom - frame.top + 8;
+    const fits = below + pop!.offsetHeight < frame.height;
+    pop!.style.left = `${left}px`;
+    pop!.style.top = fits ? `${below}px` : `${Math.max(8, box.top - frame.top - pop!.offsetHeight - 8)}px`;
+  }
+
+  /*
+   * Первое нажатие открывает карточку, второе — уводит на статью. Так один
+   * и тот же жест работает и мышью, и пальцем: на сенсорном экране наведения
+   * нет, а сразу уходить со страницы по первому касанию — потеря места.
+   */
+  for (const [id, el] of cards) {
+    el.addEventListener('click', (event) => {
+      if (openId === id) return;
+      event.preventDefault();
+      light(id);
+      void openCard(id, el);
     });
-    pop.addEventListener('mouseenter', show);
-    pop.addEventListener('mouseleave', hide);
+  }
+  document.addEventListener('click', (event) => {
+    if (!openId) return;
+    const target = event.target as HTMLElement;
+    if (!target.closest('[data-node]') && !target.closest('[data-rgraph-pop]')) closeCard();
   });
-
-  viewport.addEventListener('click', (e) => {
-    if (dragging()) return;
-    if ((e.target as Element).closest('[data-node], [data-pop], [data-rgraph-card]')) return;
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
     closeCard();
-    clearHighlight();
+    clearLight();
+  });
+  scroll.addEventListener('scroll', closeCard, { passive: true });
+
+  // ── На весь экран ─────────────────────────────────────────────────────
+
+  const full = root.querySelector<HTMLButtonElement>('[data-rfull]');
+  full?.addEventListener('click', () => {
+    const on = !root.hasAttribute('data-full');
+    root.toggleAttribute('data-full', on);
+    full.setAttribute('aria-pressed', on ? 'true' : 'false');
+    full.textContent = on ? 'Свернуть' : 'На весь экран';
+    document.body.style.overflow = on ? 'hidden' : '';
+    if (litId) light(litId);
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') return;
-    if (openId) {
-      closeCard();
-      clearHighlight();
-      return;
-    }
-    if (root.classList.contains('is-full')) setFull(false);
+  // Размер окна поменялся — нарисованные линии надо пересчитать.
+  window.addEventListener('resize', () => {
+    if (litId) light(litId);
   });
 
-  // Фильтр применяем после того, как собраны рёбра и карточка: он их трогает.
-  applyHideRead();
+  // ── Глубокая ссылка вида /graph/#vangers ──────────────────────────────
 
-  // ── Исходный вид и глубокая ссылка вида /graph/#vangers ─────────────
-  fit();
-  const target = decodeURIComponent(location.hash.slice(1));
-  if (target && boxes.has(target)) {
-    /*
-     * Прокруткой страницы занимаемся сами.
-     *
-     * У карточек нет id: будь он, браузер прыгнул бы к узлу сам и утащил бы
-     * переключатель видов под шапку. Нам же нужно показать карту целиком,
-     * а нужную игру поставить в середину холста.
-     */
-    root.scrollIntoView({ block: 'start' });
-    centerOn(target);
-    select(target);
-    openCard(target);
+  const wanted = decodeURIComponent(location.hash.slice(1));
+  if (wanted && cards.has(wanted)) {
+    const el = cards.get(wanted)!;
+    el.scrollIntoView({ block: 'center', inline: 'center' });
+    light(wanted);
+    void openCard(wanted, el);
   }
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', init, { once: true });
 } else {
   init();
 }
-
-/** Файл подключается как модуль; экспорт держит имена вне глобальной области. */
-export {};
