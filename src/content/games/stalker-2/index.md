@@ -8,6 +8,7 @@ class: open-world
 developer: gsc-game-world
 publishers:
   - gsc-game-world
+  - 4divinity
 series: stalker
 country: ukraine
 years:

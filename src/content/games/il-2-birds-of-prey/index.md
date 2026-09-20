@@ -8,6 +8,7 @@ class: flight-sim
 developer: gaijin
 publishers:
   - 1c
+  - iceberg
 series: il-2
 country: russia
 years:

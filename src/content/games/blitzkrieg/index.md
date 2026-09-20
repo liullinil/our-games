@@ -8,6 +8,7 @@ developer: nival
 publishers:
   - 1c
   - cdv
+  - virtual-programming
 series: blitzkrieg
 country: russia
 years:

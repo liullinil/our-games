@@ -4,7 +4,8 @@ altNames: []
 type: rpg
 class: roguelike
 developer: ink-stains
-publishers: []
+publishers:
+  - hypetrain
 country: russia
 years:
   start: 2020

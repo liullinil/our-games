@@ -5,7 +5,8 @@ altNames:
 type: rpg
 class: crpg
 developer: atom-team
-publishers: []
+publishers:
+  - atent-games
 series: atom-rpg
 country: russia
 years:

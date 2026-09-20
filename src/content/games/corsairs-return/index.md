@@ -2,7 +2,8 @@
 name: "Корсары: Возвращение легенды"
 altNames:
   - "Корсары: ВЛ"
-  - "Age of Pirates 2: City of Abandoned Ships"
+  - "Corsairs: Return of the Legend"
+  - "Age of Pirates: Return of the Legend"
 type: rpg
 class: action-rpg
 developer: seaward

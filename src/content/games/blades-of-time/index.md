@@ -4,7 +4,9 @@ altNames: []
 type: action
 class: action-adventure
 developer: gaijin
-publishers: []
+publishers:
+  - konami
+  - iceberg
 country: russia
 years:
   start: 2012

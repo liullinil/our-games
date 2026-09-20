@@ -5,7 +5,8 @@ altNames:
 type: rpg
 class: card
 developer: morteshka
-publishers: []
+publishers:
+  - hypetrain
 country: russia
 years:
   start: 2021
