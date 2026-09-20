@@ -12,7 +12,6 @@ series: petka
 country: russia
 years:
   start: 2001
-  end: 2017
   note: "в 2017 году вышло переиздание Reloaded с обновлённой графикой и поддержкой геймпада"
 predecessors:
   - petka-2

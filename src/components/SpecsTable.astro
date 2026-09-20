@@ -8,7 +8,7 @@ import {
   MODE_LABEL,
   TYPE_LABEL_ONE,
   formatCount,
-  yearsLabel,
+  yearOf,
 } from '../lib/labels';
 
 interface Props {
@@ -32,7 +32,7 @@ const KIND_LABEL: Record<string, string> = {
 
 const rows: { label: string; value: string | null; href?: string }[] = [
   { label: 'Разработчик', value: studioNameAt(studio, g.data.years.start), href: studioUrl(studio.id) },
-  { label: 'Год выхода', value: s.releaseDate ?? yearsLabel(g.data.years) },
+  { label: 'Год выхода', value: s.releaseDate ?? yearOf(g.data.years) },
   { label: 'Эпоха', value: `${era.data.shortTitle} (${era.data.range})`, href: eraUrl(era.id) },
   { label: 'Страна', value: COUNTRY_LABEL[g.data.country] ?? null },
   { label: 'Жанр', value: `${TYPE_LABEL_ONE[g.data.type]}: ${(CLASS_LABEL[g.data.class] ?? '').toLowerCase()}` },

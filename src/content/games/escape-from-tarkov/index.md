@@ -9,7 +9,6 @@ publishers: []
 country: russia
 years:
   start: 2017
-  end: null
   note: "закрытая альфа — с 2016 года; полноценный релиз версии 1.0 — 15 ноября 2025 года"
 platforms:
   - windows

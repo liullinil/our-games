@@ -23,7 +23,14 @@ specs:
   setting: "Аллод Умойр, спустя годы после событий первой игры"
 summary: >-
   Продолжение «Аллодов» с двумя кампаниями и сетевой игрой: тот же мир, больше магии и первые в серии массовые сражения.
+poster: ./shots/cover-01.jpg
 gallery:
+  - kind: image
+    src: ./shots/cover-01.jpg
+    caption: "Аллоды 2: Повелитель душ: обложка"
+    author: "Nival"
+    license: "Обложка"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%90%D0%BB%D0%BB%D0%BE%D0%B4%D1%8B_2_%D0%9F%D0%94.jpg"
   - kind: youtube
     id: "h_IjtU2AFxc"
     title: "Аллоды 2 - культовая онлайн игра. Летсплей обзор # 1"

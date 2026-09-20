@@ -1,6 +1,7 @@
 ---
 name: "35MM"
-altNames: []
+altNames:
+  - "35 мм"
 type: adventure
 class: walking-sim
 developer: noskov
@@ -18,6 +19,11 @@ engines:
 specs:
   releaseDate: "27 мая 2016 (ПК), 2 марта 2022 (консоли)"
   modes: [single]
+  perspective: "от первого лица"
+  setting: "опустевшая после эпидемии российская провинция: деревни, пансионат, метро, город"
+  salesNote: "40 тысяч копий за первые три месяца в Steam, по словам автора"
+  development: "около двух с половиной лет"
+  abroad: "по всему миру в Steam с 2016 года силами самого автора, с английскими субтитрами; консольные версии для PlayStation, Xbox и Switch издала Sometimes You 2 марта 2022 года; западная пресса приняла прохладно"
 summary: >-
   Двое идут через опустевшую после эпидемии Россию: деревни, гаражи, электрички. Сделана одним человеком и стала главной русской «инди про провинцию».
 steamAppId: 466500
@@ -64,11 +70,82 @@ gallery:
     title: "35 MM | Атмосферное приключение с МЫЛОМ на ГЛАЗАХ | Обзор-признание"
     channel: "Johnny Half"
     checkedAt: "2026-09-19"
+reviews:
+  - outlet: "Игромания"
+    score: "4/10"
+    verdict: "Симулятор ходьбы, в котором нет сюжета: атмосферный эпизод в метро и безысходные пейзажи не спасают от скучного поиска предметов, топорной стрельбы и QTE."
+    url: "https://www.igromania.ru/review/27883/igra-v-kotoroj-net-igryi-obzor-35mm.html"
+    author: "Михаил Горбунов"
+    date: "2016"
+  - outlet: "Overclockers.ru"
+    score: "5,8/10"
+    verdict: "Средняя игра без собственного стиля: линейная и скучноватая, с неудобной стрельбой и мелким текстом в QTE, зато хорошо оптимизированная и красивая в статике."
+    url: "https://overclockers.ru/lab/show/77440/35mm-recenziya"
+    author: "Руслан Губайдуллин"
+    date: "2016"
+  - outlet: "TheXboxHub"
+    score: "3,5/5"
+    verdict: "Сильная история, атмосфера одиночества и качественная русская озвучка; мешают медленный темп, неудобное управление курсором, QTE и недоделанная стрельба."
+    url: "https://www.thexboxhub.com/35mm-review/"
+    author: "Gareth Brierley"
+    date: "2022"
+  - outlet: "Pure Nintendo"
+    score: "4/10"
+    verdict: "Звук и тревожная тишина работают, но игра кажется незаконченной: непонятно, зачем нужен фотоаппарат, напарник еле плетётся, графика устарела."
+    url: "https://purenintendo.com/review-35mm-nintendo-switch/"
+    author: "Ted Hazell"
+    date: "2022"
+  - outlet: "PlayStation Universe"
+    score: "5,5/10"
+    verdict: "Мрачный тон, тёмные тесные локации и авторское видение при скудных ресурсах — против дешёвой графики, зацикленных звуков и неловкой стрельбы."
+    url: "https://www.psu.com/reviews/35mm-ps4-review/"
+    date: "2022"
+  - outlet: "VGChartz"
+    score: "4/10"
+    verdict: "Редкое по достоверности чувство места и рассказ через окружение, но механики не складываются в цельный опыт: неуклюжий экшен, невидимые стены, медленное движение."
+    url: "https://www.vgchartz.com/article/452748/35mm-ns/"
+    author: "Evan Norris"
+    date: "2022"
+reading:
+  - title: "Создание игры «35ММ». Постапокалипсис в России"
+    url: "https://habr.com/ru/articles/448340/"
+    outlet: "Хабр"
+    note: "рассказ самого Носкова о разработке: Unity 4.7, команда, ошибки и баги"
+  - title: "35MM и 7th Sector: игры Сергея Носкова"
+    url: "https://dtf.ru/games/5240349-35mm-i-7th-sector-obzor-igr-sergeya-noskova"
+    outlet: "DTF"
+    note: "разбор сюжета и атмосферы, влияние Half-Life 2 и Саймона Столенхага"
+  - title: "«Апокалипсис по-русски». Обзор «35ММ»"
+    url: "https://stopgame.ru/blogs/topic/103276/apokalipsis_po_russki_review_35mm"
+    outlet: "StopGame (блоги)"
+    note: "подробный разбор механик, выборов и концовок"
+  - title: "35MM: Секреты & Пасхалки"
+    url: "https://steamcommunity.com/sharedfiles/filedetails/?id=712653348"
+    outlet: "Steam Community"
+    note: "полный список пасхалок с локациями и достижениями"
+availability:
+  status: sold
+  note: "в Steam с 2016 года; версии для PlayStation, Xbox и Nintendo Switch издаёт Sometimes You с марта 2022 года"
+  where:
+    - title: "Steam"
+      url: "https://store.steampowered.com/app/466500/"
+    - title: "PlayStation Store"
+      url: "https://store.playstation.com/en-us/concept/10002438"
+    - title: "Xbox"
+      url: "https://www.xbox.com/en-us/games/store/35mm/9NTHQWXTL5XR"
+    - title: "Nintendo eShop"
+      url: "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/35MM-2175030.html"
 sources:
-  - title: "35MM — Gematsu"
-    url: "https://www.gematsu.com/games/35mm"
   - title: "35MM — Steam"
     url: "https://store.steampowered.com/app/466500/"
+  - title: "Создание игры «35ММ». Постапокалипсис в России — Хабр"
+    url: "https://habr.com/ru/articles/448340/"
+  - title: "Инди-игра 35ММ разошлась тиражом в 40 тысяч копий за 3 месяца — DTF"
+    url: "https://dtf.ru/flood/854-indi-igra-35mm-razoshlas-tirazhom-v-40-tysyach-kopii-za-3-mesyaca"
+  - title: "2 марта приключение 35MM в постапокалиптической России выйдет на консолях — StopGame"
+    url: "https://stopgame.ru/newsdata/52145/2_marta_priklyuchenie_35mm_v_postapokalipticheskoy_rossii_vyydet_na_konsolyah"
+  - title: "35MM — OpenCritic"
+    url: "https://opencritic.com/game/2916/35mm"
 status: article
 ---
 

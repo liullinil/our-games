@@ -9,7 +9,6 @@ series: world-of
 country: russia
 years:
   start: 2022
-  end: null
 basedOn:
   - world-of-tanks
 platforms:

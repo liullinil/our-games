@@ -11,7 +11,6 @@ publishers:
 country: russia
 years:
   start: 2001
-  end: 2024
   note: "в 2024 году игра вышла в Steam под названием Spanking Runners"
 platforms:
   - windows

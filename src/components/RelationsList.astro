@@ -6,7 +6,7 @@
 import type { Graph, GameNode } from '../lib/graph';
 import { studioShort } from '../lib/graph';
 import { gameUrl, engineUrl, seriesUrl, studioUrl, withBase } from '../lib/paths';
-import { yearsLabel } from '../lib/labels';
+import { yearOf } from '../lib/labels';
 
 interface Props {
   game: GameNode;
@@ -20,7 +20,7 @@ const link = (id: string) => {
   return {
     id,
     name: x.data.name,
-    years: yearsLabel(x.data.years),
+    years: yearOf(x.data.years),
     href: gameUrl(id),
     article: x.data.status === 'article',
   };

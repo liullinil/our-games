@@ -11,7 +11,6 @@ publishers:
 country: russia
 years:
   start: 2003
-  end: null
 platforms:
   - windows
 specs:

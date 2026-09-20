@@ -8,7 +8,6 @@ publishers: []
 country: russia
 years:
   start: 2017
-  end: null
 platforms:
   - ios
   - android

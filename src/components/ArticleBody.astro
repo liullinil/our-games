@@ -1,0 +1,176 @@
+---
+/**
+ * Текст статьи с кадрами и роликом внутри.
+ *
+ * Разметка приходит готовой (её собрал Markdown), режется по заголовкам
+ * разделов, и после первого абзаца каждого раздела встаёт кадр из галереи.
+ * В раздел про игровой процесс вместо кадра идёт геймплейный ролик: там о
+ * самой игре и речь, а смотреть её лучше, чем читать описание.
+ *
+ * Кадры те же самые, что и в галерее под статьёй, поэтому подпись с
+ * правообладателем и ссылкой на источник ставится и здесь: требование к
+ * несвободным изображениям не зависит от того, в каком месте страницы они
+ * показаны.
+ */
+import { Image, getImage } from 'astro:assets';
+import type { GameNode } from '../lib/graph';
+import Video from './Video.astro';
+import { photoSource, isGameArt, gameArtNote } from '../lib/labels';
+import { videos as videoItems } from '../lib/video';
+import { planArticle } from '../lib/article';
+
+interface Props {
+  game: GameNode;
+  /** Готовая разметка статьи. */
+  html: string;
+}
+
+const { game: g, html } = Astro.props;
+
+type Photo = Extract<GameNode['data']['gallery'][number], { kind: 'image' }>;
+const photos = g.data.gallery.filter((p): p is Photo => p.kind === 'image');
+
+const { parts } = planArticle(html, photos, videoItems(g.data.gallery), g.data.poster);
+
+// Большая версия для лайтбокса готовится на сборке, чтобы не отдавать оригинал.
+const large = await Promise.all(
+  parts.map((p) => (p.photo ? getImage({ src: p.photo.src, width: 1600, format: 'webp' }) : null)),
+);
+
+/** Подпись под кадром: у скриншота — правообладатель, у фотографии — автор и лицензия. */
+const creditText = (p: Photo) =>
+  isGameArt(p.license) ? gameArtNote(p.license, p.author) : `Фото: ${p.author}, ${p.license}`;
+
+const blocks = parts.map((part, i) => ({
+  ...part,
+  large: large[i],
+  /* Через одну картинка встаёт сбоку: колонка текста не разрывается на
+     каждом развороте, и страница не превращается в ленту одинаковых полос. */
+  side: i % 2 === 0,
+}));
+---
+
+<div class="game__text">
+  {
+    blocks.map((part) => (
+      <>
+        <Fragment set:html={part.before} />
+
+        {part.photo && part.large && (
+          <figure class:list={['artfig', { 'artfig--side': part.side }]}>
+            <a
+              class="artfig__link"
+              href={part.large.src}
+              data-lightbox
+              data-caption={part.photo.caption}
+              data-credit={creditText(part.photo)}
+              data-license-url={isGameArt(part.photo.license) ? '' : (part.photo.licenseUrl ?? '')}
+              data-source={part.photo.sourceUrl ?? ''}
+              data-source-text={photoSource(part.photo).label}
+              data-modified={part.photo.modified ? '1' : '0'}
+            >
+              <Image
+                src={part.photo.src}
+                alt={part.photo.caption}
+                widths={[360, 720, 1080]}
+                sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 340px"
+                loading="lazy"
+              />
+            </a>
+            <figcaption class="artfig__caption">
+              <span>{part.photo.caption}</span>{' '}
+              <span class="muted">
+                {creditText(part.photo)}
+                {', '}
+                {photoSource(part.photo).href ? (
+                  <a href={photoSource(part.photo).href} rel="noopener external">
+                    {photoSource(part.photo).label}
+                  </a>
+                ) : (
+                  photoSource(part.photo).label
+                )}
+                {part.photo.modified ? ', изменено' : ''}
+              </span>
+            </figcaption>
+          </figure>
+        )}
+
+        {part.video && (
+          <div class="artvid" data-pagefind-ignore>
+            <Video video={part.video} />
+          </div>
+        )}
+
+        <Fragment set:html={part.after} />
+      </>
+    ))
+  }
+</div>
+
+<style>
+  .game__text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .game__text :global(table) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .artfig {
+    margin: 1.4rem 0;
+  }
+
+  .artfig :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    border: var(--rule);
+    background: var(--c-surface-2);
+    filter: var(--photo-filter);
+  }
+
+  .artfig__link:hover :global(img) {
+    border-color: var(--c-accent);
+  }
+
+  .artfig__caption {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  /*
+   * Широкая колонка пускает кадр на поля.
+   *
+   * Статья свёрстана в узкую колонку, а рядом с ней пусто. Кадр сбоку
+   * заполняет это поле и не разрывает чтение; когда места нет, он
+   * возвращается в общий поток.
+   */
+  @media (min-width: 1240px) {
+    .artfig--side {
+      float: right;
+      width: 19rem;
+      margin: 0.4rem -8rem 1rem 1.5rem;
+      shape-outside: margin-box;
+    }
+
+    .artfig--side + :global(p) {
+      margin-top: 0;
+    }
+  }
+
+  /* Ролик идёт во всю ширину колонки: он здесь вместо иллюстрации. */
+  .artvid {
+    margin: 1.4rem 0;
+    clear: both;
+  }
+
+  /* Заголовок следующего раздела не должен обтекать картинку. */
+  .game__text :global(h2) {
+    clear: both;
+  }
+</style>

@@ -10,7 +10,6 @@ series: blitzkrieg
 country: russia
 years:
   start: 2017
-  end: 2022
   note: "многопользовательский режим отключён в декабре 2022 года; одиночная кампания и скирмиш остаются доступны"
 predecessors:
   - blitzkrieg

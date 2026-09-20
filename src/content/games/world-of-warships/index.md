@@ -11,7 +11,6 @@ series: world-of
 country: russia
 years:
   start: 2015
-  end: null
 platforms:
   - windows
   - playstation-4

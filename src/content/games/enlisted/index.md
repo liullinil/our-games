@@ -9,7 +9,6 @@ publishers:
 country: latvia
 years:
   start: 2021
-  end: null
   note: "открытая бета на PC — с 8 апреля 2021 года, кроссплатформенный запуск с PS4/Xbox One — с 4 октября 2021 года"
 platforms:
   - windows

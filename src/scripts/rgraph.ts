@@ -2,6 +2,12 @@
  * Карта связей: перетаскивание, масштаб, выбор вида родства, подсветка связей
  * при наведении, карточка предпросмотра по нажатию, фильтр прочитанного и
  * отложенная загрузка листа миниатюр.
+ *
+ * Шкала лет сверху и полоса студий слева — обычная разметка вне холста: при
+ * каждом сдвиге карты они пересчитываются под тот же масштаб и смещение.
+ * Колесо мыши листает карту, как страницу; с Ctrl или ⌘ — приближает, щипок
+ * на сенсорном экране тоже. При открытии карта вписывается в окно по ширине,
+ * чтобы вся шкала лет была перед глазами и листать оставалось только вниз.
  */
 import { all, isHideRead, setHideRead } from './read-state';
 
@@ -17,9 +23,9 @@ const REL_LABEL: Record<RelKind, string> = {
 /**
  * Виды, которые тянутся цепочкой.
  *
- * Преемственность и общая база передаются дальше: если ГАЗель NN выросла из
- * «Валдая», а тот из своей игры, то вся эта линия — родословная NN, и
- * показывать надо её целиком. Общий движок и общий издатель так не
+ * Преемственность и общая основа передаются дальше: если «Корсары 3» выросли
+ * из «Корсаров 2», а те — из первых, то вся эта линия — родословная третьей
+ * части, и показывать надо её целиком. Общий движок и общий издатель так не
  * работают: там связаны все со всеми внутри группы, и «цепочка» захватила бы
  * пол-карты через случайные пересечения.
  */
@@ -45,13 +51,20 @@ interface Box {
   cy: number;
 }
 
+const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
+
 function init(): void {
   const root = document.querySelector<HTMLElement>('[data-rgraph]');
   if (!root) return;
   const viewport = root.querySelector<HTMLElement>('[data-rgraph-viewport]');
   const svg = root.querySelector<SVGSVGElement>('.rgraph__svg');
   const rail = root.querySelector<HTMLElement>('[data-rgraph-rail]');
+  const axis = root.querySelector<HTMLElement>('[data-rgraph-axis]');
   if (!viewport || !svg) return;
+
+  /** Размер холста в его собственных пикселях: по нему считаются пределы и вписывание. */
+  const WIDTH = Number(root.dataset.width) || svg.viewBox.baseVal.width;
+  const HEIGHT = Number(root.dataset.height) || svg.viewBox.baseVal.height;
 
   const neighbours: Record<string, Partial<Record<RelKind, string[]>>> = JSON.parse(
     root.querySelector('[data-rgraph-neighbours]')?.textContent || '{}',
@@ -107,41 +120,83 @@ function init(): void {
   let tx = 0;
   let ty = 0;
 
-  const applyTransform = () => {
-    svg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
-    syncRail();
+  /*
+   * Карту нельзя утащить в пустоту.
+   *
+   * Смещение держится в пределах холста: если карта шире окна, её край не
+   * уходит дальше края окна; если уже — она стоит у левого края и не
+   * болтается. Небольшой запас снизу оставляет воздух под последней полкой.
+   */
+  const clampPan = () => {
+    const vw = viewport.clientWidth;
+    const vh = viewport.clientHeight;
+    const w = WIDTH * scale;
+    const h = HEIGHT * scale;
+    tx = w <= vw ? clamp(tx, 0, vw - w) : clamp(tx, vw - w, 0);
+    ty = h <= vh ? clamp(ty, 0, vh - h) : clamp(ty, vh - h - 24, 0);
   };
 
-  const railItems = rail
-    ? [...rail.querySelectorAll<HTMLElement>('.rgraph__railitem')]
-    : [];
+  const applyTransform = () => {
+    clampPan();
+    svg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    syncChrome();
+  };
 
-  let railQueued = false;
-  function syncRail(): void {
-    if (!rail || railQueued) return;
-    railQueued = true;
+  const railItems = rail ? [...rail.querySelectorAll<HTMLElement>('.rgraph__railitem')] : [];
+  const axisItems = axis ? [...axis.querySelectorAll<HTMLElement>('.rgraph__axisyear')] : [];
+
+  let chromeQueued = false;
+  /** Подписи студий и годы едут за картой: пересчёт после каждого сдвига. */
+  function syncChrome(): void {
+    if (chromeQueued) return;
+    chromeQueued = true;
     requestAnimationFrame(() => {
-      railQueued = false;
-      const height = rail.clientHeight;
-      for (const item of railItems) {
-        const top = Number(item.dataset.top) * scale + ty;
-        const bandHeight = Number(item.dataset.height) * scale;
-        // Подпись держится у верхнего края полосы, но не уезжает за экран:
-        // пока хоть часть завода видна, его имя остаётся на месте.
-        const clamped = Math.min(Math.max(top, 2), Math.max(top + bandHeight - 14, 2));
-        const off = top + bandHeight < 0 || top > height;
-        item.hidden = off;
-        item.style.transform = `translateY(${Math.min(clamped, height - 14)}px)`;
+      chromeQueued = false;
+      if (rail) {
+        const height = rail.clientHeight;
+        for (const item of railItems) {
+          const top = Number(item.dataset.top) * scale + ty;
+          const bandHeight = Number(item.dataset.height) * scale;
+          // Подпись держится у верхнего края полосы, но не уезжает за экран:
+          // пока хоть часть студии видна, её имя остаётся на месте.
+          const clamped = Math.min(Math.max(top, 2), Math.max(top + bandHeight - 14, 2));
+          const off = top + bandHeight < 0 || top > height;
+          item.hidden = off;
+          item.style.transform = `translateY(${Math.min(clamped, height - 14)}px)`;
+          item.style.height = `${Math.max(14, Math.min(bandHeight, height - clamped))}px`;
+        }
+      }
+      if (axis) {
+        const width = axis.clientWidth;
+        for (const item of axisItems) {
+          const x = Number(item.dataset.x) * scale + tx;
+          item.hidden = x < -30 || x > width + 30;
+          item.style.left = `${x}px`;
+        }
       }
     });
   }
 
   const zoomAt = (factor: number, px: number, py: number) => {
-    const next = Math.min(3, Math.max(0.2, scale * factor));
+    const next = Math.min(3, Math.max(0.3, scale * factor));
     if (next === scale) return;
     tx = px - ((px - tx) * next) / scale;
     ty = py - ((py - ty) * next) / scale;
     scale = next;
+    applyTransform();
+  };
+
+  /**
+   * Исходный вид: вся шкала лет в ширину окна.
+   *
+   * На телефоне вписанная карта была бы нечитаемой — там оставляем
+   * натуральный размер и листаем во все стороны.
+   */
+  const fit = () => {
+    const ratio = viewport.clientWidth / WIDTH;
+    scale = ratio >= 0.72 ? Math.min(1, ratio) : 1;
+    tx = 0;
+    ty = 0;
     applyTransform();
   };
 
@@ -211,11 +266,11 @@ function init(): void {
    * Холст не должен прокручиваться сам.
    *
    * Положение карты держит преобразование, а не прокрутка: по нему же
-   * считается, где рисовать подписи заводов. Но у холста `overflow: hidden`,
-   * и браузер всё равно прокручивает его, когда наводит фокус на нажатую
-   * ссылку внутри. Карта тогда уезжала, а полоса заводов оставалась на месте,
-   * и подписи переставали соответствовать полосам. Переводим случайную
-   * прокрутку в преобразование: картинка не дёргается, а счёт снова сходится.
+   * считаются подписи студий и годы. Но у холста `overflow: hidden`, и
+   * браузер всё равно прокручивает его, когда наводит фокус на нажатую
+   * ссылку внутри. Карта тогда уезжала, а полоса студий оставалась на месте.
+   * Переводим случайную прокрутку в преобразование: картинка не дёргается,
+   * а счёт снова сходится.
    */
   viewport.addEventListener('scroll', () => {
     if (!viewport.scrollLeft && !viewport.scrollTop) return;
@@ -236,12 +291,34 @@ function init(): void {
   viewport.addEventListener('pointerup', endPointer);
   viewport.addEventListener('pointercancel', endPointer);
 
+  /*
+   * Колесо листает, а не приближает.
+   *
+   * Карта высокая и узкая, как страница: колесо ведёт по ней вниз, как в
+   * любом списке, и не перехватывает привычный жест ради масштаба. Масштаб —
+   * с зажатым Ctrl или ⌘; щипок на тачпаде браузер присылает как раз так.
+   * Shift переводит вертикальную прокрутку в горизонтальную.
+   */
   viewport.addEventListener(
     'wheel',
     (e) => {
       e.preventDefault();
       const rect = viewport.getBoundingClientRect();
-      zoomAt(e.deltaY < 0 ? 1.12 : 1 / 1.12, e.clientX - rect.left, e.clientY - rect.top);
+      if (e.ctrlKey || e.metaKey) {
+        const factor = Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0022));
+        zoomAt(factor, e.clientX - rect.left, e.clientY - rect.top);
+        return;
+      }
+      const unit = e.deltaMode === 1 ? 16 : 1;
+      let dx = e.deltaX * unit;
+      let dy = e.deltaY * unit;
+      if (e.shiftKey && !dx) {
+        dx = dy;
+        dy = 0;
+      }
+      tx -= dx;
+      ty -= dy;
+      applyTransform();
     },
     { passive: false },
   );
@@ -250,10 +327,7 @@ function init(): void {
     button.addEventListener('click', () => {
       const rect = viewport.getBoundingClientRect();
       if (button.dataset.rzoom === 'reset') {
-        scale = 1;
-        tx = 0;
-        ty = 0;
-        applyTransform();
+        fit();
       } else {
         zoomAt(button.dataset.rzoom === 'in' ? 1.25 : 1 / 1.25, rect.width / 2, rect.height / 2);
       }
@@ -266,7 +340,7 @@ function init(): void {
     fullButton?.setAttribute('aria-pressed', on ? 'true' : 'false');
     if (fullButton) fullButton.textContent = on ? 'Свернуть' : 'На весь экран';
     document.body.style.overflow = on ? 'hidden' : '';
-    // Окно карты изменилось — подписи заводов считаются от его высоты.
+    // Окно карты изменилось — пределы и подписи считаются от его размера.
     applyTransform();
   };
   fullButton?.addEventListener('click', () => setFull(!root.classList.contains('is-full')));
@@ -282,10 +356,13 @@ function init(): void {
 
   railItems.forEach((item) => {
     item.addEventListener('click', () => {
-      ty = 12 - Number(item.dataset.top) * scale;
+      ty = 8 - Number(item.dataset.top) * scale;
       applyTransform();
     });
   });
+
+  // Размер окна поменялся — пределы и подписи пересчитать.
+  window.addEventListener('resize', () => applyTransform());
 
   // ── Вид родства ──────────────────────────────────────────────────────
   let relKind: RelKind = 'predecessor';
@@ -352,7 +429,7 @@ function init(): void {
   /*
    * Карточки прочитанных игр прячет CSS по классу is-read, который ставит
    * read-state. Но линии к спрятанной карточке остались бы висеть в пустоте,
-   * а список модификаций — раскрываться из ничего; их убираем здесь, по тому
+   * а список дополнений — раскрываться из ничего; их убираем здесь, по тому
    * же списку прочитанного. Настройка общая с каталогом: один флажок
    * «скрыть прочитанные» на весь сайт.
    */
@@ -425,16 +502,16 @@ function init(): void {
     railItems.forEach((i) => i.classList.remove('is-near'));
   };
 
-  /** Отмечаем игры и полосы заводов, которых касается подсветка. */
+  /** Отмечаем игры и полосы, которых касается подсветка. */
   const markNear = (ids: Iterable<string>) => {
-    const studios = new Set<string>();
+    const bands = new Set<string>();
     for (const other of ids) {
       const node = nodes.get(other);
       node?.classList.add('is-near');
-      const studio = node?.getAttribute('data-studio');
-      if (studio) studios.add(studio);
+      const band = node?.getAttribute('data-band');
+      if (band) bands.add(band);
     }
-    railItems.forEach((i) => i.classList.toggle('is-near', studios.has(i.dataset.band ?? '')));
+    railItems.forEach((i) => i.classList.toggle('is-near', bands.has(i.dataset.band ?? '')));
   };
 
   /**
@@ -527,7 +604,7 @@ function init(): void {
     if (rels) {
       rels.replaceChildren();
       /*
-       * У преемственности и общей базы перечисляем всю линию, а не ближайшее
+       * У преемственности и общей основы перечисляем всю линию, а не ближайшее
        * звено: карта подсвечивает именно её, и список должен совпадать
        * с картинкой. Порядок — по годам, то есть слева направо по карте.
        */
@@ -605,11 +682,6 @@ function init(): void {
     if (href) location.href = href;
   });
 
-  // Карточка на весь экран закрывает собой всё, поэтому Escape тоже закрывает.
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && openId) closeCard();
-  });
-
   // ── Наведение и нажатие на карточки ──────────────────────────────────
   // На сенсорном экране наведения нет: там первое касание открывает карточку
   // и подсвечивает связи. Одного «(hover: none)» мало — так себя описывает и
@@ -637,7 +709,7 @@ function init(): void {
     });
   }
 
-  // Модификации: счётчик «+N» раскрывает список наведением и нажатием.
+  // Дополнения: счётчик «+N» раскрывает список наведением и нажатием.
   svg.querySelectorAll<SVGGElement>('[data-mods]').forEach((mark) => {
     const id = mark.getAttribute('data-mods')!;
     const pop = svg.querySelector<SVGGElement>(`[data-pop="${CSS.escape(id)}"]`);
@@ -670,19 +742,19 @@ function init(): void {
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    if (root.classList.contains('is-full')) {
-      setFull(false);
+    if (openId) {
+      closeCard();
+      clearHighlight();
       return;
     }
-    closeCard();
-    clearHighlight();
+    if (root.classList.contains('is-full')) setFull(false);
   });
 
   // Фильтр применяем после того, как собраны рёбра и карточка: он их трогает.
   applyHideRead();
 
-  // ── Глубокая ссылка вида /graph/#gaz-51 ──────────────────────────────
-  applyTransform();
+  // ── Исходный вид и глубокая ссылка вида /graph/#vangers ─────────────
+  fit();
   const target = decodeURIComponent(location.hash.slice(1));
   if (target && boxes.has(target)) {
     /*
@@ -696,8 +768,6 @@ function init(): void {
     centerOn(target);
     select(target);
     openCard(target);
-  } else {
-    syncRail();
   }
 }
 

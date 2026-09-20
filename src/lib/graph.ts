@@ -49,6 +49,20 @@ export interface GameNode {
   expansions: string[];
 }
 
+/**
+ * Родственная связь между студиями.
+ *
+ * `own` — связь записана в карточке этой студии («основана выходцами из»),
+ * `mirror` — выведена из карточки другой («выходцы основали»). Вид один и
+ * тот же, направление разное: подпись выбирается по нему.
+ */
+export interface StudioKin {
+  studioId: string;
+  kind: 'spinoff' | 'parent' | 'successor' | 'sibling';
+  note?: string;
+  side: 'own' | 'mirror';
+}
+
 export interface StudioNode {
   id: string;
   entry: CollectionEntry<'studios'>;
@@ -60,6 +74,8 @@ export interface StudioNode {
   seriesIds: string[];
   /** Движки собственной разработки. */
   engineIds: string[];
+  /** Родственные студии, с обеих сторон. */
+  kin: StudioKin[];
 }
 
 export interface SeriesNode {
@@ -139,9 +155,37 @@ async function buildGraph(): Promise<Graph> {
   const studios = new Map<string, StudioNode>(
     studioEntries.map((entry) => [
       entry.id,
-      { id: entry.id, entry, data: entry.data, gameIds: [], publishedIds: [], seriesIds: [], engineIds: [] },
+      {
+        id: entry.id,
+        entry,
+        data: entry.data,
+        gameIds: [],
+        publishedIds: [],
+        seriesIds: [],
+        engineIds: [],
+        kin: [],
+      },
     ]),
   );
+
+  // Родство студий: записано с одной стороны, видно с обеих.
+  for (const s of studios.values()) {
+    for (const r of s.data.related) {
+      const other = studios.get(r.studio.id);
+      if (!other) {
+        problems.push(`studios/${s.id}: родственная студия «${r.studio.id}» не найдена`);
+        continue;
+      }
+      if (other.id === s.id) {
+        problems.push(`studios/${s.id}: студия указана родственной самой себе`);
+        continue;
+      }
+      s.kin.push({ studioId: other.id, kind: r.kind, note: r.note, side: 'own' });
+      if (!other.kin.some((k) => k.studioId === s.id)) {
+        other.kin.push({ studioId: s.id, kind: r.kind, note: r.note, side: 'mirror' });
+      }
+    }
+  }
 
   const series = new Map<string, SeriesNode>(
     seriesEntries.map((entry) => [
@@ -263,10 +307,10 @@ async function buildGraph(): Promise<Graph> {
       problems.push(`${where}: эпоха «${g.era}» не найдена в eras`);
     }
 
-    if (typeof g.data.years.end === 'number' && g.data.years.end < g.data.years.start) {
-      problems.push(
-        `${where}: год окончания (${g.data.years.end}) меньше года выхода (${g.data.years.start})`,
-      );
+    for (const f of g.data.availability.files) {
+      if (!/^[\w.-]+$/.test(f.file)) {
+        problems.push(`${where}: имя файла «${f.file}» должно быть без путей и пробелов`);
+      }
     }
   }
 

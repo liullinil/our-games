@@ -9,7 +9,6 @@ publishers:
 country: russia
 years:
   start: 2015
-  end: 2025
   note: "серверы на ПК отключены 3 сентября 2025 года, на консолях — 29 октября"
 platforms:
   - windows

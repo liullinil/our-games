@@ -23,7 +23,22 @@ specs:
   setting: "космическая база на чужой планете во время извержения вулкана"
 summary: >-
   Карманная электронная игра серии «Электроника»: космонавты перебираются через потоки лавы по раскладному мосту. Копия японской Nintendo Game & Watch «Fire», которую с 1989 года выпускал зеленоградский завод «Ангстрем».
+poster: ./shots/space-bridge-3.jpg
 gallery:
+  - kind: image
+    src: ./shots/space-bridge-3.jpg
+    caption: "«Электроника ИМ-09» — «Космический мост»: серийный номер и дата выпуска на корпусе"
+    author: "Pbermak"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Space_bridge_-3.jpg"
+  - kind: image
+    src: ./shots/space-bridge-2.jpg
+    caption: "«Электроника ИМ-09» — «Космический мост»: обратная сторона с открытым батарейным отсеком"
+    author: "Pbermak"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Space_bridge_-2.jpg"
   - kind: youtube
     id: "MKdgIIHGDRE"
     title: "Электроника \"Ну погоди!\" и \"Космический мост\" Space bridge Игра на экране."

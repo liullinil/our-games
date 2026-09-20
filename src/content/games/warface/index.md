@@ -9,7 +9,6 @@ publishers:
 country: ukraine
 years:
   start: 2012
-  end: null
 platforms:
   - windows
   - playstation-4

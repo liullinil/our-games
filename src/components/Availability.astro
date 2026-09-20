@@ -1,0 +1,153 @@
+---
+/**
+ * Где взять игру сегодня.
+ *
+ * Половина игр в базе старше двадцати лет, и первый вопрос читателя после
+ * статьи — можно ли в это поиграть. Отвечаем прямо: продаётся, раздаётся
+ * бесплатно, открыт исходный код или не найти нигде, кроме архивов.
+ *
+ * Файлы с самого сайта раздаются только там, где это разрешает лицензия
+ * (открытый код, freeware с правом копировать, явное разрешение автора).
+ * Условия печатаются рядом с кнопкой: читатель должен видеть, на каком
+ * основании файл здесь лежит.
+ */
+import type { GameNode } from '../lib/graph';
+import { AVAILABILITY_LABEL } from '../lib/labels';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  game: GameNode;
+}
+
+const { game: g } = Astro.props;
+const a = g.data.availability;
+const show = a.status !== 'unknown' || a.where.length > 0 || a.files.length > 0;
+/** Бесплатное и открытое выделяем: это и есть ответ «можно поиграть прямо сейчас». */
+const free = a.status === 'freeware' || a.status === 'opensource' || a.status === 'free';
+---
+
+{
+  show && (
+    <section class="avail card" data-pagefind-ignore>
+      <div class="avail__head">
+        <h2>Где взять</h2>
+        <span class:list={['avail__status', { 'is-free': free, 'is-gone': a.status === 'unavailable' }]}>
+          {AVAILABILITY_LABEL[a.status]}
+        </span>
+      </div>
+
+      {a.note && <p class="avail__note">{a.note}</p>}
+
+      {a.where.length > 0 && (
+        <ul class="avail__where">
+          {a.where.map((w) => (
+            <li>
+              <a class="chip" href={w.url} rel="noopener external">
+                {w.title}
+                {w.note && <span class="muted">{w.note}</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {a.files.length > 0 && (
+        <ul class="avail__files">
+          {a.files.map((f) => (
+            <li class="avail__file">
+              <a class="button" href={withBase(`/downloads/${g.id}/${f.file}`)} download>
+                Скачать: {f.title}
+              </a>
+              <span class="muted avail__terms">
+                {f.size ? `${f.size} · ` : ''}
+                {f.licenseUrl ? (
+                  <a href={f.licenseUrl} rel="noopener external">
+                    {f.license}
+                  </a>
+                ) : (
+                  f.license
+                )}
+                {' · '}
+                <a href={f.sourceUrl} rel="noopener external">
+                  источник
+                </a>
+                {f.note ? ` · ${f.note}` : ''}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )
+}
+
+<style>
+  .avail {
+    margin: 1.5rem 0;
+    padding: 0.9rem 1.1rem 1.1rem;
+  }
+
+  .avail__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .avail__head h2 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .avail__status {
+    padding: 0.1rem 0.55rem;
+    border: var(--rule);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    color: var(--c-muted);
+  }
+
+  .avail__status.is-free {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+    font-weight: 600;
+  }
+
+  .avail__status.is-gone {
+    text-decoration: line-through;
+  }
+
+  .avail__note {
+    margin: 0.5rem 0 0;
+    font-size: 0.92rem;
+  }
+
+  .avail__where {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0;
+    margin: 0.7rem 0 0;
+    list-style: none;
+  }
+
+  .avail__files {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0.8rem 0 0;
+    list-style: none;
+  }
+
+  .avail__file {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .avail__terms {
+    font-size: 0.8rem;
+  }
+</style>

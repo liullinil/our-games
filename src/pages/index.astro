@@ -5,7 +5,7 @@ import GameCard from '../components/GameCard.astro';
 import RelationsGraph from '../components/RelationsGraph.astro';
 import { getGraph, studioNameAt } from '../lib/graph';
 import { withBase, catalogUrl, eraUrl, gameUrl } from '../lib/paths';
-import { TYPE_LABEL, TYPE_ORDER, CLASS_LABEL, yearsLabel, plural, nGames, SITE_NAME } from '../lib/labels';
+import { TYPE_LABEL, TYPE_ORDER, CLASS_LABEL, yearOf, plural, nGames, SITE_NAME } from '../lib/labels';
 
 const graph = await getGraph();
 
@@ -36,7 +36,7 @@ const featuredImage = featuredSource
 const featuredMeta = featured
   ? [
       featuredStudio ? studioNameAt(featuredStudio, featured.data.years.start) : '',
-      yearsLabel(featured.data.years),
+      yearOf(featured.data.years),
       CLASS_LABEL[featured.data.class] ?? '',
     ]
       .filter(Boolean)

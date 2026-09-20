@@ -10,7 +10,6 @@ publishers:
 country: russia
 years:
   start: 2014
-  end: null
 platforms:
   - ios
   - android

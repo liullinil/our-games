@@ -1,0 +1,73 @@
+---
+/**
+ * Что почитать: разборы механик, истории создания, интервью, пасхалки.
+ *
+ * Это не источники статьи — те перечислены отдельно и отвечают за факты.
+ * Здесь то, куда читателю стоит пойти дальше: длинные разборы на DTF и
+ * StopGame, рассказы авторов на Хабре, ретроспективы. Поэтому у каждой
+ * ссылки написано, чем она полезна.
+ */
+import type { GameNode } from '../lib/graph';
+
+interface Props {
+  game: GameNode;
+}
+
+const { game: g } = Astro.props;
+const items = g.data.reading;
+---
+
+{
+  items.length > 0 && (
+    <section class="reading" data-pagefind-ignore>
+      <h2>Что почитать</h2>
+      <ul class="reading__list">
+        {items.map((r) => (
+          <li>
+            <a href={r.url} rel="noopener external">
+              {r.title}
+            </a>
+            {r.outlet && <span class="reading__outlet muted">{r.outlet}</span>}
+            {r.note && <span class="reading__note muted">{r.note}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+<style>
+  .reading {
+    margin: 2rem 0 1.5rem;
+  }
+
+  .reading__list {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0.6rem 0 0;
+    list-style: none;
+  }
+
+  .reading__list li {
+    display: grid;
+    gap: 0.1rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--c-border);
+  }
+
+  .reading__list li:hover {
+    border-left-color: var(--c-accent);
+  }
+
+  .reading__outlet {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .reading__note {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+</style>

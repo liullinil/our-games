@@ -23,7 +23,29 @@ specs:
   setting: "морское дно и затонувший корабль"
 summary: >-
   Карманная электронная игра серии «Электроника»: водолаз спускается за сокровищами на дно океана, уворачиваясь от осьминога. Копия японской Nintendo Game & Watch «Octopus», выпускавшаяся вслед за куда более известной «Ну, погоди!».
+poster: ./shots/taini-okeana.jpg
 gallery:
+  - kind: image
+    src: ./shots/taini-okeana.jpg
+    caption: "«Электроника ИМ-03» — «Тайны океана»: лицевая сторона с экраном и кнопками"
+    author: "Perepelin30"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Taini_okeana.jpg"
+  - kind: image
+    src: ./shots/tainokeana.jpg
+    caption: "«Электроника ИМ-03» — «Тайны океана»: игра крупным планом"
+    author: "Perepelin30"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Tainokeana.jpg"
+  - kind: image
+    src: ./shots/elektronika-im03-1.jpg
+    caption: "«Электроника ИМ-03» — «Тайны океана»: задняя сторона корпуса"
+    author: "Широков Роман (SysCat)"
+    license: "CC BY-SA 3.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Elektronika-Im03-1.jpg"
   - kind: youtube
     id: "TMihoewv-XA"
     title: "Игра советская Электроника ИМ Тайны океана ссср"

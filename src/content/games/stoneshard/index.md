@@ -8,7 +8,6 @@ publishers: []
 country: russia
 years:
   start: 2020
-  end: null
   note: "ранний доступ с 2020 года, дата полного релиза не объявлена"
 platforms:
   - windows

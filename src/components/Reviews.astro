@@ -1,0 +1,101 @@
+---
+/**
+ * Что писала пресса: издание, оценка и вердикт своими словами.
+ *
+ * Вердикты пересказаны, а не процитированы: цитировать чужие рецензии
+ * целиком мы не вправе, да и незачем — читателю нужна суть и ссылка на
+ * саму статью. Оценка печатается в том виде, в каком её ставило издание:
+ * «9/10», «82/100», «4 из 5» — приводить их к одной шкале значило бы
+ * выдумывать число, которого никто не ставил.
+ */
+import type { GameNode } from '../lib/graph';
+
+interface Props {
+  game: GameNode;
+}
+
+const { game: g } = Astro.props;
+const reviews = g.data.reviews;
+const metacritic = g.data.specs.metacritic;
+---
+
+{
+  reviews.length > 0 && (
+    <section class="reviews" data-pagefind-ignore>
+      <div class="section-title">
+        <h2>Что писала пресса</h2>
+        {metacritic && <span class="muted">Metacritic: {metacritic} из 100</span>}
+      </div>
+      <ul class="reviews__list">
+        {reviews.map((r) => (
+          <li class="reviews__item card">
+            <div class="reviews__head">
+              <a class="reviews__outlet" href={r.url} rel="noopener external">
+                {r.outlet}
+              </a>
+              {r.score && <span class="reviews__score">{r.score}</span>}
+            </div>
+            <p class="reviews__verdict">{r.verdict}</p>
+            {(r.author || r.date) && (
+              <p class="reviews__meta muted">{[r.author, r.date].filter(Boolean).join(' · ')}</p>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+<style>
+  .reviews {
+    margin: 2rem 0 1.5rem;
+  }
+
+  .reviews__list {
+    display: grid;
+    gap: 0.6rem;
+    padding: 0;
+    margin: 0.7rem 0 0;
+    list-style: none;
+  }
+
+  .reviews__item {
+    padding: 0.7rem 0.9rem 0.8rem;
+  }
+
+  .reviews__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .reviews__outlet {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1rem;
+  }
+
+  .reviews__score {
+    flex: none;
+    padding: 0.1rem 0.5rem;
+    border: 1px solid var(--c-accent);
+    border-radius: 999px;
+    color: var(--c-accent);
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .reviews__verdict {
+    margin: 0.3rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .reviews__meta {
+    margin: 0.25rem 0 0;
+    font-size: 0.8rem;
+  }
+</style>

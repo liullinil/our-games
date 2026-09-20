@@ -8,7 +8,7 @@ publishers: []
 country: russia
 years:
   start: 2012
-  end: 2021
+  note: "серверы закрыты в 2021 году; в 2024-м исходный код выложен на GitHub"
 platforms:
   - windows
 specs:

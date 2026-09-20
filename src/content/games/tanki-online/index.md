@@ -9,7 +9,6 @@ publishers: []
 country: russia
 years:
   start: 2009
-  end: null
 platforms:
   - web
   - windows

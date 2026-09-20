@@ -10,7 +10,6 @@ series: scapes
 country: russia
 years:
   start: 2016
-  end: null
 platforms:
   - ios
   - android

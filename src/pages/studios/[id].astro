@@ -5,8 +5,8 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import GameCard from '../../components/GameCard.astro';
 import { getGraph, studioShort } from '../../lib/graph';
-import { seriesUrl, engineUrl, withBase } from '../../lib/paths';
-import { COUNTRY_LABEL, STUDIO_KIND_LABEL, nGames } from '../../lib/labels';
+import { seriesUrl, engineUrl, studioUrl, withBase } from '../../lib/paths';
+import { COUNTRY_LABEL, STUDIO_KIND_LABEL, STUDIO_RELATION_LABEL, nGames } from '../../lib/labels';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const graph = await getGraph();
@@ -24,6 +24,29 @@ const published = studio.publishedIds
   .map((id) => graph.games.get(id)!);
 const names = [...studio.data.names].sort((a, b) => a.from - b.from);
 const engines = studio.engineIds.map((id) => graph.engines.get(id)!).filter(Boolean);
+
+/*
+ * Родня студии.
+ *
+ * Студии здесь делятся, переименовываются и разбегаются постоянно: после
+ * закрытия GSC её команда собралась в 4A Games и Vostok Games, из «Нивала»
+ * вышли Owlcat и Skyfallen. Связь записана в карточке одной из студий, а
+ * показывается у обеих — подпись зависит от того, с какой стороны смотреть.
+ */
+const kin = studio.kin
+  .map((k) => {
+    const other = graph.studios.get(k.studioId);
+    if (!other) return null;
+    const label = STUDIO_RELATION_LABEL[k.kind];
+    return {
+      id: other.id,
+      name: studioShort(other),
+      label: k.side === 'own' ? label.own : label.mirror,
+      note: k.note,
+      games: other.gameIds.length,
+    };
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null);
 
 // Оформление страницы студии — по эпохе её первой игры: так «Никита» читается
 // в девяностых, а Mundfish — в двадцатых.
@@ -73,6 +96,26 @@ const era = games[0]?.era ?? 'site';
               </li>
             ))}
           </ol>
+        </>
+      )
+    }
+
+    {
+      kin.length > 0 && (
+        <>
+          <h2>Родственные студии</h2>
+          <ul class="kin">
+            {kin.map((k) => (
+              <li class="kin__item">
+                <span class="kin__label muted">{k.label}</span>
+                <a class="kin__name" href={studioUrl(k.id)}>
+                  {k.name}
+                </a>
+                {k.games > 0 && <span class="muted">{nGames(k.games)}</span>}
+                {k.note && <span class="kin__note muted">{k.note}</span>}
+              </li>
+            ))}
+          </ul>
         </>
       )
     }
@@ -226,6 +269,40 @@ const era = games[0]?.era ?? 'site';
   .names__years {
     color: var(--c-muted);
     font-variant-numeric: tabular-nums;
+  }
+
+  .kin {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0.6rem 0 1.5rem;
+    list-style: none;
+  }
+
+  .kin__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.5rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--c-border);
+    font-size: 0.92rem;
+  }
+
+  .kin__item:hover {
+    border-left-color: var(--c-accent);
+  }
+
+  .kin__name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+  }
+
+  /* Пояснение идёт своей строкой: оно длиннее самой связи. */
+  .kin__note {
+    flex-basis: 100%;
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
 
   @media (max-width: 520px) {

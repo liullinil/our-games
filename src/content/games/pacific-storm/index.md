@@ -57,6 +57,16 @@ gallery:
     author: "Buka Entertainment, Lesta Studio, ESDigital Games"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/11250/"
+  - kind: youtube
+    id: "97ONzQd9AIM"
+    title: "Стальные монстры"
+    channel: "Представляет Михаил"
+    checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "SlOa1LpSNOU"
+    title: "Стальные монстры: Союзники - Обзор от ЛКИ"
+    channel: "KENESOLJAS ホンダ"
+    checkedAt: "2026-09-20"
 sources:
   - title: "Pacific Storm — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Pacific_Storm"

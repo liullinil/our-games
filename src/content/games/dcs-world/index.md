@@ -10,7 +10,6 @@ series: dcs
 country: russia
 years:
   start: 2012
-  end: null
 predecessors:
   - dcs-black-shark
 platforms:

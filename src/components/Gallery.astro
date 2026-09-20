@@ -5,14 +5,25 @@ import type { GameNode } from '../lib/graph';
 import Video from './Video.astro';
 import { videos as videoItems } from '../lib/video';
 
+type Photo = Extract<GameNode['data']['gallery'][number], { kind: 'image' }>;
+type Clip = ReturnType<typeof videoItems>[number];
+
 interface Props {
   game: GameNode;
+  /**
+   * Что показать в сетке. По умолчанию — всё, что есть у игры; страница
+   * игры передаёт сюда остаток, потому что часть кадров и геймплейный
+   * ролик уже стоят в тексте статьи, и повторять их под ней незачем.
+   */
+  photos?: Photo[];
+  videos?: Clip[];
 }
 
-const { game: g } = Astro.props;
+const { game: g, photos: onlyPhotos, videos: onlyVideos } = Astro.props;
 
-const photos = g.data.gallery.filter((p) => p.kind === 'image');
-const videos = videoItems(g.data.gallery);
+const all = g.data.gallery.filter((p): p is Photo => p.kind === 'image');
+const photos = onlyPhotos ?? all;
+const videos = onlyVideos ?? videoItems(g.data.gallery);
 
 // Большая версия для лайтбокса готовится на сборке, чтобы не грузить оригиналы.
 const large = await Promise.all(photos.map((p) => getImage({ src: p.src, width: 1600, format: 'webp' })));
@@ -76,7 +87,11 @@ const creditText = (p: (typeof photos)[number]) =>
 }
 
 {
-  photos.length > 0 && (
+  /*
+   * Окно просмотра нужно, даже когда сетка пуста: кадры могут целиком уйти
+   * в текст статьи, а лайтбокс у них общий с галереей.
+   */
+  all.length > 0 && (
     <dialog class="lightbox" data-lightbox-dialog aria-label="Просмотр изображения">
       <button class="lightbox__close" type="button" data-lightbox-close aria-label="Закрыть">✕</button>
       <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Предыдущее">‹</button>

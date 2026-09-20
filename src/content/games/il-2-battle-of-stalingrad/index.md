@@ -12,7 +12,6 @@ series: il-2
 country: russia
 years:
   start: 2013
-  end: null
 platforms:
   - windows
 engines:

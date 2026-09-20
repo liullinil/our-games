@@ -5,7 +5,7 @@ import GameCard from '../../components/GameCard.astro';
 import SidebarTree from '../../components/SidebarTree.astro';
 import { getGraph, studioShort } from '../../lib/graph';
 import { studioUrl, catalogUrl } from '../../lib/paths';
-import { TYPE_LABEL, nGames, yearsLabel } from '../../lib/labels';
+import { TYPE_LABEL, nGames } from '../../lib/labels';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const graph = await getGraph();
@@ -18,13 +18,9 @@ const series = graph.series.get(seriesId)!;
 const studio = series.studioId ? graph.studios.get(series.studioId) : null;
 const games = series.gameIds.map((id) => graph.games.get(id)!);
 
+/** Годы серии: от первой игры до последней. */
 const span = games.length
-  ? {
-      start: Math.min(...games.map((g) => g.data.years.start)),
-      end: games.some((g) => g.data.years.end === null)
-        ? null
-        : Math.max(...games.map((g) => g.data.years.end ?? g.data.years.start)),
-    }
+  ? { start: Math.min(...games.map((g) => g.data.years.start)), end: Math.max(...games.map((g) => g.data.years.start)) }
   : null;
 const era = games[0]?.era ?? 'site';
 ---
@@ -50,7 +46,7 @@ const era = games[0]?.era ?? 'site';
   <p class="lead">{series.data.summary}</p>
   <p class="muted">
     {studio ? `${studioShort(studio)} · ` : ''}{nGames(games.length)}
-    {span ? ` · ${yearsLabel(span)}` : ''}
+    {span ? ` · ${span.start === span.end ? span.start : `${span.start}–${span.end}`}` : ''}
   </p>
 
   <ul class="grid-cards" id="series-games">

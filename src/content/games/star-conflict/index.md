@@ -9,7 +9,6 @@ publishers:
 country: russia
 years:
   start: 2012
-  end: 2026
   note: "серверы отключаются 10 октября 2026 года; о закрытии объявлено 16 апреля 2026-го"
 platforms:
   - windows

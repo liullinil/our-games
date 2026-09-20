@@ -9,7 +9,6 @@ publishers:
 country: russia
 years:
   start: 2012
-  end: null
 platforms:
   - windows
 specs:

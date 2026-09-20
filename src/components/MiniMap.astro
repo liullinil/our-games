@@ -1,8 +1,8 @@
 ---
 /**
  * Место игры на карте связей — тем же способом, что и сама карта: по
- * горизонтали годы, каждая карточка тянется от начала выпуска до конца.
- * Строки — виды родства, игра страницы выделена.
+ * горизонтали годы, карточка стоит в год выхода. Строки — виды родства,
+ * игра страницы выделена.
  *
  * Раскрывается на месте, без перехода на другую страницу; соседи — ссылки,
  * так что от игры к игре можно идти прямо отсюда.
@@ -10,7 +10,7 @@
 import type { Graph, GameNode } from '../lib/graph';
 import { packLanes, edgePath, type LayoutItem } from '../lib/layout';
 import { gameUrl, withBase } from '../lib/paths';
-import { yearsLabel } from '../lib/labels';
+import { yearOf } from '../lib/labels';
 import { REL_KINDS, REL_LABEL, neighboursOf, type RelKind } from '../lib/relations';
 
 interface Props {
@@ -28,7 +28,6 @@ const TOP_H = 20;
 const CHAR_W = 5.8;
 const PER_KIND = 12;
 
-const thisYear = new Date().getFullYear();
 const near = neighboursOf(graph, v.id);
 
 /**
@@ -51,7 +50,7 @@ const rows = REL_KINDS.map((kind) => ({
   ids: pick(near[kind]),
 })).filter((r) => r.ids.length > 0);
 
-const endYear = (x: GameNode) => (x.data.years.end === null ? thisYear : (x.data.years.end ?? x.data.years.start));
+const endYear = (x: GameNode) => x.data.years.start;
 const labelWidth = (name: string) => Math.max(34, name.length * CHAR_W + 10);
 
 const items: LayoutItem[] = [];
@@ -204,7 +203,7 @@ const rowLabel = (kind: string) =>
                       {node.data.name}
                     </text>
                     <title>
-                      {node.data.name} · {yearsLabel(node.data.years)}
+                      {node.data.name} · {yearOf(node.data.years)}
                     </title>
                   </a>
                 );

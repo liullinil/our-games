@@ -23,3 +23,9 @@ tmp/
 tmp-*.log
 tmp-*.log
 tmp-*.txt
+
+# временные логи прогонов в корне
+tmp-*
+
+# замок планировщика, не исходник
+.claude/scheduled_tasks.lock

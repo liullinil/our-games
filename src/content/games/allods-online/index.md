@@ -11,7 +11,6 @@ series: allods
 country: russia
 years:
   start: 2009
-  end: null
 platforms:
   - windows
 specs:

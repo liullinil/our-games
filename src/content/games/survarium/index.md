@@ -8,7 +8,7 @@ publishers: []
 country: ukraine
 years:
   start: 2013
-  end: 2022
+  note: "о закрытии объявлено 7 февраля 2022 года, серверы отключены 31 мая 2022-го"
 platforms:
   - windows
 specs:

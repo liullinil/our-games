@@ -9,9 +9,24 @@ import RelationsList from '../../components/RelationsList.astro';
 import MiniMap from '../../components/MiniMap.astro';
 import NeighborsStrip from '../../components/NeighborsStrip.astro';
 import Gallery from '../../components/Gallery.astro';
+import ArticleBody from '../../components/ArticleBody.astro';
+import Reviews from '../../components/Reviews.astro';
+import Availability from '../../components/Availability.astro';
+import Reading from '../../components/Reading.astro';
 import SidebarTree from '../../components/SidebarTree.astro';
 import { getGraph, studioNameAt } from '../../lib/graph';
-import { bookCitation, CLASS_LABEL, COUNTRY_SHORT, TYPE_LABEL, yearsLabel } from '../../lib/labels';
+import { planArticle } from '../../lib/article';
+import { videos as videoItems } from '../../lib/video';
+import {
+  bookCitation,
+  CLASS_LABEL,
+  COUNTRY_SHORT,
+  TYPE_LABEL,
+  gameArtNote,
+  isGameArt,
+  photoSource,
+  yearOf,
+} from '../../lib/labels';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const graph = await getGraph();
@@ -30,6 +45,36 @@ const hasArticle = g.data.status === 'article';
 const platforms = g.platformIds.map((id) => graph.platforms.get(id)!).filter(Boolean);
 const platformFilter = platforms.map((p) => `Платформа:${p.data.name}`).join(', ');
 const og = g.data.poster ? await getImage({ src: g.data.poster, width: 1200, format: 'jpeg' }) : null;
+
+/*
+ * Кадры расходятся по тексту статьи, а галерее остаётся остаток.
+ *
+ * Разметку статьи берём готовой: её нужно разрезать по заголовкам, чтобы
+ * поставить снимки внутрь разделов. Пока Astro не пересобрал коллекцию,
+ * `rendered` может быть пустым — тогда показываем статью обычным блоком,
+ * а все кадры уходят в галерею, как раньше.
+ */
+type Photo = Extract<(typeof g.data.gallery)[number], { kind: 'image' }>;
+const articleHtml = g.entry.rendered?.html ?? '';
+const photos = g.data.gallery.filter((p): p is Photo => p.kind === 'image');
+const allVideos = videoItems(g.data.gallery);
+/*
+ * Раскладку считает та же функция, что и сам текст статьи: галерее под
+ * статьёй остаётся ровно то, что в текст не попало.
+ */
+const plan = articleHtml ? planArticle(articleHtml, photos, allVideos, g.data.poster) : null;
+const leftover = plan
+  ? plan.restPhotos
+  : photos.filter((p) => p.src.src !== g.data.poster?.src);
+const leftoverVideos = plan ? plan.restVideos : allVideos;
+/*
+ * Подпись к постеру.
+ *
+ * Постер — обычно тот же файл, что и первый кадр галереи, и права на него
+ * указывать так же обязательно. Раньше он попадал в галерею вторым
+ * экземпляром только ради этой строки; теперь строка стоит под ним самим.
+ */
+const posterPhoto = photos.find((p) => p.src.src === g.data.poster?.src);
 ---
 
 <Base title={g.data.name} description={g.data.summary} era={g.era} sidebar mainClass="game" image={og?.src}>
@@ -43,7 +88,7 @@ const og = g.data.poster ? await getImage({ src: g.data.poster, width: 1200, for
       <p class="game__summary">{g.data.summary}</p>
       <p class="game__facts">
         <span>{studioName}</span>
-        <span>{yearsLabel(g.data.years)}</span>
+        <span>{yearOf(g.data.years)}</span>
         <span>{CLASS_LABEL[g.data.class]}</span>
         <span>{platforms.map((p) => p.data.altNames[0] ?? p.data.name).join(', ')}</span>
         <span class="game__era" style={`--era-accent:${era.data.accent}`}>
@@ -76,17 +121,41 @@ const og = g.data.poster ? await getImage({ src: g.data.poster, width: 1200, for
             sizes="(max-width: 900px) 100vw, 700px"
             loading="eager"
           />
+          {posterPhoto && (
+            <figcaption class="game__postercap muted">
+              {isGameArt(posterPhoto.license)
+                ? gameArtNote(posterPhoto.license, posterPhoto.author)
+                : `Фото: ${posterPhoto.author}, ${posterPhoto.license}`}
+              {', '}
+              {photoSource(posterPhoto).href ? (
+                <a href={photoSource(posterPhoto).href} rel="noopener external">
+                  {photoSource(posterPhoto).label}
+                </a>
+              ) : (
+                photoSource(posterPhoto).label
+              )}
+            </figcaption>
+          )}
         </figure>
       )
     }
 
     <SpecsTable game={g} graph={graph} />
 
-    <div class="game__text">
-      <Content />
-    </div>
+    {
+      articleHtml ? (
+        <ArticleBody game={g} html={articleHtml} />
+      ) : (
+        <div class="game__text">
+          <Content />
+        </div>
+      )
+    }
 
-    <Gallery game={g} />
+    <Gallery game={g} photos={leftover} videos={leftoverVideos} />
+    <Reviews game={g} />
+    <Availability game={g} />
+    <Reading game={g} />
     <MiniMap game={g} graph={graph} />
     <RelationsList game={g} graph={graph} />
 
@@ -199,6 +268,12 @@ const og = g.data.poster ? await getImage({ src: g.data.poster, width: 1200, for
 
   .game__poster {
     margin: 0 0 1.5rem;
+  }
+
+  .game__postercap {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
   }
 
   .game__poster :global(img) {

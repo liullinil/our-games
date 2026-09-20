@@ -10,7 +10,6 @@ series: ex-machina
 country: russia
 years:
   start: 2017
-  end: null
 platforms:
   - windows
   - playstation-4

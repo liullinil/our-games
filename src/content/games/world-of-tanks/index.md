@@ -12,7 +12,6 @@ series: world-of
 country: belarus
 years:
   start: 2010
-  end: null
 platforms:
   - windows
   - xbox-360

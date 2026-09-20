@@ -12,7 +12,6 @@ publishers:
 country: russia
 years:
   start: 2006
-  end: null
   note: "версия 108 вышла 17 апреля 2024 года — разработка продолжается спустя почти два десятилетия после запуска"
 platforms:
   - web

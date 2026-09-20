@@ -192,16 +192,40 @@ export const EDGE_LABEL: Record<string, string> = {
 };
 
 /**
- * Годы одной строкой: «2007», «2010 — н. в.», «1998–2003».
+ * Год выхода одной строкой: «2007».
  *
- * У игры один год выхода; отрезок появляется, только когда её развивали
- * дальше: патчи, дополнения, сервера онлайн-игры.
+ * У игры одна дата — когда она вышла. Раньше здесь собирался отрезок
+ * «2010 — н. в.» по году закрытия серверов, но срок жизни игры — факт для
+ * статьи, а не вторая координата: карточка с ним читалась как «игра шла
+ * с 2010 по 2025», хотя вышла она один раз.
  */
-export function yearsLabel(years: { start: number; end?: number | null }): string {
-  if (years.end === null) return `${years.start} — н. в.`;
-  if (years.end === undefined || years.end === years.start) return String(years.start);
-  return `${years.start}–${years.end}`;
+export function yearOf(years: { start: number }): string {
+  return String(years.start);
 }
+
+/** Где взять игру: подпись состояния. */
+export const AVAILABILITY_LABEL: Record<string, string> = {
+  sold: 'продаётся',
+  free: 'бесплатно',
+  freeware: 'свободно распространяется',
+  opensource: 'открытый код',
+  unavailable: 'не продаётся',
+  unknown: 'не выяснено',
+};
+
+/**
+ * Родство студий с обеих сторон.
+ *
+ * Запись «related: [{ studio: gsc, kind: spinoff }]» у 4A Games читается как
+ * «основана выходцами из GSC»; на странице GSC та же связь показывается
+ * зеркально — «выходцы основали 4A Games».
+ */
+export const STUDIO_RELATION_LABEL: Record<string, { own: string; mirror: string }> = {
+  spinoff: { own: 'основана выходцами из', mirror: 'выходцы основали' },
+  parent: { own: 'дочерняя студия', mirror: 'дочерние студии' },
+  successor: { own: 'продолжает дело', mirror: 'дело продолжила' },
+  sibling: { own: 'родственная студия', mirror: 'родственная студия' },
+};
 
 /** Разряды в больших числах: 3 481 033. */
 export function formatCount(n: number): string {

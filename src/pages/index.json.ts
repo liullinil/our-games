@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getGraph, studioNameAt } from '../lib/graph';
 import { gameUrl } from '../lib/paths';
-import { yearsLabel } from '../lib/labels';
+import { yearOf } from '../lib/labels';
 
 /**
  * Маленький индекс для быстрого перехода в шапке: только то, что нужно
@@ -16,7 +16,7 @@ export const GET: APIRoute = async () => {
       name: v.data.name,
       alt: v.data.altNames,
       studio: studio ? studioNameAt(studio, v.data.years.start) : '',
-      years: yearsLabel(v.data.years),
+      years: yearOf(v.data.years),
       url: gameUrl(v.id),
       article: v.data.status === 'article',
     };

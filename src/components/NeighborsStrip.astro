@@ -6,7 +6,7 @@
 import type { Graph, GameNode } from '../lib/graph';
 import { sharingEngines, sharingPublishers, sharingPlatforms } from '../lib/graph';
 import { gameUrl } from '../lib/paths';
-import { yearsLabel } from '../lib/labels';
+import { yearOf } from '../lib/labels';
 
 interface Props {
   game: GameNode;
@@ -65,7 +65,7 @@ const rows = [
           <span>
             <span class="neighbors__label">Предшественник</span>
             <span class="neighbors__name">{prev.data.name}</span>
-            <span class="muted">{yearsLabel(prev.data.years)}</span>
+            <span class="muted">{yearOf(prev.data.years)}</span>
           </span>
         </a>
       ) : (
@@ -78,7 +78,7 @@ const rows = [
           <span>
             <span class="neighbors__label">Продолжение</span>
             <span class="neighbors__name">{next.data.name}</span>
-            <span class="muted">{yearsLabel(next.data.years)}</span>
+            <span class="muted">{yearOf(next.data.years)}</span>
           </span>
           <span class="neighbors__arrow" aria-hidden="true">→</span>
         </a>

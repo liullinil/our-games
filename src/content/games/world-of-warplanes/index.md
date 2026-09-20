@@ -11,7 +11,6 @@ series: world-of
 country: belarus
 years:
   start: 2013
-  end: null
 platforms:
   - windows
 engines:

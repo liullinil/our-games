@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { getImage } from 'astro:assets';
 import { getGraph, studioNameAt } from '../lib/graph';
 import { gameUrl } from '../lib/paths';
-import { yearsLabel, CLASS_LABEL } from '../lib/labels';
+import { yearOf, CLASS_LABEL } from '../lib/labels';
 import { isVideo } from '../lib/video';
 
 /**
@@ -35,7 +35,7 @@ export const GET: APIRoute = async () => {
 
     out[g.id] = {
       n: g.data.name,
-      y: yearsLabel(g.data.years),
+      y: yearOf(g.data.years),
       p: studio ? studioNameAt(studio, g.data.years.start) : '',
       c: CLASS_LABEL[g.data.class] ?? '',
       u: gameUrl(g.id),

@@ -60,8 +60,8 @@ function checkFrontmatter(label, text) {
  */
 const LIST_FIELDS = {
   '': ['gallery', 'altNames', 'sources'],
-  games: ['platforms', 'publishers', 'engines', 'predecessors', 'basedOn', 'variants'],
-  studios: ['names'],
+  games: ['platforms', 'publishers', 'engines', 'predecessors', 'basedOn', 'variants', 'reviews', 'reading'],
+  studios: ['names', 'related'],
   eras: ['images', 'motifs'],
 };
 
@@ -174,6 +174,19 @@ async function checkGames() {
       }
     }
 
+    /*
+     * Диапазона лет у игры больше нет.
+     *
+     * Раньше `years.end` означал закрытие серверов или последний патч, и
+     * карточка читалась как «игра шла с 2010 по 2025». У игры одна дата —
+     * выход; всё остальное — факт для статьи и для `years.note`.
+     */
+    if (/^\s{2}end:/m.test(fm.match(/^years:\r?\n((?:[ \t]+.*\r?\n)+)/m)?.[1] ?? '')) {
+      problems.push(`games/${id}: поле years.end больше не используется — опишите закрытие в years.note или в статье`);
+    }
+
+    checkExtras(id, fm);
+
     // Эпоха задаётся вручную только осознанно: сверяем с годом начала выпуска.
     const era = field(fm, 'era');
     if (era && start) {
@@ -204,6 +217,61 @@ async function checkGames() {
       if (!block.includes('sourceUrl:') && !block.includes('sourceBook:')) {
         problems.push(`games/${id}: у фотографии ${i + 1} нет ни sourceUrl, ни sourceBook`);
       }
+    }
+  }
+}
+
+/**
+ * Рецензии, чтение и доступность: то, что сборка проверит по схеме, но
+ * назовёт ошибку невнятно. Здесь — по-человечески и заранее.
+ *
+ * Файлы из `availability.files` должны лежать в public/downloads/<id>/:
+ * ссылка на несуществующий файл — это битая кнопка «Скачать» на сайте.
+ */
+function checkExtras(id, fm) {
+  let doc;
+  try {
+    doc = parseYaml(fm);
+  } catch {
+    return; // синтаксис уже отмечен выше
+  }
+  if (!doc || typeof doc !== 'object') return;
+
+  for (const [i, r] of (Array.isArray(doc.reviews) ? doc.reviews : []).entries()) {
+    if (!r || typeof r !== 'object') continue;
+    for (const need of ['outlet', 'verdict', 'url']) {
+      if (!r[need]) problems.push(`games/${id}: у рецензии ${i + 1} нет поля ${need}`);
+    }
+    if (typeof r.verdict === 'string' && r.verdict.length > 320) {
+      warnings.push(`games/${id}: вердикт рецензии ${i + 1} длиннее 320 знаков — это пересказ, а не цитата`);
+    }
+  }
+  for (const [i, r] of (Array.isArray(doc.reading) ? doc.reading : []).entries()) {
+    if (!r || typeof r !== 'object') continue;
+    for (const need of ['title', 'url']) {
+      if (!r[need]) problems.push(`games/${id}: у ссылки «что почитать» ${i + 1} нет поля ${need}`);
+    }
+  }
+
+  const av = doc.availability;
+  if (av && typeof av === 'object') {
+    for (const [i, w] of (Array.isArray(av.where) ? av.where : []).entries()) {
+      if (!w?.title || !w?.url) problems.push(`games/${id}: у места «где взять» ${i + 1} нет title или url`);
+    }
+    for (const [i, f] of (Array.isArray(av.files) ? av.files : []).entries()) {
+      if (!f?.file || !f?.title || !f?.license || !f?.sourceUrl) {
+        problems.push(`games/${id}: у файла ${i + 1} в availability.files нужны file, title, license и sourceUrl`);
+        continue;
+      }
+      const onDisk = path.join(root, 'public', 'downloads', id, f.file);
+      if (!existsSync(onDisk)) {
+        problems.push(`games/${id}: файла public/downloads/${id}/${f.file} нет на диске`);
+      }
+    }
+    if (Array.isArray(av.files) && av.files.length > 0 && !['freeware', 'opensource'].includes(av.status)) {
+      problems.push(
+        `games/${id}: файлы у нас лежат только у игр со status: freeware или opensource, а не «${av.status}»`,
+      );
     }
   }
 }

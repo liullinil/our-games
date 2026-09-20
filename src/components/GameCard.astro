@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import type { Graph, GameNode } from '../lib/graph';
 import { studioNameAt } from '../lib/graph';
 import { gameUrl } from '../lib/paths';
-import { CLASS_LABEL, yearsLabel } from '../lib/labels';
+import { CLASS_LABEL, yearOf } from '../lib/labels';
 
 interface Props {
   game: GameNode;
@@ -58,7 +58,7 @@ const platformLine = platforms
     <div class="game-card__body">
       <span class="game-card__name">{g.data.name}</span>
       <span class="game-card__meta">
-        {studioName} · {yearsLabel(g.data.years)}
+        {studioName} · {yearOf(g.data.years)}
       </span>
       <span class="game-card__meta muted">
         {CLASS_LABEL[g.data.class]}
