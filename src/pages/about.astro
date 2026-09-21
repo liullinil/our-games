@@ -12,8 +12,7 @@ const developers = graph.studioList.filter((s) => s.gameIds.length > 0).length;
 <Base title="О проекте" description="Как устроена энциклопедия отечественных компьютерных игр и что в ней есть.">
   <h1>О проекте</h1>
   <p class="lead">
-    «Игрострой» — справочник по компьютерным играм, сделанным в СССР, России и соседних странах: Украине,
-    Беларуси, Казахстане, Армении, Грузии, Прибалтике. Сейчас в базе {nGames(graph.gameList.length)}, из них{' '}
+    «Игрострой» — справочник по компьютерным играм, сделанным в СССР, России и соседних странах. Сейчас в базе {nGames(graph.gameList.length)}, из них{' '}
     {articles} с подробной статьёй, остальные — короткими справками, {developers}{' '}
     {plural(developers, 'студия', 'студии', 'студий')}, {graph.engineList.length}{' '}
     {plural(graph.engineList.length, 'движок', 'движка', 'движков')} и {graph.platformList.length}{' '}
