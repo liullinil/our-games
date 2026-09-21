@@ -11,6 +11,7 @@ years:
   note: "ранний доступ с 26 сентября 2019 года, релиз версии 1.0 — 7 сентября 2021 года"
 platforms:
   - windows
+  - linux
 engines:
   - unity
 specs:
