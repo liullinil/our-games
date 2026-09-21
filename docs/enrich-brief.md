@@ -36,12 +36,26 @@ freeware / abandonware / исходный код», «<название> old-gam
 - **Перебор адресов по образцу**: у StopGame и DTF адреса предсказуемы.
 
 Чего WebFetch не открывает (403 или блок), проверено многократно:
-`igromania.ru`, `ag.ru` (частично), `gamespot.com`, `ign.com`,
-`rockpapershotgun.com`, `eurogamer.net`, `mobygames.com`, `riotpixels.com`,
-`kanobu.ru`, `4pda`, `speccy.info`, `pcgamingwiki.com`, `web.archive.org`
-(нестабильно). Эти издания можно упомянуть в тексте со ссылкой на
-Википедию как на источник числа, но в `reviews` не класть: правило «только
-открытые тобой страницы» остаётся в силе.
+`igromania.ru`, `gamespot.com`, `ign.com`, `rockpapershotgun.com`,
+`eurogamer.net`, `mobygames.com`, `riotpixels.com`, `kanobu.ru`, `4pda`,
+`speccy.info`, `pcgamingwiki.com`, `nintendolife.com`, `pushsquare.com`,
+`pcgamer.com` (отдаёт клубную страницу вместо текста), `gamesradar.com`
+(обрезается), `gamekult.com`, `jeuxvideo.com`, `fandom.com` (402 на всех
+вики), `web.archive.org` (нестабильно). Эти издания можно упомянуть в
+тексте со ссылкой на Википедию как на источник числа, но в `reviews` не
+класть: правило «только открытые тобой страницы» остаётся в силе.
+
+А вот что открывается, если знать адрес:
+
+- `ag.ru` — через `old.ag.ru/games/<slug>/review/<id>`, прямой адрес даёт отказ;
+- `stopgame.ru` — обзоры лежат по `/show/<id>/<slug>`;
+- `worthplaying.com` — через редирект со старого `article.php`;
+- `gamerstemple.com`, `kv.by`, `gamesisart.ru`, `rnr-wiki.ru`, `bendy.wiki.gg`,
+  `media.2x2tv.ru`, `opencritic.com`, `metacritic.com` (страница
+  `/critic-reviews/`), `zxpress.ru`, `old-games.ru`, `habr.com`.
+
+Список стоит пополнять: если нашли рабочий обходной адрес — допишите сюда,
+следующий агент не будет искать заново.
 
 Иногда помогает панель браузера (`preview_start` с адресом) там, где
 WebFetch получает отказ. Капчи не проходить.

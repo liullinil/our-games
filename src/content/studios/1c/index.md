@@ -8,7 +8,7 @@ city: "Москва"
 country: russia
 founded: 1991
 closed: null
-kind: publisher
+kind: both
 website: https://1c.ru
 summary: >-
   Крупнейший издатель отечественных игр нулевых: жёлто-красные jewel-боксы «1С» стояли в каждом киоске. Издавала «Ил-2», «Космических рейнджеров», «Блицкриг», «Мор», King’s Bounty.

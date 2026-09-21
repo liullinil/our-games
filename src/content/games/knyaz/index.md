@@ -6,9 +6,8 @@ altNames:
   - "Legend of the North: Konung"
 type: rpg
 class: crpg
-developer: lesta
+developer: 1c
 publishers:
-  - 1c
   - snowball
 series: knyaz
 country: russia
