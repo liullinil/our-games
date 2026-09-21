@@ -16,7 +16,11 @@ const { graph, games } = Astro.props;
 
 const studioIds = [...new Set(games.map((g) => g.studioId))];
 const eraIds = graph.eraList.map((e) => e.id).filter((id) => games.some((g) => g.era === id));
-const countries = [...new Set(games.map((g) => g.data.country))];
+/* Страна у игры необязательна: те, где её не называют, в фильтр не попадают. */
+/* Страна у игры необязательна: те, где её не называют, в фильтр не попадают. */
+const countryList = [
+  ...new Set(games.map((g) => g.data.country).filter((c): c is NonNullable<typeof c> => Boolean(c))),
+];
 const platformIds = graph.platformList
   .map((p) => p.id)
   .filter((id) => games.some((g) => g.platformIds.includes(id)));
@@ -66,10 +70,10 @@ const platformIds = graph.platformList
   }
 
   {
-    countries.length > 1 && (
+    countryList.length > 1 && (
       <div class="filters__row scroll-x">
         <span class="filters__label">Страна</span>
-        {countries.map((c) => (
+        {countryList.map((c) => (
           <button class="chip" type="button" data-filter="country" data-value={c} aria-pressed="false">
             {COUNTRY_SHORT[c] ?? c}
           </button>

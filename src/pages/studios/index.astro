@@ -30,7 +30,7 @@ const publishers = graph.studioList.filter((s) => s.gameIds.length === 0);
               <span class="studio__chain muted">{s.data.names.map((n) => n.short).join(' → ')}</span>
             )}
             <span class="muted">
-              {s.data.city && `${s.data.city} · `}{COUNTRY_SHORT[s.data.country]}
+              {[s.data.city, s.data.country && COUNTRY_SHORT[s.data.country]].filter(Boolean).join(' · ')}
               {s.data.founded ? ` · с ${s.data.founded}` : ''}
               {s.data.closed ? ` по ${s.data.closed}` : ''}
             </span>
@@ -58,7 +58,9 @@ const publishers = graph.studioList.filter((s) => s.gameIds.length === 0);
               <a href={studioUrl(s.id)}>
                 <span class="studio__name">{studioShort(s)}</span>
                 <span class="muted">
-                  {s.data.city} · {COUNTRY_SHORT[s.data.country]} · с {s.data.founded}
+                  {[s.data.city, s.data.country && COUNTRY_SHORT[s.data.country], s.data.founded && `с ${s.data.founded}`]
+                    .filter(Boolean)
+                    .join(' · ')}
                   {s.data.closed ? ` по ${s.data.closed}` : ''} · {STUDIO_KIND_LABEL[s.data.kind]}
                 </span>
                 <span class="muted">

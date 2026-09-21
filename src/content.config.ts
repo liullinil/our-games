@@ -342,7 +342,8 @@ const games = defineCollection({
       developer: reference('studios'),
       publishers: z.array(reference('studios')).default([]),
       series: reference('series').optional(),
-      country: z.enum(COUNTRIES),
+      /* Необязательна: энциклопедия вправе не называть происхождение игры. */
+      country: z.enum(COUNTRIES).optional(),
       /*
        * У игры один год — год выхода. Диапазона «с какого по какой» здесь
        * нет нарочно: срок жизни онлайн-игры или дата закрытия серверов —
@@ -444,7 +445,8 @@ const studios = defineCollection({
        * опускается, и страница обходится без него.
        */
       city: z.string().optional(),
-      country: z.enum(COUNTRIES),
+      /* Необязательна по той же причине, что и у игры. */
+      country: z.enum(COUNTRIES).optional(),
       /* Год основания у совсем молодых инди-студий тоже бывает нигде не назван. */
       founded: z.number().int().optional(),
       closed: z.number().int().nullable().default(null),

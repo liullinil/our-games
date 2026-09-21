@@ -100,7 +100,15 @@ const posterPhoto = photos.find((p) => p.src.src === g.data.poster?.src);
       {/* Скрытые метки для поиска: фильтры на странице /search/ */}
       <span
         class="visually-hidden"
-        data-pagefind-filter={`Жанр:${TYPE_LABEL[g.data.type]}, Студия:${studioName}, Эпоха:${era.data.shortTitle}, Страна:${COUNTRY_SHORT[g.data.country]}, ${platformFilter}`}
+        data-pagefind-filter={[
+          `Жанр:${TYPE_LABEL[g.data.type]}`,
+          `Студия:${studioName}`,
+          `Эпоха:${era.data.shortTitle}`,
+          g.data.country && `Страна:${COUNTRY_SHORT[g.data.country]}`,
+          platformFilter,
+        ]
+          .filter(Boolean)
+          .join(', ')}
       />
       {
         g.data.poster && (

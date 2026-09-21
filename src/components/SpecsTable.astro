@@ -34,7 +34,7 @@ const rows: { label: string; value: string | null; href?: string }[] = [
   { label: 'Разработчик', value: studioNameAt(studio, g.data.years.start), href: studioUrl(studio.id) },
   { label: 'Год выхода', value: s.releaseDate ?? yearOf(g.data.years) },
   { label: 'Эпоха', value: `${era.data.shortTitle} (${era.data.range})`, href: eraUrl(era.id) },
-  { label: 'Страна', value: COUNTRY_LABEL[g.data.country] ?? null },
+  { label: 'Страна', value: g.data.country ? (COUNTRY_LABEL[g.data.country] ?? null) : null },
   { label: 'Жанр', value: `${TYPE_LABEL_ONE[g.data.type]}: ${(CLASS_LABEL[g.data.class] ?? '').toLowerCase()}` },
   { label: 'Режимы', value: s.modes.length ? s.modes.map((m) => MODE_LABEL[m]).join(', ') : null },
   { label: 'Вид', value: s.perspective ?? null },
