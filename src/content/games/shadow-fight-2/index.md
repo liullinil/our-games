@@ -17,7 +17,9 @@ platforms:
 specs:
   releaseDate: "1 мая 2014 (мировой релиз); мягкий запуск — сентябрь 2013"
   modes: [single]
-  salesNote: "свыше 400 млн игроков к 2016 году, позднее — более полумиллиарда"
+  salesNote: "свыше 400 млн игроков, по данным самой Nekki"
+  metacritic: 55
+  abroad: "с первого дня по всему миру: Nekki издавала игру сама в App Store и Google Play (мягкий запуск в сентябре 2013-го, мировой релиз 1 мая 2014 года), в 2015-м добавились версии для Windows 8 и macOS, в 2018-м — для Nintendo Switch; пресса хвалила анимацию и силуэтный стиль, ругала управление и гринд"
 summary: >-
   Файтинг о бойце-тени с оружием и магией, скачанный более полумиллиарда раз. Одна из самых успешных мобильных игр из России.
 poster: ./shots/wiki-01.jpg
@@ -44,11 +46,71 @@ gallery:
     title: "Shadow Fight 2 || ALL WEAPONS OF BOSS vs TITAN Bodyguards 「Android Gameplay」"
     channel: "Antv Games"
     checkedAt: "2026-09-20"
+reviews:
+  - outlet: "Nintendojo"
+    score: "75% (C)"
+    verdict: "Отличный визуальный стиль и вдумчивая, непохожая на других боевая система с большим выбором оружия; портит дело случайность, которую вносит ролевая прокачка, и однообразная сюжетная кампания."
+    url: "https://www.nintendojo.com/reviews/review-shadow-fight-2-switch"
+    author: "Andy Hoover"
+    date: "2018"
+  - outlet: "Worth Playing"
+    score: "7/10"
+    verdict: "Плавность анимации на Switch почти не встречается, а ролевая кампания даёт много контента; зато бойцы отличаются друг от друга только оружием, а бесконечные однотипные поединки выматывают."
+    url: "https://worthplaying.com/article/2019/2/18/reviews/112958-switch-review-shadow-fight-2/"
+    author: "Cody Medellin"
+    date: "2019"
+  - outlet: "Switch Player"
+    score: "1,5 из 5"
+    verdict: "Разнообразие бойцов и арен не спасает: удары почти не достигают цели, движения вялые, а кампания превращается в изматывающий гринд с противниками, которые уходят в невидимость."
+    url: "https://switchplayer.net/2019/02/09/shadow-fight-2-review/"
+    author: "Georgina Howlett"
+    date: "2019"
+  - outlet: "Gamezebo"
+    verdict: "Текучая анимация и проработанные силуэты восхищают, но воевать приходится не с противником, а с управлением: подсечка оборачивается перекатом, а удары проходят мимо."
+    url: "https://www.gamezebo.com/reviews/shadow-fight-2-review/"
+    author: "Rob Rich"
+    date: "2014"
+  - outlet: "Softpedia"
+    verdict: "Вероятно, лучший файтинг на Android: естественная пластика приёмов, ощутимый вес каждой обновки снаряжения и мягкая кривая сложности, а ожидание энергии почти не мешает."
+    url: "https://news.softpedia.com/news/top-android-games-shadow-fight-2-review-515584.shtml"
+    author: "Silviu Stahie"
+    date: "2017"
+reading:
+  - title: "«В офисе стоял сейф, в котором были только таблетки от головной боли»: интервью с основателем студии Nekki"
+    url: "https://dtf.ru/gamedev/24689-v-ofise-stoyal-seif-v-kotorom-byli-tolko-tabletki-ot-golovnoi-boli-intervyu-s-osnovatelem-studii-nekki"
+    outlet: "DTF"
+    note: "Дмитрий Терёхин рассказывает, из какого прототипа выросла Shadow Fight и как студия выжила до неё"
+  - title: "Как мы делали ролик для Shadow Fight 2"
+    url: "https://habr.com/ru/companies/Nekki/articles/177617/"
+    outlet: "Хабр"
+    note: "производственный дневник рекламного мультфильма к игре: раскадровки, техники анимации, композитинг"
+  - title: "Большое интервью с Nekki о Shadow Fight, Vector, новых проектах и будущем индустрии"
+    url: "https://gamemag.ru/specials/105597/nekki"
+    outlet: "GameMAG"
+    note: "разговор со студией о серии и её планах"
+  - title: "Cascadeur: будущее игровой анимации"
+    url: "https://habr.com/ru/companies/banzai/articles/462023/"
+    outlet: "Хабр"
+    note: "основатель Banzai Games о физической анимации без захвата движения — той самой школе, из которой вышла пластика боёв серии"
+availability:
+  status: free
+  note: "мобильные версии для iOS и Android раздаются бесплатно с покупками внутри; на Nintendo Switch игра платная, а в 2017 году выходило отдельное платное издание Special Edition"
+  where:
+    - title: "App Store"
+      url: "https://apps.apple.com/us/app/shadow-fight-2/id696565994"
+    - title: "Google Play"
+      url: "https://play.google.com/store/apps/details?id=com.nekki.shadowfight"
+    - title: "Nintendo eShop"
+      url: "https://www.nintendo.com/us/store/products/shadow-fight-2-switch/"
 sources:
   - title: "Shadow Fight 2 — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Shadow_Fight_2"
   - title: "Nekki — официальный сайт"
     url: "https://nekki.com/"
+  - title: "Shadow Fight 2 for Switch Reviews — Metacritic"
+    url: "https://www.metacritic.com/game/shadow-fight-2/critic-reviews/?platform=nintendo-switch"
+  - title: "«В офисе стоял сейф…»: интервью с основателем студии Nekki — DTF"
+    url: "https://dtf.ru/gamedev/24689-v-ofise-stoyal-seif-v-kotorom-byli-tolko-tabletki-ot-golovnoi-boli-intervyu-s-osnovatelem-studii-nekki"
 status: article
 ---
 

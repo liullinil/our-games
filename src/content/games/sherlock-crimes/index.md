@@ -5,7 +5,8 @@ altNames:
 type: adventure
 class: quest
 developer: frogwares
-publishers: []
+publishers:
+  - focus
 series: sherlock-holmes
 country: ukraine
 years:
