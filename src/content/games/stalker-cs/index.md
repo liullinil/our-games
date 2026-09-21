@@ -10,7 +10,6 @@ publishers:
   - gsc-game-world
   - deep-silver
 series: stalker
-country: ukraine
 years:
   start: 2008
 predecessors:

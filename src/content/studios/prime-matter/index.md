@@ -36,4 +36,4 @@ Prime Matter — издательская марка Koch Media (ныне Plaion
 
 Третьей в списке оказалась [Owlcat](../owlcat/). За «[Pathfinder: Wrath of the Righteous](../../games/pathfinder-wotr/)» Prime Matter взялась уже после релиза: под её маркой вышли дополнения Inevitable Excess (15 февраля 2022 года) и The Treasure of the Midnight Isles (30 августа), а 29 сентября 2022-го — расширенное издание для PlayStation 4, Xbox One и Nintendo Switch. Саму игру на PC издавала META Publishing, так что здесь Prime Matter отвечала за консоли и добавки.
 
-Дальше марка ушла в другую сторону — Payday 3, System Shock, Mount & Blade II: Bannerlord на приставках, — и в её списке изданного постсоветские разработчики после 2022 года больше не встречаются.
+Дальше марка ушла в другую сторону — Payday 3, System Shock, Mount & Blade II: Bannerlord на приставках, — и постсоветские разработчики в её списке изданного больше не встречаются.

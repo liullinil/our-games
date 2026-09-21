@@ -8,7 +8,6 @@ developer: gsc-game-world
 publishers:
   - gsc-game-world
 series: cossacks
-country: ukraine
 years:
   start: 2016
 predecessors:

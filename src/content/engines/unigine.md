@@ -10,7 +10,7 @@ years:
   end: null
 website: https://unigine.com
 summary: >-
-  Томский движок, известный прежде всего по бенчмаркам Heaven, Valley и Superposition. Игр на нём немного: Oil Rush самой UNIGINE и приключение Cradle киевской Flying Cafe.
+  Томский движок, известный прежде всего по бенчмаркам Heaven, Valley и Superposition. Игр на нём немного: Oil Rush самой UNIGINE и приключение Cradle студии Flying Cafe.
 sources:
   - title: "History Timeline — UNIGINE"
     url: "https://unigine.com/company/history"
@@ -28,7 +28,7 @@ UNIGINE поддерживает DirectX, Vulkan и OpenGL, масштабиру
 
 ## Игры
 
-На движке вышли собственная стратегия UNIGINE «Oil Rush» (2012) и «[Cradle](../../games/cradle/)» (2015) киевской студии [Flying Cafe for Semianimals](../../studios/flying-cafe/) — атмосферный квест про механическую девушку в юрте среди монгольских песков.
+На движке вышли собственная стратегия UNIGINE «Oil Rush» (2012) и «[Cradle](../../games/cradle/)» (2015) студии [Flying Cafe for Semianimals](../../studios/flying-cafe/) — атмосферный квест про механическую девушку в юрте среди монгольских песков.
 
 ## Судьба
 
