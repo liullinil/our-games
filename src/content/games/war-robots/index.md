@@ -14,6 +14,10 @@ platforms:
   - ios
   - android
   - windows
+  - playstation-4
+  - playstation-5
+  - xbox-one
+  - xbox-series
 engines:
   - unity
 specs:
