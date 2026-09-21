@@ -23,6 +23,7 @@
     "video": "node scripts/fetch-video.mjs",
     "photos:shrink": "node scripts/shrink-photos.mjs",
     "links:check": "node scripts/check-links.mjs",
+    "site:check": "node scripts/check-site.mjs",
     "serve:pages": "node scripts/serve-like-pages.mjs",
     "coverage": "node scripts/coverage.mjs",
     "contrast:check": "node scripts/check-contrast.mjs"

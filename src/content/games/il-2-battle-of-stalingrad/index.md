@@ -17,9 +17,11 @@ platforms:
 engines:
   - digital-nature
 specs:
-  releaseDate: "ранний доступ — декабрь 2013 года; полный релиз — 2014-й (источники называют разные даты, от 14 августа до 22 октября)"
+  releaseDate: "ранний доступ — 19 ноября 2013 года; полный релиз — 2014-й (источники называют разные даты, от 14 августа до 22 октября)"
   modes: [single, multiplayer, coop]
   setting: "Сталинградская битва, 1942–1943 годы"
+  metacritic: 74
+  abroad: "по всему миру под названием IL-2 Sturmovik: Battle of Stalingrad, силами самих разработчиков — через собственный сайт и Steam, без отдельного западного издателя; западная пресса оценила игру сдержанно, средняя оценка Metacritic — 74 из 100"
 summary: >-
   Перезапуск серии на движке Rise of Flight: Сталинград, Москва, Кубань и десятки самолётов в одной платформе «Великие сражения», которая развивается до сих пор.
 steamAppId: 307960
@@ -77,6 +79,47 @@ gallery:
     title: "Ил-2 Штурмовик. Битва за Сталинград. Продолжаем путь одного пилота."
     channel: "ТАНКИСТ"
     checkedAt: "2026-09-20"
+reviews:
+  - outlet: "Absolute Games (AG.ru)"
+    score: "80%"
+    verdict: "Самолёты собраны по чертежам, кабины живые, а воздушный бой требует настоящего умения и хорошего джойстика; расплата — куцый авиапарк примерно в десяток машин на сторону, однообразные задания и небо, в котором для Сталинградской битвы подозрительно пусто."
+    url: "https://ag.ru/games/il-2-sturmovik-battle-of-stalingrad/review"
+    author: "Skeiz"
+    date: "2014"
+  - outlet: "Multiplayer.it"
+    score: "8/10"
+    verdict: "Выверенная модель полёта и точная геометрия попаданий, десяток машин с разными характерами и живое сетевое сообщество; динамическая кампания оказалась просто генератором вылетов без истории, а заснеженный Сталинград быстро приедается."
+    url: "http://multiplayer.it/recensioni/142022-il-2-sturmovik-battle-of-stalingrad-la-grande-battaglia.html"
+    author: "Andrea Centini"
+    date: "2014"
+  - outlet: "Everyeye.it"
+    score: "8/10"
+    verdict: "Уровень симуляции исключительный, историческая часть опирается на рассекреченные документы, картинка — одна из лучших в жанре; новичка отпугивает отсутствие обучения и необходимость заучивать десятки клавиш."
+    url: "http://www.everyeye.it/pc/articoli/il-2-sturmovik-battle-of-stalingrad_recensione_24306"
+    author: "Alessandro Agostinis"
+    date: "2014"
+reading:
+  - title: "Небо, самолет, дедушка. «Ил-2 Штурмовик: Битва за Сталинград»"
+    url: "https://www.igromania.ru/article/24457/Nebo_samolet_dedushka._Il-2_Shturmovik_Bitva_za_Stalingrad.html"
+    outlet: "Игромания"
+    note: "разговор с генеральным продюсером 1C Game Studios Альбертом Жильцовым: путь от фанатской команды Gennadich Team и Rise of Flight до нового «Ил-2»"
+  - title: "IL-2 Sturmovik: Battle of Stalingrad in development at new 1C and 777 Studios outfit"
+    url: "https://www.pcgamesn.com/flightsim/il-2-sturmovik-battle-stalingrad-development-new-1c-and-777-studios-outfit"
+    outlet: "PCGamesN"
+    note: "как в начале 2013 года «1С» и 777 Studios объявили о создании общей студии и планах на Сталинград"
+  - title: "Дотянуться до небес — развитие авиасимов и главные лица жанра"
+    url: "https://www.igromania.ru/article/33036/dotyanutsya-do-nebes-razvitie-aviasimov-i-glavnyie-litsa-zhanra/"
+    outlet: "Игромания"
+    note: "место «Ил-2» среди современных авиасимуляторов — от DCS до Ace Combat"
+availability:
+  status: sold
+  note: "в Steam и в фирменном магазине серии; остальные модули «Великих сражений» — Москва, Кубань, Нормандия и прочие — покупаются отдельно и связываются в одну игру"
+  where:
+    - title: "Steam"
+      url: "https://store.steampowered.com/app/307960/"
+    - title: "Официальный сайт «Великих сражений»"
+      url: "https://il2sturmovik.com/"
+      note: "магазин модулей серии"
 sources:
   - title: "IL-2 Sturmovik: Great Battles — Wikipedia"
     url: "https://en.wikipedia.org/wiki/IL-2_Sturmovik:_Great_Battles"
@@ -84,6 +127,8 @@ sources:
     url: "https://www.pcgamesn.com/flightsim/il-2-sturmovik-battle-stalingrad-development-new-1c-and-777-studios-outfit"
   - title: "IL-2 Sturmovik: Battle of Stalingrad — Metacritic"
     url: "https://www.metacritic.com/game/il-2-sturmovik-battle-of-stalingrad/details/"
+  - title: "IL-2 Sturmovik: Battle of Stalingrad — Steam"
+    url: "https://store.steampowered.com/app/307960/"
 status: article
 ---
 
@@ -91,7 +136,9 @@ status: article
 
 ## История создания
 
-1C Game Studios сформировали в Москве в 2011 году специально для продолжения серии Ил-2 совместно с американской 777 Studios — создателями Rise of Flight (2009). Вместо того чтобы писать технологию заново, команда взяла за основу уже отлаженный движок Rise of Flight, впоследствии известный как Digital Nature. Игра поступила в продажу в раннем доступе в декабре 2013 года, а полноценный релиз состоялся в 2014-м — источники расходятся в точной дате, называя то 14 августа, то 22 октября.
+1C Game Studios сформировали в Москве в 2011 году специально для продолжения серии Ил-2 совместно с американской 777 Studios — создателями Rise of Flight (2009). Вместо того чтобы писать технологию заново, команда взяла за основу уже отлаженный движок Rise of Flight, впоследствии известный как Digital Nature. Игра поступила в продажу в раннем доступе 19 ноября 2013 года, а полноценный релиз состоялся в 2014-м — источники расходятся в точной дате, называя то 14 августа, то 20-е, то 22 октября.
+
+Публично о совместном предприятии объявили в декабре 2012 года — почти одновременно с решением свернуть поддержку «[Битвы за Британию](../il-2-cliffs-of-dover/)». Управление новой студией взяла на себя американская сторона, и это был редкий случай, когда эстафету у российских создателей серии принимали люди, пришедшие в профессию из её же фанатского сообщества: генеральный продюсер Альберт Жильцов пришёл в профессию из любительской команды Gennadich Team, выросшей вокруг первого «Ил-2», а затем своими силами выпустил Rise of Flight — симулятор Первой мировой, чей движок и лёг в основу «Битвы за Сталинград». Ранний доступ поначалу полагался только владельцам «премиального» издания.
 
 ## Игровой процесс
 
