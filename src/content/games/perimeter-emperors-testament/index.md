@@ -26,6 +26,55 @@ specs:
   setting: "Психосфера: миры Фортоп и Итуруп и кластер «Горсть Миров»"
   metacritic: 72
   abroad: "международный релиз 29 августа 2006 года, издатель Paradox Interactive, в Северной Америке — 4 сентября; приём ровный, 72 из 100 на Metacritic по пятнадцати рецензиям"
+poster: ./shots/poster.jpg
+gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Perimeter: Emperor's Testament: обложка в Steam"
+    author: "K-D Lab, Fulqrum Publishing"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/289240/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Perimeter: Emperor's Testament: кадр из игры"
+    author: "K-D Lab, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289240/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Perimeter: Emperor's Testament: кадр из игры"
+    author: "K-D Lab, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289240/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Perimeter: Emperor's Testament: кадр из игры"
+    author: "K-D Lab, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289240/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Perimeter: Emperor's Testament: кадр из игры"
+    author: "K-D Lab, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289240/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Perimeter: Emperor's Testament: кадр из игры"
+    author: "K-D Lab, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289240/"
+  - kind: youtube
+    id: "CTuaMcAzHAw"
+    title: "Периметр: Завет Императора | Часть №19: КАРСТ | Прохождение без комментариев"
+    channel: "daatchk"
+    checkedAt: "2026-09-21"
+  - kind: rutube
+    id: "00e78d1b1c23c358bd353ff86bd03b59"
+    title: "ПРОХОЖДЕНИЕ: ПЕРИМЕТР/PERIMETER Legate Edition Завет Императора. Часть 3"
+    channel: "Подземелья и лабиринты"
+    poster: "https://pic.rtbcdn.ru/video/2025-05-16/ba/12/ba1288bb4a0910f3246233699151b473.jpg"
+    checkedAt: "2026-09-21"
 summary: >-
   Самостоятельное дополнение к «Периметру»: двадцать пять уровней параллельно событиям оригинала, электрическая лаборатория и почти ничего больше.
 steamAppId: 289240
