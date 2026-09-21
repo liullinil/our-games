@@ -14,6 +14,7 @@ platforms:
   - windows
   - ios
   - android
+  - nintendo-ds
 specs:
   releaseDate: "декабрь 2007"
   modes: [single]

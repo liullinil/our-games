@@ -12,6 +12,7 @@ years:
 platforms:
   - ios
   - android
+  - nintendo-ds
 specs:
   releaseDate: "4 октября 2010"
   modes: [single]

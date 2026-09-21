@@ -12,6 +12,8 @@ years:
 platforms:
   - windows
   - ios
+  - nintendo-ds
+  - wii
 specs:
   releaseDate: "27 февраля 2007"
   modes: [single]
