@@ -290,6 +290,14 @@ function checkExtras(id, fm) {
   }
   if (!doc || typeof doc !== 'object') return;
 
+  /*
+   * Адрес рецензии должен вести на саму рецензию. Сводка чужих оценок —
+   * Википедия, Metacritic, «Критиканство» — источник числа, а не рецензия:
+   * такие оценки называют в тексте со ссылкой на сводку. Два одинаковых
+   * адреса у разных изданий означают ровно это же.
+   */
+  const AGGREGATOR = /wikipedia\.org|metacritic\.com|kritikanstvo\.ru|gamerankings\.com|opencritic\.com/i;
+  const seen = new Map();
   for (const [i, r] of (Array.isArray(doc.reviews) ? doc.reviews : []).entries()) {
     if (!r || typeof r !== 'object') continue;
     for (const need of ['outlet', 'verdict', 'url']) {
@@ -297,6 +305,23 @@ function checkExtras(id, fm) {
     }
     if (typeof r.verdict === 'string' && r.verdict.length > 320) {
       warnings.push(`games/${id}: вердикт рецензии ${i + 1} длиннее 320 знаков — это пересказ, а не цитата`);
+    }
+    const onAggregator = typeof r.url === 'string' && AGGREGATOR.test(r.url);
+    /* Если само издание и есть сводка — ссылка на его страницу законна. */
+    const isAggregator = /wikipedia|википеди|metacritic|критиканств|kritikanstvo|gamerankings|opencritic/i.test(String(r.outlet ?? ''));
+    if (onAggregator && !isAggregator) {
+      problems.push(
+        `games/${id}: рецензия ${i + 1} (${r.outlet ?? '?'}) ссылается на сводку оценок, а не на саму рецензию — ` +
+          'число назовите в тексте со ссылкой на источник, а из reviews уберите',
+      );
+    }
+    if (typeof r.url === 'string') {
+      const was = seen.get(r.url);
+      if (was !== undefined) {
+        problems.push(
+          `games/${id}: у рецензий ${was + 1} и ${i + 1} один и тот же адрес — у каждой должен быть свой`,
+        );
+      } else seen.set(r.url, i);
     }
   }
   for (const [i, r] of (Array.isArray(doc.reading) ? doc.reading : []).entries()) {

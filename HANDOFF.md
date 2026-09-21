@@ -192,6 +192,7 @@ node scripts/validate-content.mjs   # схема, годы, ссылки на з
 node scripts/check-links.mjs        # относительные ссылки внутри статей
 npm run steam:check                 # кадры из Steam принадлежат своим играм
 npm run wiki:check                  # то же для Википедии (нужна сеть)
+npm run stores:check                # живы ли ссылки «где взять» (нужна сеть)
 npm run contrast:check              # контраст во всех темах
 npm run coverage                    # где пробелы
 npx astro check                     # типы

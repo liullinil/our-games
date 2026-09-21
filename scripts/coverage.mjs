@@ -61,7 +61,15 @@ const bar = (n, total, width = 18) => {
   return '█'.repeat(filled) + '·'.repeat(width - filled);
 };
 
-/** Строка таблицы: название, сколько всего, сколько со статьёй, с медиа. */
+/**
+ * Статья считается разобранной, когда заполнены все три блока сразу: пресса,
+ * «что почитать» и доступность. Пустой список рецензий — это тоже ответ:
+ * у советских автоматов прессы не было и быть не могло.
+ */
+const parsed = (g) =>
+  Array.isArray(g.data.reviews) && Array.isArray(g.data.reading) && g.data.reading.length > 0 && Boolean(g.data.availability);
+
+/** Строка таблицы: название, сколько всего, сколько со статьёй, с медиа, с разбором. */
 function row(label, items) {
   const total = items.length;
   const articles = items.filter((g) => g.data.status === 'article').length;
@@ -69,7 +77,7 @@ function row(label, items) {
   const videos = items.filter((g) =>
     (g.data.gallery ?? []).some((x) => x.kind === 'youtube' || x.kind === 'rutube' || x.kind === 'vk'),
   ).length;
-  return { label, total, articles, shots, videos };
+  return { label, total, articles, shots, videos, parsed: items.filter(parsed).length };
 }
 
 function print(title, rows) {
@@ -79,7 +87,8 @@ function print(title, rows) {
     console.log(
       `  ${r.label.padEnd(width)}  ${String(r.total).padStart(3)} игр  ` +
         `${bar(r.articles, r.total)} ${String(pct(r.articles, r.total)).padStart(3)}% статей  ` +
-        `кадры ${String(pct(r.shots, r.total)).padStart(3)}%  видео ${String(pct(r.videos, r.total)).padStart(3)}%`,
+        `кадры ${String(pct(r.shots, r.total)).padStart(3)}%  видео ${String(pct(r.videos, r.total)).padStart(3)}%  ` +
+        `разбор ${String(pct(r.parsed, r.total)).padStart(3)}%`,
     );
   }
 }
@@ -105,7 +114,8 @@ if (!GAPS) {
   console.log(
     `Игр: ${all.total}. Статей: ${all.articles} (${pct(all.articles, all.total)}%), ` +
       `со скриншотами: ${all.shots} (${pct(all.shots, all.total)}%), ` +
-      `с видео: ${all.videos} (${pct(all.videos, all.total)}%).`,
+      `с видео: ${all.videos} (${pct(all.videos, all.total)}%), ` +
+      `с прессой и доступностью: ${all.parsed} (${pct(all.parsed, all.total)}%).`,
   );
 
   const byEra = [...eras]
