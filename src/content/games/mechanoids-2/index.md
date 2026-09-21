@@ -23,6 +23,55 @@ specs:
   perspective: "от первого лица"
   setting: "Полигон-4 после Реформации, война кланов механоидов пятого поколения"
   abroad: "англоязычное название — A.I.M. 2: Clan Wars; отдельного западного издателя источники не называют, в Steam страница игры датирована 18 августа 2007 года, сегодня её ведёт Fulqrum Publishing"
+poster: ./shots/poster.jpg
+gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "A.I.M.2 Clan Wars: обложка в Steam"
+    author: "SkyRiver Studios, Fulqrum Publishing"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/289180/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "A.I.M.2 Clan Wars: кадр из игры"
+    author: "SkyRiver Studios, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289180/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "A.I.M.2 Clan Wars: кадр из игры"
+    author: "SkyRiver Studios, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289180/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "A.I.M.2 Clan Wars: кадр из игры"
+    author: "SkyRiver Studios, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289180/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "A.I.M.2 Clan Wars: кадр из игры"
+    author: "SkyRiver Studios, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289180/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "A.I.M.2 Clan Wars: кадр из игры"
+    author: "SkyRiver Studios, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289180/"
+  - kind: youtube
+    id: "y9bzkUkUvD8"
+    title: "Механоиды 2: Война кланов 🎮 ПОЧТИ ПОЛНЫЙ ОБЗОР ПРОХОЖДЕНИЯ ИГРЫ"
+    channel: "born4shame ▶ games"
+    checkedAt: "2026-09-21"
+  - kind: rutube
+    id: "028c57ec4fe0c6c4494a9ed0d008d9d8"
+    title: "МЕХАНОИДЫ 2 ВОЙНА КЛАНОВ - самое начало прохождения игры на сбор всех механоидов"
+    channel: "born | retro gaming+"
+    poster: "https://pic.rtbcdn.ru/video/2025-01-22/80/26/8026d2b5c5fac0e255d45ad1af3430f6.jpg"
+    checkedAt: "2026-09-21"
 summary: >-
   Продолжение «Механоидов»: тот же Полигон-4, но теперь глайдеры сбиваются в кланы, а игрок «убеждает» чужие машины перейти на свою сторону.
 steamAppId: 289180

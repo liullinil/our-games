@@ -25,6 +25,55 @@ specs:
   setting: "фэнтезийная Лесная страна: славяне, варяги и византийцы"
   metacritic: 35
   abroad: "на Западе с 30 ноября 2004 года как Konung 2: Blood of Titans, издатели Got Game Entertainment и Merscom; американская пресса разнесла игру, итог на Metacritic — 35 из 100 по четырём рецензиям"
+poster: ./shots/poster.jpg
+gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "Konung 2: обложка в Steam"
+    author: "Fulqrum Publishing"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/289360/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Konung 2: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289360/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Konung 2: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289360/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Konung 2: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289360/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Konung 2: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289360/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Konung 2: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289360/"
+  - kind: youtube
+    id: "k7uoQ996hF0"
+    title: "Прохождение за Эйнара 1. Князь 2 Кровь Титанов."
+    channel: "Ave Tyr"
+    checkedAt: "2026-09-21"
+  - kind: rutube
+    id: "b6c7619b17d00808b8f98ff193791f31"
+    title: "Князь 2: Кровь Титанов - №2 (прохождение без комментариев)"
+    channel: "Фан-клуб загадок"
+    poster: "https://pic.rtbcdn.ru/video/c6/3e/c63e352547a34ae3259b56c1e9a07155.jpg"
+    checkedAt: "2026-09-21"
 summary: >-
   Продолжение «Князя», в котором герой первой части сам стал злодеем: шестеро потомков титанов идут свергать его с трона Лесной страны.
 steamAppId: 289360

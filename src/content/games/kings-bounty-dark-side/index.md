@@ -26,6 +26,54 @@ specs:
   setting: "мир Эндории со стороны тьмы: орки, вампиры и демоны против светлых захватчиков"
   metacritic: 73
   abroad: "вышла 19 августа 2014 года под названием King's Bounty: Dark Side; в Великобритании премиум-издание выпускала Excalibur Publishing, в Steam игра доступна на английском, немецком и польском. Metacritic — 73 из 100, отрицательных рецензий нет; английская Википедия при этом называет датой выхода 14 августа"
+poster: ./shots/poster.jpg
+gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "King’s Bounty. Тёмная сторона: обложка в Steam"
+    author: "Fulqrum Publishing"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/289520/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "King’s Bounty. Тёмная сторона: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289520/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "King’s Bounty. Тёмная сторона: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289520/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "King’s Bounty. Тёмная сторона: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289520/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "King’s Bounty. Тёмная сторона: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289520/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "King’s Bounty. Тёмная сторона: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/289520/"
+  - kind: youtube
+    id: "EN4PaJpC4Wk"
+    title: "Прохождение Kings's Bounty. [Кингс баунти - Тёмная сторона, Невозможная сложность, Вампир] Часть 1"
+    channel: "TGAME VADIM"
+    checkedAt: "2026-09-21"
+  - kind: youtube
+    id: "L46a70eo9cI"
+    title: "King's Bounty: Dark Side ➤ Тёмная Сторона(прохождение) №1"
+    channel: "Ms.Sem"
+    checkedAt: "2026-09-21"
 summary: >-
   Последняя классическая King’s Bounty: играть предлагают за орка, вампира или демонессу, отбивающихся от светлых захватчиков. Финальная игра на движке TheEngine.
 steamAppId: 289520

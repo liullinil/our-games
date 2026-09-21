@@ -26,6 +26,54 @@ specs:
   setting: "северные земли Эндории, поколение спустя после «Легенды о рыцаре»"
   metacritic: 74
   abroad: "вышла 26 октября 2012 года сразу по всему миру под названием King's Bounty: Warriors of the North, издатель 1C Company; в Steam доступна на английском, немецком и польском, Metacritic — 74 из 100, причём отрицательных рецензий среди западных изданий не оказалось ни одной"
+poster: ./shots/poster.jpg
+gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "King’s Bounty. Воин Севера: обложка в Steam"
+    author: "Fulqrum Publishing"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/203350/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "King’s Bounty. Воин Севера: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/203350/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "King’s Bounty. Воин Севера: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/203350/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "King’s Bounty. Воин Севера: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/203350/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "King’s Bounty. Воин Севера: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/203350/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "King’s Bounty. Воин Севера: кадр из игры"
+    author: "Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/203350/"
+  - kind: youtube
+    id: "oGJ4HOmF-N4"
+    title: "А тут будут валькирии? Прохождение King’s Bounty: Воин Севера Лед и Пламя#1"
+    channel: "TheFrolPlay"
+    checkedAt: "2026-09-21"
+  - kind: youtube
+    id: "xE5SnDWi6vA"
+    title: "Прохождение King's Bounty: Воин Севера от 5p74 часть 17"
+    channel: "MIШGAN XD (5p74)"
+    checkedAt: "2026-09-21"
 summary: >-
   Первая King’s Bounty без Katauri: викинг Олаф, руническая магия и пять валькирий вместо прежних духов ярости. Формула серии осталась прежней, и критики впервые заговорили, что она выдыхается.
 steamAppId: 203350

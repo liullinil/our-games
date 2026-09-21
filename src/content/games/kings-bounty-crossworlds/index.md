@@ -25,6 +25,49 @@ specs:
   setting: "сказочный мир King’s Bounty: переработанный поход принцессы Амели и две отдельные истории"
   metacritic: 78
   abroad: "вышла 17 сентября 2010 года сразу и в России, и на Западе под названием King's Bounty: Crossworlds, издатель 1C Company; в Steam продаётся с английским, немецким, итальянским, испанским, чешским, польским и китайским языками, Metacritic — 78 из 100"
+poster: ./shots/poster.jpg
+gallery:
+  - kind: image
+    src: ./shots/poster.jpg
+    caption: "King’s Bounty. Перекрёстки миров: обложка в Steam"
+    author: "Katauri Interactive, Fulqrum Publishing"
+    license: "Промо"
+    sourceUrl: "https://store.steampowered.com/app/63910/"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "King’s Bounty. Перекрёстки миров: кадр из игры"
+    author: "Katauri Interactive, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/63910/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "King’s Bounty. Перекрёстки миров: кадр из игры"
+    author: "Katauri Interactive, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/63910/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "King’s Bounty. Перекрёстки миров: кадр из игры"
+    author: "Katauri Interactive, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/63910/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "King’s Bounty. Перекрёстки миров: кадр из игры"
+    author: "Katauri Interactive, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/63910/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "King’s Bounty. Перекрёстки миров: кадр из игры"
+    author: "Katauri Interactive, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/63910/"
+  - kind: youtube
+    id: "gChfSBos-Hg"
+    title: "Прохождение Kings Bounty : Перекрестки Миров (часть 1)"
+    channel: "WoLv"
+    checkedAt: "2026-09-21"
 summary: >-
   Большое самостоятельное дополнение к «Принцессе в доспехах»: переработанная кампания, две короткие истории и редактор, в котором игроки собирали собственные кампании. Последняя King’s Bounty, сделанная Katauri.
 steamAppId: 63910
