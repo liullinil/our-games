@@ -73,7 +73,6 @@ gallery:
     checkedAt: "2026-09-20"
 reviews:
   - outlet: "iXBT games"
-    score: "без оценки"
     verdict: "Атмосферный мир, изобретательные головоломки и разнообразие происходящего перевешивают утилитарную стрельбу и символический стелс; игра сделана руками и сердцем."
     url: "https://ixbt.games/en/reviews/2025/12/17/lampovyi-postapokalipsis-s-russkoi-dusoi-obzor-naucno-fantasticeskogo-prikliuceniia-hail-to-the-rainbow.html"
     author: "Виктор Зайцев"
