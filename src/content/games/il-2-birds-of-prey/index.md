@@ -8,7 +8,9 @@ class: flight-sim
 developer: gaijin
 publishers:
   - 1c
+  - 505-games
   - iceberg
+  - 777-studios
 series: il-2
 country: russia
 years:

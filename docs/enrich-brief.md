@@ -41,18 +41,55 @@ freeware / abandonware / исходный код», «<название> old-gam
 `speccy.info`, `pcgamingwiki.com`, `nintendolife.com`, `pushsquare.com`,
 `pcgamer.com` (отдаёт клубную страницу вместо текста), `gamesradar.com`
 (обрезается), `gamekult.com`, `jeuxvideo.com`, `fandom.com` (402 на всех
-вики), `web.archive.org` (нестабильно). Эти издания можно упомянуть в
-тексте со ссылкой на Википедию как на источник числа, но в `reviews` не
-класть: правило «только открытые тобой страницы» остаётся в силе.
+вики), `gamestar.de`, `gg.deals`, `trueachievements.com`,
+`fulqrumpublishing.com`, `bre.ruwiki.ru` (401), `armchairempire.com`
+(ошибка сертификата), `ferra.ru` (заглушка), `web.archive.org` и
+`smh.com.au` (не получаются в принципе). Мёртвые адреса: `2404.org`,
+`gamezone.com`, `videogamer.com`, `thegamesmachine.it`. Эти издания можно
+упомянуть в тексте со ссылкой на Википедию как на источник числа, но в
+`reviews` не класть: правило «только открытые тобой страницы» остаётся
+в силе.
 
 А вот что открывается, если знать адрес:
 
-- `ag.ru` — через `old.ag.ru/games/<slug>/review/<id>`, прямой адрес даёт отказ;
-- `stopgame.ru` — обзоры лежат по `/show/<id>/<slug>`;
-- `worthplaying.com` — через редирект со старого `article.php`;
-- `gamerstemple.com`, `kv.by`, `gamesisart.ru`, `rnr-wiki.ru`, `bendy.wiki.gg`,
-  `media.2x2tv.ru`, `opencritic.com`, `metacritic.com` (страница
-  `/critic-reviews/`), `zxpress.ru`, `old-games.ru`, `habr.com`.
+- `stopgame.ru` — обзоры лежат по `/show/<id>/<slug>`, у карточки игры
+  `/game/<slug>` есть список статей, превью и новостей;
+- `gameguru.ru` — `/game/<slug>/` и `/publication/<slug>/`;
+- `playground.ru` — карточка, `/opinion/reviews` и сами рецензии;
+- `worthplaying.com` — карточка `/game/<id>-<slug>/` со списком статей;
+- `gamerstemple.com` — `/game-reviews/<платформа>/<id>/<slug>-review`;
+- `impulsegamer.com`, `wccftech.com`, `quartertothree.com`, `ragequit.gr`,
+  `3djuegos.com`, `vandal.elespanol.com` (старый `vandal.net` редиректит
+  сюда), `gameblog.fr`, `videogamesblogger.com`;
+- `kv.by`, `gamesisart.ru`, `rnr-wiki.ru`, `bendy.wiki.gg`, `media.2x2tv.ru`,
+  `opencritic.com`, `metacritic.com` (страница `/critic-reviews/`),
+  `zxpress.ru`, `old-games.ru`, `habr.com`;
+- `ag.ru` — иногда берётся через `old.ag.ru/games/<slug>/review/<id>`, но не
+  всегда: бывает отказ на уровне адреса и в браузерной панели тоже.
+
+**Магазины в обход страниц.** Steam часто отдаёт главную вместо карточки,
+зато работают:
+
+- `store.steampowered.com/api/appdetails?appids=<id>&cc=us&l=english` —
+  `success:false` или пустой `package_groups` означает, что игра снята
+  с продажи;
+- `store.steampowered.com/api/storesearch/?term=...` — поиск по названию;
+- `steamcommunity.com/app/<id>` — страница сообщества;
+- `api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=<id>` — лента
+  новостей; просите сырые целые `date`, иначе год легко перепутать. Этой
+  лентой можно подтвердить, что номер принадлежит нужной игре, даже когда
+  сама карточка закрыта по региону.
+
+GOG через WebFetch не открывается, но отвечает каталог:
+`catalog.gog.com/v1/catalog?query=like:<название>&limit=20&locale=en-US&countryCode=US&currencyCode=USD`.
+
+Википедию удобнее брать как `…/w/index.php?title=<X>&action=raw` и отдельным
+вопросом просить список всех адресов из сносок.
+
+**Руководства Steam Community** WebFetch отдаёт 429 после нескольких
+запросов, а браузерная панель берёт спокойно. Только проверяйте, что
+руководство про нашу игру: поиск по слову «пасхалки» уверенно подсовывает
+гайды к совсем другим играм с такими же заголовками.
 
 Список стоит пополнять: если нашли рабочий обходной адрес — допишите сюда,
 следующий агент не будет искать заново.

@@ -26,6 +26,7 @@ specs:
   salesNote: "более 1 млн копий к сентябрю 2021 года"
   development: "2016–2018"
   metacritic: 73
+  abroad: "делалась сразу на мировой рынок: издатель Deep Silver, основной язык английский, локализации на шесть языков; на Западе приняли сдержанно — 73 балла на Metacritic при 34 рецензиях, из которых ни одна не отрицательная, но больше половины смешанные"
 summary: >-
   Изометрическая ролевая игра по настольной системе Pathfinder с управлением собственным королевством. Первая большая партийная RPG из России со времён девяностых.
 steamAppId: 640820
@@ -83,11 +84,61 @@ gallery:
     channel: "DeDGovnak"
     poster: "https://pic.rtbcdn.ru/video/d4/7c/d47cfa7c5dd8cd0462621cd72b1131ae.jpg"
     checkedAt: "2026-09-20"
+reviews:
+  - outlet: "StopGame"
+    score: "Похвально"
+    verdict: "Эпический сюжет, колоритные спутники и приятные хлопоты с королевством перевешивают долгие загрузки и баги; сложность высокая, но настраивается, и разработчики честно о ней предупредили."
+    url: "https://stopgame.ru/show/101503/pathfinder_kingmaker_review"
+    author: "Кирилл Волошин"
+    date: "2018"
+  - outlet: "COGconnected"
+    score: "80/100"
+    verdict: "Управление баронством не пришито сбоку, а связано с походами: спутники становятся советниками, а квесты возвращаются решениями по королевству. Мешают хаос в боях с паузой и рваная сложность."
+    url: "https://cogconnected.com/review/pathfinder-kingmaker-review/"
+    author: "Jaina Hill"
+    date: "2018"
+  - outlet: "Hooked Gamers"
+    score: "8/10"
+    verdict: "Оформление, атмосфера и тексты уровня классических Baldur's Gate, но первые часы портят вылеты, сломанные сохранения и чудовищные загрузки, а стандартная сложность завышена."
+    url: "https://www.hookedgamers.com/pc/pathfinder_kingmaker/review/article-1991.html"
+    author: "Sergio Brinkhuis"
+    date: "2018"
+  - outlet: "GameSpace"
+    score: "8/10"
+    verdict: "Настольные правила Pathfinder перенесены на экран бережно и настраиваются под любого игрока; портят впечатление технические сбои и неудобная прокачка сразу нескольких спутников."
+    url: "https://www.gamespace.com/reviews/pathfinder-kingmaker-review/"
+    author: "Robin Baird"
+    date: "2018"
+reading:
+  - title: "«С таким качеством оставшегося контента нас должен был ждать провал» — история разработки Pathfinder: Kingmaker"
+    url: "https://dtf.ru/gamedev/41863-s-takim-kachestvom-ostavshegosya-kontenta-nas-dolzhen-byl-zhdat-proval-istoriya-razrabotki-pathfinder-kingmaker"
+    outlet: "DTF"
+    note: "доклад Олега Шпильчевского: маркетинговые исследования, Kickstarter изнутри и разбор провального запуска"
+  - title: "Pathfinder: Kingmaker и ренессанс изометрических RPG — разговор с разработчиками"
+    url: "https://dtf.ru/gamedev/18845-pathfinder-kingmaker-i-renessans-izometricheskih-rpg-razgovor-s-razrabotchikami"
+    outlet: "DTF"
+    note: "интервью до релиза: почему выбрали Pathfinder, как работал Авеллон, объём текста и концовки"
+  - title: "Как в России создавалась изометрическая RPG — история разработки Pathfinder: Kingmaker"
+    url: "https://app2top.ru/interview/kak-v-rossii-sozdavalas-izometricheskaya-rpg-istoriya-razrabotki-pathfinder-kingmaker-131491.html"
+    outlet: "App2Top"
+    note: "размер команды, этапы производства и оценка первых продаж от главы студии"
+availability:
+  status: sold
+  note: "на ПК идёт издание Enhanced Plus — в Steam и на GOG, где версия без защиты от копирования; для PlayStation 4 и Xbox One выпущена Definitive Edition"
+  where:
+    - title: "Steam"
+      url: "https://store.steampowered.com/app/640820/"
+    - title: "GOG"
+      url: "https://www.gog.com/game/pathfinder_kingmaker_explorer_edition"
+    - title: "Официальный сайт игры"
+      url: "https://kingmaker.owlcat.games/"
 sources:
   - title: "Pathfinder: Kingmaker — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Pathfinder:_Kingmaker"
   - title: "Pathfinder: Kingmaker — Википедия"
     url: "https://ru.wikipedia.org/wiki/Pathfinder:_Kingmaker"
+  - title: "Pathfinder: Kingmaker — Metacritic"
+    url: "https://www.metacritic.com/game/pathfinder-kingmaker/critic-reviews/"
 status: article
 ---
 

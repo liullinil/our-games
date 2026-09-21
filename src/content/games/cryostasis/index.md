@@ -7,6 +7,7 @@ class: horror
 developer: action-forms
 publishers:
   - 1c
+  - 505-games
 country: ukraine
 years:
   start: 2008
