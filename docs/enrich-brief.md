@@ -36,8 +36,8 @@ freeware / abandonware / исходный код», «<название> old-gam
 - **Перебор адресов по образцу**: у StopGame и DTF адреса предсказуемы.
 
 Чего WebFetch не открывает (403 или блок), проверено многократно:
-`igromania.ru`, `gamespot.com`, `ign.com`, `rockpapershotgun.com`,
-`eurogamer.net`, `mobygames.com`, `riotpixels.com`, `kanobu.ru`, `4pda`,
+`igromania.ru`, `gamespot.com`, `rockpapershotgun.com`,
+`mobygames.com`, `riotpixels.com`, `kanobu.ru`, `4pda`,
 `speccy.info`, `pcgamingwiki.com`, `nintendolife.com`, `pushsquare.com`,
 `pcgamer.com` (отдаёт клубную страницу вместо текста), `gamesradar.com`
 (обрезается), `gamekult.com`, `jeuxvideo.com`, `fandom.com` (402 на всех
@@ -53,7 +53,17 @@ freeware / abandonware / исходный код», «<название> old-gam
 `androidrundown.com`, `applenapps.com` (домен продан).
 
 `riotpixels.com` закрыт проверкой Cloudflare и в браузерной панели тоже —
-капчу не проходить, рецензию просто не брать. Эти издания можно
+капчу не проходить, рецензию просто не брать.
+
+**Мёртвые адреса, на которые уводит Metacritic и старые ссылки.**
+`gamer-info.com` — домен продан, `/game/<slug>/review/` редиректит на чужую
+рекламу; `playhard.ru` — домена нет; `calmdowntom.com` — 404. Живые сайты со
+сломанными старыми адресами: `3dnews.ru` (старые карточки игр отдают
+главную), `igromania.ru` (`/article/<id>/` и `/articles/<id>/….htm` — 404
+или 403, внутренний поиск бесполезен), `gamecritics.com` (потерял старые
+рецензии), `gamingtrend.com` (часть ссылок из Metacritic ведёт в никуда,
+хотя сам сайт открывается). Проверяйте, что открылась именно рецензия, а не
+главная: код 200 этого не гарантирует. Эти издания можно
 упомянуть в тексте со ссылкой на Википедию как на источник числа, но в
 `reviews` не класть: правило «только открытые тобой страницы» остаётся
 в силе.
@@ -62,7 +72,9 @@ freeware / abandonware / исходный код», «<название> old-gam
 
 - `stopgame.ru` — обзоры лежат по `/show/<id>/<slug>`, у карточки игры
   `/game/<slug>` есть список статей, превью и новостей;
-- `gameguru.ru` — `/game/<slug>/` и `/publication/<slug>/`;
+- `gameguru.ru` — `/game/<slug>/` и `/publication/<slug>/`; старые адреса
+  `/articles/<slug>/view.html` редиректят на второй вид, в ссылки класть
+  нужно именно его;
 - `playground.ru` — карточка, `/opinion/reviews` и сами рецензии;
 - `worthplaying.com` — карточка `/game/<id>-<slug>/` со списком статей;
 - `gamerstemple.com` — `/game-reviews/<платформа>/<id>/<slug>-review`;
@@ -72,7 +84,8 @@ freeware / abandonware / исходный код», «<название> old-gam
 - `kv.by`, `gamesisart.ru`, `rnr-wiki.ru`, `bendy.wiki.gg`, `media.2x2tv.ru`,
   `opencritic.com`, `metacritic.com` (страница `/critic-reviews/`),
   `zxpress.ru`, `old-games.ru`, `habr.com`;
-- `ag.ru` — прямой адрес `ag.ru/games/<slug>/review/<id>` работает, и `old.`
+- `ag.ru` — канонический адрес рецензии `ag.ru/games/<slug-через-дефисы>/review`,
+  старая форма со слагом через подчёркивания на него редиректит; `old.`
   не нужен; номер рецензии лежит в JSON на странице игры (`"review":{"id":…`),
   там же её полный текст и `"rating"`. Сервер периодически отдаёт 403 —
   помогает подождать несколько минут и повторить, но иногда отказ держится
@@ -89,14 +102,24 @@ freeware / abandonware / исходный код», «<название> old-gam
   играм почти всегда пусто;
 - `kritikanstvo.ru` — у карточки игры полный список рецензий русской прессы
   с оценками и прямыми адресами. Для отечественных игр это лучший заменитель
-  Metacritic: он помнит и бумажные журналы, и закрывшиеся сайты;
+  Metacritic: он помнит и бумажные журналы, и закрывшиеся сайты. Поиск —
+  `kritikanstvo.ru/search/?s=<запрос>`, **именно `?s=`**: с `?q=` страница
+  молча отвечает «вы ничего не искали». Результаты — адреса `/games/<slug>/`;
+- `pashalki.ru` — разборы пасхалок, поиск `?s=<запрос>`;
+- `vrgames.by` — журнал «Виртуальные радости» выкладывает сканы своих
+  бумажных рецензий вместе с оценками;
 - `app2top.ru` — поиск `?s=<запрос>`. Там интервью с разработчиками мобильных
   игр и цифры по установкам, которых больше нигде нет;
 - `destructoid.com`, `shacknews.com`, `gamespew.com`, `gamewatcher.com`,
   `pcgamesn.com`, `adventuregamers.com`, `escapistmagazine.com`,
   `gamedeveloper.com`, `wnhub.io`, `newslab.ru`, `itel.am`;
 - `bestgamer.ru` — **только по http**, через `curl`, кодировка cp1251;
-- `tvtropes.org` — WebFetch даёт 403, `curl` с браузерным User-Agent берёт;
+- `tvtropes.org`, `eurogamer.net`, `ign.com`, `gog.com` — WebFetch даёт
+  отказ, `curl` с браузерным User-Agent берёт. У Eurogamer текст и
+  `"ratingValue"` лежат прямо в HTML (длинные рецензии — через `?page=2`),
+  у IGN в разметке есть `"score"` и готовый `"verdict"`, у GOG карточка
+  товара отдаёт нормальный `<title>` — ссылку можно проверить без
+  каталожного API;
 - `pcgamer.com` — вопреки списку выше, текст в HTML есть: `curl` и вырезать
   кусок между «Our Verdict» и «The Verdict».
 
