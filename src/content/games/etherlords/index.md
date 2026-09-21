@@ -7,6 +7,7 @@ class: tbs
 developer: nival
 publishers:
   - 1c
+  - fishtank
 country: russia
 years:
   start: 2001

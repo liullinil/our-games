@@ -9,6 +9,7 @@ developer: sigma-team
 publishers:
   - 1c
   - cdv
+  - strategy-first
   - virtual-programming
 series: alien-shooter
 country: russia

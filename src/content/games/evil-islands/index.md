@@ -8,6 +8,7 @@ class: action-rpg
 developer: nival
 publishers:
   - 1c
+  - fishtank
 series: allods
 country: russia
 years:

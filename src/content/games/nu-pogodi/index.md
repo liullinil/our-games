@@ -28,12 +28,6 @@ gallery:
     author: "Электроника"
     license: "Обложка"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Korobka-1.JPG"
-  - kind: image
-    src: ./shots/cover-01.jpg
-    caption: "Ну, погоди!: обложка"
-    author: "Электроника"
-    license: "Обложка"
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Korobka-1.JPG"
   - kind: youtube
     id: "CbR4_t1scBY"
     title: "Электроника Игра на Экране - Ну Погоди ИМ 02"

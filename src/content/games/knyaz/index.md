@@ -9,6 +9,7 @@ class: crpg
 developer: 1c
 publishers:
   - snowball
+  - strategy-first
 series: knyaz
 country: russia
 years:

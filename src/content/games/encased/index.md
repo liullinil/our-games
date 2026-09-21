@@ -4,7 +4,8 @@ altNames: []
 type: rpg
 class: crpg
 developer: dark-crystal
-publishers: []
+publishers:
+  - prime-matter
 country: russia
 years:
   start: 2019

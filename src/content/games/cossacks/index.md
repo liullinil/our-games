@@ -9,6 +9,7 @@ developer: gsc-game-world
 publishers:
   - gsc-game-world
   - cdv
+  - strategy-first
 series: cossacks
 country: ukraine
 years:

@@ -64,8 +64,25 @@ freeware / abandonware / исходный код», «<название> old-gam
 - `kv.by`, `gamesisart.ru`, `rnr-wiki.ru`, `bendy.wiki.gg`, `media.2x2tv.ru`,
   `opencritic.com`, `metacritic.com` (страница `/critic-reviews/`),
   `zxpress.ru`, `old-games.ru`, `habr.com`;
-- `ag.ru` — иногда берётся через `old.ag.ru/games/<slug>/review/<id>`, но не
-  всегда: бывает отказ на уровне адреса и в браузерной панели тоже.
+- `ag.ru` — прямой адрес `ag.ru/games/<slug>/review/<id>` работает, и `old.`
+  не нужен; номер рецензии лежит в JSON на странице игры (`"review":{"id":…`),
+  там же её полный текст и `"rating"`. Сервер периодически отдаёт 403 —
+  помогает подождать несколько минут и повторить, но иногда отказ держится
+  и в браузерной панели;
+- `lki.ru` — архив «Лучших компьютерных игр» жив, но **только по http**:
+  WebFetch поднимает адрес до https и падает, читается через `curl`,
+  кодировка cp1251. Путь: `lki.ru/games.php?chlet=<буквы>` →
+  `lki.ru/text.php?id=<id>`;
+- `gamechronicles.com` — фреймсет, текст лежит в `…/body.htm`;
+- `gamingexcellence.com`, `fcenter.ru`, `vgtimes.ru`, `goha.ru`,
+  `ixbt.com/live`, `t-j.ru`, `gameandwatch.ru`, `15kop.ru` и поддомены вида
+  `morskoy-boy.15kop.ru`, `game-im02.ru`, `tanki.su`;
+- поиск DTF есть как API: `api.dtf.ru/v2.1/search?q=<запрос>`, но по старым
+  играм почти всегда пусто.
+
+**Осторожно с `pica-pic.com`.** Сайт с онлайн-симуляторами «Электроники»
+когда-то был хорошим источником, но домен захвачен сквоттером и ведёт на
+рекламу. Если встретите его в старых ссылках — вычищайте.
 
 **Магазины в обход страниц.** Steam часто отдаёт главную вместо карточки,
 зато работают:

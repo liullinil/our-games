@@ -7,6 +7,7 @@ class: tactics
 developer: nival
 publishers:
   - novy-disk
+  - cdv
 country: russia
 years:
   start: 2005

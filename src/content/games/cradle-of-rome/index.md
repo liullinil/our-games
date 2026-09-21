@@ -5,7 +5,8 @@ altNames:
 type: puzzle
 class: match-3
 developer: awem
-publishers: []
+publishers:
+  - d3-publisher
 country: belarus
 years:
   start: 2007

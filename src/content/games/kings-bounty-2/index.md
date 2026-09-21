@@ -6,6 +6,7 @@ class: tactical-rpg
 developer: 1c-entertainment
 publishers:
   - 1c-entertainment
+  - prime-matter
 series: kings-bounty
 country: russia
 years:
