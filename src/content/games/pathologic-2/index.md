@@ -68,15 +68,20 @@ gallery:
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/505230/"
   - kind: youtube
-    id: "jAb2YzcHpUk"
-    title: "Мор. Утопия (Обзор Zulin`s v-log) RE:Edit"
-    channel: "Zulin`s v-log"
-    checkedAt: "2026-09-19"
-  - kind: youtube
     id: "ie6_DngjPF8"
     title: "Мор: Гениальная игра, в которую вы не захотите играть | Pathologic 2"
     channel: "later"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "ysI5B_CvgeU"
+    title: "Обзор первого эпизода Pathologic 2 / «Мор (Утопия)»"
+    channel: "StopGame"
+    checkedAt: "2026-09-21"
+  - kind: youtube
+    id: "qp_IY8qzpU8"
+    title: "Разбор игры Pathologic 2/Мор (2019) (+Мраморное гнездо)"
+    channel: "Dabfar"
+    checkedAt: "2026-09-21"
 sources:
   - title: "Pathologic 2 — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Pathologic_2"

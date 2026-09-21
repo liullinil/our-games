@@ -49,11 +49,6 @@ gallery:
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Evil_Islands_1C_cover.jpg"
   - kind: youtube
-    id: "WiAkl7WJSVE"
-    title: "Обзор игры: Проклятые земли - затерянные в астрале"
-    channel: "Сан саныч"
-    checkedAt: "2026-09-19"
-  - kind: youtube
     id: "jtJ9v9y4dfA"
     title: "Что такое Проклятые Земли?"
     channel: "Чувак"

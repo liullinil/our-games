@@ -373,8 +373,49 @@ async function checkOtherCollections() {
   }
 }
 
+/**
+ * Игра не может быть сделана студией, которой ещё нет.
+ *
+ * Проверка дешёвая, а класс ошибок ловит настоящий: «Князь» 1999 года
+ * числился за Lesta, хотя её собственный список игр начинается с 2003-го.
+ * Годы студии такого случая не поймали — но поймают следующий, когда
+ * разработчика перепутают с командой, основанной позже игры.
+ */
+async function checkStudioYears() {
+  const studios = new Map();
+  const base = path.join(root, 'src', 'content', 'studios');
+  for (const dir of (await readdir(base, { withFileTypes: true })).filter((d) => d.isDirectory())) {
+    const file = path.join(base, dir.name, 'index.md');
+    if (!existsSync(file)) continue;
+    const fm = (await readFile(file, 'utf8')).match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
+    studios.set(dir.name, {
+      founded: Number(field(fm, 'founded')) || null,
+      closed: Number(field(fm, 'closed')) || null,
+    });
+  }
+
+  const games = path.join(root, 'src', 'content', 'games');
+  for (const dir of (await readdir(games, { withFileTypes: true })).filter((d) => d.isDirectory())) {
+    const file = path.join(games, dir.name, 'index.md');
+    if (!existsSync(file)) continue;
+    const fm = (await readFile(file, 'utf8')).match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
+    const dev = field(fm, 'developer');
+    const year = Number(fm.match(/^\s+start: (\d+)/m)?.[1]);
+    const studio = dev ? studios.get(dev) : null;
+    if (!studio || !year) continue;
+    if (studio.founded && year < studio.founded) {
+      problems.push(`games/${dir.name}: вышла в ${year}, а студия «${dev}» основана в ${studio.founded}`);
+    }
+    // Год после закрытия прощаем: игру могли доделывать и издавать позже.
+    if (studio.closed && year > studio.closed + 1) {
+      warnings.push(`games/${dir.name}: вышла в ${year}, а студия «${dev}» закрыта в ${studio.closed}`);
+    }
+  }
+}
+
 await checkGames();
 await checkOtherCollections();
+await checkStudioYears();
 
 if (warnings.length) {
   console.log(`Замечания (${warnings.length}):`);
