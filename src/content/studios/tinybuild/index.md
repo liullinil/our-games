@@ -21,7 +21,7 @@ sources:
     url: https://www.crunchbase.com/organization/tinybuild-games
 ---
 
-tinyBuild — американский издатель инди-игр, ставший для целого поколения постсоветских независимых студий главным окном на большой рынок: через него вышли Hello Neighbor московской [Dynamic Pixels](../dynamic-pixels/), Party Hard украинской [Pinokl Games](../pinokl/), Punch Club и Graveyard Keeper петербургской [Lazy Bear Games](../lazy-bear/), Potion Craft студии [niceplay games](../niceplay/).
+tinyBuild — американский издатель инди-игр, ставший для целого поколения постсоветских независимых студий главным окном на большой рынок: через него вышли Hello Neighbor московской [Dynamic Pixels](../dynamic-pixels/), Party Hard студии [Pinokl Games](../pinokl/), Punch Club и Graveyard Keeper петербургской [Lazy Bear Games](../lazy-bear/), Potion Craft студии [niceplay games](../niceplay/).
 
 ## История
 
@@ -29,8 +29,8 @@ tinyBuild — американский издатель инди-игр, ста�
 
 ## Игры
 
-Наибольшую известность издателю принесла франшиза [Hello Neighbor](../../games/hello-neighbor/) (2017) московской студии [Dynamic Pixels](../dynamic-pixels/) — стелс-хоррор о соседе с подвалом, ставший вирусным хитом на YouTube. Среди других изданных им игр постсоветских разработчиков — стелс-комедия [Party Hard](../../games/party-hard/) (2015) украинской [Pinokl Games](../pinokl/), пиксельный [Punch Club](../../games/punch-club/) (2016) и хозяйственный симулятор [Graveyard Keeper](../../games/graveyard-keeper/) (2018) петербургской [Lazy Bear Games](../lazy-bear/), а также алхимический [Potion Craft](../../games/potion-craft/) (2021) студии [niceplay games](../niceplay/).
+Наибольшую известность издателю принесла франшиза [Hello Neighbor](../../games/hello-neighbor/) (2017) московской студии [Dynamic Pixels](../dynamic-pixels/) — стелс-хоррор о соседе с подвалом, ставший вирусным хитом на YouTube. Среди других изданных им игр постсоветских разработчиков — стелс-комедия [Party Hard](../../games/party-hard/) (2015) студии [Pinokl Games](../pinokl/), пиксельный [Punch Club](../../games/punch-club/) (2016) и хозяйственный симулятор [Graveyard Keeper](../../games/graveyard-keeper/) (2018) петербургской [Lazy Bear Games](../lazy-bear/), а также алхимический [Potion Craft](../../games/potion-craft/) (2021) студии [niceplay games](../niceplay/).
 
 ## Сегодня
 
-tinyBuild остаётся одним из самых заметных издателей для инди-разработчиков из России, Украины и соседних стран, продолжая выпускать их игры на международном рынке.
+tinyBuild остаётся одним из самых заметных издателей для инди-разработчиков из постсоветских стран, продолжая выпускать их игры на международном рынке.

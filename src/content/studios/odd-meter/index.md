@@ -21,7 +21,7 @@ sources:
     url: https://www.gamespress.com/INDIKA-Developer-Raises-5M-from-GEM-Capital-and-Autotel-Dmitry-Svetlov
   - title: "Odd Meter — Gamepressure"
     url: https://www.gamepressure.com/companies/odd-meter/z03085
-  - title: "Polish 11 Bit Studios to publish INDIKA, a Russian-made game. Ukrainian gamers are outraged — AIN"
+  - title: "11 bit studios издаёт INDIKA: реакция на объявление — AIN"
     url: https://en.ain.ua/2023/10/20/11-bit-studios-to-publish-russian-made-game-indika/
 ---
 

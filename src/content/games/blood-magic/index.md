@@ -75,7 +75,7 @@ reviews:
     author: "Chris Lawton"
     date: "2008"
 reading:
-  - title: "Постсоветские RPG: как разработчики из Беларуси, Украины и России жанр покоряли. Часть 2"
+  - title: "Постсоветские RPG: как разработчики покоряли жанр. Часть 2"
     url: "https://www.rpgnuke.ru/2021/09/26/postsovetskie-rpg-kak-razrabotchiki-iz-belarusi-ukrainy-i-rossii-zhanr-pokoryali-chast-2.html"
     outlet: "RPGNuke"
     note: "место «Магии крови» в истории жанра: разбор морфинга, обилия шуток и разрыва между русскими и западными оценками"

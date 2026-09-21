@@ -4,8 +4,6 @@ names:
     short: "Best Way"
     from: 1991
     to: null
-city: "Северодонецк"
-country: ukraine
 founded: 1991
 closed: null
 kind: developer
