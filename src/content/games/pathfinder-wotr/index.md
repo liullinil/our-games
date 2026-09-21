@@ -4,7 +4,9 @@ altNames: []
 type: rpg
 class: crpg
 developer: owlcat
-publishers: []
+publishers:
+  - meta-publishing
+  - prime-matter
 series: pathfinder
 country: russia
 years:
