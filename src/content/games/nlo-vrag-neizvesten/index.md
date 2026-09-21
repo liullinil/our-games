@@ -67,6 +67,14 @@ availability:
     - title: "Объявление Медноноговых о свободном распространении — Nicron №70"
       url: "https://zxpress.ru/ru/ezines/nicron/70/zakrytie-firmy-inforkom-i-vypusk-besplatnogo-po-ot-bratev-mednonogovyh-novosti-konca-1997-goda-o"
       note: "текст объявления с перечнем программ"
+  files:
+    - file: ufo-1.zip
+      title: "Образ диска для ZX Spectrum (UFO-1.TRD в архиве)"
+      license: "Freeware по объявлению авторов"
+      licenseUrl: "https://zxpress.ru/ru/ezines/nicron/70/zakrytie-firmy-inforkom-i-vypusk-besplatnogo-po-ot-bratev-mednonogovyh-novosti-konca-1997-goda-o"
+      sourceUrl: "https://zxart.ee/rus/soft/game/tactical-combat/nlo-vrag-neizvesten/"
+      size: "248 КБ"
+      note: "Архив с образом диска TR-DOS на 640 КБ: boot.B и шесть файлов данных. Запускается в любом эмуляторе ZX Spectrum 128K с дисководом. Метка диска выдаёт копию сцены, а не авторский мастер, — лицензия Медноноговых покрывает и переработанные копии"
 sources:
   - title: "Медноногов, Вячеслав Сергеевич — Википедия"
     url: "https://ru.wikipedia.org/wiki/Медноногов,_Вячеслав_Сергеевич"
