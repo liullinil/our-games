@@ -44,8 +44,16 @@ freeware / abandonware / исходный код», «<название> old-gam
 вики), `gamestar.de`, `gg.deals`, `trueachievements.com`,
 `fulqrumpublishing.com`, `bre.ruwiki.ru` (401), `armchairempire.com`
 (ошибка сертификата), `ferra.ru` (заглушка), `web.archive.org` и
-`smh.com.au` (не получаются в принципе). Мёртвые адреса: `2404.org`,
-`gamezone.com`, `videogamer.com`, `thegamesmachine.it`. Эти издания можно
+`smh.com.au` (не получаются в принципе), `gamesindustry.biz`,
+`frogwares.com` и `shadowmatic.com` (защита Anubis и ошибка 522),
+`lenta.ru` (недоступна отсюда целиком), `gameland.ru`, `polygon.com`,
+`toucharcade.com`, `twinfinite.net`, `massivelyop.com`, `appadvice.com`,
+`gameslife.ru`, `adventurearchiv.de`. Мёртвые адреса: `2404.org`,
+`gamezone.com`, `videogamer.com`, `thegamesmachine.it`,
+`androidrundown.com`, `applenapps.com` (домен продан).
+
+`riotpixels.com` закрыт проверкой Cloudflare и в браузерной панели тоже —
+капчу не проходить, рецензию просто не брать. Эти издания можно
 упомянуть в тексте со ссылкой на Википедию как на источник числа, но в
 `reviews` не класть: правило «только открытые тобой страницы» остаётся
 в силе.
@@ -78,7 +86,19 @@ freeware / abandonware / исходный код», «<название> old-gam
   `ixbt.com/live`, `t-j.ru`, `gameandwatch.ru`, `15kop.ru` и поддомены вида
   `morskoy-boy.15kop.ru`, `game-im02.ru`, `tanki.su`;
 - поиск DTF есть как API: `api.dtf.ru/v2.1/search?q=<запрос>`, но по старым
-  играм почти всегда пусто.
+  играм почти всегда пусто;
+- `kritikanstvo.ru` — у карточки игры полный список рецензий русской прессы
+  с оценками и прямыми адресами. Для отечественных игр это лучший заменитель
+  Metacritic: он помнит и бумажные журналы, и закрывшиеся сайты;
+- `app2top.ru` — поиск `?s=<запрос>`. Там интервью с разработчиками мобильных
+  игр и цифры по установкам, которых больше нигде нет;
+- `destructoid.com`, `shacknews.com`, `gamespew.com`, `gamewatcher.com`,
+  `pcgamesn.com`, `adventuregamers.com`, `escapistmagazine.com`,
+  `gamedeveloper.com`, `wnhub.io`, `newslab.ru`, `itel.am`;
+- `bestgamer.ru` — **только по http**, через `curl`, кодировка cp1251;
+- `tvtropes.org` — WebFetch даёт 403, `curl` с браузерным User-Agent берёт;
+- `pcgamer.com` — вопреки списку выше, текст в HTML есть: `curl` и вырезать
+  кусок между «Our Verdict» и «The Verdict».
 
 **Осторожно с `pica-pic.com`.** Сайт с онлайн-симуляторами «Электроники»
 когда-то был хорошим источником, но домен захвачен сквоттером и ведёт на
@@ -96,6 +116,30 @@ freeware / abandonware / исходный код», «<название> old-gam
   новостей; просите сырые целые `date`, иначе год легко перепутать. Этой
   лентой можно подтвердить, что номер принадлежит нужной игре, даже когда
   сама карточка закрыта по региону.
+
+**Сканы журналов на archive.org.** Сам `web.archive.org` недоступен, а вот
+библиотека сканов — вполне, и это единственный способ достать оценки
+«Игромании», Game.EXE, «Страны игр» и «Навигатора игрового мира» за девяностые
+и нулевые:
+
+- `archive.org/metadata/<id>` — список файлов номера;
+- `archive.org/download/<id>/<файл>_djvu.txt` — весь OCR-текст номера;
+- `archive.org/download/<id>/page/n<N>_w1400.jpg` — страница картинкой.
+
+Картинка нужна потому, что **OCR стабильно теряет цифры из рейтинговых
+врезок** — именно тех, ради которых номер и открывали. Оценку смотрите
+глазами на снимке страницы, а не в тексте.
+
+**Каталоги магазинов** отвечают поиском, когда сами карточки закрыты:
+
+- `searching.nintendo-europe.com/en/select?q=<запрос>&fq=type:GAME&wt=json` —
+  eShop Европы; так же проверяется, что версии для Switch у игры нет;
+- `itunes.apple.com/search?term=<запрос>&entity=software` — App Store;
+- `store.playstation.com/en-us/search/<запрос>` — только через браузерную
+  панель, адреса товаров вида `/en-us/product/<id>`;
+- `xbox.com` не рендерится ни там, ни там;
+- список дополнений в Steam: `appdetails?appids=<id>&filters=basic,dlc`,
+  затем по одному номеру — пакетный запрос нескольких id отдаёт 400.
 
 GOG через WebFetch не открывается, но отвечает каталог:
 `catalog.gog.com/v1/catalog?query=like:<название>&limit=20&locale=en-US&countryCode=US&currencyCode=USD`.

@@ -127,6 +127,24 @@ async function pageImages(lang, title) {
   return (data.query?.pages ?? []).filter((p) => p.imageinfo?.[0]);
 }
 
+/*
+ * Свободные лицензии, которые понимает схема (src/content.config.ts). Если
+ * Викимедиа сообщает одну из них, подписываем картинку автором снимка, а не
+ * разработчиком игры: CC BY и CC BY-SA прямо требуют указания автора.
+ */
+const FREE = new Set([
+  'CC0',
+  'PD',
+  'CC BY 2.0',
+  'CC BY 2.5',
+  'CC BY 3.0',
+  'CC BY 4.0',
+  'CC BY-SA 2.0',
+  'CC BY-SA 2.5',
+  'CC BY-SA 3.0',
+  'CC BY-SA 4.0',
+]);
+
 /** Мусорные файлы: логотипы, значки, флаги, иконки википроектов. */
 const JUNK = /логотип|logo|icon|flag|wiki|symbol|commons|ambox|question|crystal|nuvola|emblem|button|star|arrow|edit|padlock|disambig|stub|portal|\.svg$|\.gif$/i;
 
@@ -152,10 +170,18 @@ function classify(file) {
   const strip = (v) => String(v ?? '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
   const desc = `${strip(meta.ImageDescription?.value)} ${file.title}`.toLowerCase();
   if (PEOPLE.test(desc)) return null;
+  /*
+   * Категории Википедии надёжнее описания: их проставляют по смыслу файла,
+   * а описание автор пишет как придётся — у «Диверсанта» там стоит просто
+   * «Игра Диверсант», зато категория честно говорит «Video game screenshots».
+   */
+  const cats = strip(meta.Categories?.value).toLowerCase();
   const cover = /cover|box|обложк|коробк|постер|poster|title screen|титул|заставк|splash/.test(desc);
   const shot = /screenshot|скриншот|снимок экрана|gameplay|игровой процесс|кадр|уровень|level/.test(desc);
   if (shot) return 'Скриншот';
   if (cover) return 'Обложка';
+  if (/screenshot|скриншот/.test(cats)) return 'Скриншот';
+  if (/cover|обложк|box art/.test(cats)) return 'Обложка';
   /*
    * Ни одной приметы. Такой файл берём, только если он единственный на
    * странице и его имя повторяет название статьи: в статьях о старых играх
@@ -185,6 +211,7 @@ function patchFrontmatter(fm, { poster, shots }) {
           `    caption: ${yamlStr(s.caption)}`,
           `    author: ${yamlStr(s.author)}`,
           `    license: ${yamlStr(s.license)}`,
+          ...(s.licenseUrl ? [`    licenseUrl: ${yamlStr(s.licenseUrl)}`] : []),
           `    sourceUrl: ${yamlStr(s.sourceUrl)}`,
         ].join('\n') + '\n',
     )
@@ -257,19 +284,30 @@ async function fetchFor(gameId, lang, title, developer, gameName = title) {
     const res = await fetch(src, { headers: { 'User-Agent': UA } });
     if (!res.ok) continue;
     const buf = Buffer.from(await res.arrayBuffer());
-    const license = kindOf.get(f.title) ?? 'Скриншот';
+    const kind = kindOf.get(f.title) ?? 'Скриншот';
     const ext = 'jpg';
-    const file = `${license === 'Обложка' ? 'cover' : 'wiki'}-${String(i + 1).padStart(2, '0')}.${ext}`;
+    const file = `${kind === 'Обложка' ? 'cover' : 'wiki'}-${String(i + 1).padStart(2, '0')}.${ext}`;
     const out = await sharp(buf, { failOn: 'none' }).resize({ width: 1600, withoutEnlargement: true }).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
     await writeFile(path.join(dir, file), out);
+    /*
+     * Чем подписать. Свободная лицензия требует назвать автора снимка —
+     * берём его из метаданных Викимедиа. Иначе это добросовестное
+     * использование кадра из игры, и отвечает за него разработчик.
+     */
+    const meta = info.extmetadata ?? {};
+    const clean = (v) => String(v ?? '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    const named = clean(meta.LicenseShortName?.value).toUpperCase().replace('CC-BY', 'CC BY');
+    const artist = clean(meta.Artist?.value);
+    const isFree = FREE.has(named) && artist.length > 0 && artist.length < 60;
     shots.push({
       file,
-      caption: license === 'Обложка' ? `${gameName}: обложка` : `${gameName}: кадр из игры`,
-      author: developer,
-      license,
+      caption: kind === 'Обложка' ? `${gameName}: обложка` : `${gameName}: кадр из игры`,
+      author: isFree ? artist : developer,
+      license: isFree ? named : kind,
+      licenseUrl: isFree ? clean(meta.LicenseUrl?.value) || undefined : undefined,
       sourceUrl: info.descriptionurl,
     });
-    if (!poster && license === 'Скриншот') poster = file;
+    if (!poster && kind === 'Скриншот') poster = file;
     await sleep(400);
   }
   if (!poster && shots[0]) poster = shots[0].file;

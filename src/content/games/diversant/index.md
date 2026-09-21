@@ -17,7 +17,34 @@ specs:
   abroad: "за рубежом не издавалась: любительская программа для советского самодельного «Радио-86РК», расходившаяся с кассеты на кассету"
 summary: >-
   Аркада для «Радио-86РК»: зенитная установка отражает налёт с воздуха, сбивая корабли пришельцев и спускающихся с них парашютистов-диверсантов. Одна из самых популярных динамических игр для этой платформы, написанная харьковчанином Юрием Михайловским.
-gallery: []
+poster: ./shots/wiki-01.jpg
+gallery:
+  - kind: image
+    src: ./shots/wiki-01.jpg
+    caption: "Диверсант: кадр из игры"
+    author: "Mx12-mix"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%98%D0%B3%D1%80%D0%B0_%D0%94%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B0%D0%BD%D1%82.jpg"
+  - kind: image
+    src: ./shots/wiki-02.jpg
+    caption: "Диверсант: таблица рекордов"
+    author: "Mx12-mix"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%A2%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D0%B0_%D1%80%D0%B5%D0%BA%D0%BE%D1%80%D0%B4%D0%BE%D0%B2_%D0%94%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B0%D0%BD%D1%82%D0%B0.jpg"
+  - kind: image
+    src: ./shots/cover-03.jpg
+    caption: "Диверсант: заставка"
+    author: "Mx12-mix"
+    license: "CC BY-SA 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%97%D0%B0%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B0_%D0%94%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B0%D0%BD%D1%82.jpg"
+  - kind: youtube
+    id: "uzH_ivYjZXw"
+    title: "Радио 86РК (Radio 86RK) Gameplay Vol. 2 [#TCE0490]"
+    channel: "The Clueless Engineer"
+    checkedAt: "2026-09-21"
 reviews: []
 reading:
   - title: "Самые известные игры от советских разработчиков: «Тетрис», «Диверсант», «Перестройка», Welltris"
