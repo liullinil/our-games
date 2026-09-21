@@ -25,6 +25,7 @@
     "links:check": "node scripts/check-links.mjs",
     "site:check": "node scripts/check-site.mjs",
     "stores:check": "node scripts/check-stores.mjs",
+    "mentions:check": "node scripts/check-mentions.mjs",
     "serve:pages": "node scripts/serve-like-pages.mjs",
     "coverage": "node scripts/coverage.mjs",
     "contrast:check": "node scripts/check-contrast.mjs"
