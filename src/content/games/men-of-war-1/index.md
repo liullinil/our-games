@@ -87,12 +87,11 @@ reading:
     note: "обзор кампаний и тактических возможностей, с разбором вариантов прохождения миссий"
 availability:
   status: sold
-  note: "в Steam под вывеской Enhanced Edition; в 2025 году игру подтянули к современным системам — широкий экран и 4K, Windows 10 и 11, мастерская модов и сетевая игра через Steam"
+  note: "в Steam под вывеской Enhanced Edition; в 2025 году игру подтянули к современным системам — широкий экран и 4K, Windows 10 и 11, мастерская модов и сетевая игра через Steam, последний патч вышел в октябре того же года. Карточка магазина при этом открывается не везде: по прямому адресу Steam уводит на главную, и в поиске по магазину игра не находится — а страница сообщества и лента обновлений работают"
   where:
-    - title: "Steam"
-      url: "https://store.steampowered.com/app/11480/"
-    - title: "Новости обновлений в Steam"
+    - title: "Страница сообщества в Steam"
       url: "https://steamcommunity.com/app/11480"
+      note: "новости обновлений; карточка магазина открывается не во всех регионах"
 sources:
   - title: "Soldiers: Heroes of World War II — Wikipedia (EN)"
     url: "https://en.wikipedia.org/wiki/Soldiers:_Heroes_of_World_War_II"

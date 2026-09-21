@@ -65,9 +65,10 @@ async function probe(url) {
       signal: ctrl.signal,
     });
     const body = await res.text();
-    return { code: res.status, final: res.url, size: body.length };
+    const pageTitle = body.match(/<title[^>]*>([\s\S]{0,300}?)<\/title>/i)?.[1]?.replace(/\s+/g, ' ').trim() ?? '';
+    return { code: res.status, final: res.url, size: body.length, pageTitle };
   } catch (e) {
-    return { code: 0, final: url, size: 0, error: String(e.message || e).slice(0, 60) };
+    return { code: 0, final: url, size: 0, pageTitle: '', error: String(e.message || e).slice(0, 60) };
   } finally {
     clearTimeout(timer);
   }
@@ -75,7 +76,9 @@ async function probe(url) {
 
 /**
  * Выдуманный адрес того же вида: последний кусок пути заменён на заведомую
- * чушь. Если он отвечает так же, как настоящий, хост отвечает всем подряд.
+ * чушь. Магазины устроены как одностраничные приложения и отвечают кодом 200
+ * на любой путь, так что сам по себе код ничего не значит. Зато настоящая
+ * карточка отличается от выдуманной заголовком и объёмом — по ним и судим.
  */
 function decoy(url) {
   const u = new URL(url);
@@ -99,8 +102,22 @@ async function steamCheck(url) {
   });
   const data = await res.json().catch(() => null);
   const entry = data?.[id];
-  if (!entry?.success) return { ok: false, note: `appid ${id}: карточки нет` };
-  return { ok: true, note: `appid ${id}: ${entry.data.name}` };
+  if (entry?.success) return { ok: true, note: `appid ${id}: ${entry.data.name}` };
+  /*
+   * API отказал — это ещё не приговор. Смотрим саму карточку: если она
+   * открывается и называется своим именем, игра просто снята с продажи, но
+   * ссылка живая. Если вместо карточки главная магазина — ссылка мёртвая.
+   */
+  const page = await fetch(`https://store.steampowered.com/app/${id}/`, {
+    headers: { 'User-Agent': UA, Cookie: 'birthtime=315532801; wants_mature_content=1' },
+    redirect: 'follow',
+  }).catch(() => null);
+  const html = page ? await page.text().catch(() => '') : '';
+  const title = html.match(/<title[^>]*>([\s\S]{0,200}?)<\/title>/i)?.[1]?.trim() ?? '';
+  if (/on Steam$/i.test(title)) {
+    return { ok: true, note: `appid ${id}: ${title.replace(/ on Steam$/i, '')} — карточка есть, в продаже нет` };
+  }
+  return { ok: false, note: `appid ${id}: карточка уводит на главную магазина` };
 }
 
 const links = await collect();
@@ -115,48 +132,71 @@ for (const link of links) {
 console.log(`Ссылок «где взять»: ${[...byHost.values()].reduce((n, a) => n + a.length, 0)} на ${byHost.size} хостах.`);
 
 const problems = [];
-const loose = [];
+const blind = [];
 
 for (const [host, group] of byHost) {
-  /* Сначала — отвечает ли хост на выдумку. */
-  const probeDecoy = decoy(group[0].url);
-  let decoyCode = null;
-  if (probeDecoy) {
-    const r = await probe(probeDecoy);
-    decoyCode = r.code;
-    if (r.code >= 200 && r.code < 300) loose.push({ host, url: probeDecoy });
-    await sleep(700);
+  /*
+   * Слепок несуществующей страницы этого хоста: с чем сравнивать настоящие.
+   * Steam сверяем не страницей, а его же API, поэтому слепок ему не нужен.
+   */
+  const viaApi = host === 'store.steampowered.com';
+  let sample = null;
+  if (!viaApi) {
+    const probeDecoy = decoy(group[0].url);
+    if (probeDecoy) {
+      const r = await probe(probeDecoy);
+      if (r.code >= 200 && r.code < 300) sample = r;
+      await sleep(700);
+    }
   }
 
   for (const link of group) {
     let verdict;
-    if (host === 'store.steampowered.com') {
+    if (viaApi) {
       const s = await steamCheck(link.url);
       verdict = s ? { code: s.ok ? 200 : 404, note: s.note } : await probe(link.url);
     } else {
       verdict = await probe(link.url);
     }
-    const bad = verdict.code === 0 || verdict.code >= 400;
-    if (bad) problems.push({ ...link, ...verdict });
-    else if (decoyCode && decoyCode >= 200 && decoyCode < 300) {
-      /* Хост отвечает всем подряд — его «успех» ничего не значит. */
-      problems.push({ ...link, ...verdict, soft: true });
+
+    if (verdict.code === 0 || verdict.code >= 400) {
+      problems.push({ ...link, ...verdict });
+    } else if (!viaApi && verdict.size === 0) {
+      /* Код 200 с пустым телом — так World of Spectrum отвечает на выдуманную игру. */
+      problems.push({ ...link, ...verdict, empty: true });
+    } else if (sample) {
+      /*
+       * Хост отвечает и на выдумку. Настоящая карточка обязана чем-то от неё
+       * отличаться: своим заголовком или заметно другим объёмом страницы.
+       * Если не отличается ничем — за адресом пусто.
+       */
+      /* Пустой заголовок у обоих — тоже совпадение: страница ничем себя не называет. */
+      const sameTitle = (verdict.pageTitle || '') === (sample.pageTitle || '');
+      const sameSize = sample.size > 0 && Math.abs(verdict.size - sample.size) / sample.size < 0.02;
+      if (sameTitle && sameSize) problems.push({ ...link, ...verdict, soft: true });
+      else if (sameTitle) blind.push({ ...link, ...verdict });
     }
     await sleep(700);
   }
 }
 
-if (loose.length) {
-  console.log('\nХосты, отвечающие 200 на выдуманный адрес (их ответам верить нельзя):');
-  for (const l of loose) console.log(`  ${l.host}`);
+if (blind.length) {
+  console.log('\nЗаголовок как у несуществующей страницы, но объём другой — проверьте глазами:');
+  for (const b of blind) console.log(`  ${b.game} · ${b.pageTitle || '(без заголовка)'}\n    ${b.url}`);
 }
 
 if (problems.length === 0) {
-  console.log('\nВсе ссылки отвечают, мягких отказов не замечено.');
+  console.log('\nВсе ссылки ведут на живые страницы.');
 } else {
   console.log(`\nТребуют внимания: ${problems.length}`);
   for (const p of problems) {
-    const why = p.soft ? 'хост отвечает на что угодно' : p.error ? p.error : `код ${p.code}`;
+    const why = p.empty
+      ? 'ответ пустой — за адресом ничего нет'
+      : p.soft
+        ? 'страница неотличима от несуществующей'
+        : p.error
+          ? p.error
+          : `код ${p.code}`;
     console.log(`  ${p.game} · ${p.title}\n    ${p.url}\n    ${why}${p.note ? ` — ${p.note}` : ''}`);
   }
   process.exitCode = 1;
