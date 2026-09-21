@@ -18,6 +18,9 @@ specs:
   releaseDate: "18 августа 2005"
   modes: [single]
   setting: "Москва, между первым и вторым романами саги «Дозоры»"
+  development: "около года, релиз подгоняли к премьере второго фильма"
+  metacritic: 54
+  abroad: "в США и Европе вышла как Night Watch, издатель — немецкая cdv Software Entertainment, американский релиз 29 июня 2006 года; западная пресса приняла игру холодно, на Metacritic у неё 54 балла из ста"
 poster: ./shots/cover-01.jpg
 gallery:
   - kind: image
@@ -39,6 +42,47 @@ gallery:
     checkedAt: "2026-09-20"
 summary: >-
   Пошаговая тактика по роману Сергея Лукьяненко и фильму Тимура Бекмамбетова на движке Silent Storm: Иные, Сумрак и московские дворы.
+reviews:
+  - outlet: "StopGame"
+    score: "7 из 10"
+    verdict: "Тактика с обрезанной тактикой и недоразвитой ролевой системой, зато с отличным сценарием и достойным звуком: играть стоит всем, кроме ветеранов жанра."
+    url: "https://stopgame.ru/show/14689/nochnoy_dozor_review"
+    author: "Sathuras"
+    date: "2005"
+  - outlet: "Absolute Games"
+    score: "59%"
+    verdict: "Скорее трёхмерная текстовая адвенчура с пошаговыми боями, чем тактика: цифры прокачки сделаны для галочки, техническая часть сырая, всё кончается за шесть-восемь часов."
+    url: "https://ag.ru/games/nightwatch/review/2738"
+    author: "zombiek"
+    date: "2005"
+  - outlet: "F-Center"
+    score: "75%"
+    verdict: "Крепкое приложение к фильму: узнаваемая Москва, живые диалоги и хорошая озвучка, но история рассыпается между миссиями, а боям не хватает разнообразия."
+    url: "https://fcenter.ru/online/hardarticles/games/15134-Nochnoj_Dozor_ot_Nival_Interactive"
+    author: "HF"
+    date: "2005"
+  - outlet: "WorthPlaying"
+    score: "4/10"
+    verdict: "Западный взгляд без скидок: бои сводятся к беготне, уровни висят в пустоте, английские диалоги нелепы, а озвучка говорит с поддельным русским акцентом."
+    url: "https://worthplaying.com/article/2006/8/19/reviews/35523-pc-review-night-watch/"
+    author: "Keith Durocher"
+    date: "2006"
+reading:
+  - title: "Проходим «Ночной дозор» 15 лет спустя [Разбор полётов]"
+    url: "https://stopgame.ru/show/114215/prohodim_nochnoy_dozor_15_let_spustya_razbor_poletov"
+    outlet: "StopGame"
+    note: "ретроспектива редакции: как тактика по фильму смотрится полтора десятилетия спустя"
+  - title: "Ночной Дозор: Советы и тактика"
+    url: "https://stopgame.ru/show/18035/nochnoy_dozor_sovety_i_taktika"
+    outlet: "StopGame"
+    note: "практический разбор миссий: телекинез, аккумулятор Сумрака и что где искать"
+  - title: "Night Watch — рецензии критиков на Metacritic"
+    url: "https://www.metacritic.com/game/night-watch/critic-reviews/"
+    outlet: "Metacritic"
+    note: "сводка западной прессы: 54 балла и разброс оценок от 91 до 60"
+availability:
+  status: unavailable
+  note: "в цифровых магазинах игры нет — ни в Steam, ни на GOG; остались только диски «Нового Диска» и западное издание cdv на вторичном рынке"
 sources:
   - title: "Ночной Дозор (игра) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Ночной_Дозор_(игра)"
@@ -46,6 +90,8 @@ sources:
     url: "https://stopgame.ru/game/nochnoj_dozor"
   - title: "«Ночной Дозор» от Nival Interactive — Fcenter"
     url: "https://fcenter.ru/online/hardarticles/games/15134-Nochnoj_Dozor_ot_Nival_Interactive"
+  - title: "Night Watch — Metacritic"
+    url: "https://www.metacritic.com/game/night-watch/critic-reviews/"
 status: article
 ---
 

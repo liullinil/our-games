@@ -11,6 +11,7 @@ years:
   start: 2003
 platforms:
   - windows
+  - macos
 specs:
   releaseDate: "28 октября 2003"
   modes: [single, multiplayer]

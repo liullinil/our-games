@@ -10,7 +10,7 @@ publishers:
 series: men-of-war
 country: ukraine
 years:
-  start: 2009
+  start: 2008
 predecessors:
   - men-of-war-2
 platforms:
@@ -18,7 +18,7 @@ platforms:
 engines:
   - gem
 specs:
-  releaseDate: "6 мая 2009"
+  releaseDate: "14 ноября 2008 (Россия), 20–27 февраля 2009 (Европа), 10 марта 2009 (Северная Америка)"
   modes: [single, multiplayer]
   perspective: "вид сверху"
   setting: "Вторая мировая война"
