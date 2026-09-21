@@ -23,7 +23,25 @@ specs:
   abroad: "за рубежом не издавалась"
 summary: >-
   Продолжение «Проклятых земель», сделанное шесть лет спустя чужой студией. Стратегическую часть свернули почти полностью, оставив ролевую.
-gallery: []
+poster: ./shots/cover-01.jpg
+gallery:
+  - kind: image
+    src: ./shots/cover-01.jpg
+    caption: "Проклятые земли: Затерянные в астрале: обложка"
+    author: "Matilda"
+    license: "Обложка"
+    sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%9F%D1%80%D0%BE%D0%BA%D0%BB%D1%8F%D1%82%D1%8B%D0%B5_%D0%B7%D0%B5%D0%BC%D0%BB%D0%B8_%D0%B7%D0%B0%D1%82%D0%B5%D1%80%D1%8F%D0%BD%D0%BD%D1%8B%D0%B5_%D0%B2_%D0%B0%D1%81%D1%82%D1%80%D0%B0%D0%BB%D0%B5.jpg"
+  - kind: youtube
+    id: "WiAkl7WJSVE"
+    title: "Обзор игры: Проклятые земли - затерянные в астрале"
+    channel: "Сан саныч"
+    checkedAt: "2026-09-21"
+  - kind: rutube
+    id: "4e6d80689c9a76e0bf6349993b51958c"
+    title: "ТЕПЕРЬ ТЫ В АРМИИ! ► Проклятые земли Затерянные в Астрале Прохождение #8"
+    channel: "E-Sports Extravaganza"
+    poster: "https://pic.rtbcdn.ru/video/b6/cd/b6cdc55e8df88389d953ab1482c9e114.jpg"
+    checkedAt: "2026-09-21"
 reviews:
   - outlet: "Absolute Games"
     score: "37 %"

@@ -18,10 +18,12 @@ summary: >-
 specs:
   releaseDate: "23 ноября 2001"
   modes: [single, multiplayer]
+  perspective: "вид из кабины самолёта"
   setting: "Восточный фронт Второй мировой войны"
   development: "1998–2001"
-  salesNote: "миллионы копий по всему миру"
+  salesNote: "более 2 млн копий по всему миру к 2014 году; в Великобритании — «серебро» ELSPA за 100 тысяч проданных копий"
   metacritic: 91
+  abroad: "по всему миру под тем же названием IL-2 Sturmovik, издатель Ubi Soft: 20 ноября 2001 года в Северной Америке, 30 ноября — в Европе; приняли восторженно, симулятором года игру назвали Computer Games Magazine, Computer Gaming World, GameSpy, GameSpot и The Electric Playground, а версию для Китая выпустили без играбельных немецкой и японской сторон"
 poster: ./shots/cover-01.jpg
 gallery:
   - kind: image
@@ -45,6 +47,45 @@ gallery:
     title: "IL-2 Sturmovik: Battle of Stalingrad 60fps Yak-1 gameplay"
     channel: "Penshoon"
     checkedAt: "2026-09-20"
+reviews:
+  - outlet: "Absolute Games (AG.ru)"
+    score: "90%"
+    verdict: "Симулятор мирового уровня: объёмные облака, честный ИИ, который маневрирует, а не жульничает, физика, выверенная с ветеранами, и автопилот, снимающий с игрока взлёт и посадку; портят дело неудобный редактор миссий, невнятная музыка и долгие перелёты до цели."
+    url: "https://ag.ru/games/il-2-sturmovik/review"
+    author: "HORNET"
+    date: "2001"
+  - outlet: "Игромания"
+    score: "10/10"
+    verdict: "Кабины собраны с документальной точностью, восемнадцать переключателей реализма позволяют играть и аркадно, и по-настоящему, а обучение сделано лучше, чем у Microsoft Flight Simulator; из огрехов — мелкие баги вроде работающего газа при выключенном моторе."
+    url: "https://www.igromania.ru/review/2592/Il-2_Shturmovik.html"
+    author: "Юрий Кузьмин"
+    date: "2001"
+reading:
+  - title: "IL-2 Sturmovik turns twenty today!"
+    url: "https://stormbirds.blog/2021/11/18/il-2-sturmovik-turns-twenty-today/"
+    outlet: "Stormbirds"
+    note: "юбилейная ретроспектива: чем игра открыла Западу авиацию Восточного фронта и во что выросла серия"
+  - title: "Олег Медокс (1C: Maddox Games). Главный в стране человек по авиасимуляторам"
+    url: "https://www.igromania.ru/article/13357/Oleg_Medoks_(1C_Maddox_Games)._Glavnyy_v_strane_chelovek_po_aviasimulyatoram.html"
+    outlet: "Игромания"
+    note: "репортаж с рабочего места автора серии: музейные съёмки кабин, радиолокационные карты сороковых, одиннадцать языков локализации"
+  - title: "Обзор на серию отечественных видеоигр «Ил-2 Штурмовик»"
+    url: "https://www.sport-express.net/cybersport/esports/reviews/obzor-na-seriyu-otechestvennyh-videoigr-il-2-shturmovik-istoriya-sozdaniya-konkurenty-serii-vyhod-novoy-chasti-2421711/"
+    outlet: "Спорт-Экспресс"
+    note: "путь линейки от 2001 года до «Великих сражений» и сравнение с DCS World и Ace Combat"
+availability:
+  status: unavailable
+  note: "отдельным изданием игру больше не продают: всё её содержимое вошло в сборник «Ил-2 Штурмовик: 1946», который есть в Steam и на GOG (там — без защиты от копирования); диски 2001 года выложены в архиве Old-Games.RU"
+  where:
+    - title: "«Ил-2 Штурмовик: 1946» в Steam"
+      url: "https://store.steampowered.com/app/15320/IL2_Sturmovik_1946/"
+      note: "сборник, включающий первую игру"
+    - title: "«Ил-2 Штурмовик: 1946» на GOG"
+      url: "https://www.gog.com/en/game/il_2_sturmovik_1946"
+      note: "тот же сборник, без защиты от копирования"
+    - title: "Ил-2 Штурмовик на Old-Games.RU"
+      url: "https://www.old-games.ru/game/14735.html"
+      note: "архив"
 sources:
   - title: "Ил-2 Штурмовик (игра) — Википедия"
     url: "https://ru.wikipedia.org/wiki/Ил-2_Штурмовик_(игра)"
@@ -54,6 +95,8 @@ sources:
     url: "https://en.wikipedia.org/wiki/IL-2_Sturmovik_(series)"
   - title: "Олег Медокс (1C: Maddox Games). Главный в стране человек по авиасимуляторам — Игромания"
     url: "https://www.igromania.ru/article/13357/Oleg_Medoks_(1C_Maddox_Games)._Glavnyy_v_strane_chelovek_po_aviasimulyatoram.html"
+  - title: "IL-2 Sturmovik (video game) — Wikipedia"
+    url: "https://en.wikipedia.org/wiki/IL-2_Sturmovik_(video_game)"
 status: article
 ---
 
@@ -80,4 +123,4 @@ status: article
 - Разработку начали осенью 1998 года — за три года до релиза.
 - К выходу игры было доступно 32 самолёта; за счёт дополнений их число впоследствии перевалило за 77.
 - «Игромания» в 2002 году признала игру лучшим симулятором и лучшей российской игрой 2001 года.
-- После ухода студии от дел в 2011 году серию поддержала волонтёрская команда Team Fusion.
+- После ухода с�

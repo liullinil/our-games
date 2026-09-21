@@ -52,23 +52,43 @@ const titleMatches = (ours, theirs) => {
 /** Кто использует файлы: {«Файл:X.jpg» → [названия статей]}. */
 async function fileUsage(host, titles) {
   const usage = new Map();
-  for (let i = 0; i < titles.length; i += 50) {
-    const url = new URL(`https://${host}/w/api.php`);
-    url.search = new URLSearchParams({
-      action: 'query',
-      format: 'json',
-      formatversion: '2',
-      prop: 'fileusage',
-      fulimit: '50',
-      funamespace: '0',
-      titles: titles.slice(i, i + 50).join('|'),
-    });
-    const res = await fetch(url, { headers: { 'user-agent': 'igrostroy-check/1.0' } });
-    if (!res.ok) throw new Error(`${host} ответил ${res.status}`);
-    const data = await res.json();
-    for (const page of data.query?.pages ?? []) {
-      usage.set(page.title, (page.fileusage ?? []).map((u) => u.title));
-    }
+  /*
+   * По десять заголовков за раз и с продолжением.
+   *
+   * Ограничение fulimit — общее на весь запрос, а не на каждый файл: спросив
+   * полсотни картинок разом, ответ получаешь только про первые, а остальные
+   * приходят пустыми. Выглядит это так, будто картинка не стоит ни в одной
+   * статье, — и проверка ругается на совершенно правильную обложку. Отсюда
+   * мелкие порции и обход continue.
+   */
+  for (let i = 0; i < titles.length; i += 10) {
+    const batch = titles.slice(i, i + 10);
+    let cont = {};
+    do {
+      const url = new URL(`https://${host}/w/api.php`);
+      url.search = new URLSearchParams({
+        action: 'query',
+        format: 'json',
+        formatversion: '2',
+        prop: 'fileusage',
+        fulimit: 'max',
+        funamespace: '0',
+        titles: batch.join('|'),
+        ...cont,
+      });
+      const res = await fetch(url, { headers: { 'user-agent': 'igrostroy-check/1.0' } });
+      if (!res.ok) throw new Error(`${host} ответил ${res.status}`);
+      const data = await res.json();
+      for (const page of data.query?.pages ?? []) {
+        const found = (page.fileusage ?? []).map((u) => u.title);
+        usage.set(page.title, [...(usage.get(page.title) ?? []), ...found]);
+      }
+      // Заголовок мог быть приведён к своему виду — кладём и под исходным ключом.
+      for (const n of data.query?.normalized ?? []) {
+        if (usage.has(n.to)) usage.set(n.from, usage.get(n.to));
+      }
+      cont = data.continue ?? {};
+    } while (Object.keys(cont).length > 0);
   }
   return usage;
 }
