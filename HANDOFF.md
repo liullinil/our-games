@@ -85,62 +85,103 @@ Fishdom, Homescapes и Township закрыты снимками из App Store: 
 
 ### 2.1. Дополнить статьи новыми полями — главное
 
-Готово **27 из 177**. Задание — `docs/enrich-brief.md`, образец —
-`src/content/games/35mm/index.md`. Запускать пачками по пять игр на агента.
+Готово **143 из 185**. Задание — `docs/enrich-brief.md`, образец —
+`src/content/games/35mm/index.md`. Запускать пачками по пять игр на агента,
+не больше трёх агентов разом: при пяти сессионный лимит выбивает их на
+середине правки.
 
 Список оставшихся:
 
 ```bash
 node -e "const fs=require('fs'),p=require('path');const d='src/content/games';
-for(const id of fs.readdirSync(d).sort())
- if(!/^availability:/m.test(fs.readFileSync(p.join(d,id,'index.md'),'utf8')))console.log(id)"
+for(const id of fs.readdirSync(d).sort()){const s=fs.readFileSync(p.join(d,id,'index.md'),'utf8');
+ if(!/^reviews:/m.test(s)||!/^availability:/m.test(s)||!/^reading:/m.test(s))console.log(id)}"
 ```
 
-Агенты часто находят настоящие ошибки в данных — читайте их отчёты целиком,
-а не только список файлов. Так нашлись и чужой движок у Elemental Games, и
-нехватка платформ у «Блицкрига» и «Чёрной книги».
-
-### 2.2. Двенадцать игр без единого кадра
+Сейчас это:
 
 ```
-black-raven diversant gorodki klad legend-dragons men-of-war-2
-mir-tankov nlo-vrag-neizvesten perehvatchik safari shtyrlitz snaiper
+nlo-vrag-neizvesten sherlock-crimes skyforge smuta snaiper space-rangers space-rangers-2 sphere stalker-2 stalker-cop stalker-cs stalker-shoc standoff-2 star-conflict star-wolves stoneshard su-27-flanker sudden-strike sudden-strike-2 sudden-strike-3 survarium tanki-online tayny-okeana tetris the-mooseman torn-away township turgor vangers vector vivisector war-robots war-thunder warface welltris world-of-tanks world-of-warplanes world-of-warships x-blades xenus xenus-2 you-are-empty
 ```
+
+**Отчёты агентов читать целиком, а не только список файлов.** Почти каждая
+партия приносит настоящую ошибку в данных: чужой движок у Elemental Games,
+«Бука» вместо «1С» у «Самогонок», несуществующая версия Shadow Fight 3 для
+Switch, ссылка на оригинал вместо ремейка у Шерлока. Агенту запрещено менять
+`platforms`, `steamAppId` и состав коллекций — он только пишет о находке в
+отчёте, проверяет и правит ведущий.
+
+### 2.2. Десять игр без единого кадра
+
+```
+black-raven gorodki klad legend-dragons men-of-war-2 nlo-vrag-neizvesten perehvatchik safari shtyrlitz snaiper
+```
+
+Видео есть у всех 185 игр, статей совсем без медиа не осталось.
 
 Проверено и не помогло: Steam, Википедия, Викисклад. Что осталось:
 
 - советские автоматы («Городки», «Перехватчик», «Сафари», «Снайпер») —
   свободных снимков нет нигде, кроме «Морского боя» и «Магистрали», которые
-  уже разобраны;
+  уже разобраны. В статье «Советские игровые автоматы» в Википедии всего две
+  картинки, и обе уже у нас;
 - спектрумовские («Чёрный ворон», «НЛО») и компьютерные восьмидесятых
-  («Клад», «Диверсант») — возможный источник emuverse и zxpress, но кадры там
-  без указания прав;
-- `mir-tankov` и `legend-dragons` — официальные сайты, кадры под «Промо»;
+  («Клад») — возможный источник emuverse и zxpress, но кадры там без указания
+  прав;
+- `legend-dragons` — официальный сайт, кадры под «Промо»;
 - `men-of-war-2` и `shtyrlitz` — старые издания без витрин.
 
-### 2.3. «Диверсант» без видео
+Фотографии корпусов автоматов с `15kop.ru` и `sovavtomaty.ru` — чужой
+контент под правами сайтов, а не свободные кадры из игры. Брать их нельзя:
+разрешение владельца касается скриншотов, а снимок корпуса — это фотография
+с собственным автором.
 
-Единственная игра совсем без роликов. Поиск приносит сериал «Диверсант» и
-мод для S.T.A.L.K.E.R. с тем же названием; настоящего ролика про игру для
-Радио-86РК найти не удалось.
+### 2.3. Студии, которых не хватает
 
-### 2.4. Студии-издатели, которых не хватает
+Свои, которых стоит завести (агенты просились сослаться и не смогли):
+**Banzai Games** — московская студия, фактический разработчик Shadow Fight 3,
+в статье упоминается четыре раза, а записи нет; **East Games** и
+**«Фабрика Онлайн»** — операторы Royal Quest; **«Магнамедиа»** — издатель
+продолжений «Штырлица»; **Association K-D Lab** — отдельное юридическое лицо,
+издающее Spanking Runners, не то же самое, что `kd-lab`.
 
-Агенты просились сослаться и не смогли: **HypeTrain Digital** («Чёрная
-книга»), **Atent Games** (консольные ATOM RPG), **Konami** и **Iceberg
-Interactive** (Blades of Time), **Kalypso Media**, **KranX Productions**,
-**Virtual Programming**, **VK Play**, **4Divinity**.
+Зарубежные издатели: **HypeTrain Digital** («Чёрная книга»), **Atent Games**
+(консольные ATOM RPG), **Konami** и **Iceberg Interactive** (Blades of Time),
+**Kalypso Media**, **KranX Productions**, **Virtual Programming**,
+**VK Play**, **4Divinity**, **Croteam**, **Digital Jesters**, **Focus Home
+Interactive**, **JoWooD Productions**, **Encore Software**, **Nacon /
+Bigben Interactive**, **Xendex**, **Fulqrum Publishing**, **1C Wireless**,
+**GamePix**.
 
-### 2.5. Раздача файлов
+Не хватает и платформ: **Nintendo 3DS** (на ней выходила Punch Club) и
+**Apple TV** (версия Shadowmatic). Обе упомянуты в статьях обычным текстом.
+
+Игры, на которые хотелось сослаться, но их нет: **Silent Storm: Sentinels**
+(«Часовые»), **Hammer & Sickle** («Серп и молот»), **Sherlock Holmes: Mystery
+of the Mummy**, **The Sinking City 2**, **«Штырлиц 2: Танго в пампасах»** и
+**«Штырлиц 3: Агент СССР»**, **«Скачки»** (автомат того же омского завода,
+что и «Сафари»).
+
+### 2.4. Раздача файлов
 
 Схема и страница это умеют: файл кладётся в `public/downloads/<id>/`,
 валидатор проверяет и наличие файла, и что лицензия позволяет. **Ни одного
 файла не залито**, и агентам заполнять `files` запрещено — решение по каждому
 за человеком.
 
-Единственный найденный кандидат — «Блицкриг»: 1 мая 2025 года Nival выложила
-исходники на GitHub, но лицензия запрещает коммерческое использование, так
-что свободной её считать нельзя.
+Кандидатов с подходящей лицензией так и нет. Что проверено:
+
+- **Nival** открыла исходники четырёх своих игр: Prime World (сентябрь 2024),
+  «Блицкриг» (апрель 2025), «Блицкриг 2» (сентябрь 2025) и Silent Storm
+  (февраль 2026). Лицензия у всех одна и та же и **запрещает коммерческое
+  использование**, то есть свободной не считается. Вдобавок из репозиториев
+  вырезаны FMOD и Bink — чужие коммерческие технологии;
+- **«Самогонки»** — код под GPLv3 на GitHub, но без игровых данных: README
+  отсылает к ресурсам издания «1С», а они продаются в Steam;
+- **«НЛО: Враг Неизвестен»** — единственная игра, где лицензия правильная:
+  объявление Медноноговых 1998 года называет её среди программ, переведённых в
+  freeware. Записана в `availability`, но единственная ссылка на скачивание
+  отдаёт 404, так что заливать пока нечего.
 
 ---
 
