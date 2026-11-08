@@ -50,6 +50,11 @@ gallery:
     title: "Sudden Strike Gold (2001) - PC Gameplay / Win 10 / GOG"
     channel: "FirstPlays HD"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "QHnNSBOCKA0"
+    title: "Sudden Strike HD прохождение 💥 Кампания за СССР 💥 Ученья - Саботажники - Барбароса #1"
+    channel: "RWG-team"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "NextGen"
     score: "5 из 5"

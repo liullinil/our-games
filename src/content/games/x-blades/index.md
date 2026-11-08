@@ -78,6 +78,11 @@ gallery:
     title: "X-Blades Gameplay HD"
     channel: "steve88HUN"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "KWvD_bg2kpo"
+    title: "X-blades Прохождение на \"Сложно\" серия 1(Вход в руины)"
+    channel: "Хардкорные прохождения от Михаила"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "3DNews"
     score: "не шедевр, но очень увлекательно"

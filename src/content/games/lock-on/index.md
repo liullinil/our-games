@@ -54,6 +54,11 @@ gallery:
     title: "Lock On: Modern Air Combat PC Games Gameplay - Big battle"
     channel: "IGN"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "rtbDwTnuUGY"
+    title: "Прохождение: Lock On - Горячие Скалы 2. Кампания МиГ-29С Миссия 7"
+    channel: "ArteSSmart"
+    checkedAt: "2026-11-08"
 summary: >-
   Симулятор современных истребителей: Су-27, Су-33, МиГ-29, F-15 и A-10 над Крымом и Кавказом. Прямой предок DCS World.
 reviews:

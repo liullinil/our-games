@@ -78,6 +78,11 @@ gallery:
     title: "Escape from Tarkov - Action Gameplay Trailer"
     channel: "Battlestate"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "E1rmy2pxKjw"
+    title: "ТАРКОВ Релиз! Прохождение сюжета в Escape from Tarkov Часть 1"
+    channel: "Гроза Востока"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "PC Gamer"
     score: "90/100"
@@ -112,7 +117,7 @@ reading:
     url: "https://stopgame.ru/show/88540/escape_from_tarkov_preview_po_alfa_versii"
     outlet: "StopGame"
     note: "как рейды, лут и потеря снаряжения выглядели в самой первой версии"
-  - title: "Shadows of Chernobyl: tracing the inspiration of Escape from Tarkov"
+  - title: "Откуда взялся Escape from Tarkov: разбор источников вдохновения"
     url: "https://www.pcgamesn.com/escape-from-tarkov/stalker-zone-games"
     outlet: "PCGamesN"
     note: "разбор родства «Таркова» со S.T.A.L.K.E.R. и зарождения жанра «игр про зону»"

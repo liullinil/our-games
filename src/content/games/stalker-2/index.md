@@ -86,6 +86,11 @@ gallery:
     title: "S.T.A.L.K.E.R. 2: Сердце Чернобыля — Официальный геймплейный трейлер"
     channel: "GSC Game World"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "GPKDtyyrGpY"
+    title: "Прохождение STALKER 2 (Сталкер 2 Сердце Чернобыля) — Часть 1: ТУДА И ОБРАТНО"
+    channel: "JoniPlays"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "PC Gamer"
     score: "83/100"

@@ -9,6 +9,7 @@
  *   node scripts/fetch-steam.mjs                 все игры со steamAppId без галереи
  *   node scripts/fetch-steam.mjs stalker-shoc    только эти игры
  *   node scripts/fetch-steam.mjs --refetch ...   перекачать, даже если галерея есть
+ *   node scripts/fetch-steam.mjs --append ...    дописать кадры к тем, что уже есть, ничего не стирая
  *   node scripts/fetch-steam.mjs --search        подобрать steamAppId играм, у которых его нет
  *   node scripts/fetch-steam.mjs --limit 6       сколько скриншотов брать (по умолчанию 5)
  */
@@ -30,6 +31,12 @@ const opt = (name, fallback) => {
 };
 const LIMIT = Number(opt('limit', 5));
 const REFETCH = flag('refetch');
+/*
+ * Дописать, а не заменить: обложка из Википедии и постер остаются, кадры из
+ * Steam встают в галерею следом за ними. Баннер магазина в этом режиме не
+ * качается — обложка у статьи уже есть.
+ */
+const APPEND = flag('append');
 const only = args.filter((a) => !a.startsWith('--') && !/^\d+$/.test(a) && a !== opt('limit', ''));
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -86,6 +93,34 @@ const yamlStr = (s) => QUOTE + String(s).replace(/\\/g, '\\\\').replace(/"/g, '\
  * добавляются в начало списка (видео остаётся после них). Постер ставится
  * перед галереей, старый постер заменяется.
  */
+/**
+ * Дописывает кадры после последней картинки галереи, не трогая постер.
+ * Если картинок нет вовсе, кадры встают в начало галереи.
+ */
+function appendShots(fm, shots) {
+  const blocks = shots
+    .map(
+      (s) =>
+        [
+          `  - kind: image`,
+          `    src: ./shots/${s.file}`,
+          `    caption: ${yamlStr(s.caption)}`,
+          `    author: ${yamlStr(s.author)}`,
+          `    license: ${yamlStr(s.license ?? 'Скриншот')}`,
+          `    sourceUrl: ${yamlStr(s.sourceUrl)}`,
+        ].join('\n') + '\n',
+    )
+    .join('');
+  const images = [...fm.matchAll(/^ {2}- kind: image\r?\n(?: {4}.*\r?\n)*/gm)];
+  if (images.length) {
+    const last = images[images.length - 1];
+    const at = last.index + last[0].length;
+    return fm.slice(0, at) + blocks + fm.slice(at);
+  }
+  if (/^gallery:\s*\[\]\s*$/m.test(fm)) return fm.replace(/^gallery:\s*\[\]\s*$/m, `gallery:\n${blocks}`.replace(/\n$/, ''));
+  return fm.replace(/^gallery:[ \t]*\r?\n/m, `gallery:\n${blocks}`);
+}
+
 function patchFrontmatter(fm, { poster, shots }) {
   let out = fm.replace(/^poster:.*\r?\n/m, '');
   const blocks = shots
@@ -158,7 +193,7 @@ async function fetchGame(game) {
   let poster = null;
   const shots = [];
   const hero = await getBytes(`https://cdn.akamai.steamstatic.com/steam/apps/${game.appId}/library_hero.jpg`);
-  const cover = hero ?? (d.header_image ? await getBytes(d.header_image) : null);
+  const cover = APPEND ? null : hero ?? (d.header_image ? await getBytes(d.header_image) : null);
   if (cover) {
     const buf = await sharp(cover, { failOn: 'none' }).resize({ width: 1600, withoutEnlargement: true }).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
     await writeFile(path.join(dir, 'poster.jpg'), buf);
@@ -203,7 +238,7 @@ async function main() {
   let skipped = 0;
   for (const g of games) {
     if (!g.appId) continue;
-    if (g.hasImages && !REFETCH) {
+    if (g.hasImages && !REFETCH && !APPEND) {
       skipped += 1;
       continue;
     }
@@ -221,7 +256,7 @@ async function main() {
     const { head, fm, tail, body } = split(text);
     let cleanFm = fm;
     if (REFETCH) cleanFm = cleanFm.replace(/^ {2}- kind: image\r?\n(?: {4}.*\r?\n)*/gm, '');
-    const patched = patchFrontmatter(cleanFm, result);
+    const patched = APPEND ? appendShots(cleanFm, result.shots) : patchFrontmatter(cleanFm, result);
     await writeFile(g.file, head + patched + tail + body, 'utf8');
     console.log(`  ✓ постер${result.poster ? '' : ' нет'}, скриншотов: ${result.shots.length}`);
     done += 1;

@@ -79,6 +79,11 @@ gallery:
     title: "Ил-2 Штурмовик. Битва за Сталинград. Продолжаем путь одного пилота."
     channel: "ТАНКИСТ"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "7136QnzIY_g"
+    title: "Ил-2 Штурмовик Битва за Сталинград | Прохождение | #1"
+    channel: "Mikhail.Pozhidaev Game.Simulator"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games (AG.ru)"
     score: "80%"

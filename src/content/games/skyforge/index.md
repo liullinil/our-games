@@ -78,6 +78,11 @@ gallery:
     title: "Skyforge Nintendo Switch Gameplay"
     channel: "Handheld Players"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "PlNQHi2waB8"
+    title: "Skyforge. Прохождение. Часть #1 – (Первый взгляд) Создание персонажа, первые квесты"
+    channel: "SaySPGames – Игровой канал"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "GameGuru.ru"
     score: "80%"

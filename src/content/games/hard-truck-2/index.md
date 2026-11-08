@@ -78,6 +78,11 @@ gallery:
     title: "ДАЛЬНОБОЙЩИКИ 2 - ГОРДОСТЬ РОССИЙСКОГО ГЕЙМДЕВА"
     channel: "Игорь Линк"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "t0mNxkQTU3A"
+    title: "Прохождение ДАЛЬНОБОЙЩИКИ 2 — Любимая игра и Наведение суеты — Стрим #1"
+    channel: "so10way"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Jeuxvideo.com"
     score: "8/20"

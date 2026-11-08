@@ -84,6 +84,11 @@ gallery:
     channel: "Детский Игровой Парк"
     poster: "https://pic.rtbcdn.ru/video/c3/83/c383db0e7bf8c5546661d9d9bd70bfac.jpg"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "jgIvSk2O3pw"
+    title: "Knock-Knock Прохождение ► Есть и такие профессии ► #1"
+    channel: "Kuplinov ► Play"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Multiplayer.it"
     score: "7,5/10"

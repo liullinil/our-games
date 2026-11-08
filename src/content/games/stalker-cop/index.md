@@ -84,6 +84,11 @@ gallery:
     title: "Как я играл в S.T.A.L.K.E.R.: Зов Припяти. Часть 1"
     channel: "Нарратор"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "4y-6U4OuuQQ"
+    title: "Прохождение S.T.A.L.K.E.R. - Зов Припяти часть 1 [Начало]"
+    channel: "Хлебный Хлеб"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "PlayGround"
     score: "8,7/10"

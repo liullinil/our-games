@@ -75,6 +75,11 @@ gallery:
     title: "Обзор игры Chasm: the Rift (1997). Клон Quake?"
     channel: "Comrade Bender"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "XTVkt8-wmJg"
+    title: "Chasm: The Rift (2022 Remaster) | Full Game Walkthrough (High Difficulty, No Death)"
+    channel: "Nicholas Shtyrlov"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Game.EXE"
     score: "88%"

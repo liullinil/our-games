@@ -75,6 +75,11 @@ gallery:
     title: "Санитары подземелий 2 — Геймплей"
     channel: "СофтКлаб"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "ybS94AaGQ9A"
+    title: "Санитары подземелий ➤ Мягкая посадка ➤ Прохождение #1"
+    channel: "Zarbabay Games"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games"
     score: "80%"

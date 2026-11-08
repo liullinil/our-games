@@ -79,6 +79,11 @@ gallery:
     title: "Cossacks 3 - 8P FFA ULTIMATE MASSIVE WAR | Multiplayer 4K Gameplay"
     channel: "SergiuHellDragoonHQ"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "h_i_5F0GpNk"
+    title: "Прохождение Казаки 3: Золотой век #1 - Новая Голландия [Oranien boven!][Нидерланды]"
+    channel: "Houston, we have a problem"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     verdict: "Не третья часть, а HD-ремейк: механики шестнадцатилетней давности вернули без изменений, добавив разве что бесполезную дипломатию. Управлять большими армиями стало даже неудобнее, чем в оригинале, а багов хватает; спасает только ностальгия."

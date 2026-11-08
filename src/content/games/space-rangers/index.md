@@ -45,6 +45,11 @@ gallery:
     title: "Space Rangers Gameplay"
     channel: "Oleg “MedWeLap” Podolsky"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "LgemTMQWWF0"
+    title: "Космические рейнджеры - Space Rangers - прохождение - часть 1"
+    channel: "foresterization. Прохождение игр нулевых"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games"
     score: "90%"

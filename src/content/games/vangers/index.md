@@ -77,6 +77,11 @@ gallery:
     title: "Vangers gameplay (PC Game, 1998)"
     channel: "Squakenet"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "Xw_dM070S2g"
+    title: "Прохождение: Вангеры -=1=- Начало начал"
+    channel: "/ “‪Тейен Тюльяши‬” /"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Game.EXE"
     score: "90%"

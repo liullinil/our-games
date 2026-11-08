@@ -85,6 +85,11 @@ gallery:
     title: "Я прошел GRAVEYARD KEEPER на 100%"
     channel: "СКУМА"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "SjO-dK8-wyQ"
+    title: "Graveyard Keeper Прохождение игры #1: Милое кладбище!"
+    channel: "Shadville LPlay"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "GamingTrend"
     score: "75/100"

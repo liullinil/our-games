@@ -81,6 +81,11 @@ gallery:
     title: "Мои карты в Men of War(В тылу врага 2 Лис пустыни)"
     channel: "Niko Ni"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "iFTi2sTJcu0"
+    title: "#1 БОЕВОЕ КРЕЩЕНИЕ. MEN OF WAR / В ТЫЛУ ВРАГА 2. ЛИС ПУСТЫНИ. WALKTHROUGH / ПРОХОЖДЕНИЕ НА РУССКОМ."
+    channel: "Мизуки не зли"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Eurogamer"
     score: "9/10"

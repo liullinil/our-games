@@ -51,6 +51,11 @@ gallery:
     title: "Cryostasis: Sleep of Reason - PC Gameplay 1080p"
     channel: "FirstPlays HD"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "dDEuq8Xv-9A"
+    title: "Cryostasis: Sleep Of Reason | Прохождение Часть 1"
+    channel: "TheGTAMan63"
+    checkedAt: "2026-11-08"
 summary: >-
   Хоррор на вмёрзшем в лёд атомном ледоколе «Северный ветер»: герой греется у любого источника тепла и переживает смерти членов экипажа. Одна из первых игр с физикой воды на PhysX.
 reviews:

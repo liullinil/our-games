@@ -48,6 +48,11 @@ gallery:
     title: "Xenus 2 White Gold - Обзор"
     channel: "Stivman's Reviews"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "lPprpk1ZdxY"
+    title: "Xenus 2: Белое Золото. Прохождение. #1. Новое приключение."
+    channel: "TheEasyNICK"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Страна игр"
     score: "7,5/10"

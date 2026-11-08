@@ -77,6 +77,11 @@ gallery:
     title: "The Void - Тургор gameplay KRI 2007"
     channel: "PC Games"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "wTxLG2i3VN0"
+    title: "Прохождение Тургор #1 Голод: Пробуждение"
+    channel: "TESler Channel"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games"
     score: "75%"

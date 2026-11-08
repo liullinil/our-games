@@ -41,6 +41,11 @@ gallery:
     channel: "Коварная Сосиска"
     poster: "https://pic.rtbcdn.ru/video/df/33/df334a8a57474692b49756b18a12073f.jpg"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "VHFDuWus77w"
+    title: "Survarium Прохождение На Русском #1 — СТАЛКЕР В ОНЛАЙНЕ"
+    channel: "Первый Хоррор Канал"
+    checkedAt: "2026-11-08"
 summary: >-
   Сетевой шутер о мире, захваченном аномальным лесом, от бывших разработчиков S.T.A.L.K.E.R. 2. Так и не дожил до обещанного открытого мира и закрылся в 2022 году.
 reviews:

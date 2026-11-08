@@ -80,6 +80,11 @@ gallery:
     title: "Эх, сейчас бы... Космические Рейнджеры 2. Доминаторы. Часть 1."
     channel: "Mihagan"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "dgq9fYf2wEU"
+    title: "Космические рейнджеры 2: Доминаторы - Space Rangers 2: Dominators - прохождение - часть 1"
+    channel: "foresterization. Прохождение игр нулевых"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games"
     score: "94%"

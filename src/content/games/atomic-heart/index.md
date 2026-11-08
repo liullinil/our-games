@@ -89,6 +89,11 @@ gallery:
     channel: "Alexandr ieretsumi"
     poster: "https://pic.rtbcdn.ru/video/c3/18/c3186b29c83c1eb46b78242576979297.png"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "RBM6atgU3fg"
+    title: "Прохождение Atomic Heart (Атомное сердце) — Часть 1: СССР будущего ✪ PC [4K АТОМНАЯ ГРАФИКА]"
+    channel: "RusGameTactics"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "3DNews"
     score: "9/10"

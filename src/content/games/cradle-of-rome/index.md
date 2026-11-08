@@ -66,6 +66,11 @@ gallery:
     title: "Cradle of Rome Seven Hills Level 1-6 Gameplay"
     channel: "VideoGames"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "gaKkMhgHh_s"
+    title: "Колыбель Рима (онлайн версия) – полное прохождение"
+    channel: "YoshiRonin"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Gamezebo"
     score: "80/100"

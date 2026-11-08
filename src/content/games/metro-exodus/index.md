@@ -88,6 +88,11 @@ gallery:
     title: "Metro Exodus - E3 2017 Announce Gameplay Trailer [UK]"
     channel: "metrovideogame"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "4J2tr-r0xoM"
+    title: "Прохождение Metro Exodus (Метро: Исход) — Часть 1: Москва ✪ PC [4K]"
+    channel: "RusGameTactics"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "Похвально"

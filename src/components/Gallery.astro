@@ -3,7 +3,9 @@ import { photoSource, isGameArt, gameArtNote } from '../lib/labels';
 import { Image, getImage } from 'astro:assets';
 import type { GameNode } from '../lib/graph';
 import Video from './Video.astro';
+import Model3D from './Model3D.astro';
 import { videos as videoItems } from '../lib/video';
+import { models as modelItems } from '../lib/model3d';
 
 type Photo = Extract<GameNode['data']['gallery'][number], { kind: 'image' }>;
 type Clip = ReturnType<typeof videoItems>[number];
@@ -24,6 +26,7 @@ const { game: g, photos: onlyPhotos, videos: onlyVideos } = Astro.props;
 const all = g.data.gallery.filter((p): p is Photo => p.kind === 'image');
 const photos = onlyPhotos ?? all;
 const videos = onlyVideos ?? videoItems(g.data.gallery);
+const models = modelItems(g.data.gallery);
 
 // Большая версия для лайтбокса готовится на сборке, чтобы не грузить оригиналы.
 const large = await Promise.all(photos.map((p) => getImage({ src: p.src, width: 1600, format: 'webp' })));
@@ -79,6 +82,21 @@ const creditText = (p: (typeof photos)[number]) =>
         {videos.map((video) => (
           <li>
             <Video video={video} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+{
+  models.length > 0 && (
+    <section class="gallery" data-pagefind-ignore>
+      <h2>3D-модели</h2>
+      <ul class="gallery__videos">
+        {models.map((model) => (
+          <li>
+            <Model3D model={model} />
           </li>
         ))}
       </ul>

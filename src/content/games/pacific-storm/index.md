@@ -76,6 +76,11 @@ gallery:
     title: "Pacific Storm |Gameplay #1| part 1"
     channel: "PropagandaPanda"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "m7GwN1YMT3M"
+    title: "Pacific Storm Allies, сборка, геймплей, прохождение #4"
+    channel: "ЗапилимПоиграть Channel"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games"
     score: "80%"

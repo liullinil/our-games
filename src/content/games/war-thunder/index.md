@@ -82,6 +82,12 @@ gallery:
     title: "КАК ИГРАЕТСЯ WAR THUNDER В 2025"
     channel: "Lych"
     checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "01dacb3fda19ad0bd8f4ede9012b1e5f"
+    title: "War Thunder Прохождение 1"
+    channel: "Прохождение игр: секреты и трюки"
+    poster: "https://pic.rtbcdn.ru/video/7d/e5/7de55b68d26101e246697a245f77618d.jpg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Навигатор игрового мира"
     score: "8,7 из 10"

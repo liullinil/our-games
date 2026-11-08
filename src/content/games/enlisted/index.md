@@ -82,6 +82,12 @@ gallery:
     title: "Enlisted Gameplay - Fortress - Battle of Tunisia (1440p 60FPS)"
     channel: "JustGameplay_YT"
     checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "a152f6bd9f37ba15c3ab28551849ed0d"
+    title: "Enlisted Прохождение Часть 1"
+    channel: "kotevolode"
+    poster: "https://pic.rtbcdn.ru/video/2025-05-07/57/08/57089d70ae63ca0f75ee49952e72d519.jpg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Games Latest News"
     score: "7,8/10"

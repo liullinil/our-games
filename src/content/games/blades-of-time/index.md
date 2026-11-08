@@ -82,6 +82,11 @@ gallery:
     title: "Геймплей Blades of Time (PC/HD)"
     channel: "Throneful"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "j7srfOsG3Vw"
+    title: "Прохождение Blades of Time часть 1"
+    channel: "Coop4Fcuk"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Игромания"
     score: "5,0/10"

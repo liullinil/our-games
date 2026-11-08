@@ -85,6 +85,11 @@ gallery:
     channel: "ШэфЗэро"
     poster: "https://pic.rtbcdn.ru/video/2025-07-07/c1/38/c138aa2658e2deba6b5e23a62ff0b85a.jpg"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "BHpZDAZM4zg"
+    title: "Прохождение Disco Elysium - 1 - Создание Персонажа и Жёсткое Пробуждение"
+    channel: "Curaidh Plays Games"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "3DNews"
     score: "10/10"

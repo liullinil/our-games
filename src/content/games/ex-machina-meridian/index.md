@@ -80,6 +80,11 @@ gallery:
     title: "Ex Machina Меридиан 113 - Часть 1 [Бродяга]"
     channel: "NormandyRen"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "aO2Mp3m1BHM"
+    title: "Ex Machina: Меридиан 113. Прохождение. Бродяга (часть 1)"
+    channel: "Скиталец"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games (AG.ru)"
     score: "72/100"

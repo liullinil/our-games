@@ -47,6 +47,11 @@ gallery:
     title: "IL2 Sturmovik Forgotten Battles - IL2"
     channel: "HmmhProductions"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "KE5lriM-BT4"
+    title: "Прохождение кампании Сломанные крылья в игре ил-2 Штурмовик забытые сражения"
+    channel: "@Gaming_Zero"
+    checkedAt: "2026-11-08"
 summary: >-
   Расширенное продолжение «Ил-2»: Финляндия, Венгрия, десятки новых самолётов и динамическая кампания. Основа, на которой выросли «Асы в небе» и «1946».
 reviews:

@@ -88,6 +88,11 @@ gallery:
     channel: "🔥GAMES-LONG / ТРЕЙЛЕРЫ ИГР - ГЕЙМПЛЕЙ🔥"
     poster: "https://pic.rtbcdn.ru/video/2026-05-28/35/2c/352c9944052c845a8c3419586d177b0e.jpg"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "Dz0KrJQ7FaM"
+    title: "Прохождение World OF Tanks #1"
+    channel: "nikitatv51"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "PlayGround"
     score: "8,3/10"

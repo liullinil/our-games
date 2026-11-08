@@ -40,6 +40,11 @@ gallery:
     channel: "MMO Storytelling"
     poster: "https://pic.rtbcdn.ru/video/83/7e/837e6b08beb6849ef2d65aa2c7ec1bb1.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "czgYPzHwsac"
+    title: "Прохождение игры \"Сфера Перерождение\" [Часть 1]"
+    channel: "NOGREE"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Страна игр"
     score: "7,5/10"

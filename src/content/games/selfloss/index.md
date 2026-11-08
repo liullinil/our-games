@@ -77,6 +77,11 @@ gallery:
     title: "Selfloss - Gameplay"
     channel: "Game Mojo"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "nXh3Pfrit9c"
+    title: "SELFLOSS - Gameplay Walkthrough Part 1 (PS5) No Commentary"
+    channel: "FazyGaming"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "3DNews"
     score: "7,5/10"

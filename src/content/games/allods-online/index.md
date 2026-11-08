@@ -76,6 +76,11 @@ gallery:
     title: "АЛЛОДЫ ОНЛАЙН – стоит ли играть? Почему такой хайп?"
     channel: "Орк-подкастер"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "NLtilH5d3uY"
+    title: "Прохождение Аллоды Онлайн - Серия 1 (Начало)"
+    channel: "Rabbit52Rus"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Eurogamer"
     score: "6/10"

@@ -78,6 +78,11 @@ gallery:
     title: "Death Track: Resurrection PC Gameplay On HD4850"
     channel: "moshepo"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "RJdx4KjEq1U"
+    title: "Death Track: Resurrection || Полное прохождение"
+    channel: "DRONE Stream"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "PlayGround.ru"
     score: "8,6/10"

@@ -83,6 +83,11 @@ gallery:
     channel: "Мужской ринг: преодоление себя в боксе"
     poster: "https://pic.rtbcdn.ru/video/b8/7a/b87a078baddab537d913c2357f865738.jpg"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "EJVd3nUa9_E"
+    title: "Полное прохождение сюжета~Crossout~"
+    channel: "PupsFM"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "VGTimes"
     score: "7,5/10"

@@ -77,6 +77,11 @@ gallery:
     title: "Hard Truck: Apocalypse / Ex Machina (2005) - PC Gameplay 4k 2160p / Win 10"
     channel: "FirstPlays HD"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "whsTpGsVXr0"
+    title: "Ex Machina (Hard Truck) - Прохождение #1"
+    channel: "Muxakep Михакер"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "PlayGround"
     score: "8,7/10"

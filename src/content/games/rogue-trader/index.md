@@ -82,6 +82,11 @@ gallery:
     title: "Warhammer 40,000: Rogue Trader — официальный трейлер игрового процесса"
     channel: "GameSpot Trailers"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "KwjNJ5xEiDs"
+    title: "#01 ЛЕГАЛЬНЫЙ ПСАЙКЕРСКИЙ РЕЛИЗ Прохождение Warhammer 40,000: Rogue Trader НА РУССКОМ"
+    channel: "Never More"
+    checkedAt: "2026-11-08"
 website: "https://roguetrader.owlcat.games/en"
 reviews:
   - outlet: "Игромания"

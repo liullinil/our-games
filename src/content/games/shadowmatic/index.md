@@ -43,6 +43,11 @@ gallery:
     title: "Shadowmatic (By TRIADA Studio) - iOS - iPhone/iPad/iPod Touch Gameplay"
     channel: "rrvirus"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "srVxqcPLNJ8"
+    title: "Shadowmatic: Walkthrough Guide World 8 (Levels 8.1, 8.2 & 8.3) Final Level! + full map uncovered"
+    channel: "App Unwrapper"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Pocket Gamer"
     score: "4,5/5"

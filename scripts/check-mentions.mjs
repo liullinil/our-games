@@ -22,32 +22,13 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { PLACES, MODERN, ZONE_GAMES, ZONE_TITLE, ZONE_WORD } from './lib/mentions.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CONTENT = path.join(root, 'src', 'content');
 const VERBOSE = process.argv.includes('--verbose');
 
-/**
- * Страна и города: о них не говорим.
- *
- * Латинские написания здесь не для красоты: `country: ukraine` — это поле
- * frontmatter, и кириллическим шаблоном оно не ловится. Одна карточка студии
- * из-за этого дожила до конца правки с нетронутой страной.
- */
-const PLACES =
-  /Украин|украинск|украинц|Киев|киевск|Харьков|харьковск|Одесс|Львов|Днепропетровск|\bukraine\b|\bukrainian\b|\bkyiv\b|\bkiev\b|\bkharkiv\b/i;
 
-/**
- * Современные конфликты и всё, что тянется за ними с 2022 года.
- *
- * Ловим связку, а не отдельное слово: «вторжение» и «эвакуация» в играх
- * встречаются на каждом шагу и к политике отношения не имеют. У Escape from
- * Tarkov эвакуация — это выход из рейда и название целого жанра, у Massive
- * Assault угроза вторжения — тактический приём, у «НЛО» вторжение — сюжет
- * 1994 года.
- */
-const MODERN =
-  /полномасштабн|релоциров|вторжени[а-яё]* Росси|российск[а-яё]* вторжени|24 февраля 2022|эвакуац[а-яё]*\s+(сотрудник|команд|студи|офис|разработчик)/i;
 
 /**
  * Что решено оставить, с причиной. Проверка сверяет строку с этим списком,
@@ -55,8 +36,18 @@ const MODERN =
  */
 const ALLOWED = [
   {
-    why: 'Названия игр серии S.T.A.L.K.E.R. — «Тень Чернобыля», «Зов Припяти», Chornobyl, Prypiat',
-    test: (line) => /Чернобыл|Припят|Chornobyl|Chernobyl|Prypiat|Pripyat/.test(line) && !PLACES.test(line),
+    why: 'Зона из S.T.A.L.K.E.R.: в статьях о самих играх серии — их выдуманный мир, в остальных — название игры',
+    /*
+     * Строка проходит, только если в ней из запретного — одни Чернобыль и
+     * Припять. Если рядом стоит ещё и, скажем, «киевская студия», правило
+     * не спасает: убирать надо её.
+     */
+    test: (line, rel) => {
+      if (!ZONE_WORD.test(line)) return false;
+      const rest = line.replace(new RegExp(ZONE_WORD.source, 'gi'), '');
+      if (PLACES.test(rest)) return false;
+      return ZONE_GAMES.has(rel.replace(/^games\//, '').replace(/\/index\.md$/, '')) || ZONE_TITLE.test(line);
+    },
   },
   {
     why: 'Игровые юниты и нации «Казаков»: сердюки, запорожцы, Украина как играбельная сторона XVII века',
@@ -106,7 +97,7 @@ for (const file of walk(CONTENT)) {
   const lines = readFileSync(file, 'utf8').split('\n');
   for (const [i, line] of lines.entries()) {
     if (!PLACES.test(line) && !MODERN.test(line)) continue;
-    const ok = ALLOWED.find((a) => a.test(line));
+    const ok = ALLOWED.find((a) => a.test(line, rel));
     const hit = { rel, n: i + 1, text: line.trim().slice(0, 150) };
     if (ok) allowed.push({ ...hit, why: ok.why });
     else found.push(hit);

@@ -84,6 +84,11 @@ gallery:
     title: "Sherlock Holmes Chapter One - Official Gameplay Reveal | PS5, PS4"
     channel: "PlayStation"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "3WcaPXnpT34"
+    title: "SHERLOCK HOLMES CHAPTER ONE ➤ ПРОХОЖДЕНИЕ [2K] ─ ЧАСТЬ 1: ПРИЗРАКИ ПРОШЛОГО ➤ Геймплей на Русском"
+    channel: "FastGoerTV"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "3,5/10"

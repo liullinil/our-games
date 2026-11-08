@@ -14,6 +14,7 @@
  *
  *   node scripts/fetch-video.mjs --auto all --take 3 --report tmp/video/report
  *   node scripts/fetch-video.mjs --auto stalker-shoc perimeter --write
+ *   node scripts/fetch-video.mjs --auto all --walkthrough --write   по прохождению тем, у кого его нет
  *   node scripts/fetch-video.mjs --query "Вангеры обзор" --source rutube
  *   node scripts/fetch-video.mjs --game vangers --add https://www.youtube.com/watch?v=<id>
  *   node scripts/fetch-video.mjs --game vangers --drop <id>
@@ -25,6 +26,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { forbiddenText } from './lib/mentions.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const UA =
@@ -187,6 +189,18 @@ const OTHER_GAME = new RegExp(
  * запрос идёт сразу за геймплеем и он же выигрывает по рейтингу.
  */
 const GAMEPLAY = process.argv.includes('--gameplay');
+
+/**
+ * Проход за прохождениями.
+ *
+ * Прохождение — отдельный жанр ролика: человек играет от начала и дальше,
+ * обычно частями. Обзор его не заменяет, а геймплейная нарезка — тем более.
+ * В этом режиме каждой игре без прохождения добавляется ровно одно, сколько
+ * бы роликов у неё уже ни было, и годится только то, в названии чего
+ * прохождение названо прямо.
+ */
+const WALKTHROUGH = process.argv.includes('--walkthrough');
+const WALK_RE = /прохожден|walkthrough|longplay|long play|full ?game|full ?play|let.?s ?play|летсплей/i;
 
 const MIN_SECONDS = 90;
 const MAX_SECONDS = 4 * 3600;
@@ -553,6 +567,12 @@ function judge(video, ctx) {
     return { ok: false, why: 'мусорная примета в названии' };
   }
   if (video.category && BAD_CATEGORY.test(video.category)) return { ok: false, why: 'чужой раздел' };
+  /*
+   * Заголовок ролика выводится на странице подписью, так что редакционное
+   * правило касается и его: то, что проверка статей отклонит, сюда не берём.
+   */
+  if (forbiddenText(video.title, ctx.slug)) return { ok: false, why: 'заголовок под редакционным правилом' };
+  if (WALKTHROUGH && !WALK_RE.test(video.title)) return { ok: false, why: 'не прохождение' };
 
   const hit = ctx.forms.find((f) => f.re.test(video.title));
   if (!hit) return { ok: false, why: 'в названии нет самой игры' };
@@ -571,6 +591,26 @@ function judge(video, ctx) {
   if ((hit.strength === 'bare' || hit.strength === 'plain') && !ctx.gameTopic.test(video.title)) {
     return { ok: false, why: 'имя из обычных слов без приметы игры' };
   }
+  if (WALKTHROUGH) {
+    const title = video.title.replace(/^[\s\p{P}\p{S}]+/u, '');
+    const at = title.search(hit.re);
+    /*
+     * Обычные слова в названии: «прохождение» само по себе ничего не
+     * доказывает, оно есть в каждом заголовке. Наше имя должно открывать
+     * заголовок или стоять сразу за словом «прохождение».
+     */
+    if (hit.strength !== 'strong' && at > 0) {
+      const lead = title.slice(0, at);
+      const afterWalk = /(прохождени[ея]|walkthrough)(\s+игры)?[\s:«"'„“\-–—]*$/i.test(lead);
+      if (!afterWalk) return { ok: false, why: 'имя из обычных слов не в начале заголовка' };
+    }
+    /* Номер сразу за названием, которого в нашем названии нет, — другая часть серии. */
+    const tail = title.slice(at).replace(hit.re, '');
+    const sequel = tail.match(/^\s*[:\-–—]?\s*(\d{1,2})\b/)?.[1];
+    if (sequel && !ctx.ours.some((n) => new RegExp(`\\b${sequel}\\b`).test(n))) {
+      return { ok: false, why: 'другая часть серии' };
+    }
+  }
 
   let score = 0;
   if (inList(TRUSTED, video.channel)) score += 60;
@@ -584,7 +624,10 @@ function judge(video, ctx) {
    */
   const review = /обзор|review|ретро|retro|истори|history|разбор|ретроспектив/i.test(video.title);
   const play = /геймплей|gameplay|прохожден|walkthrough|longplay|летсплей|let.?s ?play|играем/i.test(video.title);
-  if (GAMEPLAY) {
+  if (WALKTHROUGH) {
+    if (/(часть|серия|part|эпизод|#)\s*0?1\b|\b1\s*(часть|серия)|полное|full/i.test(video.title)) score += 20;
+    if (video.seconds >= 600) score += 12;
+  } else if (GAMEPLAY) {
     if (play) score += 22;
     else if (review) score += 4;
   } else if (review) score += 18;
@@ -678,7 +721,10 @@ function readGame(slug) {
   for (const m of text.matchAll(/- kind: (youtube|rutube|vk)\r?\n(?:[ \t]+.*\r?\n)*?[ \t]+id: "([^"]+)"/g)) {
     have.push({ platform: m[1], id: m[2] });
   }
-  return { slug, name, altNames, type, have, file };
+  /* Есть ли уже прохождение: смотрим заголовки роликов в галерее. */
+  const titles = [...text.matchAll(/- kind: (?:youtube|rutube|vk)\r?\n(?:[ \t]+.*\r?\n)*?[ \t]+title: "([^"]*)"/g)].map((m) => m[1]);
+  const hasWalk = titles.some((t) => WALK_RE.test(t));
+  return { slug, name, altNames, type, have, hasWalk, file };
 }
 
 /** Дописывает проверенные ролики в галерею игры. Возвращает, сколько вписал. */
@@ -887,6 +933,7 @@ function buildCtx(game, slug) {
     .map((f) => ({ form: f.form, re: formRegex(f.form), strength: formStrength(f) }))
     .filter((f) => f.re);
   return {
+    slug,
     forms,
     /** Наши собственные названия: по ним видно, что чужая игра — на самом деле наша. */
     ours: [game.name, ...(game.altNames ?? [])],
@@ -1121,14 +1168,21 @@ async function main() {
       console.log(`${slug}: нет такой игры`);
       continue;
     }
-    const need = take - game.have.length;
+    /*
+     * В режиме прохождений нужно ровно одно — и только тем, у кого его нет.
+     * Общий лимит роликов на статью здесь не действует: прохождение не
+     * вытесняет обзор, а добавляется к нему.
+     */
+    const need = WALKTHROUGH ? (game.hasWalk ? 0 : 1) : take - game.have.length;
     if (need <= 0 || (onlyMissing && game.have.length > 0)) continue;
 
     const ctx = buildCtx(game, slug);
     const short = game.name.replace(/[«(].*$/, '').replace(/[«»"]/g, '').trim();
-    const queries = GAMEPLAY
-      ? [`${short} геймплей`, `${short} прохождение`]
-      : [`${short} обзор`, `${short} геймплей`];
+    const queries = WALKTHROUGH
+      ? [`${short} прохождение`, `${short} walkthrough`]
+      : GAMEPLAY
+        ? [`${short} геймплей`, `${short} прохождение`]
+        : [`${short} обзор`, `${short} геймплей`];
 
     const seen = new Set(game.have.map((h) => `${h.platform}:${h.id}`));
     const candidates = [];

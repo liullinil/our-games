@@ -36,6 +36,11 @@ gallery:
     title: "Самый Доисторический Симулятор Охоты Carnivores 2 [Обзор Игры]"
     channel: "Джибсич"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "4GOJSQUWCrI"
+    title: "Carnivores TRIPLEX прохождение без смертей: #1 приятное начало"
+    channel: "Ф.Ф compani"
+    checkedAt: "2026-11-08"
 summary: >-
   Охота на динозавров на далёкой планете: выбор оружия, скрадывание против ветра и трофеи. Action Forms сделала одну из самых продаваемых охотничьих игр девяностых.
 reviews:

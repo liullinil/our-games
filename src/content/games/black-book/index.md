@@ -79,6 +79,11 @@ gallery:
     channel: "ASH2"
     poster: "https://pic.rtbcdn.ru/video/2024-10-14/09/e5/09e579ce939399c2473b118dcaf0f656.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "3X6M1cQDjxY"
+    title: "ЧЁРНАЯ КНИГА ➤ Black Book 2K | 1440p ➤ Прохождение #1"
+    channel: "Varfix"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "Изумительно"

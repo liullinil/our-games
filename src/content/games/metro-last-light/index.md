@@ -88,6 +88,11 @@ gallery:
     title: "Metro Last Light Redux: Brutal Stealth Action Gameplay"
     channel: "Swifty Unknown"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "97xw4g0JsKs"
+    title: "Metro Last Light ИГРОФИЛЬМ на русском ● PC прохождение без комментариев ● BFGames"
+    channel: "BFGames"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "Похвально"

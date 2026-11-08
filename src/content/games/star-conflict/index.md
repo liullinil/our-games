@@ -78,6 +78,11 @@ gallery:
     title: "Star Conflict: Как играть УДАРНЫМ ШТУРМОВИКОМ?"
     channel: "Игромания Новости"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "U4N7YOgfn94"
+    title: "Star Conflict - Прохождение.#1.Начало за Иерихон.Axe.Трудности с онлайном."
+    channel: "Lone Star"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "GameGuru.ru"
     verdict: "Красивая игра с богатым содержимым и огромным потенциалом — по сути War Thunder в космосе: три сбалансированные фракции, PvP, PvE и войны за секторы, за которыми стоит живая поддержка разработчиков."

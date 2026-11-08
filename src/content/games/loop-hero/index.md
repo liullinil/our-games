@@ -83,6 +83,11 @@ gallery:
     title: "Обзор игры Loop Hero ➤ вас купит геймплей а не графика"
     channel: "zombieVegas"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "S-ULDC1YOKM"
+    title: "Loop Hero Full Game | No Commentary Gameplay"
+    channel: "No Commentary Potato"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "GameMAG"
     score: "8 из 10"

@@ -78,6 +78,11 @@ gallery:
     channel: "Homo Ludens Games"
     poster: "https://pic.rtbcdn.ru/video/a2/16/a216491cd43086369bbdf791bb9228db.jpg"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "-dFXFzwr9tU"
+    title: "Torn Away ➤ ПОЛНОЕ ПРОХОЖДЕНИЕ на РУССКОМ без КОММЕНТАРИЕВ"
+    channel: "LeshaSGames | Прохождение игр"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Adventure Game Hotspot"
     score: "88/100"

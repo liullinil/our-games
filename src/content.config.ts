@@ -402,6 +402,21 @@ const games = defineCollection({
               poster: z.url().optional(),
               checkedAt: z.string().optional(),
             }),
+            /*
+             * 3D-модель со Sketchfab. Встраивается их проигрывателем, как ролик:
+             * так можно показать любую публичную модель, а скачивать и хранить
+             * у себя разрешает только часть лицензий. Автор обязателен —
+             * Sketchfab и лицензии CC требуют его называть.
+             */
+            z.object({
+              kind: z.literal('sketchfab'),
+              id: z.string().regex(/^[0-9a-f]{32}$/, 'ID модели Sketchfab — 32 шестнадцатеричных знака'),
+              title: z.string(),
+              author: z.string(),
+              license: z.string().optional(),
+              poster: z.url().optional(),
+              checkedAt: z.string().optional(),
+            }),
           ]),
         )
         .default([]),

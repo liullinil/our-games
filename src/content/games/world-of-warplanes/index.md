@@ -79,6 +79,11 @@ gallery:
     title: "World of Warplanes | Lockheed XF-90 | 13 KILLS - Replay Gameplay 1080p 60 fps"
     channel: "MecaWOWS Gameplays"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "u6bKtBIZzA0"
+    title: "Прохождение игры World of Warplanes #1 Нубим!!!!!!"
+    channel: "StudioMaxPP"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "IGN"
     score: "7,8/10"

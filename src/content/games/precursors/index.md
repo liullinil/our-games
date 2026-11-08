@@ -77,6 +77,11 @@ gallery:
     title: "The Precursors (2009) - PC Gameplay 4k 2160p / Win 10"
     channel: "FirstPlays HD"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "LQ5P5EAEDiI"
+    title: "Прохождение Precursors\\Предтечи вместе с Straden2 серия 1"
+    channel: "Straden734"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Rock Paper Shotgun"
     verdict: "Немыслимо амбициозный проект команды, которой такое было не по силам, — и он всё-таки работает: неуклюжий, шаткий, но живой мир, где можно свернуть с сюжетной тропы и забыть о ней на часы."
