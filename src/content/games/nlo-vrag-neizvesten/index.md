@@ -40,6 +40,13 @@ reviews:
     verdict: "Один из самых масштабных проектов, сделанных на «Спекки»: титанический труд автора, отсканированная графика и богатый выбор стратегий развития."
     url: "https://zxpress.ru/ru/ezines/zx-konig/04/obzor-strategicheskih-igr-dlya-zx-spectrum-conqvest-their-finest-hour-north-south-death-in-the-snow"
     date: "1995"
+  - outlet: "ZX Konig"
+    verdict: "Сенсация: доказательство того, что на старичке «Спектруме» можно сделать красивую и динамичную игру, по замыслу не уступающую аналогам на IBM PC. Интересна и как версия одной из самых популярных компьютерных игр, и сама по себе — в неё хочется играть снова и снова."
+    url: "https://zxpress.ru/ru/ezines/zx-konig/02/obzor-legendarnoy-igry-ufo-vrag-neizvesten-dlya-zx-spectrum-analiz-geympleya-grafiki-i"
+  - outlet: "Spectrophoby"
+    verdict: "Пожалуй, лучшая на тот момент игра для 128-килобайтного «Спектрума»: подробные, местами комичные ландшафты, меняющиеся от места высадки, смесь менеджмента, стратегии и аркады и оцифрованные иллюстрации в энциклопедии уфолога. Захват пришельцев сделан аркадой, но очень хорошей."
+    url: "https://zxpress.ru/ru/ezines/spectrophoby/02/obzor-pyati-igr-dlya-zx-spectrum-nlo-vrag-neizvesten-battle-city-back-to-the-future-2-the-jetsons"
+    date: "1995"
 reading:
   - title: "Старые знакомые: рассказ Славы Медноногова о своей деятельности как программиста"
     url: "https://zxpress.ru/ru/ezines/zx-format/01/intervyu-so-slavoy-mednonogovym-avtorom-igry-nlo-vrag-neizvesten-o-ego-puti-v-programmirovanii"

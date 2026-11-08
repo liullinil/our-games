@@ -64,9 +64,21 @@ gallery:
     channel: "Румпель"
     poster: "https://pic.rtbcdn.ru/video/2025-10-28/92/f0/92f019e672c01f95709ab0cdadae5534.jpg"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "81a555d3ac6d44a08bde6053ed47de89"
+    title: "Mausekönig (Мир танков)"
+    author: "JUSTGAME"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/81a555d3ac6d44a08bde6053ed47de89/thumbnails/23e5a7ba26af43c2afaac29db58a1a2f/87734a568c484f129fd5f460bf7b4ad7.jpeg"
+    checkedAt: "2026-11-08"
 summary: >-
   Российская версия World of Tanks, которую после раздела с Wargaming ведёт петербургская «Леста Игры» с собственными ветками техники и событиями.
 reviews:
+  - outlet: "VGTimes"
+    verdict: "Игра образца 2023 года по-прежнему затягивает: огромный парк техники, мотивирующая прокачка по веткам, новые огнемётные танки, а русскоязычные серверы упрощают командную игру. Минусы — высокий порог входа, скупое обучение и запутанная экономика, где без доната приходится осваивать каждый уровень."
+    url: "https://vgtimes.ru/game-reviews/103200-obzor-mira-tankov-obrazca-2023-goda.-kak-izmenilas-igra-za-minuvshiy-god.html"
+    author: "Ilya Yakimkin"
+    date: "2024"
   - outlet: "VGTimes"
     score: "7/10"
     verdict: "Размеренные и доступные танковые бои с достоверно выглядящей техникой и щедрыми стартовыми бонусами, но по сути игра осталась такой же, как в 2010 году: аркадно, однообразно и с долгим гриндом."

@@ -75,6 +75,18 @@ gallery:
     channel: "Страна волшебных существ"
     poster: "https://pic.rtbcdn.ru/video/52/ab/52abbe2680d0e201c909d946166f28c8.jpg"
     checkedAt: "2026-09-21"
+  - kind: sketchfab
+    id: "25d6f24094684533888d29fe3ad640e1"
+    title: "Vindigist's heavy armored car HWS-6B"
+    author: "Cannoneer186"
+    poster: "https://media.sketchfab.com/models/25d6f24094684533888d29fe3ad640e1/thumbnails/6ee9d604644a43c6b73e40649c36ed84/991f6f5900994caba7d2d472d78fd7c2.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "bff721b48e2e418eacb83b07ec62dedb"
+    title: "Commander's Heavy Tracked Tank HTM-1L"
+    author: "Cannoneer186"
+    poster: "https://media.sketchfab.com/models/bff721b48e2e418eacb83b07ec62dedb/thumbnails/7f9e9703ca014f99a51b2325c3317fc8/c210e6d64dd14d5f80ef18aca5628a1b.jpeg"
+    checkedAt: "2026-11-08"
 summary: >-
   Ответвление Parkan: та же вселенная, но вместо космоса — планетные бои шагающих варботов, которых игрок собирает из модулей сам и водит от первого лица.
 steamAppId: 953820
@@ -84,6 +96,24 @@ reviews:
     verdict: "Продукт мирового класса и живая игра, у которой достоинств больше, чем недостатков: красивый движок со сменой дня и ночи, отличная модель повреждений и конструктор варботов. Портят дело неудобное управление башней и шасси и быстро иссякающие дела на планете."
     url: "https://ag.ru/games/parkan-iron-strategy/review"
     author: "AgRiG"
+    date: "2001"
+  - outlet: "Игромания"
+    score: "8,5/10"
+    verdict: "Прежде всего симулятор, как говорят сами разработчики: бои варботов от первого лица в духе BattleZone и MechWarrior, роботы из деталей и стратегия, держащаяся на мастерстве пилота. К интерфейсу придётся привыкать, движок не самый передовой, зато музыку Павла Стебакова рецензент хвалит особо."
+    url: "https://archive.org/details/Igromania_2000-12/page/n39/mode/2up"
+    author: "Олег Полянский"
+    date: "2000"
+  - outlet: "Страна игр"
+    score: "9/10"
+    verdict: "Огромный, физически и математически обоснованный мир, где экшен в любой момент переходит в тактику, а тактика в стратегию; варбота можно собрать из шасси, башни и оружия на свой вкус, а графика не эффектна, но технологична. Средний балл четырёх рецензентов редакции — 8,5."
+    url: "https://archive.org/details/Game_Land_2001-03-84/page/n41/mode/2up"
+    author: "Дмитрий Эстрин"
+    date: "2001"
+  - outlet: "Навигатор игрового мира"
+    score: "9,0/10"
+    verdict: "Необычная стратегия, в которой авторы не навязывают свою волю: задания проходятся разными путями, роботов игрок конструирует сам, а здания нужно захватывать, а не разрушать. Не понравится тем, кто любит бросать в бой толпы юнитов, — больше десятка не построить."
+    url: "https://archive.org/details/GameWorldNavigator_2001-02-045/page/n53/mode/2up"
+    author: "Владимир Веселов"
     date: "2001"
 reading:
   - title: "История «Паркана» — первой крупной отечественной игры"
