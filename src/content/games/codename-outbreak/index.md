@@ -68,6 +68,11 @@ gallery:
     title: "Venom Codename Outbreak #1 прохождение"
     channel: "Yar Kor"
     checkedAt: "2026-11-08"
+  - kind: youtube
+    id: "VkgqjYg3szA"
+    title: "Venom Codename Outbreak Прохождение миссии No 1 Осиное Гнездо"
+    channel: "Gameliker2013"
+    checkedAt: "2026-11-08"
 summary: >-
   Тактический шутер о пришельцах-паразитах с командой из двух бойцов и большими открытыми картами. Первый шутер GSC и полигон для идей будущего S.T.A.L.K.E.R.
 reviews:

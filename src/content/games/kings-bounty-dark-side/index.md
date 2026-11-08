@@ -74,6 +74,11 @@ gallery:
     title: "King's Bounty: Dark Side ➤ Тёмная Сторона(прохождение) №1"
     channel: "Ms.Sem"
     checkedAt: "2026-09-21"
+  - kind: youtube
+    id: "AlRShbKpE2k"
+    title: "Прохождение King's Bounty Dark Side (Темная сторона) - Часть 37"
+    channel: "Lord Belial TV"
+    checkedAt: "2026-11-08"
 summary: >-
   Последняя классическая King’s Bounty: играть предлагают за орка, вампира или демонессу, отбивающихся от светлых захватчиков. Финальная игра на движке TheEngine.
 steamAppId: 289520

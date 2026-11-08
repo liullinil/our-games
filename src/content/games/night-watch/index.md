@@ -40,6 +40,12 @@ gallery:
     channel: "Гейминговый Король"
     poster: "https://pic.rtbcdn.ru/video/4e/7c/4e7cd33bac7ced329c325088530d275e.jpg"
     checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "8aa2b4acfc9f8810d2917749e517e078"
+    title: "Ночной Дозор / Night Watch (2005) - геймплей в 4к НА ПК➤2 Серия➤На Русском."
+    channel: "Тестим Системы"
+    poster: "https://pic.rtbcdn.ru/video/2026-08-13/cf/58/cf586551535c7420eb211cda0f63fc15.jpg"
+    checkedAt: "2026-11-08"
 summary: >-
   Пошаговая тактика по роману Сергея Лукьяненко и фильму Тимура Бекмамбетова на движке Silent Storm: Иные, Сумрак и московские дворы.
 reviews:

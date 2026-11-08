@@ -75,6 +75,17 @@ gallery:
     title: "Обзор игры: King's bounty \"Легенда о рыцаре\" (2008)."
     channel: "Сан саныч"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "GYBRiQOo_38"
+    title: "King’s Bounty. Легенда о рыцаре. Невозможный, без потерь! #1. Обучение. Полное прохождение."
+    channel: "Игривый Рассказчик"
+    checkedAt: "2026-11-08"
+  - kind: rutube
+    id: "f94667d7dc0f85bd9947ee683ee4fdf7"
+    title: "ОБЗОР ИГРЫ KING'S BOUNTY ЛЕГЕНДА О РЫЦАРЕ | ПРИОСТАНАВЛИВАЮ ПРОХОЖДЕНИЕ"
+    channel: "Lets Play Hanzotorri and Betsy"
+    poster: "https://pic.rtbcdn.ru/video/42/6e/426e7ee2128ee650b2862ba4c6a392bf.png"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "3DNews"
     score: "9,5/10"

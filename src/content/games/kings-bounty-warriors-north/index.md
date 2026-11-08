@@ -74,6 +74,17 @@ gallery:
     title: "Прохождение King's Bounty: Воин Севера от 5p74 часть 17"
     channel: "MIШGAN XD (5p74)"
     checkedAt: "2026-09-21"
+  - kind: rutube
+    id: "02d9aef3df35931b7bc5637c58d8f3ea"
+    title: "King’s Bounty. Воин севера (Прохождение за волхва 23 уровень) Острова свободы #139"
+    channel: "Zerall and friends"
+    poster: "https://pic.rtbcdn.ru/video/2025-09-02/94/73/947368cb77bfeac291025bb9069b0cff.jpg"
+    checkedAt: "2026-11-08"
+  - kind: youtube
+    id: "FkMy-0S_rPw"
+    title: "СУДЬБА ТАОРА! / ПРОХОЖДЕНИЕ KING'S BOUNTY ВОИН СЕВЕРА"
+    channel: "РИЧПЛЕЙ"
+    checkedAt: "2026-11-08"
 summary: >-
   Первая King’s Bounty без Katauri: викинг Олаф, руническая магия и пять валькирий вместо прежних духов ярости. Формула серии осталась прежней, и критики впервые заговорили, что она выдыхается.
 steamAppId: 203350

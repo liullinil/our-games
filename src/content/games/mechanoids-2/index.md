@@ -72,6 +72,17 @@ gallery:
     channel: "born | retro gaming+"
     poster: "https://pic.rtbcdn.ru/video/2025-01-22/80/26/8026d2b5c5fac0e255d45ad1af3430f6.jpg"
     checkedAt: "2026-09-21"
+  - kind: youtube
+    id: "OthcAapS4z8"
+    title: "Обзор игры Механойды 2 \"Война кланов\""
+    channel: "Сан саныч"
+    checkedAt: "2026-11-08"
+  - kind: rutube
+    id: "374994a14d3c884c88bc1502dafdc605"
+    title: "МЕХАНОИДЫ 2 ВОЙНА КЛАНОВ - ПРОДОЛЖЕНИЕ ПРОХОЖДЕНИЯ. Грибы и Наутилус."
+    channel: "born | retro gaming+"
+    poster: "https://pic.rtbcdn.ru/video/2025-02-01/9a/5b/9a5bfeaa9e6fd857acf654b495326c74.jpg"
+    checkedAt: "2026-11-08"
 summary: >-
   Продолжение «Механоидов»: тот же Полигон-4, но теперь глайдеры сбиваются в кланы, а игрок «убеждает» чужие машины перейти на свою сторону.
 steamAppId: 289180

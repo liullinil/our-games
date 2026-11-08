@@ -64,6 +64,16 @@ gallery:
     title: "IL 2 Sturmovik Cliffs of Dover Blitz Компания \" Их последний час\""
     channel: "STRONG RUSSIA"
     checkedAt: "2026-09-19"
+  - kind: youtube
+    id: "jh1_mly_oZs"
+    title: "Игромир 2010 Интервью по игре Ил 2 Штурмовик Битва за Британию"
+    channel: "FREEMAN512"
+    checkedAt: "2026-11-08"
+  - kind: youtube
+    id: "X_nKt_wzI20"
+    title: "IL 2 Sturmovik Cliffs of Dover Blitz Стрельба по бандитски."
+    channel: "STRONG RUSSIA"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "GameSpot"
     score: "4/10"

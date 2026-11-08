@@ -75,6 +75,11 @@ gallery:
     title: "Первое прохождение Kings Bounty Принцесса в доспехах! Воин! Тяжелый! Остров Боло"
     channel: "Davetson"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "jk1fpySwpjg"
+    title: "King’s Bounty Armored Princess Прохождение #14: Монтеро"
+    channel: "Shadville LPlay"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games"
     score: "95%"

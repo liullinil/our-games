@@ -251,9 +251,16 @@ function nameForms(name, altNames, slug) {
 function formRegex(form) {
   const parts = form.match(/[a-zа-я]+|\d+/gi);
   if (!parts || parts.length === 0) return null;
+  /*
+   * Апостроф — тоже разделитель, любого вида. У нас «King’s Bounty» с
+   * типографским, в заголовках роликов — «King's» с прямым или «Kings» без
+   * него вовсе. Пока апострофа здесь не было, «King’s» не совпадал ни с
+   * одним написанием, и автопоиск у всей серии King's Bounty не находил
+   * ничего.
+   */
   const body = parts
     .map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-    .join('[\\s._\\-–—]*');
+    .join("[\\s._\\-–—'’‘ʼ`]*");
   const last = parts[parts.length - 1];
   const tail = /\d/.test(last) ? '(?!\\d)' : '(?![a-zа-я0-9])';
   return new RegExp(`(?<![a-zа-я0-9])${body}${tail}`, 'i');
@@ -662,7 +669,8 @@ function pick(candidates, take) {
   for (const c of sorted) {
     if (chosen.length >= take) break;
     const used = perChannel.get(norm(c.channel)) ?? 0;
-    if (c.channel && used >= 2) continue;
+    // Один канал — один ролик: две серии одного прохождения статье ничего не дают.
+    if (c.channel && used >= 1) continue;
     const key = titleKey(c.title);
     if (key.length >= 12 && seenTitles.has(key)) continue;
     seenTitles.add(key);
