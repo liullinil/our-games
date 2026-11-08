@@ -80,6 +80,12 @@ gallery:
     title: "ПРОХОЖДЕНИЕ ДАЛЬНОБОЙЩИКИ 3 ПОКОРЕНИЕ АМЕРИКИ | СТРИМ #1"
     channel: "Lissa"
     checkedAt: "2026-09-20"
+  - kind: rutube
+    id: "6e41e2fa15695d6d5295251dacd458b6"
+    title: "ИГРАЕМ В ДАЛЬНОБОЙЩИКИ 3 ПОКОРЕНИЕ АМЕРИКИ НА РУЛЕ"
+    channel: "Lissa"
+    poster: "https://pic.rtbcdn.ru/video/bf/4c/bf4c5c9abfa8ac7d8366dff047413e82.jpg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "Проходняк"

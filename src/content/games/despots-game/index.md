@@ -82,6 +82,11 @@ gallery:
     title: "СЛАБОУМИЕ И ОТВАГА! - DESPOTS GAME ПРОХОЖДЕНИЕ"
     channel: "KerneX"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "eXhabuzlUu8"
+    title: "Геймплей DESPOT'S GAME: рогалик-баттлер для жалких людишек! (ПК-демо)"
+    channel: "Randomise User: The Best Indie Games"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "GameCritics"
     score: "8/10"

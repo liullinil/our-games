@@ -86,6 +86,11 @@ gallery:
     title: "Приключения воина Айвара — Kings Bounty 2 Прохождение игры #1"
     channel: "Shadville LPlay"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "qAv5LLUVEn4"
+    title: "Обзор игры King's Bounty II"
+    channel: "StopGame"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "Проходняк"
