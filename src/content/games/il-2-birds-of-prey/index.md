@@ -29,6 +29,7 @@ specs:
   perspective: "от первого лица"
   setting: "Вторая мировая война, воздушные сражения: Британия, Сталинград, Сицилия, Корсунь, Арденны, Берлин"
   abroad: "на консолях по всему миру под названием IL-2 Sturmovik: Birds of Prey, издатель 505 Games: 4 сентября 2009 года в Европе, 8-го — в Северной Америке, 9-го — в Австралии; PC-версию Gaijin выпустила сама 25 декабря 2009 года под именем Wings of Prey, в рознице её издавали 777 Studios в Северной Америке и Iceberg Interactive в Великобритании; консольные издания встретили тепло, портативные разгромили"
+steamAppId: 45300
 poster: ./shots/wiki-01.jpg
 gallery:
   - kind: image
@@ -37,6 +38,36 @@ gallery:
     author: "Gaijin"
     license: "Скриншот"
     sourceUrl: "https://en.wikipedia.org/wiki/File:IL-2_Sturmovik_Birds_of_Prey.jpg"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Wings of Prey: Special Edition: кадр из игры"
+    author: "Gaijin Entertainment Corporation, Gaijin Entertainment"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/45300/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Wings of Prey: Special Edition: кадр из игры"
+    author: "Gaijin Entertainment Corporation, Gaijin Entertainment"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/45300/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Wings of Prey: Special Edition: кадр из игры"
+    author: "Gaijin Entertainment Corporation, Gaijin Entertainment"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/45300/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Wings of Prey: Special Edition: кадр из игры"
+    author: "Gaijin Entertainment Corporation, Gaijin Entertainment"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/45300/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Wings of Prey: Special Edition: кадр из игры"
+    author: "Gaijin Entertainment Corporation, Gaijin Entertainment"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/45300/"
   - kind: youtube
     id: "njuAJOHg66c"
     title: "Видео обзор игры — Ил 2 Штурмовик Крылатые хищники"

@@ -22,6 +22,7 @@ specs:
   abroad: "издавала сама студия: по всему миру в Steam с 24 июля 2015 года, с английской, немецкой, польской, испанской, французской и турецкой локализацией; западная пресса приняла сдержанно"
 summary: >-
   Фантастическое приключение в монгольской степи будущего: юрта, механическая девушка и заброшенный парк аттракционов. Одна из немногих игр на томском Unigine.
+steamAppId: 361550
 poster: ./shots/cover-01.jpg
 gallery:
   - kind: image
@@ -36,6 +37,36 @@ gallery:
     author: "Flying Cafe"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0_%D0%B8%D0%B3%D1%80%D1%8B_Cradle.jpeg"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Cradle: кадр из игры"
+    author: "Flying Cafe for Semianimals"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/361550/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Cradle: кадр из игры"
+    author: "Flying Cafe for Semianimals"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/361550/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Cradle: кадр из игры"
+    author: "Flying Cafe for Semianimals"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/361550/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Cradle: кадр из игры"
+    author: "Flying Cafe for Semianimals"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/361550/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Cradle: кадр из игры"
+    author: "Flying Cafe for Semianimals"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/361550/"
   - kind: youtube
     id: "4KjqfZ7Ncr0"
     title: "Обзор Cradle - Красивая, атмосферная и глубокая игра"

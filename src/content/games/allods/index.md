@@ -29,6 +29,36 @@ gallery:
     author: "Nival"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%90%D0%BB%D0%BB%D0%BE%D0%B4%D1%8B_1_cover.jpg"
+  - kind: image
+    src: ./shots/gog-01.jpg
+    caption: "Аллоды: Печать тайны: кадр из игры"
+    author: "Nival Interactive"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/rage_of_mages"
+  - kind: image
+    src: ./shots/gog-02.jpg
+    caption: "Аллоды: Печать тайны: кадр из игры"
+    author: "Nival Interactive"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/rage_of_mages"
+  - kind: image
+    src: ./shots/gog-03.jpg
+    caption: "Аллоды: Печать тайны: кадр из игры"
+    author: "Nival Interactive"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/rage_of_mages"
+  - kind: image
+    src: ./shots/gog-04.jpg
+    caption: "Аллоды: Печать тайны: кадр из игры"
+    author: "Nival Interactive"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/rage_of_mages"
+  - kind: image
+    src: ./shots/gog-05.jpg
+    caption: "Аллоды: Печать тайны: кадр из игры"
+    author: "Nival Interactive"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/rage_of_mages"
   - kind: youtube
     id: "sasYuaPLJ4s"
     title: "С чего все начиналось? Обзор игры Аллоды печать тайны (1998)"

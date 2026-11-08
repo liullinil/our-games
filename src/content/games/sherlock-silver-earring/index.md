@@ -3,6 +3,7 @@ name: "Шерлок Холмс: Загадка серебряной серёжк
 altNames:
   - "Sherlock Holmes: The Case of the Silver Earring"
   - "Sherlock Holmes: Secret of the Silver Earring"
+  - "Sherlock Holmes: The Silver Earring"
 type: adventure
 class: quest
 developer: frogwares
@@ -33,6 +34,36 @@ gallery:
     author: "Frogwares"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%A8%D0%A5%D0%97%D0%A1%D0%A1.jpg"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Sherlock Holmes: The Silver Earring: кадр из игры"
+    author: "Frogwares"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/11150/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Sherlock Holmes: The Silver Earring: кадр из игры"
+    author: "Frogwares"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/11150/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Sherlock Holmes: The Silver Earring: кадр из игры"
+    author: "Frogwares"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/11150/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Sherlock Holmes: The Silver Earring: кадр из игры"
+    author: "Frogwares"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/11150/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Sherlock Holmes: The Silver Earring: кадр из игры"
+    author: "Frogwares"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/11150/"
   - kind: youtube
     id: "Relc9wBr0kE"
     title: "ПАСХАЛКИ и СЕКРЕТЫ в Шерлок Холмс: Загадка Серебряной Сережки"

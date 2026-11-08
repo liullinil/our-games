@@ -28,6 +28,36 @@ gallery:
     author: "GSC Game World"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Venom._Codename-_Outbreak.jpg"
+  - kind: image
+    src: ./shots/gog-01.jpg
+    caption: "Codename: Outbreak: кадр из игры"
+    author: "GSC Game World"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/venom_codename_outbreak"
+  - kind: image
+    src: ./shots/gog-02.jpg
+    caption: "Codename: Outbreak: кадр из игры"
+    author: "GSC Game World"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/venom_codename_outbreak"
+  - kind: image
+    src: ./shots/gog-03.jpg
+    caption: "Codename: Outbreak: кадр из игры"
+    author: "GSC Game World"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/venom_codename_outbreak"
+  - kind: image
+    src: ./shots/gog-04.jpg
+    caption: "Codename: Outbreak: кадр из игры"
+    author: "GSC Game World"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/venom_codename_outbreak"
+  - kind: image
+    src: ./shots/gog-05.jpg
+    caption: "Codename: Outbreak: кадр из игры"
+    author: "GSC Game World"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/venom_codename_outbreak"
   - kind: youtube
     id: "dcU47fhQNeM"
     title: "ЧЕРНОЕ ГНЕЗДО ОБЗОР - РЕМЕЙК VENOM: CODENAME OUTBREAK. REMASTERED"

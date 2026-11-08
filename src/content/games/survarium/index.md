@@ -25,6 +25,36 @@ gallery:
     author: "VG Entertainment"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Survarium_-_cover.jpg"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Survarium: кадр из игры"
+    author: "Vostok Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/355840/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Survarium: кадр из игры"
+    author: "Vostok Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/355840/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Survarium: кадр из игры"
+    author: "Vostok Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/355840/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Survarium: кадр из игры"
+    author: "Vostok Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/355840/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Survarium: кадр из игры"
+    author: "Vostok Games"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/355840/"
   - kind: youtube
     id: "yVqLQIZO7mU"
     title: "Escape from Survarium. Как загубить шикарную идею. Обзор игры Сурвариум."

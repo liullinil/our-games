@@ -2,6 +2,7 @@
 name: "Xenus 2: Белое золото"
 altNames:
   - "White Gold: War in Paradise"
+  - "Xenus 2: White Gold"
 type: shooter
 class: open-world
 developer: deep-shadows
@@ -33,6 +34,36 @@ gallery:
     author: "Deep Shadows"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Xenus_2_%D0%91%D0%B5%D0%BB%D0%BE%D0%B5_%D0%B7%D0%BE%D0%BB%D0%BE%D1%82%D0%BE.jpg"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Xenus 2. White gold.: кадр из игры"
+    author: "Deep Shadows, GFI"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/546230/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Xenus 2. White gold.: кадр из игры"
+    author: "Deep Shadows, GFI"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/546230/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Xenus 2. White gold.: кадр из игры"
+    author: "Deep Shadows, GFI"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/546230/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Xenus 2. White gold.: кадр из игры"
+    author: "Deep Shadows, GFI"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/546230/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Xenus 2. White gold.: кадр из игры"
+    author: "Deep Shadows, GFI"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/546230/"
   - kind: youtube
     id: "nO5i8JcCqqw"
     title: "Обзор: Xenus 2: White Gold (PC) Часть 1 из 2"

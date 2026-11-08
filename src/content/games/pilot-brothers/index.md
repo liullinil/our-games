@@ -33,6 +33,36 @@ gallery:
     author: "Gamos"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%9F%D0%BE_%D0%A1%D0%BB%D0%B5%D0%B4%D0%B0%D0%BC_%D0%9F%D0%BE%D0%BB%D0%BE%D1%81%D0%B0%D1%82%D0%BE%D0%B3%D0%BE_%D0%A1%D0%BB%D0%BE%D0%BD%D0%B0_%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0.jpg"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Pilot Brothers: кадр из игры"
+    author: "1C Wireless, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/336760/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Pilot Brothers: кадр из игры"
+    author: "1C Wireless, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/336760/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Pilot Brothers: кадр из игры"
+    author: "1C Wireless, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/336760/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Pilot Brothers: кадр из игры"
+    author: "1C Wireless, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/336760/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Pilot Brothers: кадр из игры"
+    author: "1C Wireless, Fulqrum Publishing"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/336760/"
   - kind: youtube
     id: "p22HfEJOaDc"
     title: "История серии «Братья Пилоты» — часть первая"

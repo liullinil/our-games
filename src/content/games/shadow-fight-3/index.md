@@ -33,6 +33,30 @@ gallery:
     author: "Nekki"
     license: "Скриншот"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Shadow_Fight_3.png"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Shadow Fight 3: кадр из игры"
+    author: "Nekki Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id964827011"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Shadow Fight 3: кадр из игры"
+    author: "Nekki Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id964827011"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Shadow Fight 3: кадр из игры"
+    author: "Nekki Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id964827011"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Shadow Fight 3: кадр из игры"
+    author: "Nekki Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id964827011"
   - kind: youtube
     id: "dGd2SHGclcg"
     title: "Shadow Fight 3 - ВЫШЛА! ОБЗОР НА ВЕБКУ!"

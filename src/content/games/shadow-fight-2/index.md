@@ -30,6 +30,36 @@ gallery:
     author: "Nekki"
     license: "Скриншот"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Shadow_Fight_2_gameplay.jpg"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Shadow Fight 2: кадр из игры"
+    author: "MOBILNYE IGRY OOO"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id696565994"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Shadow Fight 2: кадр из игры"
+    author: "MOBILNYE IGRY OOO"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id696565994"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Shadow Fight 2: кадр из игры"
+    author: "MOBILNYE IGRY OOO"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id696565994"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Shadow Fight 2: кадр из игры"
+    author: "MOBILNYE IGRY OOO"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id696565994"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Shadow Fight 2: кадр из игры"
+    author: "MOBILNYE IGRY OOO"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id696565994"
   - kind: youtube
     id: "b0LOb6FhlNs"
     title: "ОН ПРОШЕЛ Shadow Fight 2 ЗА 32 МИНУТЫ! - Разбор Спидрана по Shadow Fight 2"

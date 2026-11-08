@@ -14,6 +14,7 @@
  *   node scripts/fetch-appstore.mjs fishdom homescapes township
  *   node scripts/fetch-appstore.mjs --id 664575829 fishdom
  *   node scripts/fetch-appstore.mjs fishdom --dry
+ *   node scripts/fetch-appstore.mjs --append shadowmatic   дописать снимки к уже лежащим, ничего не стирая
  *
  * Идентификатор нельзя выдумывать ровно по той же причине, что и в Steam:
  * число само по себе ведёт на какое-нибудь приложение, и кадры приедут от
@@ -39,6 +40,8 @@ const opt = (name, fallback) => {
 };
 const LIMIT = Number(opt('limit', 5));
 const DRY = flag('dry');
+/* Дописать к уже лежащим картинкам, а не пропускать игру, у которой они есть. */
+const APPEND = process.argv.includes('--append');
 const FORCED_ID = opt('id', null);
 const only = args.filter((a) => !a.startsWith('--') && a !== opt('limit', '') && a !== FORCED_ID);
 
@@ -167,7 +170,7 @@ async function fetchGame(game) {
   await mkdir(dir, { recursive: true });
   const written = [];
 
-  if (app.artworkUrl512) {
+  if (app.artworkUrl512 && !APPEND) {
     const buf = await sharp(await getBytes(app.artworkUrl512), { failOn: 'none' })
       .resize({ width: 512, withoutEnlargement: true })
       .jpeg({ quality: 84, mozjpeg: true })
@@ -195,6 +198,28 @@ async function fetchGame(game) {
     await sleep(150);
   }
 
+  if (APPEND) {
+    const text = await readFile(game.file, 'utf8');
+    const blocks = written
+      .map((w) =>
+        [
+          `  - kind: image`,
+          `    src: ./shots/${w.file}`,
+          `    caption: ${yamlStr(w.caption)}`,
+          `    author: ${yamlStr(w.author)}`,
+          `    license: ${yamlStr(w.license)}`,
+          `    sourceUrl: ${yamlStr(w.sourceUrl)}`,
+        ].join('\n') + '\n',
+      )
+      .join('');
+    const images = [...text.matchAll(/^ {2}- kind: image\r?\n(?: {4}.*\r?\n)*/gm)];
+    if (images.length === 0) throw new Error(`${game.id}: в режиме дописывания нужна хотя бы одна картинка`);
+    const last = images[images.length - 1];
+    const at = last.index + last[0].length;
+    await writeFile(game.file, text.slice(0, at) + blocks + text.slice(at), 'utf8');
+    console.log(`  ✓ дописано ${written.length}`);
+    return true;
+  }
   const { head, fm, tail, body } = split(game.text);
   const poster = written[0]?.file === 'poster.jpg' ? 'poster.jpg' : undefined;
   const gallery = poster ? written.slice(1) : written;
@@ -216,7 +241,7 @@ for (const id of only) {
     console.log(`· ${id}: нет такой игры`);
     continue;
   }
-  if (game.hasImages) {
+  if (game.hasImages && !APPEND) {
     console.log(`· ${id}: картинки уже есть`);
     continue;
   }

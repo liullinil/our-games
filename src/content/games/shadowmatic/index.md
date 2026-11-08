@@ -28,6 +28,36 @@ gallery:
     author: "Triada"
     license: "Скриншот"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Shadowmatic_2.jpg"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Shadowmatic: кадр из игры"
+    author: "TRIADA Studio LLC"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id775888026"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Shadowmatic: кадр из игры"
+    author: "TRIADA Studio LLC"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id775888026"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Shadowmatic: кадр из игры"
+    author: "TRIADA Studio LLC"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id775888026"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Shadowmatic: кадр из игры"
+    author: "TRIADA Studio LLC"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id775888026"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Shadowmatic: кадр из игры"
+    author: "TRIADA Studio LLC"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id775888026"
   - kind: youtube
     id: "iGsjZdwNkVg"
     title: "Shadowmatic - Игра Света и Тени (iOS)"

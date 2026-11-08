@@ -35,6 +35,36 @@ gallery:
     author: "Fireglow"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0_%D0%B8%D0%B3%D1%80%D1%8B_%D0%9F%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_3.jpg"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Sudden Strike Gold: кадр из игры"
+    author: "Fireglow, Kalypso Media Digital"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/612300/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Sudden Strike Gold: кадр из игры"
+    author: "Fireglow, Kalypso Media Digital"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/612300/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Sudden Strike Gold: кадр из игры"
+    author: "Fireglow, Kalypso Media Digital"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/612300/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Sudden Strike Gold: кадр из игры"
+    author: "Fireglow, Kalypso Media Digital"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/612300/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Sudden Strike Gold: кадр из игры"
+    author: "Fireglow, Kalypso Media Digital"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/612300/"
   - kind: youtube
     id: "WQvnYiBuMwY"
     title: "Противостояние 3 | Sudden Strike | краткий обзор ретро классики RTS"

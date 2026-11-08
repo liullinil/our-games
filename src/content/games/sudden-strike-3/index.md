@@ -32,6 +32,36 @@ gallery:
     author: "Fireglow"
     license: "Обложка"
     sourceUrl: "https://en.wikipedia.org/wiki/File:Sudden_Strike_3_Box_Art.jpg"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Sudden Strike 3: кадр из игры"
+    author: "Fireglow, Kalypso Media Digital"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/612540/"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Sudden Strike 3: кадр из игры"
+    author: "Fireglow, Kalypso Media Digital"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/612540/"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Sudden Strike 3: кадр из игры"
+    author: "Fireglow, Kalypso Media Digital"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/612540/"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Sudden Strike 3: кадр из игры"
+    author: "Fireglow, Kalypso Media Digital"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/612540/"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Sudden Strike 3: кадр из игры"
+    author: "Fireglow, Kalypso Media Digital"
+    license: "Скриншот"
+    sourceUrl: "https://store.steampowered.com/app/612540/"
   - kind: youtube
     id: "KSwCEo6fnpo"
     title: "Sudden Strike 3 Arms for Victory обзор и прохождение стратегии про Вторую Мировую"

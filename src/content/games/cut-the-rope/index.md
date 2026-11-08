@@ -29,6 +29,36 @@ gallery:
     author: "ZeptoLab"
     license: "Скриншот"
     sourceUrl: "https://en.wikipedia.org/wiki/File:CutRope_iOS-screenshot.png"
+  - kind: image
+    src: ./shots/shot-01.jpg
+    caption: "Cut the Rope: кадр из игры"
+    author: "ZeptoLab UK Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id1024506959"
+  - kind: image
+    src: ./shots/shot-02.jpg
+    caption: "Cut the Rope: кадр из игры"
+    author: "ZeptoLab UK Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id1024506959"
+  - kind: image
+    src: ./shots/shot-03.jpg
+    caption: "Cut the Rope: кадр из игры"
+    author: "ZeptoLab UK Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id1024506959"
+  - kind: image
+    src: ./shots/shot-04.jpg
+    caption: "Cut the Rope: кадр из игры"
+    author: "ZeptoLab UK Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id1024506959"
+  - kind: image
+    src: ./shots/shot-05.jpg
+    caption: "Cut the Rope: кадр из игры"
+    author: "ZeptoLab UK Limited"
+    license: "Скриншот"
+    sourceUrl: "https://apps.apple.com/app/id1024506959"
   - kind: youtube
     id: "zWKLeZ0kUiM"
     title: "ЛЕГЕНДА, КОТОРАЯ СКАТИЛАСЬ - ИСТОРИЯ СОЗДАНИЯ CUT THE ROPE"
