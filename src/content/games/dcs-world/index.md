@@ -79,12 +79,22 @@ gallery:
     title: "КАК НАЧАТЬ ИГРАТЬ В DCS WORLD"
     channel: "Valique"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "P8KcPetfTts"
+    title: "Прохождение кампании \"Миротворец\" на Ми-24П (часть 1 \"Патруль\") | DCS World | СоюзApollo"
+    channel: "СоюзApollo"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Everyeye.it"
     score: "9/10"
     verdict: "Бесплатная часть платформы — редкий по щедрости подарок жанру: пошаговое обучение, честная физика, поузловые повреждения и погода, влияющая на управление; из минусов — отсутствие кликабельной кабины у бесплатного Су-25Т и стареющий графический движок."
     url: "https://www.everyeye.it/articoli/recensione-dcs-world-22174.html"
     author: "Alessandro Agostinis"
+    date: "2014"
+  - outlet: "Aviation History"
+    verdict: "Щедрая бесплатная основа: тщательно смоделированный Су-25Т с кампаниями, кабины с работающими тумблерами и сильная физика полёта. Нужны мощный компьютер и время — освоение каждой машины похоже на лётную школу, — но для фанатов это, вероятно, лучший боевой авиасимулятор."
+    url: "https://historynet.com/multi-media-review-dcs-world/"
+    author: "Bernard Dy"
     date: "2014"
 reading:
   - title: "Авиасимулятор DCS World делают бесплатным на месяц"

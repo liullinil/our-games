@@ -36,6 +36,36 @@ gallery:
     author: "Акелла"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Korsari3_cover.jpg"
+  - kind: image
+    src: ./shots/gog-01.jpg
+    caption: "Корсары III: кадр из игры"
+    author: "Akella"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/sea_dogs_caribbean_tales"
+  - kind: image
+    src: ./shots/gog-02.jpg
+    caption: "Корсары III: кадр из игры"
+    author: "Akella"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/sea_dogs_caribbean_tales"
+  - kind: image
+    src: ./shots/gog-03.jpg
+    caption: "Корсары III: кадр из игры"
+    author: "Akella"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/sea_dogs_caribbean_tales"
+  - kind: image
+    src: ./shots/gog-04.jpg
+    caption: "Корсары III: кадр из игры"
+    author: "Akella"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/sea_dogs_caribbean_tales"
+  - kind: image
+    src: ./shots/gog-05.jpg
+    caption: "Корсары III: кадр из игры"
+    author: "Akella"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/sea_dogs_caribbean_tales"
   - kind: youtube
     id: "GxOIi1mBAhM"
     title: "Обзор Корсары 3 (Age of Pirates: Caribbean Tales)"
@@ -65,6 +95,30 @@ reviews:
     verdict: "Свободная структура с любопытными ролевыми находками и красивая вода с погодой тонут в вылетах, странностях, вялом темпе и запутанном интерфейсе: слишком амбициозно и слишком недоделано."
     url: "https://web.archive.org/web/20131025213952/http://www.gamespot.com/reviews/age-of-pirates-caribbean-tales-review/1900-6159850/"
     author: "Greg Kasavin"
+    date: "2006"
+  - outlet: "Навигатор игрового мира"
+    score: "8,8/10"
+    verdict: "Море, небо, закаты и шторма сделаны так, что скриншоты просятся на выставку маринистов, корабли выглядят как живые, а достоинства игры с запасом перекрывают недостатки. Огорчают вялое фехтование, маленькая карта и случайные задания, которым далеко до квестов первых «Корсаров»."
+    url: "https://archive.org/details/2005-12-103/page/n129/mode/2up"
+    author: "Махмуд"
+    date: "2005"
+  - outlet: "IGN"
+    score: "7,9/10"
+    verdict: "Прежде всего ролевая игра и почти симулятор пирата без финала: морские бои флотилий до четырёх кораблей напряжённы и зависят от умения и выучки команды. Сюжет явно приделан в последний момент, абордаж превращается в беспорядочную рубку, а всё, кроме неба и моря, нарисовано скупо."
+    url: "https://www.ign.com/articles/2006/10/09/age-of-pirates-caribbean-tales-review"
+    author: "Jon Habib"
+    date: "2006"
+  - outlet: "Игромания"
+    score: "7/10"
+    verdict: "Слишком похожа на первую часть и «Пиратов Карибского моря», чтобы считаться настоящим продолжением: морские бои просты и быстро приедаются, на суше скучно, колонии и их жители одинаковы. Игра вышла сырой, и итоговый балл рецензент поставил в расчёте на будущие патчи."
+    url: "https://archive.org/details/2006-02-101/page/n101/mode/2up"
+    author: "Игорь Варнавский"
+    date: "2006"
+  - outlet: "Виртуальные радости"
+    score: "7/10"
+    verdict: "Хороши гибкая настройка сложности и развитие героя в духе Fallout, но движок устарел, портов на карте всего пара десятков, а задания однообразны. Такой сырой игры рецензент не видел много лет и семёрку ставит только за возможность завоевать все острова."
+    url: "https://vrgames.by/publ/obzor-korsary-iii"
+    author: "Morgul Angmarsky"
     date: "2006"
 reading:
   - title: "Корсары 3: факты об игре"

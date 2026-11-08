@@ -32,6 +32,36 @@ gallery:
     author: "Nival"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%90%D0%BB%D0%BB%D0%BE%D0%B4%D1%8B_2_%D0%9F%D0%94.jpg"
+  - kind: image
+    src: ./shots/gog-01.jpg
+    caption: "Аллоды 2: Повелитель душ: кадр из игры"
+    author: "Nival Interactive"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/rage_of_mages_ii_necromancer"
+  - kind: image
+    src: ./shots/gog-02.jpg
+    caption: "Аллоды 2: Повелитель душ: кадр из игры"
+    author: "Nival Interactive"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/rage_of_mages_ii_necromancer"
+  - kind: image
+    src: ./shots/gog-03.jpg
+    caption: "Аллоды 2: Повелитель душ: кадр из игры"
+    author: "Nival Interactive"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/rage_of_mages_ii_necromancer"
+  - kind: image
+    src: ./shots/gog-04.jpg
+    caption: "Аллоды 2: Повелитель душ: кадр из игры"
+    author: "Nival Interactive"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/rage_of_mages_ii_necromancer"
+  - kind: image
+    src: ./shots/gog-05.jpg
+    caption: "Аллоды 2: Повелитель душ: кадр из игры"
+    author: "Nival Interactive"
+    license: "Скриншот"
+    sourceUrl: "https://www.gog.com/en/game/rage_of_mages_ii_necromancer"
   - kind: youtube
     id: "h_IjtU2AFxc"
     title: "Аллоды 2 - культовая онлайн игра. Летсплей обзор # 1"
@@ -60,6 +90,30 @@ reviews:
     url: "https://www.old-games.ru/articles/23723.html"
     author: "katarn"
     date: "2007"
+  - outlet: "Игромания"
+    score: "8,9/10"
+    verdict: "Сражаться стало удобнее: миссию обычно проходят тремя героями, магию перестроили, сделав Астрал самой сильной сферой, а заклинания можно поручить автоматике. Появилась и нелинейность: за одно прохождение доступны 36 миссий из 46, и у каждого из четырёх героев свой путь к цели."
+    url: "https://archive.org/details/Igromania_1999-05/page/n21/mode/2up"
+    author: "Кирилл Шитарев"
+    date: "1999"
+  - outlet: "Страна игр"
+    score: "7,5/10"
+    verdict: "Проект мирового уровня: изящный дизайн, заметно выросшая кампания, тонко выверенный баланс, поумневший ИИ и автоматические заклинания. Огорчает, что графика и сами бои почти не изменились, а из городов исчезли школы магии и тренировочные залы."
+    url: "https://archive.org/details/Game_Land_1999-10-43/page/n33/mode/2up"
+    author: "Юрий Поморцев, Сергей Дрегалин"
+    date: "1999"
+  - outlet: "GameSpot"
+    score: "7/10"
+    verdict: "Выглядит и звучит почти как первая часть и на первоклассную ролевую игру не тянет, но открытая и цельная кампания с десятками заданий, наёмниками, толковым сценарием и строгой экономикой держит до конца. Мешают невзрачная графика, назойливая музыка и слабая озвучка."
+    url: "https://www.gamespot.com/reviews/rage-of-mages-ii-necromancer-review/1900-2532853/"
+    author: "Greg Kasavin"
+    date: "1999"
+  - outlet: "IGN"
+    score: "4/10"
+    verdict: "Разгром: размытые устаревшие спрайты, ролевая система для галочки, путаный мир с корявым переводом и самодеятельной английской озвучкой, утомительный сбор добычи и бои без всякой тактики. Похвалы удостоились только рукотворные карты, проходимый для отрядов рельеф и автоматическое лечение магами."
+    url: "https://www.ign.com/articles/1999/10/15/rage-of-mages-2-necromancer"
+    author: "Jason Bates"
+    date: "1999"
 reading:
   - title: "Вспоминая старые игры: серия игр «Аллоды»"
     url: "https://dtf.ru/flood/16259-vspominaya-starye-igry-seriya-igr-allody"

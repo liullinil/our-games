@@ -50,6 +50,11 @@ reviews:
     verdict: "Спектрумовский WarCraft, сделанный на совесть: рисованные картинки между миссиями, музыка и затухающий по мере удаления звон мечей. Не хватает поддержки General Sound и речи, а игра занимает две дискеты."
     url: "https://zxpress.ru/ru/ezines/msd/01/obzor-novinok-elektronnyh-zhurnalov-deja-vu-7-i-zx-format-8-igr-chernyy-voron-zerkalo-monster-land"
     date: "1999"
+  - outlet: "Impulse"
+    verdict: "Колонка о полной версии самого громкого релиза 1997–1998 годов: работу автор признаёт огромной — цветные картинки, мультфильмы, финальные ролики из 3D Studio MAX, — но ругает технику: на клонах «Байт» игра сильно тормозит, а лицензионная копия не запускается на части машин."
+    url: "https://zxpress.ru/ru/ezines/impulse/03/kriticheskiy-analiz-igry-chernyy-voron-i-ee-piratskogo-rasprostraneniya-v-breste-obsuzhdenie"
+    author: "DELTA"
+    date: "1998"
 reading:
   - title: "Анонс новой стратегической игры «Чёрный ворон»"
     url: "https://zxpress.ru/ru/ezines/oberon/04/anons-novoy-strategicheskoy-igry-chernyy-voron-ot-izvestnogo-programmista-vyacheslava-mednonogova"

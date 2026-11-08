@@ -210,9 +210,17 @@ async function search(query) {
 }
 
 async function model(uid) {
-  const res = await fetch(`${API}/models/${uid}`, { headers: { 'User-Agent': UA } });
-  if (!res.ok) throw new Error(`Sketchfab ответил ${res.status} на модель ${uid}`);
-  return res.json();
+  // На частые запросы Sketchfab отвечает 429 — ждём и пробуем снова, как в поиске.
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    const res = await fetch(`${API}/models/${uid}`, { headers: { 'User-Agent': UA } });
+    if (res.status === 429) {
+      await sleep(8000 * (attempt + 1));
+      continue;
+    }
+    if (!res.ok) throw new Error(`Sketchfab ответил ${res.status} на модель ${uid}`);
+    return res.json();
+  }
+  throw new Error(`Sketchfab отвечает 429 подряд на модель ${uid}`);
 }
 
 /** Превью среднего размера: большое тяжело, маленькое расплывается в рамке. */
@@ -363,7 +371,13 @@ async function main() {
   }
 }
 
+/*
+ * Не process.exit: на Windows Node падает с невнятным «Assertion failed …
+ * UV_HANDLE_CLOSING», если процесс обрывают, пока сетевые соединения ещё
+ * закрываются, — и настоящая причина ошибки тонет. Код выхода ставим, а
+ * завершиться процесс даём самому.
+ */
 main().catch((e) => {
   console.error(e.message);
-  process.exit(1);
+  process.exitCode = 1;
 });
