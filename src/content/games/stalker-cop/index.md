@@ -89,6 +89,20 @@ gallery:
     title: "Прохождение S.T.A.L.K.E.R. - Зов Припяти часть 1 [Начало]"
     channel: "Хлебный Хлеб"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "9d194a5f60cc4d478e2ccab40e007dfe"
+    title: "Bear Detector - STALKER Fan Art"
+    author: "roganzu"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/9d194a5f60cc4d478e2ccab40e007dfe/thumbnails/12f31e2ac8664ba3ad56cece31847ccc/e3ab90fdb3f643d4b6d3d65b0e6c4bfb.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "f4ff76a2041943ca9c86e5ea93ec7b32"
+    title: "Bloodsucker - S.T.A.L.K.E.R."
+    author: "Tonskiy"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/f4ff76a2041943ca9c86e5ea93ec7b32/thumbnails/f44967188f5949c2b12d08df71bd7ccf/1024x576.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "PlayGround"
     score: "8,7/10"

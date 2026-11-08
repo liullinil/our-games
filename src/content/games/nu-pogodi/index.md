@@ -38,6 +38,20 @@ gallery:
     title: "Эволюция серии игр Ну, погоди! [1984-2020]"
     channel: "Eryx Channel"
     checkedAt: "2026-09-19"
+  - kind: sketchfab
+    id: "5b1c94e53cce48a1acc8e418f3cebf83"
+    title: "Portable game - \"Nu, pogodi\""
+    author: "yevheniia"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/5b1c94e53cce48a1acc8e418f3cebf83/thumbnails/486dc57e8c364bc9aa4a67e10b2fe843/1ac11018f7ea41c6bd75f62c0e940012.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "db583cca84da425886a482710734d75f"
+    title: "USSR portable game ”Nu, pogodi!” electronika"
+    author: "SPLIT"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/db583cca84da425886a482710734d75f/thumbnails/fdd09f736f2b46538c8ec1f22948ba16/3578db46be914304a7437c5a98082e8c.jpeg"
+    checkedAt: "2026-11-08"
 reviews: []
 reading:
   - title: "«Ну, погоди!» и остальные: немного ностальгической истории о советских карманных электронных играх"

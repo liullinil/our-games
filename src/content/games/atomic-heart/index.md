@@ -94,6 +94,13 @@ gallery:
     title: "Прохождение Atomic Heart (Атомное сердце) — Часть 1: СССР будущего ✪ PC [4K АТОМНАЯ ГРАФИКА]"
     channel: "RusGameTactics"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "5f3672744aff40199d7188947655f5a3"
+    title: "The Twins | Atomic Heart"
+    author: "LLIypuk"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/5f3672744aff40199d7188947655f5a3/thumbnails/53df003aea144a5f8bde493a201a02fe/888aec51955a456cba78b7f259f95617.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "3DNews"
     score: "9/10"

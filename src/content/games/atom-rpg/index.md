@@ -93,6 +93,13 @@ gallery:
     title: "ATOM RPG speedrun / Прохождение ATOM RPG за 6 минут."
     channel: "Канал Флупи-Флупа"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "2661b18596534962ac08879972721c00"
+    title: "ATOM RPG Low-poly broom"
+    author: "KIFIR"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/2661b18596534962ac08879972721c00/thumbnails/1b288a7be78243cd9c1d03fc8e5aab00/b9fe870e0efe4fbf87bc409054e38075.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "Похвально"

@@ -84,6 +84,12 @@ gallery:
     title: "ИНТЕРЕСНАЯ АЛХИМИЯ! - POTION CRAFT ПРОХОЖДЕНИЕ"
     channel: "KerneX"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "62d058c17a3742239a4e541b4d512be2"
+    title: "Potion Craft Tools [Potion Craft Fanart]"
+    author: "BacobaElisa"
+    poster: "https://media.sketchfab.com/models/62d058c17a3742239a4e541b4d512be2/thumbnails/4ca7eee459994c54a54cfd229f94e7c1/b1665e50c5d4410baf7a464e26ab184e.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "CGMagazine"
     score: "9/10"

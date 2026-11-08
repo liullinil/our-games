@@ -83,6 +83,13 @@ gallery:
     title: "#1 ПРИВЕТ СОСЕД ПРОХОЖДЕНИЕ - 1 акт Быстрое и правильное прохождение HELLO NEIGHBOUR Оригинал"
     channel: "DarRidi"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "d79bfbd8c14d41c8aa49750c5c220a26"
+    title: "Hello Neighbor House Act 1"
+    author: "Youthful strawbewwy"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/d79bfbd8c14d41c8aa49750c5c220a26/thumbnails/31bc61fa5f99409f95aaf5e47ae4a01c/69f0af4ba431452d8da35fb557487382.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "3,1/10"

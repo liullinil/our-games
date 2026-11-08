@@ -84,6 +84,12 @@ gallery:
     title: "Прохождение Казаки 3: Золотой век #1 - Новая Голландия [Oranien boven!][Нидерланды]"
     channel: "Houston, we have a problem"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "c185a240814d419b813a179ead7965ad"
+    title: "Cossacks 3 Turkish Artillery Depot"
+    author: "lorddisel"
+    poster: "https://media.sketchfab.com/models/c185a240814d419b813a179ead7965ad/thumbnails/a70d66584f684df7865af54f283b3d7f/1024x576.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     verdict: "Не третья часть, а HD-ремейк: механики шестнадцатилетней давности вернули без изменений, добавив разве что бесполезную дипломатию. Управлять большими армиями стало даже неудобнее, чем в оригинале, а багов хватает; спасает только ностальгия."

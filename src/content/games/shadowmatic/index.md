@@ -78,6 +78,13 @@ gallery:
     title: "Shadowmatic: Walkthrough Guide World 8 (Levels 8.1, 8.2 & 8.3) Final Level! + full map uncovered"
     channel: "App Unwrapper"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "c3db80d66f9f46c5bf4e4353da0c4422"
+    title: "Shadowmatic Lv5.1 Object"
+    author: "顧士傑"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/c3db80d66f9f46c5bf4e4353da0c4422/thumbnails/c3b92bae99ba4cca87320d8b80814051/f73c069bf82147b28c4badd2b6a09cb1.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Pocket Gamer"
     score: "4,5/5"

@@ -79,6 +79,13 @@ gallery:
     title: "Братья Пилоты: По следам полосатого слона. Прохождение."
     channel: "Magic Carpet"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "fdbcb8fac54e48008c37aa653b50d32d"
+    title: "Colleague | Pilot Brothers"
+    author: "Шеф и Коллега Расследование"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/fdbcb8fac54e48008c37aa653b50d32d/thumbnails/bceaf549adb6431685f72cb2fa9847b2/af651d8518c74532ac8c74750907812c.jpeg"
+    checkedAt: "2026-11-08"
 summary: >-
   Квест по мотивам мультфильмов студии «Пилот» о сыщиках Шефе и Коллеге, которые ищут похищенного полосатого слона. Один из первых российских квестов и начало длинной серии.
 steamAppId: 336760

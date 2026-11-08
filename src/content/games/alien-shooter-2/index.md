@@ -85,6 +85,12 @@ gallery:
     title: "Прохождение игры Alien Shooter 2 Reloaded #2 - Орды Монстров и Мяса"
     channel: "Let's Play OSG"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "244781017b7b43f2a07aa053b5bca363"
+    title: "Biter (Alien Shooter 2)"
+    author: "Sovakin"
+    poster: "https://media.sketchfab.com/models/244781017b7b43f2a07aa053b5bca363/thumbnails/718a5e4a5cf944b787a0b3226610dccd/32482f77166740a5b5e55a714b376881.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games"
     score: "84%"

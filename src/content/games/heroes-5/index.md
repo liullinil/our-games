@@ -84,6 +84,19 @@ gallery:
     title: "Heroes 5 - Slaying a MILLION Devils"
     channel: "Nightcloud Extreme"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "0d7275c5d4834e91ba273dde24ade8ba"
+    title: "The Altar of Light (Heroes of Might and Magic V)"
+    author: "heu3becteh"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/0d7275c5d4834e91ba273dde24ade8ba/thumbnails/30a5a71cefe544e08ea41aa23c47d4b1/9269c083aeda4aa6a7ead1d72a6caadf.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "645b0fb1ab124175bef320571f9c4961"
+    title: "Heroes Of Might And Magic V - Druid"
+    author: "yoska"
+    poster: "https://media.sketchfab.com/models/645b0fb1ab124175bef320571f9c4961/thumbnails/13922976766241d398a08242666d0472/77c19cb22e8c46c4ae77c60d34263a59.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games"
     score: "85%"

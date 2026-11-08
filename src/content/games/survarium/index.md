@@ -76,6 +76,13 @@ gallery:
     title: "Survarium Прохождение На Русском #1 — СТАЛКЕР В ОНЛАЙНЕ"
     channel: "Первый Хоррор Канал"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "c75b355edd864b9eb4454235cd988961"
+    title: "Transformer (Survarium)"
+    author: "Vitaliy Kovalchuk"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/c75b355edd864b9eb4454235cd988961/thumbnails/ceb1e519403549129c5fda4a31998525/1024x576.jpeg"
+    checkedAt: "2026-11-08"
 summary: >-
   Сетевой шутер о мире, захваченном аномальным лесом, от бывших разработчиков S.T.A.L.K.E.R. 2. Так и не дожил до обещанного открытого мира и закрылся в 2022 году.
 reviews:

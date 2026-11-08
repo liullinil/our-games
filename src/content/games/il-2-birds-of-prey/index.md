@@ -83,6 +83,13 @@ gallery:
     title: "Wings of Prey. Прохождение компании. 7 часть."
     channel: "Tetsunoken"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "743ce3b915aa4539b354b1bf21575f63"
+    title: "Ilyushin Il-2 Sturmovik"
+    author: "42manako"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/743ce3b915aa4539b354b1bf21575f63/thumbnails/1451f6bd055e48bc8b34aba30d989221/e5dc3968ac444188bdde03ac4f6ce760.jpeg"
+    checkedAt: "2026-11-08"
 summary: >-
   Консольный «Ил-2» от Gaijin с аркадным и реалистичным режимами и лучшими на тот момент видами земли с высоты. На PC вышел как Wings of Prey и стал основой War Thunder.
 reviews:

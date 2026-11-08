@@ -83,6 +83,19 @@ gallery:
     title: "Skyforge. Прохождение. Часть #1 – (Первый взгляд) Создание персонажа, первые квесты"
     channel: "SaySPGames – Игровой канал"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "2926db067ca740519e55211d5d081f41"
+    title: "Skyforge Weapon ART"
+    author: "Sunny Man"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/2926db067ca740519e55211d5d081f41/thumbnails/353c9e60458d46d297137b5371dd3687/240e730257014f858c7c7d2d0007a886.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "1f7084140dbc4c609823b16b6499fc56"
+    title: "Keeper of Knowledge suit, Skyforge"
+    author: "models3d"
+    poster: "https://media.sketchfab.com/models/1f7084140dbc4c609823b16b6499fc56/thumbnails/c12f7b53dc9547338178d6b8e7a07b43/92aab87ef16e4aae887632d65d5c644e.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "GameGuru.ru"
     score: "80%"

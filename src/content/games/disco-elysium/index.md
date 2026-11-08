@@ -90,6 +90,20 @@ gallery:
     title: "Прохождение Disco Elysium - 1 - Создание Персонажа и Жёсткое Пробуждение"
     channel: "Curaidh Plays Games"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "9936d75f4b724c14a2745c9bdc362fa6"
+    title: "Disco Elysium — Tequila Sunset"
+    author: "Skrip"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/9936d75f4b724c14a2745c9bdc362fa6/thumbnails/b285f1fe438a427ebe224025a6402c9f/219ac21f51d049e2bfc2f28f0de0dc49.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "8797f21bd13f4053a443b14cf4619b0b"
+    title: "Kim Kitsuragi - Disco Elysium"
+    author: "YunaOthmer"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/8797f21bd13f4053a443b14cf4619b0b/thumbnails/4f967ec0a8dc411f8c4e82314a46f1c5/b20c042195044571bc203fbd24dc4db8.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "3DNews"
     score: "10/10"

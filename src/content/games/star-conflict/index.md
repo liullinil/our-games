@@ -83,6 +83,20 @@ gallery:
     title: "Star Conflict - Прохождение.#1.Начало за Иерихон.Axe.Трудности с онлайном."
     channel: "Lone Star"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "ecc16e103e79448faf9730f172a1d7e8"
+    title: "AJF-12 \"Dvergr\""
+    author: "Star Conflict"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/ecc16e103e79448faf9730f172a1d7e8/thumbnails/7498ffc2114c4e56a0becd66df5b6805/1024.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "5edb70fdc0da4e6aa7d96f5f19f7a419"
+    title: "Raven spaceship - Star Conflict (v.2)"
+    author: "Polenta"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/5edb70fdc0da4e6aa7d96f5f19f7a419/thumbnails/98b647aa361042a4a37cad8a1620dc01/175eb307edc74636b31176c2c5d674b3.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "GameGuru.ru"
     verdict: "Красивая игра с богатым содержимым и огромным потенциалом — по сути War Thunder в космосе: три сбалансированные фракции, PvP, PvE и войны за секторы, за которыми стоит живая поддержка разработчиков."

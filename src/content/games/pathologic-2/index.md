@@ -89,6 +89,19 @@ gallery:
     title: "Прохождение Мор.Утопия #1 Самозванка Клара"
     channel: "TESler Channel"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "dd764687cf90471d8f575c7cb62196b2"
+    title: "Pathologic 2: Bachelor"
+    author: "boxofgos"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/dd764687cf90471d8f575c7cb62196b2/thumbnails/12ab52719b954ba7a020a39900758db1/09446609797c43d3959ea0750236579a.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "3262abf7fb12413d8c4a62f8b83c487d"
+    title: "Closet 01 - Pathologic 2"
+    author: "GridyGrid"
+    poster: "https://media.sketchfab.com/models/3262abf7fb12413d8c4a62f8b83c487d/thumbnails/6185a9c205fd49d6bb88be61d794d653/b81472c717504c5286345d18721bb9bf.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "3DNews"
     verdict: "Странный, местами поломанный шедевр: атмосфера, звук и визуальный стиль работают безотказно, мешают оптимизация, возня в мусорных баках и немилосердная сложность без наград."

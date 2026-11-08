@@ -83,6 +83,13 @@ gallery:
     title: "Torn Away ➤ ПОЛНОЕ ПРОХОЖДЕНИЕ на РУССКОМ без КОММЕНТАРИЕВ"
     channel: "LeshaSGames | Прохождение игр"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "fb22606da069470baa8628ece18807db"
+    title: "Torn Away - New Home Interior"
+    author: "sergei ryzhov"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/fb22606da069470baa8628ece18807db/thumbnails/09a2dd91acb547ad94bcecb86c8113a8/8dc5c29403794e2ead899029540f0472.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Adventure Game Hotspot"
     score: "88/100"

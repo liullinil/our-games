@@ -82,6 +82,12 @@ gallery:
     title: "SELFLOSS - Gameplay Walkthrough Part 1 (PS5) No Commentary"
     channel: "FazyGaming"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "672c672355cc4209b414d3c0116af123"
+    title: "Selfloss Diorama"
+    author: "RitaMirgo"
+    poster: "https://media.sketchfab.com/models/672c672355cc4209b414d3c0116af123/thumbnails/6e1398e180ec4b9fa3fe9c2e7d6e1d6b/ae68921bebd847b28651b12945d1c963.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "3DNews"
     score: "7,5/10"

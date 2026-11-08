@@ -87,6 +87,13 @@ gallery:
     title: "#01 ЛЕГАЛЬНЫЙ ПСАЙКЕРСКИЙ РЕЛИЗ Прохождение Warhammer 40,000: Rogue Trader НА РУССКОМ"
     channel: "Never More"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "87f084e131b146399a7b5d38673b9712"
+    title: "Fan Art Warhammer 40k Rogue Trader weapon"
+    author: "zefgm"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/87f084e131b146399a7b5d38673b9712/thumbnails/3ce15f4ee47249caa4e4a8a522159acb/394dc2f04ba2444dbe39c058706603ad.jpeg"
+    checkedAt: "2026-11-08"
 website: "https://roguetrader.owlcat.games/en"
 reviews:
   - outlet: "Игромания"

@@ -93,6 +93,19 @@ gallery:
     title: "Прохождение Metro Exodus (Метро: Исход) — Часть 1: Москва ✪ PC [4K]"
     channel: "RusGameTactics"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "cd977261594941f6a42222f7ff8e789d"
+    title: "Soviet Truck - Metro Exodus"
+    author: "Lionsharp Studios"
+    poster: "https://media.sketchfab.com/models/cd977261594941f6a42222f7ff8e789d/thumbnails/9c47a626b48d4f3fa3a6a87bdc9b0231/675e5646c8d74bdd84c82712db126d0c.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "0b31a92b9d264289ade56bd0cff1386b"
+    title: "Revolver Metro Exodus (Fun art)"
+    author: "Artem Goyko"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/0b31a92b9d264289ade56bd0cff1386b/thumbnails/a0d59fc1f1ac41828afe1d34973929e6/4e03bf873d8c49e785727f3e6506b2d5.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "Похвально"

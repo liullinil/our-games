@@ -85,6 +85,20 @@ gallery:
     title: "Как я играл в S.T.A.L.K.E.R.: Чистое Небо"
     channel: "Нарратор"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "c454d1490dea4590b1ca4e25bd40686c"
+    title: "S.T.A.L.K.E.R.:Clear Sky (Рыбацкий хутор)"
+    author: "Vitaliy Kovalchuk"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/c454d1490dea4590b1ca4e25bd40686c/thumbnails/62ddbe163a144fa5b65e4b1f466a25f1/1024x576.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "9967515051a449af8aaedb22c3c3d3c7"
+    title: "BATTLER OF CLEAR SKY FROM STALKER"
+    author: "3dmodelsst"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/9967515051a449af8aaedb22c3c3d3c7/thumbnails/1c368a07e1404777878b61a9f8b57959/a336d3dd4ae7495f8399e10fcd369906.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     verdict: "В плюсе обновлённая графика и часть обещаний, не выполненных в оригинале; в минусе баги, много багов — игре не хватило ещё месяцев трёх доводки."

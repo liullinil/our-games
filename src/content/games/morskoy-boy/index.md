@@ -39,6 +39,12 @@ gallery:
     title: "У кого украли «Морской бой» и как он устроен"
     channel: "MoscowWalks"
     checkedAt: "2026-09-19"
+  - kind: sketchfab
+    id: "b35cc0ba2d45417589507b218f75e437"
+    title: "“Morskoi Boi” (Sea Battle) Arcade Machine."
+    author: "kanu009"
+    poster: "https://media.sketchfab.com/models/b35cc0ba2d45417589507b218f75e437/thumbnails/b2dd8facecf246e2b196528234f616bb/1024x576.jpeg"
+    checkedAt: "2026-11-08"
 reviews: []
 reading:
   - title: "Советские игровые автоматы — ностальгический гейминг с запахом резины. Часть 1: как родился «Морской бой»?"

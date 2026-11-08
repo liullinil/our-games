@@ -91,6 +91,12 @@ gallery:
     title: "Обзор игры King's Bounty II"
     channel: "StopGame"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "741455040ea2460a964c9952c076806c"
+    title: "Arena location King's Bounty 2"
+    author: "Korob"
+    poster: "https://media.sketchfab.com/models/741455040ea2460a964c9952c076806c/thumbnails/8e153035a61840a1a662c0b063b78fec/3650d63956134d00ba302e300ce5b54c.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "Проходняк"

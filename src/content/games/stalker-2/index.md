@@ -91,6 +91,12 @@ gallery:
     title: "Прохождение STALKER 2 (Сталкер 2 Сердце Чернобыля) — Часть 1: ТУДА И ОБРАТНО"
     channel: "JoniPlays"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "720bc1b68b934155a092f3e6090d8398"
+    title: "Stalker 2 Artifact Container Lamp"
+    author: "AmongModels"
+    poster: "https://media.sketchfab.com/models/720bc1b68b934155a092f3e6090d8398/thumbnails/cb4a123430e443cd83f11c0d29441e99/4318a6db1b89401dac4d998983a0d15c.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "PC Gamer"
     score: "83/100"

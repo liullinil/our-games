@@ -84,6 +84,12 @@ gallery:
     title: "Прохождение игры World of Warplanes #1 Нубим!!!!!!"
     channel: "StudioMaxPP"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "2ee1ed7be9d34c34b1e15d0aad918aa5"
+    title: "Grumman F3F-2 for \"World of Warplanes\" MMO"
+    author: "Vyacheslav Shishkin"
+    poster: "https://media.sketchfab.com/models/2ee1ed7be9d34c34b1e15d0aad918aa5/thumbnails/a181af9915b146818ef22b16e6110a6e/7043423b898946dca85adb8a9acdbe58.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "IGN"
     score: "7,8/10"

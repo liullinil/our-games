@@ -81,6 +81,12 @@ gallery:
     title: "Прохождение Аллоды Онлайн - Серия 1 (Начало)"
     channel: "Rabbit52Rus"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "a9bd7cdf327e481c98ed112b49e3b8e6"
+    title: "Genlun - Allods Online Fan Art"
+    author: "LeviJohn"
+    poster: "https://media.sketchfab.com/models/a9bd7cdf327e481c98ed112b49e3b8e6/thumbnails/b880939b16d54519a96a9ba98a72dfa6/e7db3dad73fe4f2fbdc33fc2806c4fc2.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Eurogamer"
     score: "6/10"

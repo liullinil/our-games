@@ -97,6 +97,19 @@ gallery:
     title: "Прохождение S.T.A.L.K.E.R.: Тень Чернобыля — Часть #1: KILL THE STRELOK!"
     channel: "GamePlayerRUS"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "4e2c181f9ed14dd7b7bf40dd7e871fe1"
+    title: "S.T.A.L.K.E.R. \"Bear\" detector (Fan Art)"
+    author: "Ilgis (Dolgov) Fatykhov"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/4e2c181f9ed14dd7b7bf40dd7e871fe1/thumbnails/462bb0905a344e64aef633d1f84206ee/bcc18a00ea7443ebbaf4b0214e2b3b85.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "240d2bdb5bcb4715a5d170625f3735d5"
+    title: "Dolg from STALKER"
+    author: "3dmodelsst"
+    poster: "https://media.sketchfab.com/models/240d2bdb5bcb4715a5d170625f3735d5/thumbnails/ea304424758f491ebd6e84c6f4f21705/527756fdfc914eeea7b180ac1d0d558f.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     verdict: "Великая игра рядом с первыми Doom и Half-Life — и одновременно четверть обещанного: A-Life свёлся к респауну, побочные задания однообразны, а давление THQ перекосило Зону в сторону чистого экшена."

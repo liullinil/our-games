@@ -84,6 +84,13 @@ gallery:
     title: "Ил-2 Штурмовик Битва за Сталинград | Прохождение | #1"
     channel: "Mikhail.Pozhidaev Game.Simulator"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "f7bfa2e68a9541a080b350f0d64b586b"
+    title: "Ilyushin IL-2 Sturmovik"
+    author: "NETRUNNER_pl"
+    license: "Standard"
+    poster: "https://media.sketchfab.com/models/f7bfa2e68a9541a080b350f0d64b586b/thumbnails/508239677b144e6ca92619a4109c6660/0459fbac761b4659bb6c37fb14ab16bb.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Absolute Games (AG.ru)"
     score: "80%"

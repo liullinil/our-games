@@ -75,6 +75,13 @@ gallery:
     title: "Cut the Rope - Прохождение #8"
     channel: "Om Nom Stories"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "747590a16ac74fc991e7ff63cc27db60"
+    title: "Om Nom - Cut The Rope Model"
+    author: "Fatin"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/747590a16ac74fc991e7ff63cc27db60/thumbnails/46c68123494d46968d0ae698caae9725/bf6a573b7e7f423487d23d3cb619fa5c.jpeg"
+    checkedAt: "2026-11-08"
 summary: >-
   Физическая головоломка: перерезать верёвки так, чтобы конфета попала в рот монстрику Ам Няму. Первая мировая сенсация App Store из России, больше миллиарда загрузок серии.
 reviews:

@@ -86,6 +86,13 @@ gallery:
     title: "Beholder 2 Прохождение ► НОВЫЕ ДРУЗЬЯ И КОЛЛЕГИ"
     channel: "OfficialZelel"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "7affdc2bf5234d559e530b3416bbb3f1"
+    title: "Evan Redgrave ⭒ Beholder 2"
+    author: "Hibrido56"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/7affdc2bf5234d559e530b3416bbb3f1/thumbnails/36ad04dff0524371a8a5ea124ef8dfb4/31d053af83db4a4babbb3196bfc00232.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "Похвально"

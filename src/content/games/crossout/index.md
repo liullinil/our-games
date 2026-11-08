@@ -88,6 +88,19 @@ gallery:
     title: "Полное прохождение сюжета~Crossout~"
     channel: "PupsFM"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "e6e5d4dda68a495fb15a0476d318bef8"
+    title: "Unique armored truck ‘Tarantula’"
+    author: "Crossout"
+    poster: "https://media.sketchfab.com/models/e6e5d4dda68a495fb15a0476d318bef8/thumbnails/5d873f8083314cb8ae28a3e5181d6e48/53fbd5d650ba4c79bae9d4a73c304d76.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "8695e3427c844c6b9c726fb00c877e78"
+    title: "Crossout Harpoon"
+    author: "Ben Hollands"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/8695e3427c844c6b9c726fb00c877e78/thumbnails/8e128b44f42f4db0b9a1e62ef4f858dc/1024x576.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "VGTimes"
     score: "7,5/10"

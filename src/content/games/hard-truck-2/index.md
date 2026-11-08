@@ -83,6 +83,13 @@ gallery:
     title: "Прохождение ДАЛЬНОБОЙЩИКИ 2 — Любимая игра и Наведение суеты — Стрим #1"
     channel: "so10way"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "df079b93ad4a41f6ad7781f408378db2"
+    title: "Roller \"Hard Truck 2 - King of the Road\""
+    author: "Korolv"
+    license: "Free Standard"
+    poster: "https://media.sketchfab.com/models/df079b93ad4a41f6ad7781f408378db2/thumbnails/8f7a247d27954e469f3299df0b3fe113/19e97bb1f3194f3291f502474dc453a5.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Jeuxvideo.com"
     score: "8/20"

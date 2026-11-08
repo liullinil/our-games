@@ -83,6 +83,19 @@ gallery:
     title: "ТАРКОВ Релиз! Прохождение сюжета в Escape from Tarkov Часть 1"
     channel: "Гроза Востока"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "79ba9f75aab94888a51359443adfae2b"
+    title: "Escape from Tarkov Reserve Tunnels 3D map"
+    author: "reemr"
+    poster: "https://media.sketchfab.com/models/79ba9f75aab94888a51359443adfae2b/thumbnails/a167c1a060df4ff8a472990b996900b3/8006321470534be58170764f81088fc2.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "b83781bf003f4abdb750c7034a6c7c53"
+    title: "Low-Poly EFT Melee Weapons"
+    author: "Хлюпич"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/b83781bf003f4abdb750c7034a6c7c53/thumbnails/c0ebb1fa4c004dcca8062a89550f156f/15ca1fa98d914b27bb7726819fd4492b.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "PC Gamer"
     score: "90/100"

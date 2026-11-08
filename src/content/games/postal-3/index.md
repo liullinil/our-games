@@ -77,6 +77,20 @@ gallery:
     title: "Прохождение Postal 3 [Часть 1 - Добро Пожаловать в Катарсис]"
     channel: "MrGoGaAaAa"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "1a063d029b404a599a56e006e92a86aa"
+    title: "beta Postal 3 Dude"
+    author: "Wheelslip"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/1a063d029b404a599a56e006e92a86aa/thumbnails/d1b6bafe80774eeaa8adf56c9f56d7f7/ed5863f277224408b9ad7ab0974d43b8.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "db9e8852bd5344cebbf3680fde3dcbf5"
+    title: "Postal 3 Monkeys"
+    author: "P03_real_account_2"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/db9e8852bd5344cebbf3680fde3dcbf5/thumbnails/e1511ad00ea748a1ae61af190bd56f55/5eed640da01b439ea1982a3709277cb4.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Game Informer"
     score: "1/10"

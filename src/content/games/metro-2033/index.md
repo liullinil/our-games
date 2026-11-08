@@ -88,6 +88,20 @@ gallery:
     channel: "РУССКИЙ ГАЙД"
     poster: "https://pic.rtbcdn.ru/video/2024-11-13/41/21/412149188dce714ed2a7929ba5ac7fbe.jpg"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "2d17466538fd46378c7f3c81bd05cb73"
+    title: "Metro 2033 Train"
+    author: "Leafia dev."
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/2d17466538fd46378c7f3c81bd05cb73/thumbnails/a3954ae9bdca46d7a6bff54363f46e9c/7cf86b916b434f71a093d48b2a972a50.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "c29479e7fe7749d1bb2d4d2e31466d2d"
+    title: "Soviet Radio From Metro 2033"
+    author: "aclarke064"
+    license: "CC Attribution-NonCommercial-ShareAlike"
+    poster: "https://media.sketchfab.com/models/c29479e7fe7749d1bb2d4d2e31466d2d/thumbnails/d2c1a81da5274186aaa3c058f5522961/f137748fc0204675b5fb3565f0a9c087.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "StopGame"
     score: "Изумительно"

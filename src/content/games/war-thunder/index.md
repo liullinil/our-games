@@ -88,6 +88,20 @@ gallery:
     channel: "Прохождение игр: секреты и трюки"
     poster: "https://pic.rtbcdn.ru/video/7d/e5/7de55b68d26101e246697a245f77618d.jpg"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "e967f6b302fb4de1a39ef06298c7296a"
+    title: "T-90M (War Thunder)"
+    author: "KojfDiscord"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/e967f6b302fb4de1a39ef06298c7296a/thumbnails/be6841bf769a4df487344bf4211f23a8/b6e52c1405994cc79d3bd07b3ba1c207.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "813e100326194334b52887a17416e0b8"
+    title: "Jadgpanther (War Thunder)"
+    author: "A Certain Duck"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/813e100326194334b52887a17416e0b8/thumbnails/8a3ef12c945840eb91b188995c80f3ed/dd07cfe8d8aa497aa1a8d780d08fb029.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "Навигатор игрового мира"
     score: "8,7 из 10"
