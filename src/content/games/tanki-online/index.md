@@ -84,7 +84,30 @@ gallery:
     title: "Танки онлайн-\"Золотой Let`s play #38\" - [ 1 Апреля I Х5 Голды I 2 Часть ] [^ЗЛП^]"
     channel: "The_CaHeK_Play"
     checkedAt: "2026-09-20"
-reviews: []
+  - kind: youtube
+    id: "mvQ0it6izgA"
+    title: "Прохождение игры- Танки онлайн-Часть 1"
+    channel: "Артём Малёшин (Saidsvaip)"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "5d701d5592a54977a848b027314b2d8c"
+    title: "Titan from \"Tanki Online\""
+    author: "sassuscus"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/5d701d5592a54977a848b027314b2d8c/thumbnails/c74b105db45c43a7a8e3023c28aaf5e0/310c305968d44cb89fe26c87d6f3d62e.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "ada3f17a67454e31a5dd9f867e39f5d3"
+    title: "Juggernaut&Terminator - Tanki Online"
+    author: "JackTO"
+    poster: "https://media.sketchfab.com/models/ada3f17a67454e31a5dd9f867e39f5d3/thumbnails/eaac1a1ad0bb4d87ad0ea46727d99634/d81293bc2f854b349b255427095bc837.jpeg"
+    checkedAt: "2026-11-08"
+reviews:
+  - outlet: "MMOGames"
+    score: "3/5"
+    verdict: "Простая и прямолинейная танковая аркада: угловатые карты и машины выглядят устаревшими, а наводка башни с клавиатуры поначалу сбивает с толку, зато бои быстрые, а сборка танка из корпусов и пушек с прокачкой даёт неожиданно много вариантов."
+    url: "https://www.mmogames.com/articles/archives/tanki-online-review"
+    date: "2014"
 reading:
   - title: "Бизнес на гусеницах, или История успеха «Танки Онлайн»"
     url: "https://www.kommersant.ru/doc/2250366"

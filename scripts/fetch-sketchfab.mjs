@@ -24,6 +24,9 @@
  *   node scripts/fetch-sketchfab.mjs --auto metro-2033 --write записать
  *   node scripts/fetch-sketchfab.mjs --game vangers --add <uid>
  *   node scripts/fetch-sketchfab.mjs --game vangers --drop <uid>
+ *   node scripts/fetch-sketchfab.mjs --game tetris --add <uid> --hint "Tetris Tetriminos"
+ *       подсказка-название нужна, когда карточка модели отвечает 429: тогда
+ *       модель ищется через поиск, у которого лимит мягче
  *   node scripts/fetch-sketchfab.mjs --take 3                  сколько моделей на статью (по умолчанию 2)
  */
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
@@ -223,6 +226,17 @@ async function model(uid) {
   throw new Error(`Sketchfab отвечает 429 подряд на модель ${uid}`);
 }
 
+/**
+ * Модель через поиск: тот же набор полей, но лимит мягче. Ищем по названию и
+ * берём ту, у которой совпадает идентификатор, — одноимённых моделей много.
+ */
+async function modelViaSearch(uid, hint) {
+  const found = await search(hint);
+  const hit = found.find((m) => m.uid === uid);
+  if (!hit) throw new Error(`по названию «${hint}» модель ${uid} в поиске не нашлась`);
+  return hit;
+}
+
 /** Превью среднего размера: большое тяжело, маленькое расплывается в рамке. */
 function poster(m) {
   const images = [...(m.thumbnails?.images ?? [])].sort((a, b) => b.width - a.width);
@@ -284,8 +298,16 @@ async function main() {
       return;
     }
     const picked = [];
-    for (const uid of list('add')) {
-      const m = await model(uid);
+    const hints = list('hint');
+    for (const [i, uid] of list('add').entries()) {
+      let m;
+      try {
+        // С подсказкой сразу идём в поиск: карточку модели незачем дёргать впустую.
+        m = hints[i] ? await modelViaSearch(uid, hints[i]) : await model(uid);
+      } catch (e) {
+        if (!hints[i]) throw e;
+        m = await model(uid);
+      }
       if (forbiddenText(m.name, game.id)) throw new Error(`«${m.name}» — под редакционным правилом`);
       console.log(`${uid}: ${m.name} — ${m.user?.displayName} (${m.license?.label ?? 'стандартная лицензия'})`);
       picked.push(m);

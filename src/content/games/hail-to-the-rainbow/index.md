@@ -71,6 +71,12 @@ gallery:
     channel: "Adonis"
     poster: "https://pic.rtbcdn.ru/video/2025-12-12/9a/cf/9acfc88c7e41ed63d83556cee9dc5db5.jpg"
     checkedAt: "2026-09-20"
+  - kind: sketchfab
+    id: "e5f14e3fc4a247dfa405d34b7501c872"
+    title: "Soviet payphone AMT 47 for Hail to the Rainbow"
+    author: "Gurkha"
+    poster: "https://media.sketchfab.com/models/e5f14e3fc4a247dfa405d34b7501c872/thumbnails/9f89144efc0744a1854c9ac08e27fe15/ee6a96dadfe04aaa8f8e545c968d03c0.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "iXBT games"
     verdict: "Атмосферный мир, изобретательные головоломки и разнообразие происходящего перевешивают утилитарную стрельбу и символический стелс; игра сделана руками и сердцем."

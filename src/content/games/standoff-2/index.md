@@ -46,6 +46,18 @@ gallery:
     channel: "Lorder"
     poster: "https://pic.rtbcdn.ru/video/2024-09-30/a2/97/a2973d49ccb0ce01163603b17eac9bdb.jpg"
     checkedAt: "2026-09-20"
+  - kind: youtube
+    id: "haa_tFYXwqg"
+    title: "Прохождение Standoff 2: Обучение и командный бой"
+    channel: "Ivanzolo2004"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "0c18b284387d464283e560b566c3e08e"
+    title: "Standoff 2 Sandstone 1x1 map (concept for stnk)"
+    author: "Skabl"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/0c18b284387d464283e560b566c3e08e/thumbnails/71652ac10ee04968b8ad70192b1a2c92/2331dbe7f5984dcb8b7c47a410a8688f.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "PCQuest"
     verdict: "Лучшая мобильная версия Counter-Strike: честная стрельба, толковые карты и заметно более строгая борьба с читерами, чем в оригинале. Портят дело графика без изысков и просадки на устройствах с чипами MediaTek."

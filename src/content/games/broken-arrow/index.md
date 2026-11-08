@@ -77,6 +77,20 @@ gallery:
     title: "ПРОХОЖДЕНИЕ BROKEN ARROW №1 ЗАХОДИМ В НАРВУ"
     channel: "AR3LAV"
     checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "47c3a226450848f5a9da9bb2c3cb36f5"
+    title: "[Broken Arrow] M1117 Guardian"
+    author: "epqy122"
+    license: "CC Attribution"
+    poster: "https://media.sketchfab.com/models/47c3a226450848f5a9da9bb2c3cb36f5/thumbnails/d58001e79924446abbe58a9ce07b317d/1688055d9d5f482a82d9c795b27b2ea9.jpeg"
+    checkedAt: "2026-11-08"
+  - kind: sketchfab
+    id: "42b5555d17864e0198e235d9aa2e47c7"
+    title: "Leopard 2A8 - all modifications | Broken Arrow"
+    author: "xlisov"
+    license: "CC Attribution-NonCommercial"
+    poster: "https://media.sketchfab.com/models/42b5555d17864e0198e235d9aa2e47c7/thumbnails/5e12f5f1ed694d90abebaac208ce045c/eda1471698a544af90cdd7853d874c63.jpeg"
+    checkedAt: "2026-11-08"
 reviews:
   - outlet: "OpenCritic"
     score: "76/100"
