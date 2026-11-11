@@ -9,13 +9,19 @@
  * выдумывать число, которого никто не ставил.
  */
 import type { GameNode } from '../lib/graph';
+import { magazineScan } from '../lib/magazine';
 
 interface Props {
   game: GameNode;
 }
 
 const { game: g } = Astro.props;
-const reviews = g.data.reviews;
+/*
+ * Рецензия из журнала, чей скан лежит на archive.org, показывает обложку
+ * номера и открывает саму статью в читалке archive.org. Остальные —
+ * обычные карточки.
+ */
+const reviews = g.data.reviews.map((r) => ({ ...r, scan: magazineScan(r.url) }));
 const metacritic = g.data.specs.metacritic;
 ---
 
@@ -28,17 +34,38 @@ const metacritic = g.data.specs.metacritic;
       </div>
       <ul class="reviews__list">
         {reviews.map((r) => (
-          <li class="reviews__item card">
-            <div class="reviews__head">
-              <a class="reviews__outlet" href={r.url} rel="noopener external">
-                {r.outlet}
+          <li class:list={['reviews__item card', { 'reviews__item--scan': r.scan }]}>
+            {r.scan && (
+              <a class="reviews__cover" href={r.url} rel="noopener external" title={`${r.outlet}: номер в библиотеке archive.org`}>
+                <img
+                  src={r.scan.cover}
+                  alt={`Обложка номера: ${r.outlet}`}
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer"
+                />
               </a>
-              {r.score && <span class="reviews__score">{r.score}</span>}
-            </div>
-            <p class="reviews__verdict">{r.verdict}</p>
-            {(r.author || r.date) && (
-              <p class="reviews__meta muted">{[r.author, r.date].filter(Boolean).join(' · ')}</p>
             )}
+            <div class="reviews__body">
+              <div class="reviews__head">
+                <a class="reviews__outlet" href={r.url} rel="noopener external">
+                  {r.outlet}
+                </a>
+                {r.score && <span class="reviews__score">{r.score}</span>}
+              </div>
+              <p class="reviews__verdict">{r.verdict}</p>
+              {(r.author || r.date) && (
+                <p class="reviews__meta muted">{[r.author, r.date].filter(Boolean).join(' · ')}</p>
+              )}
+              {r.scan && (
+                <div class="reviews__scan" data-scan data-src={r.scan.reader} data-title={`${r.outlet}: страница журнала`}>
+                  <button class="reviews__scan-open" type="button" data-scan-open>
+                    {r.scan.page ? 'Страница журнала' : 'Открыть номер'}
+                  </button>
+                  <span class="muted">скан в библиотеке archive.org</span>
+                </div>
+              )}
+            </div>
           </li>
         ))}
       </ul>
@@ -98,4 +125,96 @@ const metacritic = g.data.specs.metacritic;
     margin: 0.25rem 0 0;
     font-size: 0.8rem;
   }
+
+  /* Рецензия из журнала: слева обложка номера, справа всё остальное. */
+  .reviews__item--scan {
+    display: grid;
+    grid-template-columns: 4.2rem 1fr;
+    gap: 0.85rem;
+    align-items: start;
+  }
+
+  .reviews__cover {
+    display: block;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    /* Обложка грузится лениво, и до неё рамка не должна быть дырой. */
+    background: var(--c-border);
+  }
+
+  .reviews__cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .reviews__body {
+    min-width: 0;
+  }
+
+  .reviews__scan {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 0.6rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .reviews__scan-open {
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--c-accent);
+    border-radius: 999px;
+    background: none;
+    color: var(--c-accent);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .reviews__scan-open:hover,
+  .reviews__scan-open:focus-visible {
+    background: var(--c-accent);
+    color: var(--c-on-accent);
+  }
+
+  /* Открытая читалка встаёт на всю ширину карточки, под обложку. */
+  .reviews__scan :global(iframe) {
+    flex-basis: 100%;
+    width: 100%;
+    height: min(78vh, 46rem);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: #1c1c20;
+  }
+
+  .reviews__item--scan:has(iframe) {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews__item--scan:has(iframe) .reviews__cover {
+    display: none;
+  }
 </style>
+
+<script>
+  /*
+   * Читалка archive.org грузится только по нажатию: это целое приложение с
+   * мегабайтами скриптов, а рецензий в статье бывает шесть.
+   */
+  document.addEventListener('click', (event) => {
+    const button = (event.target as HTMLElement)?.closest?.('[data-scan-open]');
+    if (!button) return;
+    const box = button.closest('[data-scan]') as HTMLElement | null;
+    const src = box?.dataset.src;
+    if (!box || !src) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.title = box.dataset.title ?? 'Страница журнала';
+    iframe.allowFullscreen = true;
+    iframe.loading = 'lazy';
+    box.replaceChildren(iframe);
+  });
+</script>
