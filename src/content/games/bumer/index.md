@@ -27,6 +27,12 @@ gallery:
     author: "Gaijin"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%A1%D0%BE%D1%80%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5_%D0%B1%D0%B0%D1%88%D0%BD%D0%B8.jpg"
+  - kind: image
+    src: ./shots/og-media-1.jpg
+    caption: "Бумер: Сорванные башни: диск, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/10132.html"
   - kind: rutube
     id: "04f2d66bc1242b6b2915a6e8df29ca25"
     title: "Прохождение Бумер: Сорванные башни #15 (Мочилово: Финальная разборка) ФИНАЛ"

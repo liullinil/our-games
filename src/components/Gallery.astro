@@ -44,7 +44,7 @@ const creditText = (p: (typeof photos)[number]) =>
         {photos.map((photo, i) => (
           <li class="gallery__item">
             <a
-              class="gallery__link"
+              class:list={['gallery__link', { 'gallery__link--whole': photo.license === 'Обложка' }]}
               href={large[i]!.src}
               data-lightbox
               data-caption={photo.caption}
@@ -150,6 +150,16 @@ const creditText = (p: (typeof photos)[number]) =>
     object-fit: cover;
     filter: var(--photo-filter);
     transition: transform 0.2s;
+  }
+
+  /*
+   * Обложки и диски — целиком. Кадр из игры можно обрезать по ячейке, а
+   * коробке, вписанной обрезкой в широкую ячейку, срезает верх и низ, и от
+   * круглого диска остаётся полоса.
+   */
+  .gallery__link--whole :global(img) {
+    object-fit: contain;
+    padding: 0.35rem;
   }
 
   .gallery__link:hover :global(img) {

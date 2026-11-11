@@ -21,6 +21,7 @@
     "wiki:check": "node scripts/check-wiki.mjs",
     "appstore:fetch": "node scripts/fetch-appstore.mjs",
     "gog:fetch": "node scripts/fetch-gog.mjs",
+    "covers:fetch": "node scripts/fetch-oldgames-covers.mjs",
     "sketchfab:fetch": "node scripts/fetch-sketchfab.mjs",
     "video": "node scripts/fetch-video.mjs",
     "photos:shrink": "node scripts/shrink-photos.mjs",

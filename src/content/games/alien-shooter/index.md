@@ -61,6 +61,18 @@ gallery:
     author: "Sigma Team Inc."
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/33100/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Alien Shooter: обложка коробки, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/12179.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Alien Shooter: диск, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/12179.html"
   - kind: youtube
     id: "HAo9BzpkybU"
     title: "Рождение и смерть Alien Shooter"

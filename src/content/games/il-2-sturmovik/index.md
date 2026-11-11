@@ -32,6 +32,18 @@ gallery:
     author: "Maddox Games"
     license: "Обложка"
     sourceUrl: "https://en.wikipedia.org/wiki/File:IL-2_Sturmovik_Coverart.png"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Ил-2 Штурмовик: обложка коробки, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/14735.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Ил-2 Штурмовик: диск, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/14735.html"
   - kind: youtube
     id: "XVpyJanEhrI"
     title: "ВЗЛЁТ ИЛ-2 ШТУРМОВИК"

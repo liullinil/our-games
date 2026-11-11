@@ -58,6 +58,24 @@ gallery:
     author: "GSC Game World"
     license: "Скриншот"
     sourceUrl: "https://www.gog.com/en/game/venom_codename_outbreak"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Codename: Outbreak: обложка коробки, русское издание (скан: James Valentine, Old-Games.RU)"
+    author: "Руссобит-М"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/6857.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Codename: Outbreak: обложка коробки, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Руссобит-М"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/6857.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Codename: Outbreak: диск, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Руссобит-М"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/6857.html"
   - kind: youtube
     id: "dcU47fhQNeM"
     title: "ЧЕРНОЕ ГНЕЗДО ОБЗОР - РЕМЕЙК VENOM: CODENAME OUTBREAK. REMASTERED"

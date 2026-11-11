@@ -68,6 +68,18 @@ gallery:
     author: "Buka Development, Saturn Plus, ESDigital Games"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/546220/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Петька 3: Возвращение Аляски: обложка коробки, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8737.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Петька 3: Возвращение Аляски: диск, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8737.html"
   - kind: youtube
     id: "hcYOuFukSB4"
     title: "Петька 3: Возвращение Аляски | Мнение"

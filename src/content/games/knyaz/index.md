@@ -32,6 +32,24 @@ gallery:
     author: "Леста Игры"
     license: "Скриншот"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%9A%D0%BD%D1%8F%D0%B7%D1%8C_%D0%9B%D0%9B%D0%A1.jpg"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Князь: Легенды Лесной страны: обложка коробки, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Snowball Interactive"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/7277.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Князь: Легенды Лесной страны: обложка коробки, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Snowball Interactive"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/7277.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Князь: Легенды Лесной страны: диск, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Snowball Interactive"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/7277.html"
   - kind: youtube
     id: "boKjeevXQGY"
     title: "Обзор игры: Князь \"Легенды лесной страны\" (1999)."

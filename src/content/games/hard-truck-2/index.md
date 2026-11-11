@@ -62,6 +62,24 @@ gallery:
     author: "SoftLab-NSK, Fulqrum Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/4487840/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Дальнобойщики 2: обложка коробки, русское издание (скан: WAR1OCK, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/10380.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Дальнобойщики 2: обложка коробки, западное издание (скан: MAZterXP, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/10380.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Дальнобойщики 2: диск, русское издание (скан: WAR1OCK, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/10380.html"
   - kind: youtube
     id: "afF-EuPyfw4"
     title: "НА ИГЛЕ. ДАЛЬНОБОЙЩИКИ 2"

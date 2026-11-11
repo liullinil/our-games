@@ -61,6 +61,18 @@ gallery:
     author: "Digital Spray Studios, Mandel ArtPlains, Jordan Freeman Group, ZOOM Platform Media, Strategy First, BillionTech"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/4760480/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "You Are Empty: обложка коробки, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/13228.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "You Are Empty: диск, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/13228.html"
   - kind: youtube
     id: "HErqzvfKmVQ"
     title: "Разбор полётов. You Are Empty"

@@ -26,6 +26,18 @@ gallery:
     author: "Action Forms"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Carnivores_%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0.jpg"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Carnivores: обложка коробки, западное издание (скан: Вендиго, Old-Games.RU)"
+    author: "Action Forms"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/1738.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Carnivores: диск, западное издание (скан: MAZterXP, Old-Games.RU)"
+    author: "Action Forms"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/1738.html"
   - kind: youtube
     id: "8mJTfag0UR8"
     title: "Carnivores LEGACY ПОЛНЫЙ ОБЗОР часть №1"

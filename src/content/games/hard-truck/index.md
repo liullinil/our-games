@@ -34,6 +34,18 @@ gallery:
     author: "SoftLab-NSK"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:D1_intro.jpg"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Дальнобойщики: Путь к победе: обложка коробки, западное издание (скан: MAZterXP, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/7858.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Дальнобойщики: Путь к победе: диск, русское издание (скан: WAR1OCK, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/7858.html"
   - kind: youtube
     id: "7Fxo5U2cAXQ"
     title: "Игра \"Дальнобойщики: Путь к победе\" - как все начиналось"

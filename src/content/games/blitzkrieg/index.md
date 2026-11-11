@@ -67,6 +67,24 @@ gallery:
     author: "Nival"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/313480/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Блицкриг: обложка коробки, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8922.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Блицкриг: обложка коробки, русское издание (скан: Вендиго, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8922.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Блицкриг: диск, русское издание (скан: Вендиго, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8922.html"
   - kind: youtube
     id: "IUaKUiFeVvw"
     title: "Блицкриг – забытая российская стратегия из нулевых (feat. Борис Юлин) | Краткий обзор о главном"

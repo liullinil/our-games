@@ -59,6 +59,18 @@ gallery:
     author: "Nival Interactive"
     license: "Скриншот"
     sourceUrl: "https://www.gog.com/en/game/rage_of_mages"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Аллоды: Печать тайны: обложка коробки, западное издание (скан: ZaRR, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/156.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Аллоды: Печать тайны: диск, западное издание (скан: MAZterXP, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/156.html"
   - kind: youtube
     id: "sasYuaPLJ4s"
     title: "С чего все начиналось? Обзор игры Аллоды печать тайны (1998)"

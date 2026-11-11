@@ -66,6 +66,24 @@ gallery:
     author: "Akella"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/764670/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Корсары: Проклятье дальних морей: обложка коробки, русское издание (скан: Uka, Old-Games.RU)"
+    author: "Акелла"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8935.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Корсары: Проклятье дальних морей: обложка коробки, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Акелла"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8935.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Корсары: Проклятье дальних морей: диск, русское издание (скан: Uka, Old-Games.RU)"
+    author: "Акелла"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8935.html"
   - kind: youtube
     id: "SfPI2UXEuNw"
     title: "Прошёл «Корсары» в 2024 году"

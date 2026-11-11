@@ -63,6 +63,18 @@ gallery:
     author: "1C Wireless, Fulqrum Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/336760/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Братья Пилоты: По следам полосатого слона: обложка коробки, русское издание (скан: Вендиго, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8393.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Братья Пилоты: По следам полосатого слона: диск, русское издание (скан: Вендиго, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8393.html"
   - kind: youtube
     id: "p22HfEJOaDc"
     title: "История серии «Братья Пилоты» — часть первая"

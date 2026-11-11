@@ -31,6 +31,18 @@ gallery:
     author: "Geleos"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Lada_Racing_Club_(game).jpg"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Lada Racing Club: обложка коробки, русское издание (скан: Вендиго, Old-Games.RU)"
+    author: "Новый Диск"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/13883.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Lada Racing Club: диск, русское издание (скан: Вендиго, Old-Games.RU)"
+    author: "Новый Диск"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/13883.html"
   - kind: youtube
     id: "JR1lKAT4CZk"
     title: "ИСТОРИЯ БОЛЬШОГО ОБМАНА - LADA RACING CLUB"

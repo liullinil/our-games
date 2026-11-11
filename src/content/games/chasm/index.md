@@ -65,6 +65,24 @@ gallery:
     author: "Action Forms, General Arcade, SNEG"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/2061230/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Chasm: The Rift: обложка коробки, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Action Forms"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/239.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Chasm: The Rift: обложка коробки (скан: Sharp_ey, Old-Games.RU)"
+    author: "Action Forms"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/239.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Chasm: The Rift: диск (скан: Sharp_ey, Old-Games.RU)"
+    author: "Action Forms"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/239.html"
   - kind: youtube
     id: "Uu19BSDPanQ"
     title: "Chasm: The Rift PC Game Review"

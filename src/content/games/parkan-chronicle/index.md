@@ -64,6 +64,24 @@ gallery:
     author: "GameXP.com"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/575690/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Parkan: Хроника Империи: обложка коробки, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Locis"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/620.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Parkan: Хроника Империи: обложка коробки, русское издание (скан: Duracula96, Old-Games.RU)"
+    author: "Locis"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/620.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Parkan: Хроника Империи: диск, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Locis"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/620.html"
   - kind: youtube
     id: "0APAi_3KFmE"
     title: "Ретро обзор - Parkan - Хроника Империи"

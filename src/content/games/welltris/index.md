@@ -30,6 +30,18 @@ gallery:
     author: "Дока"
     license: "Обложка"
     sourceUrl: "https://en.wikipedia.org/wiki/File:Welltris_box.jpg"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Welltris: обложка коробки, западное издание (скан: Uka, Old-Games.RU)"
+    author: "Дока"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/2763.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Welltris: дискета, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Дока"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/2763.html"
   - kind: youtube
     id: "Ks3JP5YstKY"
     title: "Welltris gameplay (PC Game, 1989)"

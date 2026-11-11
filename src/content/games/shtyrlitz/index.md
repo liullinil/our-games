@@ -24,6 +24,18 @@ specs:
 summary: >-
   Квест по анекдотам о Штирлице: разведчик, Мюллер, Борман и бесконечные каламбуры. Вместе с «Петькой» составил ядро юмористической школы российского квеста.
 gallery:
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Штырлиц: Операция «Бюст»: обложка коробки, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8704.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Штырлиц: Операция «Бюст»: диск, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8704.html"
   - kind: youtube
     id: "SrGGaES3aPk"
     title: "ОБЗОР ШТЫРЛИЦ #ГИБЕЛЬ ИГР ШТЫРЛИЦ"

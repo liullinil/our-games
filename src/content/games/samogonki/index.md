@@ -62,6 +62,18 @@ gallery:
     author: "K-D Lab, Association K-D Lab"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/2599800/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Самогонки: обложка коробки, русское издание (скан: ShkodnikZGrodna, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8703.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Самогонки: диск, русское издание (скан: ShkodnikZGrodna, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8703.html"
   - kind: youtube
     id: "xfnVjGaWaXk"
     title: "Самогонки - Moonshine Runners - прохождение - часть 1"

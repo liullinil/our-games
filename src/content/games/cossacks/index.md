@@ -59,6 +59,24 @@ gallery:
     author: "GSC Game World, GSC World Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/4880/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Казаки: Европейские войны: обложка коробки, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "GSC Game World"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8679.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Казаки: Европейские войны: обложка коробки, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "GSC Game World"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8679.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Казаки: Европейские войны: диск, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "GSC Game World"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8679.html"
   - kind: youtube
     id: "RlIdSPtpKRY"
     title: "Cossacks | Ретроспектива серии | Scav Merchant Hub"

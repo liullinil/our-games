@@ -60,6 +60,24 @@ gallery:
     author: "Nival"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/270770/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Демиурги: обложка коробки, русское издание (скан: mcrstar, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/13345.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Демиурги: обложка коробки, западное издание (скан: mcrstar, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/13345.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Демиурги: диск, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/13345.html"
   - kind: youtube
     id: "vZiK7CouEso"
     title: "Демиурги II [Ретрореквест]"

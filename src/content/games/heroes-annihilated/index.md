@@ -59,6 +59,18 @@ gallery:
     author: "GSC Game World"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/4800/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Heroes of Annihilated Empires: обложка коробки, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "GSC Game World"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/15672.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Heroes of Annihilated Empires: диск, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "GSC Game World"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/15672.html"
   - kind: youtube
     id: "tKHpdzgtTvo"
     title: "Обзор игры: Герои уничтоженных империй."

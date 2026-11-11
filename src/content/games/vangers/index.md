@@ -61,6 +61,24 @@ gallery:
     author: "K-D Lab, Association K-D Lab"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/264080/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Вангеры: обложка коробки, русское издание (скан: WAR1OCK, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/616.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Вангеры: обложка коробки, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/616.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Вангеры: диск, русское издание (скан: WAR1OCK, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/616.html"
   - kind: youtube
     id: "7smUD83nb_8"
     title: "Вангеры. Самый лучший обзор самой ломающей игры."

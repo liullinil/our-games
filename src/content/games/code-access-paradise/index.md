@@ -28,6 +28,24 @@ gallery:
     author: "GFI Russia"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%9A%D0%BE%D0%B4_%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0_%D0%A0%D0%90%D0%99.jpg"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Код доступа: РАЙ: обложка коробки, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8934.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Код доступа: РАЙ: обложка коробки, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8934.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Код доступа: РАЙ: диск, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8934.html"
   - kind: rutube
     id: "8bb02d49d92571e96effa271ba2bbb12"
     title: "Код Доступа Рай - Ремастер (Лучший киберпанк в истории)"

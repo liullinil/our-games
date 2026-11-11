@@ -28,6 +28,18 @@ gallery:
     author: "Auric Vision"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%93%D0%AD%D0%93_%D0%9E%D1%82%D0%B2%D1%8F%D0%B7%D0%BD%D0%BE%D0%B5_%D0%BF%D1%80%D0%B8%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5.jpg"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "ГЭГ: Отвязное приключение: обложка коробки, русское издание (скан: James Valentine, Old-Games.RU)"
+    author: "Новый Диск"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8630.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "ГЭГ: Отвязное приключение: диск, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Новый Диск"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8630.html"
   - kind: youtube
     id: "s6OeeaqC8KM"
     title: "ГЭГ отвязное приключение - прохождение (без комментариев)"

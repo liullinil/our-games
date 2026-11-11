@@ -64,6 +64,24 @@ gallery:
     author: "Nival, THQ Nordic"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/254960/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Операция Silent Storm: обложка коробки, западное издание (скан: mcrstar, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/13209.html"
+  - kind: image
+    src: ./shots/og-box-2.jpg
+    caption: "Операция Silent Storm: обложка коробки, русское издание (скан: mcrstar, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/13209.html"
+  - kind: image
+    src: ./shots/og-media-3.jpg
+    caption: "Операция Silent Storm: диск, русское издание (скан: mcrstar, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/13209.html"
   - kind: youtube
     id: "x2OuE1gZ2gA"
     title: "Обзор игры: Silent Storm - Часовые"

@@ -65,6 +65,18 @@ gallery:
     author: "Fireglow, Kalypso Media Digital"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/612300/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Sudden Strike: обложка коробки, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Руссобит-М"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/14760.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Sudden Strike: диск, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Руссобит-М"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/14760.html"
   - kind: youtube
     id: "WQvnYiBuMwY"
     title: "Противостояние 3 | Sudden Strike | краткий обзор ретро классики RTS"

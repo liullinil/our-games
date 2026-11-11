@@ -66,6 +66,18 @@ gallery:
     author: "Buka Development, ESDigital Games"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/415610/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Петька и Василий Иванович спасают галактику: обложка коробки, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8553.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Петька и Василий Иванович спасают галактику: диск, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8553.html"
   - kind: youtube
     id: "Zbh-2UZXC9s"
     title: "ПЕТЬКА И ВАСИЛИЙ ИВАНОВИЧ СПАСАЮТ ГАЛАКТИКУ ► ДАВАЙ ГЛЯНЕМ"

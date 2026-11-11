@@ -30,6 +30,18 @@ gallery:
     author: "Action Forms"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Vivisector_boxart.jpg"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Vivisector: Beast Within: обложка коробки, западное издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/9636.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Vivisector: Beast Within: диск, русское издание (скан: Iotiro_Taro, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/9636.html"
   - kind: youtube
     id: "uYfI7saXZaQ"
     title: "Обзор-1 Vivisector 'Beast Within' (2005)Вивисектор-Зверь внутри"

@@ -66,6 +66,18 @@ gallery:
     author: "Buka Development, ESDigital Games"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/443360/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Петька и Василий Иванович 2: Судный день: обложка коробки, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8629.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Петька и Василий Иванович 2: Судный день: диск, русское издание (скан: Sharp_ey, Old-Games.RU)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/8629.html"
   - kind: rutube
     id: "d5d45251bd1abe51644a68cfdcd42642"
     title: "Петька и Василий Иванович 2 Судный День Прохождение"

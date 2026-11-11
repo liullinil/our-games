@@ -59,6 +59,18 @@ gallery:
     author: "X-Bow Software, Fulqrum Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/46270/"
+  - kind: image
+    src: ./shots/og-box-1.jpg
+    caption: "Star Wolves: обложка коробки, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/14372.html"
+  - kind: image
+    src: ./shots/og-media-2.jpg
+    caption: "Star Wolves: диск, русское издание (скан: Pain Elemental, Old-Games.RU)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://www.old-games.ru/game/covers/14372.html"
   - kind: youtube
     id: "woFTpbQaE3k"
     title: "Джим играет в Star Wolves — Часть 1"
