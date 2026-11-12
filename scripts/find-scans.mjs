@@ -72,6 +72,8 @@ const LATE = 3;
 /* Сколько номеров качать одновременно. */
 const PARALLEL = 6;
 const DEBUG = args.includes('--debug');
+/* Сколько первых листов номера пропускать: обложка, содержание, колонка редактора. */
+const FRONT_MATTER = 5;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -166,8 +168,13 @@ const MAGAZINES = [
   ['Edge', /^edge\b/i, 1],
   ['GameStar', /gamestar/i, 1],
 ];
+/*
+ * Незнакомый журнал берём, только если он лежит на игровой или компьютерной
+ * полке. Общая журнальная полка `magazine_rack` — это и архитектура, и скачки,
+ * и медицина: там «Колыбель» и «Бумер» находятся где угодно.
+ */
 const MAGAZINE_COLLECTIONS =
-  /^(videogamemagazines|videogamemagazinesmisc|computermagazines|computermagazinesmisc|magazine_rack|gameland-magazine-rus|game-world-navigator|game_exe_magazine|DPK_magazine|spire-magazine-ru)$/;
+  /^(videogamemagazines|videogamemagazinesmisc|computermagazines|computermagazinesmisc|gameland-magazine-rus|game-world-navigator|game_exe_magazine|DPK_magazine|spire-magazine-ru)$/;
 /* Подшивки за год и сборники номеров: читалка открывает их с первого файла, лист не адресуется. */
 const PACK = /все выпуски|collection of|\(\d{4}\s*-\s*\d{4}\)|\d{4}\s*-\s*\d{4}$/i;
 
@@ -179,6 +186,12 @@ function magazineOf(hit) {
   if (f.mediatype && f.mediatype !== 'texts') return null;
   if (collections.includes('magazine_packs') || PACK.test(title)) return null;
   if (/^(cd|dvd)rom-/i.test(id)) return null;
+  /*
+   * «Лучшие компьютерные игры. Том N» 1998–2001 годов (LKI02, lki10, LKI.7) —
+   * альманахи «Игромании»: перепечатки её рецензий и прохождения. Сам журнал
+   * ЛКИ лежит под идентификаторами вида LKI_046_2005-09.
+   */
+  if (/^lki[._]?\d{1,2}$/i.test(id)) return null;
   for (const [name, re, rank] of MAGAZINES) if (re.test(title) || re.test(id)) return { name, rank };
   if (!collections.some((c) => MAGAZINE_COLLECTIONS.test(c))) return null;
   // Незнакомый журнал: название без номера и даты.
@@ -343,6 +356,15 @@ async function readGames() {
    * надо отличать.
    */
   for (const g of chosen) {
+    /*
+     * Короткое второе название, которым начинается полное, — «Легенда» у
+     * «Легенды: Наследия драконов», «Князь» у «Князя: Легенд Лесной страны» —
+     * для поиска не годится: по нему находятся Tomb Raider: Legend и проза в
+     * журнале «Если». Ищем только по полным.
+     */
+    g.searchNames = g.names.filter(
+      (n, i) => i === 0 || !g.names.some((o, j) => j !== i && plain(o).startsWith(`${plain(n)} `)),
+    );
     const own = g.names.map(plain);
     g.sequels = all
       .filter((o) => o.id !== g.id)
@@ -368,10 +390,10 @@ async function scan(game) {
   const scannedOutlets = new Set(
     game.reviews.filter((r) => /archive\.org/.test(r.scan ?? r.url)).map((r) => outletKey(r.outlet)),
   );
-  const patterns = game.names.map(titleRegex).filter(Boolean);
+  const patterns = game.searchNames.map(titleRegex).filter(Boolean);
   const sequels = game.sequels.map(titleRegex).filter(Boolean);
   const issues = new Map();
-  for (const name of game.names) {
+  for (const name of game.searchNames) {
     if (name.replace(/[^\p{L}\p{N}]/gu, '').length < 3) continue;
     const hits = await search(name, game.year, game.year + LATE);
     hits.forEach((hit, order) => {
@@ -420,7 +442,10 @@ async function scan(game) {
         runs.push(run);
       }
     });
+    let best = null;
     for (const r of runs) {
+      // Первые листы — обложка, содержание и колонка редактора: игра там названа, но рецензии нет.
+      if (r.first < FRONT_MATTER) continue;
       // Врезка с оценкой бывает на следующем листе после текста.
       const span = texts.slice(r.first, r.last + 2).join(' ');
       // Статья про продолжение: его название занимает половину упоминаний.
@@ -430,10 +455,11 @@ async function scan(game) {
       const info = has(span, INFO);
       const against = has(span, AGAINST);
       const length = r.last - r.first + 1;
-      const score = Math.min(r.hits, 20) + 2 * strong.length + info.length - 3 * against.length + Math.min(length, 4);
+      const score = Math.min(r.hits, 25) + 2 * strong.length + info.length - 3 * against.length + Math.min(length, 4);
+      if (best && best.score >= score) continue;
       const lead = texts[r.first];
       const at = patterns.map((re) => lead.search(re)).find((i) => i >= 0) ?? 0;
-      found.push({
+      best = {
         game: game.id,
         outlet: issue.magazine.name,
         rank: issue.magazine.rank,
@@ -451,8 +477,10 @@ async function scan(game) {
         url: `https://archive.org/details/${issue.id}/page/n${r.first}/mode/2up`,
         text: pages.slice(r.first, r.last + 2).join('\n\n=== следующий лист ===\n\n'),
         scannedOutlet: scannedOutlets.has(outletKey(issue.magazine.name)),
-      });
+      };
     }
+    // От номера — одна статья, самая похожая на рецензию: остальное в нём — превью, новости, письма.
+    if (best) found.push(best);
   }
   /*
    * Одно издание — не больше двух кандидатов: в номере рядом с рецензией
