@@ -21,7 +21,11 @@ const { game: g } = Astro.props;
  * номера и открывает саму статью в читалке archive.org. Остальные —
  * обычные карточки.
  */
-const reviews = g.data.reviews.map((r) => ({ ...r, scan: magazineScan(r.url) }));
+const reviews = g.data.reviews.map((r) => {
+  // Отдельная ссылка на лист журнала главнее: тогда `url` ведёт на сайт издания.
+  const page = r.scan ?? r.url;
+  return { ...r, page, sheet: magazineScan(page) };
+});
 const metacritic = g.data.specs.metacritic;
 ---
 
@@ -34,11 +38,11 @@ const metacritic = g.data.specs.metacritic;
       </div>
       <ul class="reviews__list">
         {reviews.map((r) => (
-          <li class:list={['reviews__item card', { 'reviews__item--scan': r.scan }]}>
-            {r.scan && (
-              <a class="reviews__cover" href={r.url} rel="noopener external" title={`${r.outlet}: номер в библиотеке archive.org`}>
+          <li class:list={['reviews__item card', { 'reviews__item--scan': r.sheet }]}>
+            {r.sheet && (
+              <a class="reviews__cover" href={r.page} rel="noopener external" title={`${r.outlet}: номер в библиотеке archive.org`}>
                 <img
-                  src={r.scan.cover}
+                  src={r.sheet.cover}
                   alt={`Обложка номера: ${r.outlet}`}
                   loading="lazy"
                   decoding="async"
@@ -57,10 +61,10 @@ const metacritic = g.data.specs.metacritic;
               {(r.author || r.date) && (
                 <p class="reviews__meta muted">{[r.author, r.date].filter(Boolean).join(' · ')}</p>
               )}
-              {r.scan && (
-                <div class="reviews__scan" data-scan data-src={r.scan.reader} data-title={`${r.outlet}: страница журнала`}>
+              {r.sheet && (
+                <div class="reviews__scan" data-scan data-src={r.sheet.reader} data-title={`${r.outlet}: страница журнала`}>
                   <button class="reviews__scan-open" type="button" data-scan-open>
-                    {r.scan.page ? 'Страница журнала' : 'Открыть номер'}
+                    {r.sheet.page ? 'Страница журнала' : 'Открыть номер'}
                   </button>
                   <span class="muted">скан в библиотеке archive.org</span>
                 </div>
