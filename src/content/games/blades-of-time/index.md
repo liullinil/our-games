@@ -67,6 +67,12 @@ gallery:
     author: "Gaijin Entertainment Corporation"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/208670/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Blades of Time: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Konami Industry Co., Ltd."
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/blade-of-time-god"
   - kind: youtube
     id: "nmQ9tHQp7Hc"
     title: "Blades of Time. Видеообзор"

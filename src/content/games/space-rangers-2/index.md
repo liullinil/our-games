@@ -65,6 +65,12 @@ gallery:
     author: "SNK Games, Elemental Games, Katauri Interactive, Fulqrum Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/214730/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Космические рейнджеры 2: Доминаторы: обложка коробки переиздания «Перезагрузка», русское издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/space-rangers-2"
   - kind: youtube
     id: "KUYNMdGaXeI"
     title: "За что мы любим Космические Рейнджеры 2"

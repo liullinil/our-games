@@ -51,6 +51,12 @@ gallery:
     author: "Awem Studio, Next Game"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/38170/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Cradle of Rome: обложка коробки, немецкое издание (скан из библиотеки archive.org)"
+    author: "D3 Publisher Inc."
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/cradle-of-rome"
   - kind: youtube
     id: "MOk3GuE8xBc"
     title: "Cradle of Rome ... (Wii) Gameplay"

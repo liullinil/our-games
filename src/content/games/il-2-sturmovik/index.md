@@ -44,6 +44,12 @@ gallery:
     author: "Фирма «1С»"
     license: "Обложка"
     sourceUrl: "https://www.old-games.ru/game/covers/14735.html"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Ил-2 Штурмовик: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/il2-sturmovik"
   - kind: youtube
     id: "XVpyJanEhrI"
     title: "ВЗЛЁТ ИЛ-2 ШТУРМОВИК"

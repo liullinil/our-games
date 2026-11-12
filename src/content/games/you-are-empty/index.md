@@ -73,6 +73,12 @@ gallery:
     author: "Фирма «1С»"
     license: "Обложка"
     sourceUrl: "https://www.old-games.ru/game/covers/13228.html"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "You Are Empty: обложка коробки, польское издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/you-are-empty-pl"
   - kind: youtube
     id: "HErqzvfKmVQ"
     title: "Разбор полётов. You Are Empty"

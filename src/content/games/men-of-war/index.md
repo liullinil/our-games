@@ -65,6 +65,12 @@ gallery:
     author: "Best Way, Digitalmindsoft, Fulqrum Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/7830/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "В тылу врага 2: Лис пустыни: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/men-of-war-usa"
   - kind: youtube
     id: "3kT-WHsxDLQ"
     title: "Обзор стратегии В тылу врага 2 Лис пустыни"

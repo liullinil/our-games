@@ -63,6 +63,12 @@ gallery:
     author: "Sky Fallen, Fulqrum Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/7840/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Death Track: Возрождение: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/death-track-resurrection"
   - kind: youtube
     id: "X5dsCYk4S1s"
     title: "Vehicular Combat -- Death Track Resurrection review"

@@ -61,6 +61,12 @@ gallery:
     author: "Wargaming.net, Matrix Games/GMX Media"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/34630/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Massive Assault: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Руссобит-М"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/massive-assault_202510"
   - kind: youtube
     id: "Fjwp4sYgLSs"
     title: "Massive Assault Network 2"

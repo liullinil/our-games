@@ -65,6 +65,12 @@ gallery:
     author: "Katauri Interactive, Fulqrum Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/25900/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "King’s Bounty: Легенда о рыцаре: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/kings-bounty_202510"
   - kind: youtube
     id: "H_WfVBRuoCg"
     title: "Обзор King`s Bounty: Легенда о Рыцаре"

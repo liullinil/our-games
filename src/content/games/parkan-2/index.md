@@ -61,6 +61,12 @@ gallery:
     author: "Nikita, Fulqrum Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/289400/"
+  - kind: image
+    src: ./shots/ia-media-1.jpg
+    caption: "Parkan II: диск, русское издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/PARKAN_II_1C_2005"
   - kind: youtube
     id: "Fu8sPeUtGg0"
     title: "Обзор игры \"Parkan 2\""

@@ -62,6 +62,12 @@ gallery:
     author: "Targem Games, ESDigital Games"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/285500/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Ex Machina: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/hard-truck-apocalypse"
   - kind: youtube
     id: "_mZBcnEGOcA"
     title: "Редкостный Обзор 36. Ex Machina (2005) Дальнобойщик мститель. (весь сюжет)."

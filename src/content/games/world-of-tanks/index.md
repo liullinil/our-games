@@ -72,6 +72,12 @@ gallery:
     author: "Wargaming Group Limited"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/1407200/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "World of Tanks: конверт диска, западное издание (скан из библиотеки archive.org)"
+    author: "Wargaming.net"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/redump-id-120348"
   - kind: youtube
     id: "IpJ2ORA9Cw8"
     title: "НЕ ИГРАЙ В WORLD OF TANKS"

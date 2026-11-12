@@ -62,6 +62,24 @@ gallery:
     author: "Trashmasters, Zoom Platform, Akella"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/10220/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Postal III: обложка коробки (скан из библиотеки archive.org)"
+    author: "Акелла"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/postal-iii"
+  - kind: image
+    src: ./shots/ia-box-2.jpg
+    caption: "Postal III: обложка коробки, русское издание (скан из библиотеки archive.org)"
+    author: "Акелла"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/RusPostal3AkellaGame"
+  - kind: image
+    src: ./shots/ia-media-3.jpg
+    caption: "Postal III: диск, русское издание (скан из библиотеки archive.org)"
+    author: "Акелла"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/RusPostal3AkellaGame"
   - kind: youtube
     id: "TAcELbqPbtQ"
     title: "ИСТОРИЯ БОЛЬШОГО ПРОВАЛА: POSTAL 3"

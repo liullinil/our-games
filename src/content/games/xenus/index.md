@@ -65,6 +65,12 @@ gallery:
     author: "Deep Shadows, Ziggurat"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/2000760/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Xenus: Точка кипения: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Руссобит-М"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/boiling-point_202510"
   - kind: youtube
     id: "0s_rkQO3LGw"
     title: "Разбор полётов. «Xenus. Точка кипения» — Far Cry для бедных"

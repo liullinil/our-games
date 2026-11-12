@@ -61,6 +61,12 @@ gallery:
     author: "SkyRiver Studios, Fulqrum Publishing"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/289180/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Механоиды 2: Война кланов: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/a.-i.-m.-2-clan-wars"
   - kind: youtube
     id: "y9bzkUkUvD8"
     title: "Механоиды 2: Война кланов 🎮 ПОЧТИ ПОЛНЫЙ ОБЗОР ПРОХОЖДЕНИЯ ИГРЫ"

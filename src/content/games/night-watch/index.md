@@ -29,6 +29,18 @@ gallery:
     author: "Nival"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%9D%D0%BE%D1%87%D0%BD%D0%BE%D0%B9_%D0%B4%D0%BE%D0%B7%D0%BE%D1%80_(%D0%B8%D0%B3%D1%80%D0%B0).jpg"
+  - kind: image
+    src: ./shots/ia-media-1.jpg
+    caption: "Ночной дозор: диски, русское издание (скан из библиотеки archive.org)"
+    author: "Новый Диск"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/nwatch-1"
+  - kind: image
+    src: ./shots/ia-box-2.jpg
+    caption: "Ночной дозор: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Новый Диск"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/night-watch_202608"
   - kind: youtube
     id: "JFb1AejOZWU"
     title: "Игра «Ночной дозор» 15 лет спустя [Разбор полётов]"

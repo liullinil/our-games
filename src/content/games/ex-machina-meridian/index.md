@@ -64,6 +64,12 @@ gallery:
     author: "Targem Games, ESDigital Games"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/286810/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Ex Machina: Меридиан 113: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/hard-truck-apocalypse-rise-of-clans"
   - kind: youtube
     id: "89_vXflZ50w"
     title: "Редкостный Обзор 38. Ex Machina Меридиан 113 (2006) Работа на дядю Сэма. (весь сюжет)."

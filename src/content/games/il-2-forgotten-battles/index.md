@@ -31,6 +31,12 @@ gallery:
     author: "Maddox Games"
     license: "Обложка"
     sourceUrl: "https://en.wikipedia.org/wiki/File:IL-2_Sturmovik_-_Forgotten_Battles_Coverart.png"
+  - kind: image
+    src: ./shots/ia-media-1.jpg
+    caption: "Ил-2 Штурмовик: Забытые сражения: диск, русское издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/2_20251026_20251026_2052"
   - kind: youtube
     id: "kG1ITOonNow"
     title: "Программа NewView в игре Ил-2 Штурмовик Забытые Сражения"

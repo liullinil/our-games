@@ -32,6 +32,12 @@ gallery:
     author: "SkyFallen"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Magiakrovicover.jpg"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Магия крови: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/dawn-of-magic-pc"
   - kind: youtube
     id: "eeuHqKwWnhE"
     title: "Обзор игры: Магия крови (Dawn of Magic)"

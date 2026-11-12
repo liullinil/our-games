@@ -28,6 +28,12 @@ gallery:
     author: "Gaijin"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%90%D0%B4%D1%80%D0%B5%D0%BD%D0%B0%D0%BB%D0%B8%D0%BD_%D0%AD%D0%BA%D1%81%D1%82%D1%80%D0%B8%D0%BC-%D1%88%D0%BE%D1%83_%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0.jpeg"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Адреналин: Экстрим-шоу: обложка коробки, бразильское издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/2738-bl-49u-1f-5sd"
   - kind: youtube
     id: "ZfNf77i0Ygs"
     title: "Обзор игры Адреналин экстрим-шоу"

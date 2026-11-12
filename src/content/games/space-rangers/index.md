@@ -35,6 +35,12 @@ gallery:
     author: "Elemental Games"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%9A%D0%BE%D1%81%D0%BC%D0%A0%D0%B5%D0%B9%D0%BD%D0%B4%D0%B6.jpg"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Космические рейнджеры: конверт диска-приложения к журналу, чешское издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/ppk-space-rangers-cze-eng-hun-rus"
   - kind: youtube
     id: "ZsVUG6C-vXs"
     title: "Обзор Космические рейнджеры HD: Революция [Review]"

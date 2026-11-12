@@ -63,6 +63,12 @@ gallery:
     author: "GameXP.com"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/953820/"
+  - kind: image
+    src: ./shots/ia-media-1.jpg
+    caption: "Паркан: Железная стратегия: диск, русское издание (скан из библиотеки archive.org)"
+    author: "Locis"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/parkan-iron-strategy-part-1-and-2"
   - kind: rutube
     id: "fc39062211406a46c83b55627c5c6ee2"
     title: "железная стратегия 2 серия 3 прохождение"

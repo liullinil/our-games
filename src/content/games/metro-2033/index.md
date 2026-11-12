@@ -71,6 +71,12 @@ gallery:
     author: "4A Games, Deep Silver"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/43110/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Metro 2033: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Акелла"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/metro-2033_202306"
   - kind: rutube
     id: "862d282eb0540eff5f7e3a68e26b31f3"
     title: "Metro 2033: Redux - Полное Прохождение Игры на Русском"

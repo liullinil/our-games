@@ -42,6 +42,12 @@ gallery:
     author: "Фирма «1С»"
     license: "Обложка"
     sourceUrl: "https://www.old-games.ru/game/covers/9636.html"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Vivisector: Beast Within: обложка коробки, эстонское издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/vivisector_est"
   - kind: youtube
     id: "uYfI7saXZaQ"
     title: "Обзор-1 Vivisector 'Beast Within' (2005)Вивисектор-Зверь внутри"

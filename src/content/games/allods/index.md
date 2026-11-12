@@ -71,6 +71,12 @@ gallery:
     author: "Бука"
     license: "Обложка"
     sourceUrl: "https://www.old-games.ru/game/covers/156.html"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Аллоды: Печать тайны: обложка коробки, испанское издание (скан из библиотеки archive.org)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/rage-of-mages"
   - kind: youtube
     id: "sasYuaPLJ4s"
     title: "С чего все начиналось? Обзор игры Аллоды печать тайны (1998)"

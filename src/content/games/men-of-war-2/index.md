@@ -25,6 +25,12 @@ specs:
   metacritic: 67
   abroad: "за пределами России игру издала Ubisoft под названием Faces of War: 12 сентября 2006 года в Северной Америке, 14-го в Австралии, 15-го в Европе; приняли прохладно — 67 из 100 на Metacritic"
 gallery:
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "В тылу врага 2: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/s-l1600_202011"
   - kind: youtube
     id: "s1-UAT33zxo"
     title: "Men of War 2 - Обзор и Первые Впечатления Продолжения Легендарной Серии Игр \"В тылу врага\"!"

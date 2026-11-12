@@ -72,6 +72,12 @@ gallery:
     author: "4A Games, Deep Silver"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/287390/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Metro: Last Light: обложка коробки, западное издание (скан из библиотеки archive.org)"
+    author: "Бука"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/metro-last-light-season-pass-edition"
   - kind: youtube
     id: "rQcnJfxsmYk"
     title: "Обзор Metro Last Light"

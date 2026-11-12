@@ -43,6 +43,24 @@ gallery:
     author: "Eagle Dynamics"
     license: "Обложка"
     sourceUrl: "https://www.old-games.ru/game/covers/411.html"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Су-27 Фланкер: обложка коробки, русское издание (скан из библиотеки archive.org)"
+    author: "Eagle Dynamics"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/flanker_202207"
+  - kind: image
+    src: ./shots/ia-media-2.jpg
+    caption: "Су-27 Фланкер: диск, русское издание (скан из библиотеки archive.org)"
+    author: "Eagle Dynamics"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/flanker_202207"
+  - kind: image
+    src: ./shots/ia-box-3.jpg
+    caption: "Су-27 Фланкер: обложка коробки, аргентинское издание (скан из библиотеки archive.org)"
+    author: "Eagle Dynamics"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/su27_flanker_bj_broker_sa_argentina"
   - kind: youtube
     id: "K48_fVGedeA"
     title: "Su27 flanker (1995) airfield strike"

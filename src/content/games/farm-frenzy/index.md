@@ -48,6 +48,12 @@ gallery:
     author: "Alawar, Next Game"
     license: "Скриншот"
     sourceUrl: "https://store.steampowered.com/app/38120/"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Весёлая ферма: обложка коробки, немецкое издание (скан из библиотеки archive.org)"
+    author: "Alawar Entertainment"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/farm-frenzy_202602"
   - kind: youtube
     id: "PPYlMhG5NcI"
     title: "Farm Frenzy 3 only GOLD (level 53) playthrough Веселая ферма 3 (уровень 53) Золото"

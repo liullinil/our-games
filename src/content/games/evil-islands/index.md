@@ -49,6 +49,12 @@ gallery:
     author: "Nival"
     license: "Обложка"
     sourceUrl: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Evil_Islands_1C_cover.jpg"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Проклятые земли: обложка коробки, немецкое издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/Evil-Islands-German"
   - kind: youtube
     id: "jtJ9v9y4dfA"
     title: "Что такое Проклятые Земли?"

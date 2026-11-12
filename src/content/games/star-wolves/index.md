@@ -71,6 +71,12 @@ gallery:
     author: "Фирма «1С»"
     license: "Обложка"
     sourceUrl: "https://www.old-games.ru/game/covers/14372.html"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Star Wolves: обложка коробки, португальское издание (скан из библиотеки archive.org)"
+    author: "Фирма «1С»"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/Nova_StarWolves_PT"
   - kind: youtube
     id: "woFTpbQaE3k"
     title: "Джим играет в Star Wolves — Часть 1"

@@ -58,6 +58,18 @@ gallery:
     author: "PLR Worldwide Sales Limited"
     license: "Скриншот"
     sourceUrl: "https://apps.apple.com/app/id664575829"
+  - kind: image
+    src: ./shots/ia-box-1.jpg
+    caption: "Fishdom: обложка коробки, русское издание (скан из библиотеки archive.org)"
+    author: "Playrix"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/Nova_Fishdom_RU"
+  - kind: image
+    src: ./shots/ia-media-2.jpg
+    caption: "Fishdom: диск, русское издание (скан из библиотеки archive.org)"
+    author: "Playrix"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/Nova_Fishdom_RU"
   - kind: youtube
     id: "_i2NURooYkU"
     title: "Fishdom Аквариум Мечты #1 (уровни 1-10) Обзор и Первые Рыбки Игровое Видео Let's Play"
