@@ -69,6 +69,13 @@ gallery:
     author: "Locis"
     license: "Обложка"
     sourceUrl: "https://archive.org/details/parkan-iron-strategy-part-1-and-2"
+  - kind: image
+    src: ./shots/ia-box-2.jpg
+    caption: "Паркан: Железная стратегия: обложка первой части, русское издание «Никиты» (скан из библиотеки archive.org, лицевая сторона вырезана из разворота)"
+    author: "Locis"
+    license: "Обложка"
+    sourceUrl: "https://archive.org/details/parkan-iron-strategy-part-1-and-2"
+    modified: true
   - kind: rutube
     id: "fc39062211406a46c83b55627c5c6ee2"
     title: "железная стратегия 2 серия 3 прохождение"
