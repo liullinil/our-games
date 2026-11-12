@@ -27,11 +27,18 @@ export interface MagazineScan {
  * Разбирает адрес рецензии. Подходят все виды ссылок на номер:
  * `/details/<id>/page/n23/mode/2up`, `/download/<id>/page/n23_w1400.jpg`,
  * `/stream/<id>`, `/embed/<id>`. Для остального возвращает null.
+ *
+ * Не подходит и номер внутри годовой подшивки — `/details/<подшивка>/<файл
+ * номера>/page/n50`: миниатюра у подшивки одна, от первого номера, а
+ * встроенная читалка открывает подшивку с начала. Такая рецензия остаётся
+ * обычной ссылкой.
  */
 export function magazineScan(url: string | undefined): MagazineScan | null {
-  const m = String(url ?? '').match(/archive\.org\/(?:details|download|stream|embed)\/([^/?#]+)(?:\/page\/(n?\d+))?/);
+  const m = String(url ?? '').match(/archive\.org\/(?:details|download|stream|embed)\/([^/?#]+)((?:\/[^?#]*)?)/);
   if (!m) return null;
-  const [, id, page] = m;
+  const [, id, rest] = m;
+  if (rest && rest !== '/' && !rest.startsWith('/page/')) return null;
+  const page = rest.match(/^\/page\/(n?\d+)/)?.[1];
   return {
     id,
     page,

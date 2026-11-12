@@ -101,7 +101,7 @@ reviews:
     author: "Олег Вяткин"
     date: "2006"
   - outlet: "Виртуальные радости"
-    score: "8,0"
+    score: "8,0/10"
     verdict: "Свободы в мире почти нет, графика отстаёт, баги на месте — но сочетание тактики, ролевой системы, юмора и секретов затягивает так, что выходные проходят незаметно."
     url: "https://vrgames.by/publ/obzor-zvezdnye-volki"
     author: "Morgul Angmarsky"

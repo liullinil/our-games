@@ -93,6 +93,12 @@ reviews:
     url: "https://archive.org/details/kompyuter-i-my-1998-7-15/page/n63/mode/2up"
     author: "Евгений Луньков"
     date: "1998"
+  - outlet: "Навигатор игрового мира"
+    score: "8,5/10"
+    verdict: "Первый качественный российский автосимулятор, да и в мире игр про грузовики почти не делали: база со складом и магазином, доставка грузов наперегонки с соперниками, правдоподобная физика и красивая даже в 256 цветах картинка. Огорчают отказ от 3D-ускорителей, пустынные дороги и соперники, не съезжающие с асфальта."
+    url: "https://archive.org/details/GameWorldNavigator_1998-04-012/page/n95/mode/2up"
+    author: "Леонтий Тютелев"
+    date: "1998"
 reading:
   - title: "История создания серии «Дальнобойщики». Часть 1"
     url: "https://vgtimes.ru/articles/57898-istoriya-sozdaniya-serii-dalnoboyschiki.-chast-1.-kak-novosibirskie-uchenye-nachali-delat-igry-i-chem-esche-oni-zanimalis-krome-dalnoboyschikov.html"

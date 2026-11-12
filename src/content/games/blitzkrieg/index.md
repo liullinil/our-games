@@ -125,6 +125,12 @@ reviews:
     url: "https://worthplaying.com/article/2003/6/24/reviews/10825-pc-review-blitzkrieg/"
     author: "Tristan"
     date: "2003"
+  - outlet: "Виртуальные радости"
+    score: "8/10"
+    verdict: "Достоверная игра о Второй мировой: три равноценные кампании, реалистичные характеристики техники, тактика, где позиция важнее численности, эффектные попадания и озвучка на родных языках сторон. Огорчают крошечный личный отряд командира и юниты, проходящие сквозь друг друга и стены домов."
+    url: "https://archive.org/details/VirtualnieRadosti_041/page/n10/mode/2up"
+    author: "Morgul Angmarsky"
+    date: "2003"
 reading:
   - title: "Студия Nival официально выложила на GitHub исходный код своей стратегии про Вторую мировую войну «Блицкриг»"
     url: "https://habr.com/ru/news/906276/"
