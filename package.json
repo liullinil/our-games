@@ -22,6 +22,8 @@
     "appstore:fetch": "node scripts/fetch-appstore.mjs",
     "gog:fetch": "node scripts/fetch-gog.mjs",
     "covers:fetch": "node scripts/fetch-oldgames-covers.mjs",
+    "covers:archive": "node scripts/fetch-archive-covers.mjs",
+    "scans:find": "node scripts/find-scans.mjs",
     "sketchfab:fetch": "node scripts/fetch-sketchfab.mjs",
     "video": "node scripts/fetch-video.mjs",
     "photos:shrink": "node scripts/shrink-photos.mjs",

@@ -27,6 +27,8 @@
  *   node scripts/fetch-oldgames-covers.mjs --collect tmp/covers
  *   node scripts/fetch-oldgames-covers.mjs --collect tmp/covers vangers knyaz
  *   node scripts/fetch-oldgames-covers.mjs --apply tmp/covers/manifest.json
+ *
+ * Второй шаг принимает и опись fetch-archive-covers.mjs — сканы с archive.org.
  */
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -224,7 +226,9 @@ async function apply(manifestPath) {
     if (items.length === 0) continue;
     const file = path.join(GAMES, id, 'index.md');
     const text = await readFile(file, 'utf8');
-    if (text.includes(entry.page)) continue;
+    // Опись могла прийти и от fetch-archive-covers.mjs: там у каждого скана свой предмет archive.org.
+    const pages = [entry.page, ...items.map((it) => it.page)].filter(Boolean);
+    if (pages.some((p) => text.includes(p))) continue;
     const fm = yaml.parse(text.split(/^---$/m)[1]);
     const who = await owner(fm);
     const carrier = (fm.years?.start ?? 0) >= 1995 ? 'диск' : 'носитель';
@@ -233,7 +237,7 @@ async function apply(manifestPath) {
 
     const blocks = [];
     for (const [i, it] of items.entries()) {
-      const name = `og-${it.kind}-${i + 1}.jpg`;
+      const name = `${entry.prefix ?? 'og'}-${it.kind}-${i + 1}.jpg`;
       await writeFile(path.join(shots, name), await readFile(path.join(dir, it.file)));
       // В описи можно уточнить, что это за предмет: у Welltris 1989 года носитель — дискета.
       const noun = it.what ?? (it.kind === 'box' ? 'обложка коробки' : carrier);
@@ -242,10 +246,10 @@ async function apply(manifestPath) {
         [
           `  - kind: image`,
           `    src: ./shots/${name}`,
-          `    caption: ${yamlStr(`${fm.name}: ${what} (скан: ${it.who}, Old-Games.RU)`)}`,
+          `    caption: ${yamlStr(`${fm.name}: ${what} (${entry.credit === 'archive.org' ? 'скан из библиотеки archive.org' : `скан: ${it.who}, Old-Games.RU`})`)}`,
           `    author: ${yamlStr(who)}`,
           `    license: "Обложка"`,
-          `    sourceUrl: ${yamlStr(entry.page)}`,
+          `    sourceUrl: ${yamlStr(it.page ?? entry.page)}`,
         ].join('\n') + '\n',
       );
     }
